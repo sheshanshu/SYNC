@@ -1,0 +1,186 @@
+// Syncora Database Schema - Core Multi-Tenancy & Module Substrate
+// Role: Lead Architect / Database Administrator
+// Focus: Strict Tenant Isolation, Granular RBAC, and Modular Extensibility
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ==========================================
+// 1. TENANCY & IDENTITY LAYER
+// ==========================================
+
+model Organization {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique // institutional-url-slug
+  domain        String?   @unique // custom.institution.edu
+  logoUrl       String?
+  themeSettings Json?     // { primaryColor: string, font: string, etc. }
+  status        OrgStatus @default(ACTIVE)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  // Module Toggles (Feature Flags)
+  enabledModules String[] // ['ACADEMIC', 'FINANCE', 'SAFETY', 'LIBRARY']
+
+  // Relations
+  users         User[]
+  roles         Role[]
+  sessions      AcademicSession[]
+  departments   Department[]
+}
+
+enum OrgStatus {
+  ACTIVE
+  SUSPENDED
+  ONBOARDING
+}
+
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  passwordHash      String
+  firstName         String
+  lastName          String
+  avatarUrl         String?
+  phone             String?
+  
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  
+  status            UserStatus @default(ACTIVE)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  memberships       Membership[]
+  refreshTokens     RefreshToken[]
+  notifications     Notification[]
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  PENDING_VERIFICATION
+}
+
+// ==========================================
+// 2. SECURITY & RBAC LAYER
+// ==========================================
+
+model Role {
+  id                String    @id @default(cuid())
+  name              String    // "SystemAdmin", "OrgAdmin", "Faculty", "Student"
+  description       String?
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  
+  permissions       Permission[]
+  memberships       Membership[]
+
+  @@unique([name, organizationId])
+}
+
+model Permission {
+  id            String   @id @default(cuid())
+  action        String   // "create", "read", "update", "delete", "manage"
+  subject       String   // "Student", "Grade", "Invoice", "SecurityAlert"
+  roles         Role[]
+}
+
+model Membership {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  roleId        String
+  role          Role     @relation(fields: [roleId], references: [id])
+  
+  // Optional department scoping
+  departmentId  String?
+  department    Department? @relation(fields: [departmentId], references: [id])
+
+  @@unique([userId, roleId, departmentId])
+}
+
+model RefreshToken {
+  id            String   @id @default(cuid())
+  token         String   @unique
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  expiresAt     DateTime
+  isRevoked     Boolean  @default(false)
+  family        String   // For token rotation detection
+  createdAt     DateTime @default(now())
+}
+
+// ==========================================
+// 3. ACADEMIC SUBSTRATE
+// ==========================================
+
+model AcademicSession {
+  id                String    @id @default(cuid())
+  name              String    // "Fall 2024"
+  startDate         DateTime
+  endDate           DateTime
+  isCurrent         Boolean   @default(false)
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+
+  terms             AcademicTerm[]
+}
+
+model AcademicTerm {
+  id                String    @id @default(cuid())
+  name              String    // "Semester 1"
+  sessionId         String
+  session           AcademicSession @relation(fields: [sessionId], references: [id])
+  courses           Course[]
+}
+
+model Department {
+  id                String    @id @default(cuid())
+  name              String
+  code              String?
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  
+  memberships       Membership[]
+  courses           Course[]
+}
+
+model Course {
+  id                String    @id @default(cuid())
+  title             String
+  code              String    // "CS101"
+  credits           Int
+  departmentId      String
+  department        Department @relation(fields: [departmentId], references: [id])
+  termId            String
+  term              AcademicTerm @relation(fields: [termId], references: [id])
+  
+  organizationId    String
+}
+
+// ==========================================
+// 4. NOTIFICATION ENGINE SUBSTRATE
+// ==========================================
+
+model Notification {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  title         String
+  message       String
+  type          String    // "URGENT", "INFO", "SUCCESS"
+  channel       String    // "PUSH", "EMAIL", "IN_APP"
+  status        String    @default("UNREAD")
+  payload       Json?     // Deep-link data
+  createdAt     DateTime  @default(now())
+}

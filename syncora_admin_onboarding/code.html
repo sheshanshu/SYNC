@@ -1,0 +1,336 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Organization Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#eef0ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#3b4fd2",
+                      "on-surface-variant": "#454654",
+                      "surface-container-low": "#f2f3ff",
+                      "primary-container": "#3e52d5",
+                      "on-secondary-container": "#54647a",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "surface-dim": "#d2d9f4",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "outline-variant": "#c5c5d7",
+                      "surface-container": "#eaedff",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary-fixed": "#000d60",
+                      "on-tertiary-fixed": "#351000",
+                      "secondary": "#505f76",
+                      "surface": "#faf8ff",
+                      "on-primary-container": "#d7daff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#7e3100",
+                      "on-surface": "#131b2e",
+                      "surface-variant": "#dae2fd",
+                      "on-background": "#131b2e",
+                      "inverse-surface": "#283044",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "tertiary-container": "#a44200",
+                      "background": "#faf8ff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "outline": "#757686",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "surface-container-highest": "#dae2fd",
+                      "surface-bright": "#faf8ff",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#d0e1fb",
+                      "primary": "#2036bd",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#bbc3ff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "surface-container-high": "#e2e7ff",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#dfe0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "density-generous": "32px",
+                      "margin-page": "24px",
+                      "density-compact": "8px",
+                      "base": "4px",
+                      "gutter-grid": "16px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      }
+              }
+            },
+          }
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Intent: Onboarding Transactional flow. However, prompt requests SideNavBar visible but in "setup" state. We will render a highly dimmed/disabled version of it -->
+<aside class="bg-surface-container-low border-r border-outline-variant docked left-0 h-full w-64 hidden lg:flex flex-col py-density-generous px-4 overflow-y-auto opacity-50 pointer-events-none select-none">
+<div class="mb-density-generous flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-outline">domain</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">Syncora Campus</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Administrator Mode</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<p class="font-label-mono text-label-mono text-outline mb-2 px-2 uppercase tracking-wider">Setup Pending</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant transition-all pointer-events-none" href="#">
+<span class="material-symbols-outlined text-outline">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant transition-all pointer-events-none" href="#">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+<span class="font-label-mono text-label-mono">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant transition-all pointer-events-none" href="#">
+<span class="material-symbols-outlined text-outline">group</span>
+<span class="font-label-mono text-label-mono">People</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant transition-all pointer-events-none" href="#">
+<span class="material-symbols-outlined text-outline">analytics</span>
+<span class="font-label-mono text-label-mono">Reports &amp; Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant transition-all pointer-events-none" href="#">
+<span class="material-symbols-outlined text-outline">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<button class="flex items-center gap-3 w-full px-3 py-2 text-on-surface-variant pointer-events-none">
+<span class="material-symbols-outlined text-outline">logout</span>
+<span class="font-label-mono text-label-mono">Log Out</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-y-auto bg-surface relative">
+<!-- Top App Bar - Simple version for onboarding -->
+<header class="flex justify-between items-center w-full px-margin-page h-16 bg-surface border-b border-outline-variant sticky top-0 z-10 shrink-0">
+<div class="lg:hidden flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Syncora</h1>
+</div>
+<div class="hidden lg:block"></div> <!-- Spacer -->
+<div class="flex items-center gap-4">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Step 1 of 4</span>
+<button class="font-label-mono text-label-mono text-primary hover:text-primary-container transition-colors">Save Draft</button>
+</div>
+</header>
+<div class="flex-1 w-full max-w-5xl mx-auto px-margin-page py-density-generous flex flex-col lg:flex-row gap-8 lg:gap-12">
+<!-- Left Column: Form -->
+<div class="flex-1 max-w-2xl">
+<!-- Progress Indicator -->
+<div class="mb-10 w-full flex items-center">
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-mono text-label-mono ring-4 ring-surface">1</div>
+<span class="font-label-mono text-label-mono text-primary mt-2 absolute -bottom-6 whitespace-nowrap">Organization</span>
+</div>
+<div class="flex-1 h-0.5 bg-outline-variant -mx-1 relative z-0"></div>
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono ring-4 ring-surface">2</div>
+</div>
+<div class="flex-1 h-0.5 bg-outline-variant -mx-1 relative z-0"></div>
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono ring-4 ring-surface">3</div>
+</div>
+<div class="flex-1 h-0.5 bg-outline-variant -mx-1 relative z-0"></div>
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-mono text-label-mono ring-4 ring-surface">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+</div>
+</div>
+<div class="mt-16">
+<h2 class="font-display text-display text-on-surface mb-2">Create Organization</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Set up your institution's core profile. This information will be visible to all members you invite.</p>
+<form class="space-y-6">
+<!-- Org Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface uppercase tracking-wide" for="orgName">Organization Name</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline" id="orgName" placeholder="e.g. Springfield University" type="text">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Org Type -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface uppercase tracking-wide" for="orgType">Organization Type</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none pr-10" id="orgType">
+<option disabled="" selected="" value="">Select type</option>
+<option value="school">K-12 School</option>
+<option value="college">College</option>
+<option value="university">University</option>
+<option value="institute">Training Institute</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">arrow_drop_down</span>
+</div>
+</div>
+<!-- Domain -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface uppercase tracking-wide" for="domain">Primary Domain</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-on-surface-variant font-body-md text-body-md select-none">https://</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT pl-16 pr-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline" id="domain" placeholder="springfield.edu" type="text">
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-1">Used for SSO and member invitations.</p>
+</div>
+</div>
+<!-- Admin Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface uppercase tracking-wide" for="adminName">Primary Admin Name</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline" id="adminName" placeholder="Jane Doe" readonly="" type="text" value="Super Admin">
+<p class="font-body-sm text-body-sm text-outline mt-1">Sourced from your current account profile.</p>
+</div>
+<div class="pt-6 flex justify-end">
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-6 py-3 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center gap-2" type="button">
+                                Continue to Structure
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Preview / Empty State -->
+<div class="hidden lg:flex flex-col w-80 shrink-0 sticky top-24 self-start">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wide mb-4">Preview: Member Directory</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm relative">
+<!-- Faux Table Header -->
+<div class="flex items-center justify-between px-4 py-3 bg-surface border-b border-outline-variant">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Member Name</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Role</span>
+</div>
+<!-- Empty State Content -->
+<div class="p-8 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-4 border border-outline-variant border-dashed">
+<span class="material-symbols-outlined text-outline text-[32px]">group_add</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">Directory is empty</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Once your organization is created, you can invite staff, educators, and administrators to join.</p>
+<div class="mt-6 w-full space-y-3 opacity-30 pointer-events-none">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-outline-variant"></div>
+<div class="h-4 w-24 bg-outline-variant rounded"></div>
+</div>
+<div class="h-4 w-16 bg-outline-variant rounded"></div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-outline-variant"></div>
+<div class="h-4 w-20 bg-outline-variant rounded"></div>
+</div>
+<div class="h-4 w-12 bg-outline-variant rounded"></div>
+</div>
+</div>
+</div>
+<!-- Glassy overlay to emphasize it's a preview -->
+<div class="absolute inset-0 bg-surface/10 backdrop-blur-[1px] pointer-events-none"></div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

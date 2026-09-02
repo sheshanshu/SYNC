@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Integrations Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2f3038",
+                    "tertiary-fixed-dim": "#ffb694",
+                    "fleet-delayed": "#b91c1c",
+                    "primary": "#001c9d",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#d4e3ff",
+                    "primary-container": "#2036bd",
+                    "surface-bright": "#fbf8ff",
+                    "secondary": "#505f76",
+                    "map-water": "#e0f2fe",
+                    "surface-dim": "#dad9e4",
+                    "on-surface-variant": "#454654",
+                    "on-secondary-fixed": "#0c1c30",
+                    "fleet-transit": "#0369a1",
+                    "on-error-container": "#93000a",
+                    "background": "#fbf8ff",
+                    "on-secondary-fixed-variant": "#39485e",
+                    "map-road": "#ffffff",
+                    "occupancy-maintenance": "#92400e",
+                    "on-primary-container": "#a9b3ff",
+                    "on-secondary-container": "#56657c",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#b8c7e2",
+                    "surface": "#fbf8ff",
+                    "on-primary": "#ffffff",
+                    "occupancy-available": "#15803d",
+                    "on-background": "#1a1b23",
+                    "map-park": "#f0fdf4",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#7a2f00",
+                    "surface-container-low": "#f4f2fe",
+                    "surface-variant": "#e3e1ed",
+                    "surface-container": "#eeecf8",
+                    "inverse-primary": "#bcc3ff",
+                    "on-surface": "#1a1b23",
+                    "secondary-container": "#d4e3ff",
+                    "on-primary-fixed-variant": "#1d33bb",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#351000",
+                    "on-tertiary-container": "#ffa173",
+                    "tertiary-container": "#7e3100",
+                    "surface-tint": "#3b4fd3",
+                    "surface-container-high": "#e9e7f2",
+                    "fleet-idle": "#64748b",
+                    "outline-variant": "#c5c5d7",
+                    "outline": "#757686",
+                    "tertiary-fixed": "#ffdbcc",
+                    "occupancy-occupied": "#2036bd",
+                    "surface-container-highest": "#e3e1ed",
+                    "error": "#ba1a1a",
+                    "tertiary": "#5a2100",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#bcc3ff",
+                    "on-primary-fixed": "#000d60",
+                    "primary-fixed": "#dfe0ff",
+                    "inverse-on-surface": "#f1effb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "grid-gutter": "16px",
+                    "node-spacing": "8px",
+                    "map-overlay-gap": "12px",
+                    "dashboard-margin": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "data-viz": [
+                            "JetBrains Mono"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-mono": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "data-viz": [
+                            "11px",
+                            {
+                                    "lineHeight": "14px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-high dark:bg-surface-container-high docked full-width top-0 bg-surface-container-high dark:bg-surface-container-high border-b border-outline-variant flat no shadows flex justify-between items-center w-full px-dashboard-margin h-16 shrink-0 z-50">
+<div class="flex items-center gap-6">
+<span class="text-headline-lg font-headline-lg font-bold text-primary dark:text-inverse-primary tracking-tight">EduLogistics Admin</span>
+</div>
+<div class="flex-1 flex justify-center max-w-xl mx-8">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT pl-10 pr-4 py-2 text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors" placeholder="Search integrations..." type="text"/>
+</div>
+</div>
+<nav class="flex items-center gap-1">
+<a class="px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors font-body-md text-body-md" href="#">Financials</a>
+<a class="px-3 py-2 text-primary dark:text-inverse-primary border-b-2 border-primary font-bold font-body-md text-body-md opacity-80 transition-all duration-150" href="#">Integrations</a>
+<a class="px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors font-body-md text-body-md" href="#">Hostels</a>
+<a class="px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors font-body-md text-body-md" href="#">Fleet</a>
+</nav>
+<div class="flex items-center gap-4 ml-6">
+<button class="text-on-surface-variant hover:bg-surface-container-highest p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-highest p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-DEFAULT font-label-mono text-label-mono hover:opacity-90 transition-opacity">Deploy Changes</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A small, professional headshot portrait of an administrator wearing business casual attire, set against a clean, light grey studio background, exuding competence and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhLN1_3eug7-o6hTRfxhSgHwOZqIPnk3pX_EvzEDzp9r7bzx1EiPTmd87ULnO16M2DNI4JWKW9FQQJQ9nMI4aQrYKxMBeMePKRIjfwwhSrF6H02gWneKxw2NW1yWM3V2_dtvHHGNfzocCajWLuKMRdsOyY2VnOwlZ0RUJg8WusAqc-2cPvZf6p6uLL1eTIR9eTSFSpwBgU0-muDp6QZU9sY9Tp1fcvdu9uhN1K3oujfjFOWwas9MwE"/>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="bg-surface-container-low dark:bg-surface-container-low docked h-screen w-64 left-0 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant flat no shadows flex flex-col h-full py-dashboard-margin border-r border-outline-variant shrink-0 z-40 hidden md:flex">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-DEFAULT flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container">settings_applications</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-extrabold text-on-surface m-0 leading-tight">Global Config</h2>
+<span class="font-label-mono text-label-mono text-on-surface-variant">V2.4.0-Stable</span>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full border border-primary text-primary font-label-mono text-label-mono py-2 rounded-DEFAULT hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Rule
+                </button>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+                    Fee Structures
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_settings">cloud_download</span>
+                    Automation Rules
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg font-bold font-label-mono text-label-mono transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+                    API Marketplace
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync_alt">sync_alt</span>
+                    ERP Sync
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history_edu">history_edu</span>
+                    Audit Logs
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-all duration-200 ease-in-out rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                    General Settings
+                </a>
+</nav>
+<div class="px-4 mt-auto pt-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+                    System Status
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-DEFAULT font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="contact_support">contact_support</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 bg-background overflow-y-auto p-dashboard-margin flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-2">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-1">Integration Marketplace</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Connect external services to synchronize data and extend functionality.</p>
+</div>
+</div>
+<div class="flex gap-6 h-full">
+<!-- Filters Panel -->
+<div class="w-64 shrink-0 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-4 border border-outline-variant rounded-lg">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Categories</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">All Integrations</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Banking &amp; Payments</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">ERP &amp; Accounting</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Identity &amp; SSO</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Communication</span>
+</label>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 border border-outline-variant rounded-lg">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Status</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Connected</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Not Configured</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 bg-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Errors / Sync Issues</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Integration Cards Grid -->
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-grid-gutter auto-rows-max content-start">
+<!-- Card: Stripe -->
+<div class="bg-surface-container-lowest border border-primary border-b-2 rounded-lg p-5 flex flex-col relative group transition-all duration-200 hover:shadow-md">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-map-park text-occupancy-available px-2 py-1 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-data-viz text-data-viz uppercase">Connected</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-DEFAULT flex items-center justify-center mb-4 border border-outline-variant">
+<img class="w-8 h-8 object-contain" data-alt="A simplified, high-contrast, flat vector logo icon of a stylized 'S' representing a generic payment gateway brand, in dark blue and white colors, set against a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNMFBspLn9-craW3iRmxhtwK3WwCXGlJ9XS4FaAjzfPAS9ZcN6iJzcDjLr7mIHmOIMENqO3zlfrdMMdOa2Ot7wlL0UhAvFdncmJdOxuY27G0LdQD2ALH--4rXlu5C1C4FTCGZgaSEY2_gR5PWEzRP4bzfw103EwXqIxlVRl9Zl-BjviEZ6enucpmA9ZHc9yRf5xrsMIqbA-FpngADQNjfU_A3y6bIrAgpY_eByyRu0JypqyTGuWIr_"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Stripe</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-1">Global payment processing and subscription management.</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Last sync: 2m ago</span>
+<button class="text-primary font-label-mono text-label-mono hover:bg-primary-container hover:text-on-primary-container px-3 py-1.5 rounded-DEFAULT transition-colors">Configure</button>
+</div>
+</div>
+<!-- Card: SAP -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col relative group transition-all duration-200 hover:border-outline hover:shadow-sm">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-surface-variant text-on-surface-variant px-2 py-1 rounded-DEFAULT">
+<span class="font-data-viz text-data-viz uppercase">Not Configured</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-DEFAULT flex items-center justify-center mb-4 border border-outline-variant">
+<img class="w-8 h-8 object-contain" data-alt="A simplified, professional flat vector logo icon depicting generic enterprise resource planning software, featuring an abstract geometric shape in blue, set against a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWeTUzWGYIcJ8gD7wUIbszo2KbchKtl66iaiVE6UQKmIddoYIcUq_YYJvguu_RIOqTuvTWezM-C0LXSgvz_Jbv40EENLFNAc6cNkiZ4CLvl61fRvT92xnZ3uYeJoC_rGXHVRKTgf7FlcjJQJdto-j-VRF-dNF2g8YvJxq5QoWI30IE9tCZ8lKsp3_2VfNjYaCqGCvtdzpv-W-TATcoQt48vAaxiCiahs19pyML6cVP-Ps8UorYIIwb"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">SAP S/4HANA</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-1">Enterprise resource planning, financials, and ledger sync.</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<span class="font-label-mono text-label-mono text-outline">No connection</span>
+<button class="bg-surface-container-high text-on-surface font-label-mono text-label-mono hover:bg-surface-variant px-3 py-1.5 rounded-DEFAULT transition-colors border border-outline-variant">Connect</button>
+</div>
+</div>
+<!-- Card: Okta -->
+<div class="bg-surface-container-lowest border border-primary border-b-2 rounded-lg p-5 flex flex-col relative group transition-all duration-200 hover:shadow-md">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-map-park text-occupancy-available px-2 py-1 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-data-viz text-data-viz uppercase">Connected</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-DEFAULT flex items-center justify-center mb-4 border border-outline-variant">
+<img class="w-8 h-8 object-contain" data-alt="A clean, minimalist vector icon of an identity and single sign-on security provider logo, represented by a circular abstract crest in dark grey, set against a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy4gGlED5i_K90RD17JOmSYs45P4sCO1WHXiZlEaQJfInOtg5Dg4KbQayvTrrlASezFSkUyAmjRF3faDHK0ecAHBIuAtknR3rGHkeJ8TrqD5X96Lsst7I49kCguaOz_2vxLPx1AhD5_GA9V4HUWukA_LucFEWhxqOrnJK27mzU5LC6_wCQb2Ojd3VtgeJHi_Wq2P1iq0JYMUGJcZPolmOosn-0zj-uIpu8fKB5mPPwk-H27QX37gUa"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Okta</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-1">Student and staff identity management, SSO, and provisioning.</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Active sessions: 1.2k</span>
+<button class="text-primary font-label-mono text-label-mono hover:bg-primary-container hover:text-on-primary-container px-3 py-1.5 rounded-DEFAULT transition-colors">Configure</button>
+</div>
+</div>
+<!-- Card: Twilio -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col relative group transition-all duration-200 hover:border-outline hover:shadow-sm">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-surface-variant text-on-surface-variant px-2 py-1 rounded-DEFAULT">
+<span class="font-data-viz text-data-viz uppercase">Not Configured</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-DEFAULT flex items-center justify-center mb-4 border border-outline-variant">
+<img class="w-8 h-8 object-contain" data-alt="A professional, flat graphic logo of a generic cloud communications platform, showing abstract speech bubbles in red and dark blue, on a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgyzDLl2xYyY6q-dJg5mOP-dQI58G1_7e99hXzXibeyV_G5pZJSImdPYEmh89gi2Ytpz9Qn3EUmtSQSPeoCLMn8gTi3-YMgNUQxuuye3JkVaZHK-sDzRAjzuqXx9E9MMFHmoNYNqJSMqBxmra4TKsSLmQfj6WcnLLKW2j9l1ACk69OTvB7J25h7vH5L803AcAkn1udnRgguy7C0AWbN9aykXhoxCjRk4hMrycHKfytRi-hICYZUG_J"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Twilio</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-1">SMS alerts for fleet ETA and emergency hostel broadcast.</p>
+<div class="flex justify-between items-center pt-4 border-t border-outline-variant">
+<span class="font-label-mono text-label-mono text-outline">API Key required</span>
+<button class="bg-surface-container-high text-on-surface font-label-mono text-label-mono hover:bg-surface-variant px-3 py-1.5 rounded-DEFAULT transition-colors border border-outline-variant">Connect</button>
+</div>
+</div>
+<!-- Card: SendGrid -->
+<div class="bg-surface-container-lowest border border-error-container rounded-lg p-5 flex flex-col relative group transition-all duration-200">
+<div class="absolute top-4 right-4 flex items-center gap-1.5 bg-error-container text-on-error-container px-2 py-1 rounded-DEFAULT">
+<span class="material-symbols-outlined text-[14px]">error</span>
+<span class="font-data-viz text-data-viz uppercase">Sync Error</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-low rounded-DEFAULT flex items-center justify-center mb-4 border border-outline-variant">
+<img class="w-8 h-8 object-contain" data-alt="A flat vector logo icon representing a transactional email service, depicted as a stylized paper airplane or envelope in light blue, transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSj_S1S9WTzcl7Me7rbW2Uho_3X9Wd2pX5hA1fpKS_lNyBCbPTf0nMmOIlzJtbTemYHZ7B4jKB3075YQFanC2p2qjgJY5XJFtARCXudsijHW0vww14Spc15DLfojJHl6soR8iZawnlJqhm0W_tKFUOfP9MQ4GgRYg71liFTSHLERClclfHdciLCLG6tCBAXzuGdyaonivbYUZ0MhOLUtf7RFBoNzcgjzUfraFQtQ2iAiKhNx7NYq1R"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">SendGrid</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-1">Transactional email delivery for invoices and booking confirmations.</p>
+<div class="flex justify-between items-center pt-4 border-t border-error-container">
+<span class="font-label-mono text-label-mono text-error">Auth Token Expired</span>
+<button class="bg-error text-on-error font-label-mono text-label-mono hover:opacity-90 px-3 py-1.5 rounded-DEFAULT transition-opacity">Reconnect</button>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 bg-on-surface/40 z-[60] flex justify-end transition-opacity duration-300">
+<div class="w-full max-w-md bg-surface h-full shadow-xl flex flex-col animate-in slide-in-from-right duration-300">
+<!-- Panel Header -->
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-lowest rounded-DEFAULT flex items-center justify-center border border-outline-variant">
+<img alt="Stripe Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNMFBspLn9-craW3iRmxhtwK3WwCXGlJ9XS4FaAjzfPAS9ZcN6iJzcDjLr7mIHmOIMENqO3zlfrdMMdOa2Ot7wlL0UhAvFdncmJdOxuY27G0LdQD2ALH--4rXlu5C1C4FTCGZgaSEY2_gR5PWEzRP4bzfw103EwXqIxlVRl9Zl-BjviEZ6enucpmA9ZHc9yRf5xrsMIqbA-FpngADQNjfU_A3y6bIrAgpY_eByyRu0JypqyTGuWIr_"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Stripe Configuration</h2>
+<div class="flex items-center gap-1.5 text-occupancy-available">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="font-label-mono text-label-mono uppercase">Connected &amp; Active</span>
+</div>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-variant p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Panel Content -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- API Configuration -->
+<section>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-4">API Configuration</h3>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="font-body-sm text-body-sm text-on-surface-variant">API Secret Key</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" type="password" value="sk_live_••••••••••••••••"/>
+</div>
+<div class="space-y-1.5">
+<label class="font-body-sm text-body-sm text-on-surface-variant">Webhook Signing Secret</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" type="password" value="whsec_••••••••••••••••"/>
+</div>
+</div>
+</section>
+<!-- Sync Rules -->
+<section>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-4">Data Mapping &amp; Sync</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="font-body-md text-on-surface">Auto-sync users</span>
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5 bg-surface" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="font-body-md text-on-surface">Enable webhook triggers</span>
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5 bg-surface" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="font-body-md text-on-surface">Sync financial records</span>
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5 bg-surface" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Advanced Settings -->
+<section>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-4">Advanced Settings</h3>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="font-body-sm text-body-sm text-on-surface-variant">Base API URL</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" type="text" value="https://api.stripe.com/v1"/>
+</div>
+<div class="space-y-1.5">
+<label class="font-body-sm text-body-sm text-on-surface-variant">Request Timeout (ms)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="30000"/>
+</div>
+</div>
+</section>
+</div>
+<!-- Panel Footer -->
+<div class="p-6 border-t border-outline-variant bg-surface-container-low space-y-3">
+<div class="flex gap-3">
+<button class="flex-1 bg-primary text-on-primary font-label-mono text-label-mono py-2.5 rounded-DEFAULT hover:opacity-90 transition-opacity">Save Changes</button>
+<button class="flex-1 border border-outline-variant text-on-surface font-label-mono text-label-mono py-2.5 rounded-DEFAULT hover:bg-surface-variant transition-colors">Test Connection</button>
+</div>
+<button class="w-full text-error font-label-mono text-label-mono py-2 hover:bg-error-container/20 rounded-DEFAULT transition-colors">Disconnect Integration</button>
+</div>
+</div>
+</div></main>
+</div>
+</body></html>

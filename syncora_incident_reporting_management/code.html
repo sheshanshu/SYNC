@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Incident Reports - Campus Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e3e1ec",
+                      "surface-tint": "#4052c9",
+                      "inverse-on-surface": "#f1effa",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#efecf7",
+                      "on-surface": "#1a1b22",
+                      "surface-variant": "#e3e1ec",
+                      "secondary": "#505f76",
+                      "surface-container-high": "#e9e7f1",
+                      "outline-variant": "#c5c5d6",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#351000",
+                      "tertiary-container": "#5a2100",
+                      "on-primary-container": "#8392ff",
+                      "on-primary-fixed": "#000d60",
+                      "on-background": "#1a1b22",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#db855b",
+                      "on-error": "#ffffff",
+                      "access-active": "#2036bd",
+                      "status-denied": "#ba1a1a",
+                      "inverse-surface": "#2f3038",
+                      "secondary-fixed": "#d4e3ff",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "on-primary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary-fixed": "#0c1c30",
+                      "primary": "#000e65",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#381200",
+                      "tertiary-fixed-dim": "#ffb693",
+                      "status-permitted": "#15803d",
+                      "on-primary-fixed-variant": "#2437b0",
+                      "secondary-container": "#d4e3ff",
+                      "on-surface-variant": "#454653",
+                      "security-high": "#7e3100",
+                      "on-tertiary-fixed-variant": "#743411",
+                      "surface": "#fbf8ff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#001c9d",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "map-shield": "#0369a1",
+                      "inverse-primary": "#bbc3ff",
+                      "on-secondary": "#ffffff",
+                      "status-expired": "#92400e",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-secondary-container": "#56657c",
+                      "surface-dim": "#dbd9e3",
+                      "outline": "#757685",
+                      "surface-container-low": "#f4f2fd",
+                      "surface-bright": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "alert-gap": "12px",
+                      "node-tight": "8px",
+                      "margin-dashboard": "24px",
+                      "touch-target": "44px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-72 flex-col bg-surface-container-low border-r border-outline-variant py-margin-dashboard">
+<div class="px-gutter mb-8">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Campus Command</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">North Sector Terminal</p>
+</div>
+<div class="flex-1 px-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Command Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-body-md text-body-md">Visitor Log</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined fill" data-icon="report_problem">report_problem</span>
+<span class="font-body-md text-body-md">Incident Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+<span class="font-body-md text-body-md">Blacklist</span>
+</a>
+</div>
+<div class="px-4 mt-auto flex flex-col gap-2">
+<button class="w-full bg-error text-on-error font-body-md text-body-md py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-on-error-container transition-colors shadow-sm">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                Emergency Lock
+            </button>
+<div class="border-t border-outline-variant my-2 pt-2 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-sm text-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-sm text-body-sm">Support</span>
+</a>
+</div>
+<div class="flex items-center gap-3 px-4 py-2 mt-2">
+<img alt="Security Administrator Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A clinical, high-contrast headshot of a professional security administrator in a dark uniform against a neutral grey background. The lighting is sharp, emphasizing authority and vigilance. The image is cropped tightly as an avatar, consistent with a modern corporate security command dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBedE8RSFDzAPQ102rGTU8HIg0uuGSX_neXN_e5DChaodatG2U1bYFoFqakjwi3QgYpcFATPEkxzlilnNfiMZPwILAvE0aec2ll2-cuUPT_x3XNvTqvyARvLtD2aTCa3tzYGOKCmK2XRJujhTZoWaKmJhkO7AdR4T09Mkecmupbk5C7rD2livSi4y8M8xlDjqWKBr6aNt6ha4QC9z_nnZ4G5_0QbngDRgdJRl7XiOAhIA77I4A8I1Bm"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="docked full-width top-0 h-16 bg-surface-container border-b border-outline-variant flex justify-between items-center px-gutter w-full sticky z-50">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-extrabold text-primary md:hidden">Campus Command</span>
+<span class="font-headline-md text-headline-md font-semibold text-primary hidden md:inline-block">Terminal V.2</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-lowest border border-outline-variant rounded-full px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary w-64">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none outline-none text-body-sm font-body-sm w-full text-on-surface placeholder:text-on-surface-variant" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-full p-2">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-full p-2 md:hidden">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="hidden md:flex bg-primary text-on-primary font-body-sm text-body-sm px-4 py-2 rounded-lg items-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                     New Entry
+                 </button>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-1 overflow-y-auto p-4 md:p-6 lg:p-margin-dashboard grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Pane: Incident List & Filters (Cols 1-5) -->
+<div class="lg:col-span-5 flex flex-col gap-4 h-full">
+<!-- Filters -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Filters</h2>
+<button class="text-primary font-data-viz text-data-viz hover:underline">Clear All</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<select class="bg-surface-container border border-outline-variant rounded-md px-3 py-1.5 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option value="">Category: All</option>
+<option value="theft">Theft</option>
+<option value="trespass">Trespass</option>
+<option value="damage">Facility Damage</option>
+</select>
+<select class="bg-surface-container border border-outline-variant rounded-md px-3 py-1.5 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option value="">Status: All</option>
+<option value="open">Open</option>
+<option value="investigating">Investigating</option>
+<option value="resolved">Resolved</option>
+</select>
+<input class="bg-surface-container border border-outline-variant rounded-md px-3 py-1.5 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="date"/>
+</div>
+</div>
+<!-- List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl flex-1 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Active Reports</h2>
+<span class="bg-surface-container-high text-on-surface-variant font-data-viz text-data-viz px-2 py-1 rounded-full border border-outline-variant">24 Logs</span>
+</div>
+<div class="overflow-y-auto flex-1 p-2 flex flex-col gap-2">
+<!-- Incident Item: Active -->
+<div class="bg-surface-container-lowest border border-primary rounded-lg p-3 cursor-pointer relative shadow-sm">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">INC-2023-1042</span>
+<span class="bg-error-container text-on-error-container font-data-viz text-data-viz px-2 py-0.5 rounded-full">Open</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 pl-2 line-clamp-1">Unauthorized Access - Sector 7G</h3>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-sm text-body-sm pl-2">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                                    14:32
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Server Room A
+                                </div>
+</div>
+</div>
+<!-- Incident Item -->
+<div class="bg-surface border border-outline-variant rounded-lg p-3 cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">INC-2023-1041</span>
+<span class="bg-secondary-container text-on-secondary-container font-data-viz text-data-viz px-2 py-0.5 rounded-full">Investigating</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 line-clamp-1">Equipment Theft - Lab 3</h3>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                                    09:15
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Science Wing
+                                </div>
+</div>
+</div>
+<!-- Incident Item -->
+<div class="bg-surface border border-outline-variant rounded-lg p-3 cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">INC-2023-1040</span>
+<span class="bg-status-permitted text-on-primary font-data-viz text-data-viz px-2 py-0.5 rounded-full">Resolved</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 line-clamp-1">Vandalism - East Gate</h3>
+<div class="flex items-center gap-4 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                                    Yesterday
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Exterior Perimeter
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: Inspector / Detail View (Cols 6-12) -->
+<div class="lg:col-span-7 flex flex-col gap-4 h-full hidden md:flex">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl flex-1 overflow-y-auto p-6 shadow-sm">
+<!-- Header -->
+<div class="flex justify-between items-start mb-6 pb-4 border-b border-outline-variant">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-mono text-label-mono text-primary bg-primary-fixed px-2 py-1 rounded">INC-2023-1042</span>
+<span class="bg-error-container text-on-error-container font-data-viz text-data-viz px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                    Priority: HIGH
+                                </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Unauthorized Access - Sector 7G</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container transition-colors" title="Print Report">
+<span class="material-symbols-outlined">print</span>
+</button>
+<button class="bg-primary text-on-primary font-body-sm text-body-sm px-4 py-2 rounded-lg hover:bg-primary-container transition-colors">
+                                Update Status
+                            </button>
+</div>
+</div>
+<!-- Meta Grid -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant">
+<span class="font-data-viz text-data-viz text-on-surface-variant uppercase block mb-1">Time Logged</span>
+<span class="font-body-md text-body-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                                Oct 24, 2023 - 14:32:05
+                            </span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant">
+<span class="font-data-viz text-data-viz text-on-surface-variant uppercase block mb-1">Location</span>
+<span class="font-body-md text-body-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">map</span>
+                                Server Room A, Level 2
+                            </span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant">
+<span class="font-data-viz text-data-viz text-on-surface-variant uppercase block mb-1">Reported By</span>
+<span class="font-body-md text-body-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person</span>
+                                Dr. H. Simpson (ID: 8492)
+                            </span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant">
+<span class="font-data-viz text-data-viz text-on-surface-variant uppercase block mb-1">Assigned Officer</span>
+<span class="font-body-md text-body-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">local_police</span>
+                                Sgt. T. McClane
+                            </span>
+</div>
+</div>
+<!-- Description -->
+<div class="mb-8">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Incident Description</h3>
+<div class="bg-surface p-4 rounded-lg border border-outline-variant text-on-surface font-body-md text-body-md leading-relaxed">
+                            Motion sensors triggered in secure corridor leading to Server Room A. CCTV Cam-42 identified an unknown individual attempting to bypass the biometric scanner. Security dispatch alerted immediately. Individual fled towards the East stairwell upon approach by Officer McClane. No breach confirmed, but access logs show multiple failed authentications using a deactivated keycard (ID: 1104).
+                        </div>
+</div>
+<!-- Action Timeline -->
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Action Timeline</h3>
+<div class="relative pl-6 border-l-2 border-outline-variant flex flex-col gap-6">
+<!-- Timeline Item -->
+<div class="relative">
+<div class="absolute w-4 h-4 bg-primary rounded-full -left-[31px] top-1 border-4 border-surface-container-lowest"></div>
+<div class="mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">14:45</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface ml-2">Evidence Collected</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-surface-container p-2 rounded border border-outline-variant inline-block">CCTV footage clipped and attached. Deactivated keycard recovered from scene.</p>
+</div>
+<!-- Timeline Item -->
+<div class="relative">
+<div class="absolute w-4 h-4 bg-surface-container-high rounded-full -left-[31px] top-1 border-4 border-surface-container-lowest"></div>
+<div class="mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">14:35</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface ml-2">Officer Dispatch</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sgt. McClane arrived at scene. Suspect fled.</p>
+</div>
+<!-- Timeline Item -->
+<div class="relative">
+<div class="absolute w-4 h-4 bg-surface-container-high rounded-full -left-[31px] top-1 border-4 border-surface-container-lowest"></div>
+<div class="mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">14:32</span>
+<span class="font-body-sm text-body-sm font-semibold text-on-surface ml-2">Initial Alert</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">System generated alert based on repeated failed access attempts.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Action Button for Mobile Create Report -->
+<button class="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:bg-primary-container transition-colors active:scale-95 z-50">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</body></html>

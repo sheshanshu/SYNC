@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Support Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#d4e3ff",
+                    "primary-fixed": "#dfe0ff",
+                    "surface-container-highest": "#e3e1ec",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#39485e",
+                    "on-primary-fixed-variant": "#2437b0",
+                    "primary-fixed-dim": "#bbc3ff",
+                    "background": "#fbf8ff",
+                    "tertiary-fixed-dim": "#ffb4a6",
+                    "wellness-balanced": "#0d9488",
+                    "on-tertiary-fixed": "#3f0300",
+                    "inverse-on-surface": "#f1effa",
+                    "on-tertiary-container": "#f87159",
+                    "support-resolved": "#15803d",
+                    "primary": "#000e65",
+                    "match-low": "#757686",
+                    "on-surface": "#1a1b22",
+                    "surface-tint": "#4052c9",
+                    "inverse-primary": "#bbc3ff",
+                    "tertiary-fixed": "#ffdad4",
+                    "secondary-fixed": "#d4e3ff",
+                    "secondary": "#505f76",
+                    "on-tertiary-fixed-variant": "#872010",
+                    "on-surface-variant": "#454653",
+                    "surface": "#fbf8ff",
+                    "primary-container": "#001c9d",
+                    "tertiary-container": "#6a0800",
+                    "on-tertiary": "#ffffff",
+                    "match-medium": "#84cc16",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f4f2fd",
+                    "surface-variant": "#e3e1ec",
+                    "wellness-stressed": "#ea580c",
+                    "on-secondary-fixed": "#0c1c30",
+                    "wellness-mindful": "#4f46e5",
+                    "support-open": "#3b4fd3",
+                    "surface-container": "#efecf7",
+                    "error-container": "#ffdad6",
+                    "support-in-progress": "#b45309",
+                    "inverse-surface": "#2f3038",
+                    "surface-dim": "#dbd9e3",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c5c5d6",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#e9e7f1",
+                    "tertiary": "#430300",
+                    "on-primary-container": "#8392ff",
+                    "support-escalated": "#ba1a1a",
+                    "secondary-fixed-dim": "#b8c7e2",
+                    "surface-bright": "#fbf8ff",
+                    "match-high": "#059669",
+                    "outline": "#757685",
+                    "on-secondary-container": "#56657c",
+                    "error": "#ba1a1a",
+                    "on-background": "#1a1b22",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#000d60"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "ticket-stack": "8px",
+                    "dashboard-margin": "24px",
+                    "chat-gap": "12px",
+                    "profile-padding": "20px",
+                    "grid-gutter": "16px"
+            },
+            "fontFamily": {
+                    "data-viz": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ]
+            },
+            "fontSize": {
+                    "data-viz": [
+                            "11px",
+                            {
+                                    "lineHeight": "14px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-mono": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest text-primary font-headline-md border-b border-outline-variant flex justify-between items-center w-full px-dashboard-margin py-4 max-w-full docked full-width top-0">
+<div class="flex items-center gap-6">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Syncora Support Hub</h1>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Directory</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="Student or Admin Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a diverse student or academic administrator in a brightly lit modern office setting. The individual is smiling gently, exuding an approachable yet structured and systematic academic demeanor. Soft white lighting highlights their features against a crisp, clean background. High-quality corporate portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwrKpyFzA3Xn4CiDbZT-Osatx1XTZfltAHBEkIMGhgQbK0OFZ-S1-RAI3NbefPpt3LW5mUxxmc84kbT79HP9OlP8VSYM2ah7-C4WvU6GLpmHz9dWVz4fFCMMPAoQMei5AC1S7gRFYkl9nyOtJ1vpCts6eUvXD2-NA96Mgon14cfES88RaMUICGOcgMXQw175njO-zvaG3SAy3r1qfrbTXXWX7igrp2GZ4JmzZwZcs5cMbbA8LcNfwb"/>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Tickets List) -->
+<aside class="w-80 bg-surface-container-lowest border-r border-outline-variant flex flex-col h-full z-10 shadow-sm relative">
+<div class="p-4 border-b border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-2 rounded-lg font-label-mono text-label-mono flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm">add</span> New Request
+                </button>
+</div>
+<div class="p-4 bg-surface-container-low border-b border-outline-variant">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md pl-9 pr-3 py-1.5 text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface placeholder:text-on-surface-variant" placeholder="Search tickets..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-ticket-stack">
+<!-- Ticket Card 1 (Active) -->
+<div class="bg-surface-container-lowest border border-primary p-3 rounded-lg cursor-pointer shadow-sm relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-support-in-progress rounded-l-lg"></div>
+<div class="flex justify-between items-start mb-1 pl-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">#TKT-8901</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-support-in-progress bg-support-in-progress/10 px-2 py-0.5 rounded-sm">In Progress</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold pl-2">Mental Health Resource Inquiry</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate mt-1 pl-2">Student is requesting access to the new mindfulness app subscription.</p>
+<div class="mt-3 flex justify-between items-center pl-2">
+<div class="flex items-center gap-1 text-wellness-stressed">
+<span class="material-symbols-outlined text-sm">spa</span>
+<span class="font-data-viz text-data-viz">Stressed</span>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant">2h ago</span>
+</div>
+</div>
+<!-- Ticket Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">#TKT-8895</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-support-open bg-support-open/10 px-2 py-0.5 rounded-sm">Open</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Course Load Compatibility</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate mt-1">Need help balancing advanced physics with humanities elective.</p>
+<div class="mt-3 flex justify-between items-center">
+<div class="flex items-center gap-1 text-wellness-mindful">
+<span class="material-symbols-outlined text-sm">spa</span>
+<span class="font-data-viz text-data-viz">Mindful</span>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant">5h ago</span>
+</div>
+</div>
+<!-- Ticket Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant">#TKT-8850</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-support-resolved bg-support-resolved/10 px-2 py-0.5 rounded-sm">Resolved</span>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Financial Aid Documentation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate mt-1">Uploaded the required tax forms for review.</p>
+<div class="mt-3 flex justify-between items-center">
+<div class="flex items-center gap-1 text-wellness-balanced">
+<span class="material-symbols-outlined text-sm">spa</span>
+<span class="font-data-viz text-data-viz">Balanced</span>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant">1d ago</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area (Ticket Detail) -->
+<main class="flex-1 flex flex-col bg-surface relative overflow-hidden">
+<!-- Ticket Header -->
+<div class="bg-surface-container-lowest border-b border-outline-variant p-6 flex justify-between items-start shrink-0">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">#TKT-8901</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-support-in-progress bg-support-in-progress/10 px-2 py-0.5 rounded-sm">In Progress</span>
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-support-escalated bg-support-escalated/10 border border-support-escalated px-2 py-0.5 rounded-sm">High Priority</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Mental Health Resource Inquiry</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-surface-container-low text-on-surface border border-outline-variant px-4 py-2 rounded-lg font-label-mono text-label-mono hover:bg-surface-variant transition-colors">Escalate</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-mono text-label-mono flex items-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span> Resolve Ticket
+                    </button>
+</div>
+</div>
+<!-- Content Split Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Chat Area -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest overflow-hidden">
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-chat-gap">
+<!-- System Message -->
+<div class="flex justify-center my-2">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-data-viz text-data-viz">Ticket created • Oct 24, 09:15 AM</span>
+</div>
+<!-- Student Message -->
+<div class="flex items-start gap-3 max-w-[80%]">
+<img alt="Student Avatar" class="w-8 h-8 rounded-full object-cover shrink-0" data-alt="A small circular avatar showing a young student looking mildly concerned in a clean, modern academic setting. Soft lighting, high utility minimalism style. The portrait is sharply focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzei6vtW9-ScjtSZvznQYShN9mj0kqmoZV6_Df_ZBFF3byhtdyRKPIOqcdg6BiapMlooHezMwVYU1AghpSWTFu-v4UgmcOt1N5haGLovPkQhvGU_JxSCDEfiixfJGX2s-aQ-ozGJA6lK4DkYvFkpbiJ0VJDPKAOPrCKkNuC4cRtHvLf20DH6Aep6F7PMlRS3zhw25OJmZP-RVRyV2FCX2kMhmeOcTTqz4S79hsRlJba0hekbvC0Fh_"/>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-container-low text-on-surface p-4 rounded-xl rounded-tl-sm shadow-sm border border-transparent">
+<p class="font-body-md text-body-md">Hello, I've been feeling quite overwhelmed lately with my coursework and I saw there was a new mindfulness app subscription available for students. Could you guide me on how to get access to that?</p>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant ml-1">Student • 09:15 AM</span>
+</div>
+</div>
+<!-- Support Response -->
+<div class="flex items-start gap-3 max-w-[80%] self-end flex-row-reverse">
+<img alt="Support Avatar" class="w-8 h-8 rounded-full object-cover shrink-0" data-alt="A small circular avatar of a professional academic advisor or mentor. They have a reassuring, calm expression. The background is a clean, modern white workspace. High-quality corporate styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKwRpSvUUJySYTkFB4kdKbIdLi0Imtr71rmQOKqC0018Y5I83CUQLC-KuTYQBj5AFImmIBazRODDSlqS0Zv7RUHgY-1bc9d8qeZ3FJIXaVyTezXw5JUuBXhXTYgVL6INHWeSa6QhDb_myU5aUDR3jFOXHISRg5wLklVBcZmlxNTzQA5dwwKLXQt4IBpyvxn1bdwZUFZAZfiunKlFowaq6LvFnB8U43EMwId5gMF6LlIa40sT1a1l3y"/>
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary text-on-primary p-4 rounded-xl rounded-tr-sm shadow-sm">
+<p class="font-body-md text-body-md">Hi there, thank you for reaching out. It's completely normal to feel overwhelmed. I can certainly help you with the mindfulness app.</p>
+<p class="font-body-md text-body-md mt-2">I've just sent an activation link to your university email. You should be able to set up your premium account from there.</p>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant mr-1">Admin (You) • 09:45 AM</span>
+</div>
+</div>
+<!-- Student Message -->
+<div class="flex items-start gap-3 max-w-[80%]">
+<img alt="Student Avatar" class="w-8 h-8 rounded-full object-cover shrink-0" data-alt="A small circular avatar showing a young student looking mildly concerned in a clean, modern academic setting. Soft lighting, high utility minimalism style. The portrait is sharply focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClKJU6A_8CPegH3AoqgzA3De5P5RBrPU6loq5Ji9hZZTVC2J8MNwi3JNILZFyz0nRZAsI3U0QVQdpDtfid8jWF7ihCpxgpX5BPn-fiG6CiENNjLMVCpUDU00-sEOFg1FGrtECPyqh36455g3c-XnbSj5kp1Dl02XOBliDNXfTlbPIJHNGZXkTSdSH3xgheIjg_H0BenW84P43kFgQvRjiJRlTsRRYju2fKZeeoif3hes1gPNotS61C"/>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-container-low text-on-surface p-4 rounded-xl rounded-tl-sm shadow-sm border border-transparent">
+<p class="font-body-md text-body-md">Thank you. I also wanted to ask if there are any upcoming workshops or group sessions? I feel like talking to peers might also help.</p>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant ml-1">Student • 11:10 AM</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col gap-2">
+<div class="relative">
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg p-3 pt-3 pr-12 text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface placeholder:text-on-surface-variant resize-none h-24" placeholder="Type a response or add a note..."></textarea>
+<button class="absolute right-3 bottom-3 text-primary hover:bg-primary-container p-1 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+<div class="flex justify-between items-center px-1">
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-sm" data-icon="attach_file">attach_file</span> Attach
+                                    </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-sm" data-icon="note_add">note_add</span> Internal Note
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Metadata Sidebar -->
+<div class="w-72 bg-surface-container-low border-l border-outline-variant p-6 flex flex-col gap-6 overflow-y-auto">
+<!-- Assignment -->
+<div>
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Assignment</h4>
+<div class="flex items-center gap-3 bg-surface-container-lowest p-2 rounded-lg border border-outline-variant">
+<img alt="Assigned User" class="w-8 h-8 rounded-full object-cover" data-alt="A small circular avatar of a professional academic advisor or mentor. They have a reassuring, calm expression. The background is a clean, modern white workspace. High-quality corporate styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIcz0SPjAmImE_FQOa9GfO1NQIMFL3RlNV2dwQ8yrbrEPI78Tz-Vfj1FymYnw2ms7mm-ZFYuoHNt_BIq954yxgDjhYpkEhYdfH0R3BDZlnB0ymTaY5Iq2EFTdG_vyG03SY81xeZZTon3jiU5xhAmOpeeIkIHsNaDOAXhKcpYcr-xiQRtF_IriUNhoO3KfR5qCoVs2by9-530BNDYrO32L0FY44czMk5HOafRcHCM2PVIgcG_TqAMZs"/>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Sarah Jenkins</span>
+<span class="font-data-viz text-data-viz text-on-surface-variant">Wellness Coordinator</span>
+</div>
+</div>
+</div>
+<!-- Student Profile Mini -->
+<div>
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Student Profile</h4>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="Student Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A small circular avatar showing a young student looking mildly concerned in a clean, modern academic setting. Soft lighting, high utility minimalism style. The portrait is sharply focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMMYSDloUcIkVIHggVbuKkHmeqCHreXAruonTIGbQzH-R5Sg2tUsCOebruXeH-pY0R3xhVMtXRDnKAp4yZcgTZ9sgkX4qTiKhAX_JuVhZpsZDH5p_DndHhQfo21fX6dKBZfTEb8u8qryIwGPjRTHSiBls5SeRYUhQUmjVTH27Y0X2fUiLSwaAFP19SxOGwTbn1Ma5Gno6gWPigClLajYNMEHIMq14zm2kucT6OfchJOEh0FTmiy5AY"/>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Alex Mercer</span>
+<span class="font-data-viz text-data-viz text-on-surface-variant">2nd Year, CompSci</span>
+</div>
+</div>
+<div class="flex justify-between items-center border-t border-outline-variant pt-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Wellness Status</span>
+<div class="flex items-center gap-1 text-wellness-stressed bg-wellness-stressed/10 px-2 py-0.5 rounded-sm">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span class="font-data-viz text-data-viz">Stressed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ticket Details -->
+<div>
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Ticket Details</h4>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Created</span>
+<span class="font-data-viz text-data-viz text-on-surface">Oct 24, 09:15 AM</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Category</span>
+<span class="font-data-viz text-data-viz text-on-surface">Mental Health</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">SLA Due</span>
+<span class="font-data-viz text-data-viz text-support-escalated">Oct 25, 09:15 AM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

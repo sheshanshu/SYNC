@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Admin - Branding &amp; Appearance</title>
+<!-- Tailwind CSS (Theme Config) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-container": "#a44200",
+                        "surface": "#faf8ff",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#3b4fd2",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface": "#131b2e",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-variant": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#131b2e",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed": "#351000",
+                        "primary-container": "#3e52d5",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-primary-fixed": "#000d60",
+                        "surface-dim": "#d2d9f4",
+                        "on-tertiary-container": "#ffd3bf",
+                        "surface-container": "#eaedff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f2f3ff",
+                        "tertiary": "#7e3100",
+                        "on-surface-variant": "#454654",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#505f76",
+                        "inverse-primary": "#bbc3ff",
+                        "outline": "#757686",
+                        "tertiary-fixed": "#ffdbcc",
+                        "primary": "#2036bd",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c5c5d7",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-primary-container": "#d7daff",
+                        "on-secondary-container": "#54647a",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "base": "4px",
+                        "padding-card": "16px",
+                        "density-compact": "8px",
+                        "density-generous": "32px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-mono": ["JetBrains Mono", "monospace"],
+                        "display": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex">
+<!-- 
+        ========================================
+        SideNavBar (Shared Component)
+        Active: Settings
+        ========================================
+    -->
+<aside class="bg-surface dark:bg-inverse-surface h-screen w-64 flex flex-col fixed left-0 top-0 border-r border-outline-variant dark:border-outline z-50">
+<div class="flex flex-col h-full py-density-generous px-base">
+<!-- Header -->
+<div class="px-padding-card mb-density-generous flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<img alt="Institution Logo" class="w-6 h-6 object-contain" data-alt="A clean, minimalist vector logo of a geometric 'S' in corporate indigo, suitable for a modern educational administration software interface. Clean lines, white background, high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtQpNoJqOIG8uR7OcukdVLDKJJIrmI6itWcP9XAP2CtFEjgAgvev5rx8vWJk1PDYJCMJ9dPwDuSE3R3uE-F6oj1SRWQy-xdBEh0PMlQ3skx4Fa3nGQQz1NW3tnGe5FGxIdHXb4sWLyTWtgL_KzvBQvTNpvftS7MwTB9b-GzwPuGxAW55OTGtbPU2RHwVBuz9LLLgHzucDqPQJ6G-oA8DwvM8Gvw7mFePwDJD5drkP_tGJBOj5BDWjh"/>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary truncate">Syncora Admin</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Terminal v2.1</p>
+</div>
+</div>
+<!-- CTA -->
+<div class="px-padding-card mb-density-generous">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Entry
+                </button>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto px-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">school</span>
+<span class="font-body-md text-body-md">Academic Core</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">payments</span>
+<span class="font-body-md text-body-md">Finance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">security</span>
+<span class="font-body-md text-body-md">Security</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">account_balance</span>
+<span class="font-body-md text-body-md">Institutional</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-semibold transition-colors group" href="#">
+<span class="material-symbols-outlined filled text-[20px]">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<!-- Footer Links -->
+<div class="mt-auto px-2 pt-density-generous space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors group text-error" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="font-body-md text-body-md">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- 
+        ========================================
+        Main Content Canvas
+        ========================================
+    -->
+<div class="ml-64 flex-1 flex flex-col min-w-0">
+<!-- 
+            ========================================
+            TopAppBar (Shared Component)
+            ========================================
+        -->
+<header class="bg-surface dark:bg-surface-dim h-16 w-full sticky top-0 z-40 border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center h-full px-density-generous">
+<!-- Search (Left) -->
+<div class="flex-1 max-w-md hidden md:flex items-center">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-1.5 font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow placeholder:text-on-surface-variant" placeholder="Global Search..." type="text"/>
+</div>
+</div>
+<!-- Product Name (Center Fallback for smaller screens or semantic structure) -->
+<div class="md:hidden">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">Syncora Terminal</span>
+</div>
+<!-- Navigation Links (Center-ish, hidden on mobile) -->
+<nav class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2 h-full">
+<a class="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md relative group" href="#">
+                        Directives
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+</a>
+<a class="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md relative group" href="#">
+                        Reports
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+</a>
+<a class="h-full flex items-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md relative group" href="#">
+                        Logs
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+</a>
+</nav>
+<!-- Trailing Actions (Right) -->
+<div class="flex items-center gap-4 shrink-0">
+<button class="hidden md:flex bg-primary hover:bg-primary-container text-on-primary font-body-sm text-body-sm px-4 py-1.5 rounded-lg items-center gap-2 transition-colors shadow-sm">
+                        Create Record
+                    </button>
+<div class="flex items-center gap-2 border-l border-outline-variant pl-4 ml-2">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1.5 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1.5 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+</button>
+<button class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2 opacity-80 hover:opacity-100 transition-opacity">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an administrator in a well-lit modern office setting. Crisp focus, neutral background, corporate attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi8hEuVlfSaSzc5t8EHFvPFWLifJcRHF7Bv6ExC8EgiQLcyIHLsesWu4ed51SFgOTTW-38eXA55S35dThzR5svJikIvzzidF24xaxB7n28BAljrUHQZReUC3NbIg_ECp155uAopWGBNXdbdS3HKaENS7KuEbOp7n6lHS1RtCfy_1f-iTmdDrbkcBfQCAXmh-jiCvjoYj517_4H6rtSh0nedORluZpRl5am6hpHye6ZNfdhp3oiocV1"/>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- 
+            ========================================
+            Page Content: Branding & Appearance
+            ========================================
+        -->
+<main class="flex-1 overflow-y-auto p-density-generous max-w-[1440px] mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-8">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm mb-2">
+<a class="hover:text-primary transition-colors" href="#">Settings</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-medium text-on-surface">Branding &amp; Appearance</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Branding &amp; Appearance</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Configure the visual identity of your terminal interface.</p>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-grid">
+<!-- Left Column: Settings Forms -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Section 1: Brand Identity -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container/30">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">branding_watermark</span>
+                                Brand Identity
+                            </h3>
+</div>
+<div class="p-6 space-y-8">
+<!-- Logo Uploads Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Primary Logo -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface mb-2 uppercase tracking-wider">Primary Logo (Desktop)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container transition-colors group cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-10 transition-opacity" data-alt="Subtle geometric pattern texture, white and light grey, minimal noise, to serve as a background hover effect." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSOZc_NY1bSstt42erGHR6Peffs-k_oCuy1mqMY6DZFxsNjDjeZarz7d0UYaEQZ08XqWSineUzhJOHccYSHE6OqZ0GFzslNOaVAWKVK5ueWxF4tTS82qvY2rpJXWUpfrmyuYkM9Srx-w3ZDhHq1MRCL1hEkBc0e8Zh5-vrMiAPlM23aYRsp8AsjBP3w9y-UUmaqB60W-cXPPiqGKqEIzedIVgdccaVKw4DPZ80uDC6mWPIy5qc-1lI')"></div>
+<div class="w-32 h-12 bg-white border border-outline-variant rounded shadow-sm mb-4 flex items-center justify-center p-2 z-10">
+<img alt="Current Primary Logo" class="max-h-full object-contain" data-alt="Generic placeholder for an institutional wordmark logo. Clean sans-serif typography on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjdi3j6aOksPFVuC0vSzCPW0qfa_HVS-bWcHce7Wr0XbsHfFaV7TG30wu53we9OvKyIb75L9MSZU8AfNp8jMZQWJ_QbYyAYE9QKpITnZDyTahgXHVZ9NmwU7AaLYb8GAQ911apescWgfOeFxS6X_tMLYhecUOw0ZCwwH7-aM6Y6hjVV30mGYi6zZiPOcawY-Ls3PrcHaQWRfExX5kKwjvbpJBEL4iM9216GATGNRuNBSxACTww2HkH"/>
+</div>
+<div class="text-center z-10">
+<p class="font-body-sm text-body-sm text-primary font-medium mb-1 group-hover:underline">Click to replace</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">SVG or PNG. Max 2MB.</p>
+</div>
+</div>
+<div class="mt-2 flex justify-end">
+<button class="font-body-sm text-body-sm text-error hover:text-error-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">delete</span> Remove
+                                        </button>
+</div>
+</div>
+<!-- Small Logo -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface mb-2 uppercase tracking-wider">Small Logo (Mobile/Icon)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container transition-colors group cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-10 transition-opacity" data-alt="Subtle geometric pattern texture, white and light grey, minimal noise, to serve as a background hover effect." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHm6G74-sTvyKBxFT_b7oEbkkIqLvB2x3fSmX0abQKQQtRlSmbJJgp1-LvGxzEchlCC3IV6AAsXOTtRTlcxUzv_AH08VaqTCW4WRFLnp-GbosWIF3G7u7kQ2iGzl3F38RD-VdAZX5qWAFNWFLEmQEfOLvO7UuwSJjVhSzpxuKdpWbiDZVUqL1yo8Mk-EizpNFJtqqllw55fdIO9yMrMKsolKmCX27mjEQvHz3VPDmgVfQa-Tp9z4sn')"></div>
+<div class="w-12 h-12 bg-white border border-outline-variant rounded-lg shadow-sm mb-4 flex items-center justify-center p-2 z-10">
+<img alt="Current Small Logo" class="max-h-full object-contain" data-alt="Generic placeholder for a small institutional monogram or icon logo. Clean geometric shape on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnVgkVfnXUfj0qf1sy5JEQtCZPWf3Z0eYto0P5ujJbnzmR6X3iKPDhOecafmDFLQJJ4Nzs3dILHkyOy_wqIlDp_dRN4sqK4w8X9iptgfBxe6HHwp3ekqOaTmYeGl1tf3yIgMEBVUt-8Z0QJGe9mGz8Wv3yuRECVIQ7Qk4CCiviBLhgbGbnvTM94mx4dXFARNXbIGygMX-XNLVW3k0OkZ4hDUWqLJqRHcw9jX--Pfkc69OQV4slnWMT"/>
+</div>
+<div class="text-center z-10">
+<p class="font-body-sm text-body-sm text-primary font-medium mb-1 group-hover:underline">Click to replace</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Square SVG or PNG. Max 1MB.</p>
+</div>
+</div>
+<div class="mt-2 flex justify-end">
+<button class="font-body-sm text-body-sm text-error hover:text-error-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">delete</span> Remove
+                                        </button>
+</div>
+</div>
+</div>
+<!-- Wordmark Settings -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="block font-label-mono text-label-mono text-on-surface mb-2 uppercase tracking-wider">Fallback Wordmark</label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">Text displayed if logos fail to load or are not provided.</p>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow max-w-md" type="text" value="Syncora Institution"/>
+</div>
+</div>
+</section>
+<!-- Section 2: Visual Theme -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container/30">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">palette</span>
+                                Visual Theme
+                            </h3>
+</div>
+<div class="p-6 space-y-8">
+<!-- Color Palette -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface mb-4 uppercase tracking-wider">Primary Brand Color</label>
+<div class="flex flex-wrap items-center gap-4">
+<!-- Custom Color Picker Mock -->
+<div class="flex items-center gap-3 border border-outline-variant rounded-lg p-2 bg-surface-container-low">
+<div class="w-8 h-8 rounded bg-[#3e52d5] border border-outline-variant/50 shadow-inner shrink-0"></div>
+<input class="w-24 bg-transparent border-none p-0 font-label-mono text-label-mono text-on-surface focus:ring-0 uppercase" type="text" value="#3E52D5"/>
+</div>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<!-- Presets -->
+<div class="flex gap-2">
+<button aria-label="Preset Navy" class="w-8 h-8 rounded-full bg-[#0F172A] border-2 border-transparent hover:scale-110 transition-transform"></button>
+<button aria-label="Preset Red" class="w-8 h-8 rounded-full bg-[#DC2626] border-2 border-transparent hover:scale-110 transition-transform"></button>
+<button aria-label="Preset Green" class="w-8 h-8 rounded-full bg-[#059669] border-2 border-transparent hover:scale-110 transition-transform"></button>
+<button aria-label="Preset Indigo (Active)" class="w-8 h-8 rounded-full bg-[#3e52d5] border-2 border-primary ring-2 ring-primary ring-offset-2 ring-offset-surface hover:scale-110 transition-transform"></button>
+<button aria-label="Preset Purple" class="w-8 h-8 rounded-full bg-[#9333EA] border-2 border-transparent hover:scale-110 transition-transform"></button>
+</div>
+</div>
+</div>
+<!-- Surface Modes -->
+<div class="pt-6 border-t border-outline-variant">
+<label class="block font-label-mono text-label-mono text-on-surface mb-4 uppercase tracking-wider">Surface Mode</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Light Mode -->
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="surface_mode" type="radio"/>
+<div class="border border-outline-variant rounded-xl p-4 flex flex-col items-center gap-3 hover:bg-surface-container-low transition-colors peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary peer-checked:bg-surface-container-low">
+<div class="w-full h-16 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg flex flex-col gap-1.5 p-2 overflow-hidden shadow-sm">
+<div class="w-full h-2 bg-white rounded-sm"></div>
+<div class="w-3/4 h-2 bg-white rounded-sm"></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant peer-checked:text-primary">light_mode</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Light</span>
+</div>
+</div>
+</label>
+<!-- Dark Mode -->
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="surface_mode" type="radio"/>
+<div class="border border-outline-variant rounded-xl p-4 flex flex-col items-center gap-3 hover:bg-surface-container-low transition-colors peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary peer-checked:bg-surface-container-low">
+<div class="w-full h-16 bg-[#0F172A] border border-[#1E293B] rounded-lg flex flex-col gap-1.5 p-2 overflow-hidden shadow-sm">
+<div class="w-full h-2 bg-[#1E293B] rounded-sm"></div>
+<div class="w-3/4 h-2 bg-[#1E293B] rounded-sm"></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">dark_mode</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Dark <span class="text-[10px] bg-secondary-container text-on-secondary-container px-1.5 rounded ml-1">BETA</span></span>
+</div>
+</div>
+</label>
+<!-- Auto Mode -->
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="surface_mode" type="radio"/>
+<div class="border border-outline-variant rounded-xl p-4 flex flex-col items-center gap-3 hover:bg-surface-container-low transition-colors peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary peer-checked:bg-surface-container-low">
+<div class="w-full h-16 flex rounded-lg overflow-hidden border border-outline-variant shadow-sm">
+<div class="flex-1 bg-[#F8FAFC] p-2 flex flex-col gap-1.5">
+<div class="w-full h-2 bg-white rounded-sm"></div>
+</div>
+<div class="flex-1 bg-[#0F172A] p-2 flex flex-col gap-1.5 border-l border-[#1E293B]">
+<div class="w-3/4 h-2 bg-[#1E293B] rounded-sm"></div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">desktop_windows</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">System Auto</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Typography -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden mb-8">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container/30">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">text_fields</span>
+                                Typography
+                            </h3>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Font Family Dropdown -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface mb-2 uppercase tracking-wider">Primary Font Family</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low border border-outline-variant rounded-lg px-4 py-2 pr-10 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer">
+<option selected="" value="inter">Inter (System Default)</option>
+<option value="roboto">Roboto</option>
+<option value="opensans">Open Sans</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 text-[12px]">Used for body text, buttons, and most UI elements.</p>
+</div>
+<!-- Base Font Size -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface mb-2 uppercase tracking-wider">Base Scale (Density)</label>
+<div class="flex bg-surface-container-low border border-outline-variant rounded-lg p-1">
+<button class="flex-1 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container rounded-md transition-colors">Compact</button>
+<button class="flex-1 py-1.5 font-body-sm text-body-sm text-on-surface bg-white shadow-sm border border-outline-variant rounded-md font-medium">Standard</button>
+<button class="flex-1 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container rounded-md transition-colors">Large</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Save Action -->
+<div class="flex justify-end gap-4 pt-4 border-t border-outline-variant pb-8">
+<button class="bg-surface hover:bg-surface-container-low text-on-surface border border-outline-variant font-body-md text-body-md px-6 py-2 rounded-lg transition-colors">
+                            Revert Changes
+                        </button>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md px-6 py-2 rounded-lg transition-colors shadow-sm">
+                            Save Configuration
+                        </button>
+</div>
+</div>
+<!-- Right Column: Live Preview Sticky -->
+<div class="lg:col-span-4 hidden lg:block">
+<div class="sticky top-24">
+<h4 class="font-label-mono text-label-mono text-on-surface-variant mb-4 uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                            Live Interface Preview
+                        </h4>
+<!-- Miniature UI Mockup (Bento/Glassmorphism inspired) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm relative">
+<!-- Faux Browser Header -->
+<div class="h-8 bg-surface-container border-b border-outline-variant flex items-center px-3 gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant/50"></div>
+</div>
+<!-- Mock Content Canvas -->
+<div class="p-4 bg-background min-h-[400px]">
+<!-- Mock Sidebar & Header Layout -->
+<div class="flex gap-4 h-full">
+<!-- Mock Sidebar -->
+<div class="w-16 h-full flex flex-col gap-4 border-r border-outline-variant pr-4">
+<!-- Mini Logo Preview -->
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center border border-outline-variant/50">
+<span class="font-label-mono text-[10px] text-primary font-bold">SY</span>
+</div>
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">dashboard</span>
+</div>
+<div class="w-8 h-8 rounded text-on-surface-variant flex items-center justify-center opacity-50">
+<span class="material-symbols-outlined text-[16px]">people</span>
+</div>
+<div class="w-8 h-8 rounded text-on-surface-variant flex items-center justify-center opacity-50">
+<span class="material-symbols-outlined text-[16px]">settings</span>
+</div>
+</div>
+<!-- Mock Main Area -->
+<div class="flex-1 flex flex-col gap-4">
+<!-- Mock Header -->
+<div class="h-8 flex justify-between items-center border-b border-outline-variant pb-2">
+<div class="w-24 h-4 bg-outline-variant/30 rounded"></div>
+<div class="w-16 h-6 bg-primary rounded text-[10px] text-on-primary flex items-center justify-center">Action</div>
+</div>
+<!-- Mock Dashboard Widgets (Bento style) -->
+<div class="grid grid-cols-2 gap-3 mt-2">
+<!-- Widget 1 -->
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant rounded-lg p-3">
+<div class="w-1/2 h-3 bg-outline-variant/30 rounded mb-3"></div>
+<div class="h-16 bg-surface-container rounded flex items-end p-1 gap-1">
+<div class="w-full bg-primary/20 h-1/3 rounded-t"></div>
+<div class="w-full bg-primary/40 h-2/3 rounded-t"></div>
+<div class="w-full bg-primary/60 h-1/2 rounded-t"></div>
+<div class="w-full bg-primary h-full rounded-t"></div>
+</div>
+</div>
+<!-- Widget 2 -->
+<div class="bg-surface-container-lowest border border-primary/30 ring-1 ring-primary/10 rounded-lg p-3">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[12px]">check</span>
+</div>
+<div class="w-3/4 h-2 bg-outline-variant/30 rounded mb-1"></div>
+<div class="w-1/2 h-2 bg-outline-variant/30 rounded"></div>
+</div>
+<!-- Widget 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3">
+<div class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+</div>
+<div class="w-3/4 h-2 bg-outline-variant/30 rounded mb-1"></div>
+<div class="w-1/2 h-2 bg-outline-variant/30 rounded"></div>
+</div>
+</div>
+<!-- Mock Status Pill -->
+<div class="mt-auto pt-4 flex gap-2">
+<div class="px-2 py-1 bg-surface-container rounded-full text-[10px] text-on-surface-variant border border-outline-variant flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div> Standard
+                                            </div>
+<div class="px-2 py-1 bg-error-container/30 rounded-full text-[10px] text-error border border-error/20 flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div> Alert
+                                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Overlay Note -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface font-label-mono text-[10px] px-3 py-1.5 rounded-full shadow-md whitespace-nowrap opacity-80 backdrop-blur-sm">
+                                Updates automatically
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

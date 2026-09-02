@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora Faculty Gradebook - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#54647a",
+                        "tertiary": "#7e3100",
+                        "primary-fixed": "#dfe0ff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-dim": "#d2d9f4",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "on-primary-fixed": "#000d60",
+                        "inverse-surface": "#283044",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#d7daff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-secondary-fixed": "#0b1c30",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "outline": "#757686",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "primary": "#2036bd",
+                        "on-surface": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary-container": "#3e52d5",
+                        "surface-container": "#eaedff",
+                        "background": "#faf8ff",
+                        "tertiary-container": "#a44200",
+                        "on-surface-variant": "#454654",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-bright": "#faf8ff",
+                        "surface": "#faf8ff",
+                        "secondary-container": "#d0e1fb",
+                        "on-error-container": "#93000a",
+                        "on-background": "#131b2e",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffd3bf",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c5c5d7",
+                        "surface-container-high": "#e2e7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "density-generous": "32px",
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "padding-card": "16px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Hide scrollbar for clean mobile look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.expanded {
+            max-height: 500px; /* Arbitrary large max-height */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-16 bg-surface border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Syncora</h1>
+</div>
+<div class="flex items-center gap-3">
+<button aria-label="notifications" class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="settings" class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 px-4 max-w-md mx-auto">
+<!-- Header & Context -->
+<div class="mb-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Gradebook</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">CS-301: Advanced Data Structures</p>
+</div>
+<!-- Summary Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card mb-6 shadow-sm">
+<div class="flex justify-between items-center mb-4 border-b border-outline-variant pb-3">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wide">Midterm Assessment</h3>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-mono text-label-mono px-2 py-1 rounded-full">Due Today</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Class Average</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-primary">84.5%</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Pending Grades</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-error">12<span class="text-on-surface-variant text-body-sm font-body-sm ml-1">/ 45</span></p>
+</div>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Grading Progress</p>
+<img alt="Segmented progress bar showing 73% completion" class="w-full h-auto rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV7MfWcm-7LTFsIMwKy5Dr61QHaF6dMEvefYWsNuxlnh-7PTkuFnBID8ViMNsHSy1nwIdxVa9cDAanooh4BmusVBoGneMKf2TL9lFvcSTRhjhabPXGhkMUqG9LkrZW7HNe2WFLtgpghr07sW5WgOVSuH-FOvMauxPovH9ZLailePTecGFNutuOWzQhyslESQgQSF5psaH6aRiVbx5ZV9CUkGlZMC4ejJv4DL_Ut8wXD91gS-3ZAbc_2fwgrd-eDdqHiQ">
+</div>
+</section>
+<!-- Search & Filter Controls -->
+<div class="flex gap-2 mb-6 sticky top-[72px] bg-surface/95 backdrop-blur py-2 z-40 -mx-4 px-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-on-surface-variant/70" placeholder="Search students..." type="text">
+</div>
+<button class="px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-on-surface flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<!-- Student Roster List -->
+<div class="flex flex-col gap-3">
+<!-- Student Card 1 (Graded) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden cursor-pointer" onclick="toggleAccordion('student1')">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-mono text-label-mono font-bold">
+                            AJ
+                        </div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface leading-tight">Alex Jenkins</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">ID: 948201</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-on-surface">92<span class="text-body-sm font-body-sm text-on-surface-variant">%</span></p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-300" id="icon-student1">expand_more</span>
+</div>
+</div>
+<!-- Expanded Detail -->
+<div class="accordion-content bg-surface-container border-t border-outline-variant" id="student1">
+<div class="p-4">
+<div class="grid grid-cols-2 gap-y-3 mb-4">
+<div>
+<span class="font-label-mono text-label-mono text-on-surface-variant block mb-1">Q1 (Logic)</span>
+<span class="font-body-md text-body-md text-on-surface">10/10</span>
+</div>
+<div>
+<span class="font-label-mono text-label-mono text-on-surface-variant block mb-1">Q2 (Implementation)</span>
+<span class="font-body-md text-body-md text-on-surface">22/25</span>
+</div>
+<div class="col-span-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant block mb-1">Feedback Notes</span>
+<p class="font-body-sm text-body-sm text-on-surface bg-surface-container-lowest p-2 border border-outline-variant rounded">Excellent recursive approach. Minor syntax errors in Q2 cost a few points, but overall strong understanding.</p>
+</div>
+</div>
+<div class="flex justify-end gap-2">
+<button class="px-4 py-1.5 text-primary border border-primary rounded hover:bg-primary-container/20 font-label-mono text-label-mono transition-colors">Edit</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Student Card 2 (Pending - Needs Grading) -->
+<div class="bg-surface-container-lowest border border-error/30 rounded-xl overflow-hidden cursor-pointer shadow-[0_0_0_1px_rgba(186,26,26,0.1)]" onclick="toggleAccordion('student2')">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors relative">
+<!-- Indicator for pending -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error rounded-l-xl"></div>
+<div class="flex items-center gap-3 pl-1">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface font-label-mono text-label-mono">
+                            MR
+                        </div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface leading-tight">Maria Rodriguez</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">ID: 948204</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-label-mono uppercase tracking-wider">Needs Grade</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-300" id="icon-student2">expand_more</span>
+</div>
+</div>
+<!-- Expanded Quick Grade Entry -->
+<div class="accordion-content bg-surface-container border-t border-outline-variant" id="student2">
+<div class="p-4">
+<div class="space-y-3 mb-4">
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 border border-outline-variant rounded">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Q1 (Logic)</span>
+<div class="flex items-center gap-2">
+<input class="w-16 h-8 text-center bg-surface border border-outline-variant rounded focus:ring-1 focus:ring-primary text-body-md font-body-md p-0 m-0" max="10" placeholder="-" type="number">
+<span class="font-label-mono text-label-mono text-on-surface-variant">/ 10</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-2 border border-outline-variant rounded">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Q2 (Implementation)</span>
+<div class="flex items-center gap-2">
+<input class="w-16 h-8 text-center bg-surface border border-outline-variant rounded focus:ring-1 focus:ring-primary text-body-md font-body-md p-0 m-0" max="25" placeholder="-" type="number">
+<span class="font-label-mono text-label-mono text-on-surface-variant">/ 25</span>
+</div>
+</div>
+<div>
+<textarea class="w-full bg-surface border border-outline-variant rounded p-2 font-body-sm text-body-sm placeholder-on-surface-variant focus:ring-1 focus:ring-primary resize-none" placeholder="Add quick feedback..." rows="2"></textarea>
+</div>
+</div>
+<div class="flex justify-end gap-2">
+<button class="px-4 py-2 bg-primary text-on-primary rounded hover:bg-primary/90 font-label-mono text-label-mono transition-colors shadow-sm w-full text-center">Save Grades</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Student Card 3 (Graded) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden cursor-pointer" onclick="toggleAccordion('student3')">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Professional headshot of a college student, neutral background, high quality, well lit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBunt2cH6cdKJZO7MUgti1ftGQKsItik9M4mQiisNmk-_067vvmQSKbXVKail3Qu6pB4jl5P7N9gW6PkUBoaKc_Hj_55swQXji1RDVl1BP0raCBSwO27fRqmcdzOAEAN5hpPqwSW8NkwJp0T_xkD1Mz1Ef2a0TY39A_b82U0wrE7Dq1fWv6X5kjzKaLnxA1RfYn2Z4R7Jz0cVuXNDBuoTFW7WULX_P1WtW-E_04bCYbG1R0F1rKvfMV">
+<div>
+<p class="font-headline-md text-headline-md text-on-surface leading-tight">David Chen</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">ID: 948215</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-on-surface">88<span class="text-body-sm font-body-sm text-on-surface-variant">%</span></p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-300" id="icon-student3">expand_more</span>
+</div>
+</div>
+<!-- Expanded Detail -->
+<div class="accordion-content bg-surface-container border-t border-outline-variant" id="student3">
+<div class="p-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant italic text-center py-4">Detailed rubric hidden for space.</p>
+<div class="flex justify-end">
+<button class="px-4 py-1.5 text-primary border border-primary rounded hover:bg-primary-container/20 font-label-mono text-label-mono transition-colors">Edit</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface border-t border-outline-variant shadow-lg docked full-width bottom-0 rounded-t-xl">
+<!-- Grades (Active) -->
+<a aria-label="Grades" class="flex flex-col items-center justify-center px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full active:bg-surface-container-highest active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined filled">grade</span>
+<span class="font-label-mono text-label-mono mt-1 text-[10px]">Grades</span>
+</a>
+<!-- Assess (Inactive) -->
+<a aria-label="Assess" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">edit_calendar</span>
+<span class="font-label-mono text-label-mono mt-1 text-[10px]">Assess</span>
+</a>
+<!-- Trends (Inactive) -->
+<a aria-label="Trends" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-mono text-label-mono mt-1 text-[10px]">Trends</span>
+</a>
+<!-- Profile (Inactive) -->
+<a aria-label="Profile" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-mono text-label-mono mt-1 text-[10px]">Profile</span>
+</a>
+</nav>
+<script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Optional: Close others
+                // document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('expanded'));
+                // document.querySelectorAll('.material-symbols-outlined[id^="icon-"]').forEach(el => el.style.transform = 'rotate(0deg)');
+                
+                content.classList.add('expanded');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body></html>

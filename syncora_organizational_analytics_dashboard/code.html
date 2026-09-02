@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduCore Admin - Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c5c5d7",
+                        "surface-tint": "#3b4fd3",
+                        "inverse-surface": "#2f3038",
+                        "map-park": "#f0fdf4",
+                        "secondary-container": "#d4e3ff",
+                        "tertiary": "#5a2100",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container-high": "#e9e7f2",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "tertiary-container": "#7e3100",
+                        "map-road": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "inverse-primary": "#bcc3ff",
+                        "primary": "#001c9d",
+                        "surface-container": "#eeecf8",
+                        "inverse-on-surface": "#f1effb",
+                        "on-surface-variant": "#454654",
+                        "surface-container-highest": "#e3e1ed",
+                        "occupancy-available": "#15803d",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "primary-fixed": "#dfe0ff",
+                        "outline": "#757686",
+                        "occupancy-occupied": "#2036bd",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "secondary": "#505f76",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf8ff",
+                        "on-tertiary-container": "#ffa173",
+                        "surface-variant": "#e3e1ed",
+                        "on-secondary-fixed": "#0c1c30",
+                        "on-background": "#1a1b23",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf8ff",
+                        "error-container": "#ffdad6",
+                        "fleet-transit": "#0369a1",
+                        "on-primary-container": "#a9b3ff",
+                        "surface-dim": "#dad9e4",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary-fixed": "#d4e3ff",
+                        "fleet-idle": "#64748b",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "occupancy-maintenance": "#92400e",
+                        "fleet-delayed": "#b91c1c",
+                        "on-surface": "#1a1b23",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f4f2fe",
+                        "primary-container": "#2036bd",
+                        "on-primary-fixed": "#000d60",
+                        "on-secondary-container": "#56657c",
+                        "map-water": "#e0f2fe",
+                        "on-tertiary-fixed": "#351000",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "node-spacing": "8px",
+                        "map-overlay-gap": "12px",
+                        "grid-gutter": "16px",
+                        "dashboard-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "data-viz": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-primary selection:text-on-primary overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-lowest h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline flex flex-col h-full p-6 z-40 hidden md:flex">
+<!-- Header -->
+<div class="mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-md shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">EduCore Admin</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Global Dashboard</div>
+</div>
+</div>
+<!-- Main Navigation -->
+<div class="flex-1 overflow-y-auto space-y-1 pr-2">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container font-bold rounded-lg cursor-pointer active:scale-95 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group_add</span>
+<span class="font-body-md text-body-md">Enrollment</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="font-body-md text-body-md">Finance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">school</span>
+<span class="font-body-md text-body-md">Academic Performance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">badge</span>
+<span class="font-body-md text-body-md">Faculty</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-body-md text-body-md">Students</span>
+</a>
+</div>
+<!-- Footer / CTA -->
+<div class="mt-auto pt-6 border-t border-outline-variant dark:border-outline space-y-4">
+<button class="w-full py-2.5 bg-primary text-on-primary rounded-lg font-body-md font-medium hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-sm">summarize</span>
+                Generate Report
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-body-sm text-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="font-body-sm text-body-sm">Support</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-0 md:ml-64 flex flex-col h-screen overflow-hidden bg-surface relative">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] z-50 bg-surface/80 dark:bg-on-background/80 backdrop-blur-md border-b border-outline-variant dark:border-outline flex justify-between items-center h-16 px-6">
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Campus Selector / Product Name -->
+<div class="flex items-center gap-4">
+<div class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed hidden sm:block">Campus Analytics</div>
+<!-- Search / Context -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-lowest border border-outline-variant rounded-full font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none w-64 transition-all" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-high rounded-full transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-high rounded-full transition-all duration-200">
+<span class="material-symbols-outlined">history</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="hidden sm:flex items-center gap-2 px-3 py-1.5 text-primary font-body-sm font-medium hover:bg-primary-fixed rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Download Data
+                </button>
+<div class="w-8 h-8 rounded-full ml-2 overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Administrator Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of an academic administrator in a modern office setting. Soft, natural lighting highlights the subject's features, conveying a sense of authority and approachability. The background is slightly blurred, showing a neat bookshelf and a window with daylight. Corporate academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ1UEEqQzBbKC7uudbZblO39VsfR3CMcmVV300Y39z4hYdPYPY4lWLn000givZIXoUmz7bry0AGUIr7qOv7KznJ4Qpjitn462pLqXFl6ZZ8pdewLTjDMKCxLYgQxQt3PJ67jj9rX_c-fZgjD9rmHDEAzCxrE_aiQWe-JZjXPoWk56P0hvKGbzi6dd8Ew3tMmBdUMMGhlBvOYOFSPOF8XdPepS8O9IqS52v3CSvVydzCCbs3dgnyxwi"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-1 overflow-y-auto mt-16 p-4 md:p-6 lg:p-8">
+<div class="max-w-[1600px] mx-auto space-y-6">
+<!-- Page Header & Controls -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-2">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Organizational Overview</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Performance metrics and strategic insights across all campuses.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant rounded-lg pl-3 pr-10 py-2 font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none cursor-pointer">
+<option>All Campuses (Global)</option>
+<option>Northridge Main Campus</option>
+<option>Eastside Technology Hub</option>
+<option>Westlake Arts Annex</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-sm">expand_more</span>
+</div>
+<div class="bg-surface-container-high rounded-lg p-1 flex">
+<button class="px-3 py-1 bg-surface-container-lowest shadow-sm rounded font-label-mono text-label-mono text-primary">YTD</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono rounded transition-colors">Q3</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface font-label-mono text-label-mono rounded transition-colors">Q2</button>
+</div>
+</div>
+</div>
+<!-- KPI Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="flex items-center gap-1 text-occupancy-available font-label-mono text-label-mono bg-map-park px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 4.2%
+                            </span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Enrollment</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">24,592</div>
+<div class="mt-3 w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-2 font-data-viz text-data-viz text-outline">
+<span>Target: 25,000</span>
+<span>85% Capacity</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="flex items-center gap-1 text-occupancy-available font-label-mono text-label-mono bg-map-park px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> 8.1%
+                            </span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-1">YTD Revenue</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">$142.5M</div>
+<div class="mt-3 w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-occupancy-available h-full w-[92%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-2 font-data-viz text-data-viz text-outline">
+<span>Target: $140M</span>
+<span class="text-occupancy-available">Exceeded</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<span class="flex items-center gap-1 text-fleet-delayed font-label-mono text-label-mono bg-error-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> 0.5
+                            </span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-1">Faculty-to-Student Ratio</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">1 : 18.5</div>
+<div class="mt-3 w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-fleet-transit h-full w-[75%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-2 font-data-viz text-data-viz text-outline">
+<span>Target: 1 : 18.0</span>
+<span class="text-fleet-delayed">Slight deviation</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">emoji_events</span>
+</div>
+<span class="flex items-center gap-1 text-outline font-label-mono text-label-mono bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">horizontal_rule</span> 0.0%
+                            </span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-1">Avg Academic Performance</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">3.42 GPA</div>
+<div class="mt-3 w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[88%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-2 font-data-viz text-data-viz text-outline">
+<span>Stable Trend</span>
+<span>Historical Avg: 3.40</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Chart: Enrollment Trends -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col overflow-hidden">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">insights</span>
+                                Enrollment Trends
+                            </h2>
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="p-5 flex-1 flex flex-col">
+<div class="flex gap-4 mb-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-data-viz text-data-viz text-on-surface-variant">Current Year (2024)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed-dim border border-outline-variant border-dashed"></div>
+<span class="font-data-viz text-data-viz text-outline">Previous Year (2023)</span>
+</div>
+</div>
+<!-- Chart Placeholder Area - Simulated with CSS -->
+<div class="relative w-full h-[280px] mt-auto border-l border-b border-outline-variant flex items-end">
+<!-- Y Axis Labels -->
+<div class="absolute -left-12 top-0 h-full flex flex-col justify-between font-data-viz text-data-viz text-outline py-2">
+<span>30k</span>
+<span>25k</span>
+<span>20k</span>
+<span>15k</span>
+<span>10k</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="w-full border-t border-surface-variant border-dashed"></div>
+<div class="w-full border-t border-surface-variant border-dashed"></div>
+<div class="w-full border-t border-surface-variant border-dashed"></div>
+<div class="w-full border-t border-surface-variant border-dashed"></div>
+<div class="w-full border-t border-surface-variant border-dashed"></div>
+</div>
+<!-- Simulated Data Lines -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Prev Year -->
+<path d="M0,60 C20,62 40,55 60,65 C80,75 90,60 100,68" fill="none" stroke="#b8c7e2" stroke-dasharray="4,4" stroke-width="2"></path>
+<!-- Curr Year -->
+<path d="M0,50 C20,48 40,40 60,35 C80,30 90,25 100,20" fill="none" stroke="#001c9d" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="20" cy="48" fill="#ffffff" r="1.5" stroke="#001c9d" stroke-width="1"></circle>
+<circle cx="40" cy="40" fill="#ffffff" r="1.5" stroke="#001c9d" stroke-width="1"></circle>
+<circle cx="60" cy="35" fill="#ffffff" r="1.5" stroke="#001c9d" stroke-width="1"></circle>
+<circle cx="80" cy="30" fill="#ffffff" r="1.5" stroke="#001c9d" stroke-width="1"></circle>
+<circle cx="100" cy="20" fill="#ffffff" r="1.5" stroke="#001c9d" stroke-width="1"></circle>
+</svg>
+<!-- Tooltip (Simulated hover state) -->
+<div class="absolute left-[60%] top-[25%] bg-inverse-surface text-inverse-on-surface px-3 py-2 rounded shadow-md pointer-events-none transform -translate-x-1/2 -translate-y-full mb-2 opacity-0 hover:opacity-100 transition-opacity">
+<div class="font-label-mono text-label-mono">Q3: 26,450</div>
+</div>
+</div>
+<!-- X Axis Labels -->
+<div class="flex justify-between w-full mt-2 font-data-viz text-data-viz text-outline px-4">
+<span>Q1</span>
+<span>Q2</span>
+<span>Q3</span>
+<span>Q4</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Stack -->
+<div class="space-y-6 flex flex-col">
+<!-- Financial Health Summary -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex-1">
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-[16px] font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-occupancy-available text-[20px]">account_balance_wallet</span>
+                                    Financial Health
+                                </h3>
+</div>
+<div class="p-4 space-y-5">
+<!-- Budget vs Actual -->
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Operating Budget</span>
+<span class="font-label-mono text-label-mono text-on-surface">$85.2M / $100M</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%] rounded-full"></div>
+</div>
+<div class="text-right mt-1 font-data-viz text-data-viz text-outline">15% Remaining</div>
+</div>
+<!-- Expense Breakdown -->
+<div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-2">Major Expenses</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-occupancy-occupied"></div>
+<span class="font-data-viz text-data-viz">Faculty Salaries</span>
+</div>
+<span class="font-data-viz text-data-viz">45%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-fleet-transit"></div>
+<span class="font-data-viz text-data-viz">Infrastructure</span>
+</div>
+<span class="font-data-viz text-data-viz">30%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+<span class="font-data-viz text-data-viz">Research Grants</span>
+</div>
+<span class="font-data-viz text-data-viz">15%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Departmental Performance (Bar Chart) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex-1">
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-[16px] font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">view_comfy_alt</span>
+                                    Dept. Performance
+                                </h3>
+</div>
+<div class="p-4 flex flex-col justify-center space-y-4">
+<!-- Eng -->
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-data-viz font-semibold">Engineering</span>
+<span class="font-data-viz text-occupancy-available">92%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-occupancy-available h-full w-[92%] rounded-full"></div>
+</div>
+</div>
+<!-- Sci -->
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-data-viz font-semibold">Sciences</span>
+<span class="font-data-viz text-occupancy-available">88%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-occupancy-available h-full w-[88%] rounded-full"></div>
+</div>
+</div>
+<!-- Arts -->
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-data-viz font-semibold">Arts &amp; Humanities</span>
+<span class="font-data-viz text-secondary">75%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[75%] rounded-full"></div>
+</div>
+</div>
+<!-- Bus -->
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-data-viz font-semibold">Business</span>
+<span class="font-data-viz text-fleet-delayed">62%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-fleet-delayed h-full w-[62%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity / Action Items bottom row -->
+<div class="grid grid-cols-1 gap-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Critical Action Items</h3>
+<button class="text-primary font-label-mono text-label-mono hover:underline">View All</button>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-fleet-delayed mt-0.5">warning</span>
+<div>
+<div class="font-body-sm font-semibold text-on-surface">Business Faculty Shortage</div>
+<div class="font-body-sm text-on-surface-variant">Ratio dropped below acceptable threshold (1:25)</div>
+</div>
+</div>
+<button class="px-3 py-1.5 border border-outline-variant rounded hover:bg-surface-container-high font-label-mono text-label-mono">Review</button>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5">assignment_late</span>
+<div>
+<div class="font-body-sm font-semibold text-on-surface">Q3 Budget Reconciliation Pending</div>
+<div class="font-body-sm text-on-surface-variant">Awaiting sign-off from Northridge Main Campus.</div>
+</div>
+</div>
+<button class="px-3 py-1.5 border border-outline-variant rounded hover:bg-surface-container-high font-label-mono text-label-mono">Action Needed</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

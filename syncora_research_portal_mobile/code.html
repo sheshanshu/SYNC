@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Research Portal - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "fleet-delayed": "#b91c1c",
+                      "primary-container": "#2036bd",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#56657c",
+                      "surface": "#fbf8ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "inverse-surface": "#2f3038",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "tertiary": "#5a2100",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "on-tertiary-fixed": "#351000",
+                      "map-water": "#e0f2fe",
+                      "inverse-primary": "#bcc3ff",
+                      "on-secondary-fixed": "#0c1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "occupancy-maintenance": "#92400e",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f1effb",
+                      "on-tertiary": "#ffffff",
+                      "map-park": "#f0fdf4",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-surface": "#1a1b23",
+                      "occupancy-available": "#15803d",
+                      "secondary": "#505f76",
+                      "map-road": "#ffffff",
+                      "surface-variant": "#e3e1ed",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "on-primary-fixed": "#000d60",
+                      "primary-fixed": "#dfe0ff",
+                      "occupancy-occupied": "#2036bd",
+                      "surface-container-low": "#f4f2fe",
+                      "tertiary-container": "#7e3100",
+                      "on-primary-container": "#a9b3ff",
+                      "background": "#fbf8ff",
+                      "outline": "#757686",
+                      "fleet-idle": "#64748b",
+                      "secondary-fixed": "#d4e3ff",
+                      "outline-variant": "#c5c5d7",
+                      "on-tertiary-container": "#ffa173",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#dad9e4",
+                      "primary": "#001c9d",
+                      "surface-container-high": "#e9e7f2",
+                      "secondary-container": "#d4e3ff",
+                      "on-background": "#1a1b23",
+                      "fleet-transit": "#0369a1",
+                      "surface-tint": "#3b4fd3",
+                      "on-surface-variant": "#454654",
+                      "surface-bright": "#fbf8ff",
+                      "surface-container": "#eeecf8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "node-spacing": "8px",
+                      "grid-gutter": "16px",
+                      "dashboard-margin": "24px",
+                      "map-overlay-gap": "12px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col pb-20">
+<!-- Top App Bar (Mobile View) -->
+<header class="bg-surface-container shadow-sm flex justify-between items-center px-4 w-full h-16 sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover outline outline-1 outline-outline-variant" data-alt="A small, professional headshot avatar of a female academic faculty member in her 40s. She is wearing glasses and a crisp white blouse. The lighting is soft and natural, suggesting a modern university office environment. The style is a high-quality corporate headshot with a subtle depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxhMRaFBQDfgHdbEnvhYRvVnMbuQxOa5wS0EDzAvU-2XG2JufdGoI-PTgO24sfWHeikLM5ySiXhCqNXjt66khSn4u3iPs1LVWBDXXCl6VXlmPhaPUajNZ6dhjZ02TXUI4k3qGkr33jaFl7Rv4a2Nz47V-KTHyQYzUw7lUgmXOlSgMrb6EdxZCxwUfIMKgOUauHyhCVn-Wx0VbPkafFGhmdTgwqtYD-wG-84acdtEJod9BNo6fdwuQ"/>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Syncora</h1>
+</div>
+<div class="flex items-center gap-3 text-secondary">
+<button class="hover:text-primary transition-colors flex items-center justify-center p-1">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="hover:text-primary transition-colors flex items-center justify-center p-1 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 py-6 flex flex-col gap-6">
+<!-- Status Command Bar -->
+<section class="bg-surface-container-high rounded-lg p-3 flex justify-between items-center outline outline-1 outline-outline-variant">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider">Total Active Grants</span>
+<span class="font-headline-md text-headline-md text-on-surface">$1.24M</span>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary font-body-sm text-body-sm px-3 py-1.5 rounded flex items-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+                    New
+                </button>
+</div>
+</section>
+<!-- Active Grant Status Cards -->
+<section class="flex flex-col gap-4">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Active Grants</h2>
+<!-- Grant Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 outline outline-1 outline-outline-variant shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="font-label-mono text-label-mono text-primary mb-1">NIH-R01-492</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Neuroplasticity Mechanisms</h3>
+</div>
+<span class="bg-surface-container-low text-occupancy-available px-2 py-0.5 rounded font-label-mono text-[10px] uppercase border border-occupancy-available/20">On Track</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<!-- Circular Progress: Budget -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-width="3"></path>
+</svg>
+<span class="absolute font-data-viz text-data-viz text-primary">65%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[10px] text-secondary uppercase">Budget</span>
+<span class="font-body-sm text-body-sm text-on-surface">$325k spent</span>
+</div>
+</div>
+<!-- Circular Progress: Milestones -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-fleet-transit" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="40, 100" stroke-width="3"></path>
+</svg>
+<span class="absolute font-data-viz text-data-viz text-fleet-transit">4/10</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[10px] text-secondary uppercase">Milestones</span>
+<span class="font-body-sm text-body-sm text-on-surface">Phase 2</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 border-t border-outline-variant pt-3 mt-2">
+<button class="flex-1 bg-surface-container text-primary font-body-sm text-body-sm py-1.5 rounded hover:bg-surface-container-high transition-colors text-center outline outline-1 outline-outline-variant">View Timeline</button>
+<button class="flex-1 bg-surface-container text-on-surface-variant font-body-sm text-body-sm py-1.5 rounded hover:bg-surface-container-high transition-colors text-center outline outline-1 outline-outline-variant">Details</button>
+</div>
+</article>
+<!-- Grant Card 2 (Alert State) -->
+<article class="bg-surface-container-lowest rounded-xl p-4 outline outline-2 outline-error-container shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="font-label-mono text-label-mono text-primary mb-1">NSF-CCF-102</div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Quantum Algorithmic Structures</h3>
+</div>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded font-label-mono text-[10px] uppercase border border-error/20">Action Needed</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<!-- Circular Progress: Budget -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-error" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-width="3"></path>
+</svg>
+<span class="absolute font-data-viz text-data-viz text-error">92%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[10px] text-secondary uppercase">Budget</span>
+<span class="font-body-sm text-body-sm text-on-surface">$82k left</span>
+</div>
+</div>
+<!-- Circular Progress: Milestones -->
+<div class="flex items-center gap-3">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-occupancy-available" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="80, 100" stroke-width="3"></path>
+</svg>
+<span class="absolute font-data-viz text-data-viz text-occupancy-available">8/10</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-mono text-[10px] text-secondary uppercase">Milestones</span>
+<span class="font-body-sm text-body-sm text-on-surface">Phase 4</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 border-t border-error-container pt-3 mt-2">
+<button class="flex-1 bg-error text-on-error font-body-sm text-body-sm py-1.5 rounded active:scale-95 transition-transform text-center shadow-sm">Review Budget</button>
+</div>
+</article>
+</section>
+<!-- Recent Notifications Feed -->
+<section class="flex flex-col gap-3 mt-2">
+<div class="flex justify-between items-end mb-1">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h2>
+<a class="font-label-mono text-label-mono text-primary hover:underline" href="#">View All</a>
+</div>
+<!-- Notification Item 1 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg outline outline-1 outline-outline-variant flex gap-3 items-start">
+<div class="bg-primary-container text-on-primary-container p-2 rounded-full flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Budget Approval Request</span>
+<span class="font-label-mono text-[10px] text-secondary">2h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Dr. Chen requested $4,500 for Lab Equipment on NIH-R01-492.</p>
+<div class="flex gap-2 mt-2">
+<button class="text-primary font-label-mono text-[11px] uppercase tracking-wide hover:bg-surface-container px-2 py-1 rounded transition-colors">Approve</button>
+<button class="text-secondary font-label-mono text-[11px] uppercase tracking-wide hover:bg-surface-container px-2 py-1 rounded transition-colors">Review</button>
+</div>
+</div>
+</div>
+<!-- Notification Item 2 -->
+<div class="bg-surface-container-lowest p-3 rounded-lg outline outline-1 outline-outline-variant flex gap-3 items-start">
+<div class="bg-surface-container-high text-secondary p-2 rounded-full flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="event_upcoming">event_upcoming</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Submission Deadline Alert</span>
+<span class="font-label-mono text-[10px] text-secondary">1d ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Annual progress report for NSF-CCF-102 is due in 5 days.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (from JSON, modified for exact match) -->
+<nav class="bg-surface dark:bg-inverse-surface shadow-lg border-t border-outline-variant dark:border-outline fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 md:hidden">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 w-16 h-12 transition-all">
+<span class="material-symbols-outlined" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-mono text-[10px] mt-0.5">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 w-16 h-12 hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-mono text-[10px] mt-0.5">Grants</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 w-16 h-12 hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-label-mono text-[10px] mt-0.5">Approvals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 w-16 h-12 hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-label-mono text-[10px] mt-0.5">Alerts</span>
+</button>
+</nav>
+</body></html>

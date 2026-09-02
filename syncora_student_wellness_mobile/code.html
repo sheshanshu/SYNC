@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Student Wellness Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#d4e3ff",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container-highest": "#e3e1ec",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "on-primary-fixed-variant": "#2437b0",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "background": "#fbf8ff",
+                      "tertiary-fixed-dim": "#ffb4a6",
+                      "wellness-balanced": "#0d9488",
+                      "on-tertiary-fixed": "#3f0300",
+                      "inverse-on-surface": "#f1effa",
+                      "on-tertiary-container": "#f87159",
+                      "support-resolved": "#15803d",
+                      "primary": "#000e65",
+                      "match-low": "#757686",
+                      "on-surface": "#1a1b22",
+                      "surface-tint": "#4052c9",
+                      "inverse-primary": "#bbc3ff",
+                      "tertiary-fixed": "#ffdad4",
+                      "secondary-fixed": "#d4e3ff",
+                      "secondary": "#505f76",
+                      "on-tertiary-fixed-variant": "#872010",
+                      "on-surface-variant": "#454653",
+                      "surface": "#fbf8ff",
+                      "primary-container": "#001c9d",
+                      "tertiary-container": "#6a0800",
+                      "on-tertiary": "#ffffff",
+                      "match-medium": "#84cc16",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f4f2fd",
+                      "surface-variant": "#e3e1ec",
+                      "wellness-stressed": "#ea580c",
+                      "on-secondary-fixed": "#0c1c30",
+                      "wellness-mindful": "#4f46e5",
+                      "support-open": "#3b4fd3",
+                      "surface-container": "#efecf7",
+                      "error-container": "#ffdad6",
+                      "support-in-progress": "#b45309",
+                      "inverse-surface": "#2f3038",
+                      "surface-dim": "#dbd9e3",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#c5c5d6",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e9e7f1",
+                      "tertiary": "#430300",
+                      "on-primary-container": "#8392ff",
+                      "support-escalated": "#ba1a1a",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "surface-bright": "#fbf8ff",
+                      "match-high": "#059669",
+                      "outline": "#757685",
+                      "on-secondary-container": "#56657c",
+                      "error": "#ba1a1a",
+                      "on-background": "#1a1b22",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#000d60"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "ticket-stack": "8px",
+                      "dashboard-margin": "24px",
+                      "chat-gap": "12px",
+                      "profile-padding": "20px",
+                      "grid-gutter": "16px"
+              },
+              "fontFamily": {
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .pt-safe { padding-top: env(safe-area-inset-top); }
+        /* Hide scrollbar for horizontal lists */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md pt-safe">
+<!-- Top Navigation Area (Mobile Optimized) -->
+<header class="flex justify-between items-center w-full px-dashboard-margin py-4 max-w-full bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover outline outline-1 outline-outline-variant" data-alt="A small, modern profile avatar for a student using the app, featuring a warm and approachable aesthetic, set against a clean white background. High-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE3hZlbCoWbDG0SG8IXKcZV6CL2hfty0KgFnHYF6lEW_dljOWbHGud9t2S4ZIoz4QqThaSr2PmRv3JTvhXUx3pz4i49DT-uWZnFwHuffg6x9Eq5SoZy095XhElsBTnpLQANhNzE6rrWoxyeUcyCaLCexU2QPKzu8EsVHh954fKJ7xF0GSfOHOKFZvO-IDDdtIFteLhjRDP4zKv5c3F9iGEXV7x1eD7hqYZFiVGpQIt8SGx3GdXLyXz"/>
+<h1 class="font-headline-md text-headline-md text-primary">Good morning, Alex.</h1>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pb-24 px-4 py-6 space-y-8">
+<!-- 1. Mood Check-in -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">How are you feeling today?</h2>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container-low border border-outline-variant hover:bg-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-wellness-balanced" data-icon="sentiment_very_satisfied" style="font-variation-settings: 'FILL' 1;">sentiment_very_satisfied</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Great</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container-low border border-outline-variant hover:bg-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-wellness-mindful" data-icon="sentiment_satisfied" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Okay</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container-low border border-outline-variant hover:bg-secondary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl text-wellness-stressed" data-icon="sentiment_very_dissatisfied" style="font-variation-settings: 'FILL' 1;">sentiment_very_dissatisfied</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Stressed</span>
+</button>
+</div>
+</section>
+<!-- 2. My Mentor Card -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">My Mentor</h2>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-profile-padding shadow-sm">
+<div class="flex gap-4 items-center mb-4">
+<img class="w-14 h-14 rounded-full object-cover border border-outline-variant" data-alt="A professional yet warm portrait of an academic mentor, female, wearing casual business attire, smiling reassuringly. High-key lighting, soft modern background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvA8XMh1qvJXYBKEXdLqBTrI3OXxCa5BGB_0Lb3wFVsvz3pSgFCVR0RCZaX1twtzd16QiZ_39YV4kXftXwUirTr36S0EIPSAHu2rb-6zzxcjfk55miRM8wU2Vcs0A02ZhVs149Zycr7Q7yyhcxjF5rnnU8Jm6DWol4orrrI5DlPsBlszkI5IY9ioMjWVp6b5KqKJv0qKOJUFqFlVuDIyIgd-XPTOxW76GK6jREzwyewYe51Fla16Z5"/>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Dr. Sarah Jenkins</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Computer Science Faculty</p>
+</div>
+<div class="ml-auto bg-primary-container/20 border border-primary-container px-2 py-1 rounded-sm">
+<span class="font-data-viz text-data-viz text-primary-container">MATCH 98%</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-3 mb-4 flex gap-3 relative">
+<span class="material-symbols-outlined text-on-surface-variant text-lg mt-0.5" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-2">"Hi Alex, just checking in on your project proposal. Let me know if you want to run through it tomorrow."</p>
+<span class="font-data-viz text-data-viz text-on-surface-variant mt-1 block">2 HOURS AGO</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-body-md text-body-md py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                    Message Mentor
+                </button>
+</div>
+</section>
+<!-- 3. Upcoming Wellness Sessions -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Upcoming Sessions</h2>
+<div class="flex overflow-x-auto no-scrollbar gap-4 pb-2 -mx-4 px-4">
+<div class="min-w-[240px] bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="bg-wellness-mindful/10 text-wellness-mindful border border-wellness-mindful font-data-viz text-data-viz px-2 py-0.5 rounded-sm">MINDFULNESS</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="self_improvement">self_improvement</span>
+</div>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold mb-1">Guided Meditation</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Library Quiet Room</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-primary">Today, 4:00 PM</span>
+<button class="text-primary hover:bg-secondary-container p-1 rounded-full transition-colors"><span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+</div>
+<div class="min-w-[240px] bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="bg-support-open/10 text-support-open border border-support-open font-data-viz text-data-viz px-2 py-0.5 rounded-sm">ACADEMIC</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="groups">groups</span>
+</div>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold mb-1">Peer Study Group</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Student Center Room 204</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-primary">Tomorrow, 2:00 PM</span>
+<button class="text-primary hover:bg-secondary-container p-1 rounded-full transition-colors"><span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Quick Support -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Quick Support</h2>
+<div class="grid gap-ticket-stack">
+<a class="flex items-center gap-4 bg-surface-container-lowest border border-outline-variant p-4 rounded-lg hover:bg-surface-container-low transition-colors" href="#">
+<div class="bg-surface-container p-2 rounded-full text-support-open">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-on-surface font-semibold">Counseling Services</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Book a confidential session.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center gap-4 bg-surface-container-lowest border border-outline-variant p-4 rounded-lg hover:bg-surface-container-low transition-colors" href="#">
+<div class="bg-surface-container p-2 rounded-full text-wellness-balanced">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-on-surface font-semibold">Academic Tutoring</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Get help with coursework.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="flex items-center gap-4 bg-error-container/30 border border-error/20 p-4 rounded-lg hover:bg-error-container/50 transition-colors" href="#">
+<div class="bg-error/10 p-2 rounded-full text-error">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-error font-semibold">Emergency Contacts</h4>
+<p class="font-body-sm text-body-sm text-error/80">Immediate 24/7 assistance.</p>
+</div>
+<span class="material-symbols-outlined text-error" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Generated from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe pt-2 bg-surface-container-lowest border-t border-outline-variant shadow-lg h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="home">home</span>
+<span class="font-label-mono text-label-mono text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="group">group</span>
+<span class="font-label-mono text-label-mono text-[10px]">Mentors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="support_agent">support_agent</span>
+<span class="font-label-mono text-label-mono text-[10px]">Support</span>
+</a>
+<!-- Active State: Wellness -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 opacity-100 transition-opacity duration-150 scale-90" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-mono text-label-mono text-[10px]">Wellness</span>
+</a>
+</nav>
+</body></html>

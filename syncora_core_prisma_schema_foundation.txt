@@ -1,0 +1,126 @@
+// Syncora Core Prisma Schema - Foundation Layer
+// Role: Senior Engineering Manager
+// Focus: Multi-tenancy isolation and RBAC substrate
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+/// @module Foundation
+/// The root of multi-tenancy. Every institution is an Organization.
+model Organization {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  domain        String?   @unique
+  logoUrl       String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  // Relationships
+  users         User[]
+  roles         Role[]
+  departments   Department[]
+  sessions      AcademicSession[]
+  
+  // Settings & Configuration
+  settings      Json?     // Localized settings, theme overrides, etc.
+}
+
+/// @module Auth & RBAC
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  passwordHash      String
+  firstName         String
+  lastName          String
+  avatarUrl         String?
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  deletedAt         DateTime?
+
+  // RBAC
+  memberships       Membership[]
+  notifications     Notification[]
+}
+
+model Role {
+  id                String    @id @default(cuid())
+  name              String    // e.g., "Student", "Faculty", "OrgAdmin"
+  description       String?
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  
+  permissions       Permission[]
+  memberships       Membership[]
+
+  @@unique([name, organizationId])
+}
+
+model Permission {
+  id            String   @id @default(cuid())
+  action        String   // e.g., "create", "read", "update", "delete"
+  subject       String   // e.g., "Assignment", "FeeRecord", "User"
+  roles         Role[]
+}
+
+model Membership {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  roleId        String
+  role          Role     @relation(fields: [roleId], references: [id])
+  departmentId  String?
+  department    Department? @relation(fields: [departmentId], references: [id])
+
+  @@unique([userId, roleId, departmentId])
+}
+
+/// @module Academic Core
+model Department {
+  id                String    @id @default(cuid())
+  name              String
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  
+  memberships       Membership[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model AcademicSession {
+  id                String    @id @default(cuid())
+  name              String    // e.g., "Fall 2024"
+  startDate         DateTime
+  endDate           DateTime
+  isCurrent         Boolean   @default(false)
+  organizationId    String
+  organization      Organization @relation(fields: [organizationId], references: [id])
+
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+/// @module Notification Engine (Substrate)
+model Notification {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  title         String
+  message       String
+  type          String    // e.g., "INFO", "URGENT", "ACTION"
+  status        String    @default("UNREAD") // UNREAD, READ, ARCHIVED
+  createdAt     DateTime  @default(now())
+  
+  // Metadata for deep-linking
+  payload       Json?
+}

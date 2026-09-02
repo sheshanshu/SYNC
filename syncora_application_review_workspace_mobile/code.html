@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Application Review Workspace - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e1ed",
+                        "tertiary-container": "#631700",
+                        "primary": "#000e65",
+                        "surface-container-highest": "#e3e1ed",
+                        "on-primary-container": "#8392ff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8ff",
+                        "pending-bg": "#fffbeb",
+                        "inverse-surface": "#2f3038",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#4052c9",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-container": "#d4e3ff",
+                        "pending-amber": "#b45309",
+                        "surface": "#fbf8ff",
+                        "on-surface": "#1a1b23",
+                        "surface-container-high": "#e8e7f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2437b0",
+                        "on-background": "#1a1b23",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface-dim": "#dad9e4",
+                        "on-secondary": "#ffffff",
+                        "allocated-blue": "#1d4ed8",
+                        "outline-variant": "#c5c5d6",
+                        "surface-container": "#eeecf8",
+                        "on-secondary-container": "#56657c",
+                        "rejected-slate": "#475569",
+                        "awarded-green": "#15803d",
+                        "on-tertiary-fixed-variant": "#7e2b10",
+                        "tertiary": "#3e0b00",
+                        "awarded-bg": "#f0fdf4",
+                        "surface-container-low": "#f4f2fe",
+                        "primary-container": "#001c9d",
+                        "outline": "#757685",
+                        "rejected-bg": "#f8fafc",
+                        "surface-container-lowest": "#ffffff",
+                        "allocated-bg": "#eff6ff",
+                        "inverse-on-surface": "#f1effb",
+                        "primary-fixed": "#dfe0ff",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#ea7c5b",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "secondary": "#505f76",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "surface-bright": "#fbf8ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "inverse-primary": "#bbc3ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#454653"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "compact-gap": "8px",
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "sidebar-width": "320px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "data-tabular": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Mobile-specific optimizations */
+        html, body {
+            overflow-x: hidden;
+            background-color: #fbf8ff; /* surface */
+        }
+        .collapsible-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 2000px; /* Arbitrary large number */
+            opacity: 1;
+            overflow: hidden;
+        }
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Ensure long text wraps nicely */
+        .long-text {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased pb-[100px] md:hidden">
+<!-- TopNavBar (Responsive adaptation: Hidden on mobile in favor of app-header, but included for completeness if strictly following JSON, though prompt implies a specific mobile view. Assuming a mobile header based on JSON intent) -->
+<header class="bg-surface w-full h-16 border-b border-outline-variant flex justify-between items-center px-4 sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<button class="text-primary cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="font-headline-md text-headline-md text-primary font-bold truncate max-w-[200px]">Review Workspace</div>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-1 rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-1 rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Applicant Header (Sticky) -->
+<div class="bg-surface-container-low border-b border-outline-variant p-4 sticky top-16 z-40">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">Eleanor Vance</h1>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant mt-1">ID: 9482-771X</div>
+</div>
+<!-- Status Badge -->
+<div class="bg-pending-amber/10 text-pending-amber px-3 py-1 rounded-full border border-pending-amber/20 font-label-mono text-label-mono whitespace-nowrap">
+                Under Review
+            </div>
+</div>
+</div>
+<!-- Mobile Tabs -->
+<div class="flex border-b border-outline-variant bg-surface sticky top-[136px] z-30">
+<button class="flex-1 py-3 text-center border-b-2 border-primary text-primary font-bold font-body-md text-body-md transition-colors" id="tab-data" onclick="switchTab('application-data')">
+            Application Data
+        </button>
+<button class="flex-1 py-3 text-center border-b-2 border-transparent text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" id="tab-review" onclick="switchTab('review-form')">
+            Review Form
+        </button>
+</div>
+<!-- MAIN CONTENT -->
+<main class="p-4 space-y-4">
+<!-- TAB 1: Application Data -->
+<div class="tab-content active space-y-4" id="application-data">
+<!-- Academic Info Section (Collapsible) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<button class="w-full p-4 flex justify-between items-center bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer text-left" onclick="toggleSection('academic-info', 'academic-icon')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">school</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Academic Profile</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-300" id="academic-icon">expand_less</span>
+</button>
+<div class="collapsible-content border-t border-outline-variant" id="academic-info">
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant font-body-md text-body-md">Institution</span>
+<span class="font-body-md text-body-md text-on-surface text-right">University of Example</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant font-body-md text-body-md">Degree</span>
+<span class="font-body-md text-body-md text-on-surface text-right">B.S. Computer Science</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="text-on-surface-variant font-body-md text-body-md">GPA</span>
+<span class="font-data-tabular text-data-tabular text-on-surface text-right font-bold">3.92 / 4.00</span>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-on-surface-variant font-body-md text-body-md">Graduation</span>
+<span class="font-data-tabular text-data-tabular text-on-surface text-right">May 2023</span>
+</div>
+<!-- Transcript Preview Thumbnail -->
+<div class="mt-4 border border-outline-variant rounded p-3 bg-surface-container-low flex items-center gap-3">
+<div class="w-10 h-12 bg-surface-container-lowest border border-outline-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-mono text-label-mono text-on-surface truncate">Official_Transcript.pdf</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">2.4 MB</div>
+</div>
+<button class="p-2 bg-surface-container-lowest border border-outline-variant rounded hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-primary text-sm">visibility</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Personal Statement (Collapsible) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<button class="w-full p-4 flex justify-between items-center bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer text-left" onclick="toggleSection('essays', 'essays-icon')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_document</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Personal Statement</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-300" id="essays-icon">expand_less</span>
+</button>
+<div class="collapsible-content border-t border-outline-variant bg-surface-container-lowest" id="essays">
+<div class="p-5">
+<article class="prose max-w-none">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed long-text text-justify mb-4">
+                                My journey into computational systems began not in a classroom, but in my grandfather's chaotic workshop. The meticulous process of dismantling old radios taught me that complex systems are just assemblies of simple logic gates. This early fascination drove me to pursue Computer Science with a focus on systems architecture.
+                            </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed long-text text-justify mb-4">
+                                During my undergraduate research, I focused on optimizing distributed ledgers for resource-constrained environments. By implementing a novel consensus protocol, our team reduced node energy consumption by 40% without compromising network integrity.
+                            </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed long-text text-justify">
+                                I am applying to this program to bridge the gap between theoretical cryptography and practical, sustainable distributed systems engineering.
+                            </p>
+</article>
+</div>
+</div>
+</section>
+<!-- Recommendations (Collapsible) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<button class="w-full p-4 flex justify-between items-center bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer text-left" onclick="toggleSection('recs', 'recs-icon')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">group</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Letters of Rec (2)</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-300 transform rotate-180" id="recs-icon">expand_less</span>
+</button>
+<div class="collapsible-content border-t border-outline-variant collapsed" id="recs">
+<div class="p-4 flex flex-col gap-3">
+<div class="border border-outline-variant rounded p-3 bg-surface flex items-center justify-between">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Dr. Sarah Jenkins</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Professor of Computer Science</div>
+</div>
+<button class="text-primary flex items-center gap-1 font-label-mono text-label-mono hover:underline">
+<span class="material-symbols-outlined text-sm">description</span> View
+                            </button>
+</div>
+<div class="border border-outline-variant rounded p-3 bg-surface flex items-center justify-between">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-semibold">Markus Thorne</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Engineering Lead, TechCorp</div>
+</div>
+<button class="text-primary flex items-center gap-1 font-label-mono text-label-mono hover:underline">
+<span class="material-symbols-outlined text-sm">description</span> View
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- TAB 2: Review Form -->
+<div class="tab-content space-y-6 pb-6" id="review-form">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Evaluation Rubric</h3>
+<!-- Evaluative Input Field 1 -->
+<div class="mb-5">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Academic Preparation</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface border border-outline-variant rounded p-2 text-right font-data-tabular text-data-tabular focus:border-primary focus:ring-1 focus:ring-primary pr-14" max="100" min="0" placeholder="0" type="number"/>
+<span class="absolute right-3 font-label-mono text-label-mono text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<!-- Evaluative Input Field 2 -->
+<div class="mb-5">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Research Potential</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface border border-outline-variant rounded p-2 text-right font-data-tabular text-data-tabular focus:border-primary focus:ring-1 focus:ring-primary pr-14" max="100" min="0" placeholder="0" type="number"/>
+<span class="absolute right-3 font-label-mono text-label-mono text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<!-- Evaluative Input Field 3 -->
+<div class="mb-2">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Overall Fit</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface border border-outline-variant rounded p-2 text-right font-data-tabular text-data-tabular focus:border-primary focus:ring-1 focus:ring-primary pr-14" max="10" min="0" placeholder="0" type="number"/>
+<span class="absolute right-3 font-label-mono text-label-mono text-on-surface-variant">/ 10</span>
+</div>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Evaluator Notes</h3>
+<textarea class="w-full bg-surface border border-outline-variant rounded p-2 font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Enter private review notes here..." rows="4"></textarea>
+<div class="flex justify-end mt-2">
+<button class="text-primary font-label-mono text-label-mono hover:bg-primary-container/10 px-3 py-1 rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">add_comment</span> Add Note
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50 flex gap-3">
+<button class="flex-1 py-3 px-4 border border-outline bg-transparent text-on-surface font-label-mono text-label-mono rounded text-center hover:bg-surface-container-high transition-colors active:opacity-80 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">close</span> Decline
+        </button>
+<button class="flex-1 py-3 px-4 bg-primary-container text-on-primary rounded font-label-mono text-label-mono text-center shadow-sm active:opacity-80 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">check</span> Recommend
+        </button>
+</div>
+<script>
+        function toggleSection(sectionId, iconId) {
+            const content = document.getElementById(sectionId);
+            const icon = document.getElementById(iconId);
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('collapsed');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Reset tab styles
+            document.getElementById('tab-data').className = "flex-1 py-3 text-center border-b-2 border-transparent text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md";
+            document.getElementById('tab-review').className = "flex-1 py-3 text-center border-b-2 border-transparent text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md";
+            
+            // Show active content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Set active tab style
+            if(tabId === 'application-data') {
+                document.getElementById('tab-data').className = "flex-1 py-3 text-center border-b-2 border-primary text-primary font-bold font-body-md text-body-md transition-colors";
+            } else {
+                document.getElementById('tab-review').className = "flex-1 py-3 text-center border-b-2 border-primary text-primary font-bold font-body-md text-body-md transition-colors";
+            }
+        }
+    </script>
+</body></html>

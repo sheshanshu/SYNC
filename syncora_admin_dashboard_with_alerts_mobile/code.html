@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e2e7ff",
+                        "secondary": "#505f76",
+                        "outline-variant": "#c5c5d7",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eaedff",
+                        "on-primary-container": "#d7daff",
+                        "surface-variant": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "on-secondary-container": "#54647a",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-primary": "#bbc3ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-error-container": "#93000a",
+                        "outline": "#757686",
+                        "on-tertiary-fixed": "#351000",
+                        "primary": "#2036bd",
+                        "surface-dim": "#d2d9f4",
+                        "surface": "#faf8ff",
+                        "surface-container-highest": "#dae2fd",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "background": "#faf8ff",
+                        "primary-container": "#3e52d5",
+                        "inverse-surface": "#283044",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "secondary-container": "#d0e1fb",
+                        "on-surface": "#131b2e",
+                        "surface-tint": "#3b4fd2",
+                        "tertiary": "#7e3100",
+                        "on-background": "#131b2e",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-surface-variant": "#454654",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "tertiary-container": "#a44200",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dfe0ff",
+                        "on-primary-fixed": "#000d60",
+                        "tertiary-fixed": "#ffdbcc",
+                        "inverse-on-surface": "#eef0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "density-generous": "32px",
+                        "base": "4px",
+                        "padding-card": "16px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 font-body-md">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-16 px-4 bg-surface-bright border-b border-outline-variant sticky top-0 z-40 md:hidden">
+<div class="font-headline-md text-headline-md font-bold text-on-surface">Syncora OS</div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary">notifications</span>
+<img alt="Administrator Avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot of an administrator in a well-lit office setting. The style is clear and polished, suitable for a corporate avatar, reflecting a calm and organized aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlO1aFOntvw_F26rna0ksV_REQTqJ1zo45dMHhM4mqSqGc3-VwlUmxXfUXleNwzPIOAWJreDMg6Pv2_uUuhCp09KDMDpGTE-2KT4r_pgwhZ7QxKcLrR4eKIdtj_C6Z8TWefCn7w-A1t4VIWK-CmaXJTAh85aNJ-cH-ye4TCmwgkxzqZKl0u2zqppt3-Noy0kwRRf98Bf8n6fwe6pE8aVUFNT_tfJunaCR-XN83GwvEC7JrrVeIMAFx"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="p-4 flex flex-col gap-6 md:ml-64 md:p-margin-page">
+<!-- Welcome Header -->
+<section>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Good morning, Admin</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Here is your campus overview for today.</p>
+</section>
+<!-- Metric Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2">
+<span class="material-symbols-outlined text-secondary text-2xl">school</span>
+<div>
+<div class="font-label-mono text-label-mono text-secondary mb-1 uppercase tracking-wider">Total Students</div>
+<div class="font-headline-md text-headline-md text-on-surface">14,205</div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2">
+<span class="material-symbols-outlined text-secondary text-2xl">group</span>
+<div>
+<div class="font-label-mono text-label-mono text-secondary mb-1 uppercase tracking-wider">Active Faculty</div>
+<div class="font-headline-md text-headline-md text-on-surface">842</div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+<div>
+<div class="font-label-mono text-label-mono text-secondary mb-1 uppercase tracking-wider">Fee Collection</div>
+<div class="font-headline-md text-headline-md text-primary">87.4%</div>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-16 h-16 bg-error-container rounded-bl-full opacity-50"></div>
+<span class="material-symbols-outlined text-error text-2xl relative z-10">assignment_late</span>
+<div class="relative z-10">
+<div class="font-label-mono text-label-mono text-secondary mb-1 uppercase tracking-wider">Pending Approvals</div>
+<div class="font-headline-md text-headline-md text-on-surface">12</div>
+</div>
+</div>
+</section><section class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Alerts</h2>
+<a class="font-body-sm text-body-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Critical Alert -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="w-2 h-8 bg-error rounded-full"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="font-semibold text-on-surface">Server Latency Spike</span>
+<span class="text-label-mono text-error font-bold uppercase">Critical</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Main campus portal experiencing 5s+ delays.</p>
+</div>
+</div>
+<!-- Warning Alert -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="w-2 h-8 bg-tertiary-container rounded-full"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="font-semibold text-on-surface">Storage Capacity</span>
+<span class="text-label-mono text-tertiary font-bold uppercase">Warning</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">LMS Media storage at 88% capacity.</p>
+</div>
+</div>
+<!-- Critical Alert -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest border border-outline-variant rounded-lg">
+<div class="w-2 h-8 bg-error rounded-full"></div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="font-semibold text-on-surface">Security Breach Attempt</span>
+<span class="text-label-mono text-error font-bold uppercase">Critical</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Multiple failed logins detected from unknown IP.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Approvals Needed -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Approvals Needed</h2>
+<a class="font-body-sm text-body-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Approval Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Course Syllabus Update</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prof. Eleanor Vance • History 201</p>
+</div>
+<span class="bg-error-container text-on-error-container font-label-mono text-label-mono px-2 py-1 rounded-full bg-opacity-20">High Priority</span>
+</div>
+<div class="flex justify-end gap-2 mt-2 pt-3 border-t border-outline-variant">
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface font-body-sm text-body-sm rounded hover:bg-surface-container-low transition-colors">Review</button>
+<button class="px-4 py-2 bg-primary text-on-primary font-body-sm text-body-sm rounded hover:bg-primary-container hover:text-on-primary-container transition-colors">Approve</button>
+</div>
+</div>
+<!-- Approval Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Department Budget Transfer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Science Dept • Q3 Equipment</p>
+</div>
+<span class="bg-surface-variant text-on-surface font-label-mono text-label-mono px-2 py-1 rounded-full">Standard</span>
+</div>
+<div class="flex justify-end gap-2 mt-2 pt-3 border-t border-outline-variant">
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface font-body-sm text-body-sm rounded hover:bg-surface-container-low transition-colors">Review</button>
+<button class="px-4 py-2 bg-primary text-on-primary font-body-sm text-body-sm rounded hover:bg-primary-container hover:text-on-primary-container transition-colors">Approve</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Collection Summary Card -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Collection Summary</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card">
+<div class="flex justify-between items-end border-b border-outline-variant pb-4 mb-4">
+<div>
+<div class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-1">Total Expected</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">$4.2M</div>
+</div>
+<div class="text-right">
+<div class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-1">Collected</div>
+<div class="font-headline-md text-headline-md text-primary">$3.6M</div>
+</div>
+</div>
+<!-- Simple Bar Chart Representation -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface-variant">
+<span>Undergraduate</span>
+<span>92%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
+</div>
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface-variant mt-2">
+<span>Graduate</span>
+<span>81%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 81%"></div>
+</div>
+</div>
+</div>
+</section>
+<div class="h-8"></div> <!-- Bottom padding for nav bar -->
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden border-t border-outline-variant bg-surface shadow-lg flex justify-around items-center px-4 py-2">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-2 w-16 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined fill">home</span>
+<span class="font-body-sm text-body-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-16 scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined">approval</span>
+<span class="font-body-sm text-body-sm mt-1">Approvals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-16 scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-sm text-body-sm mt-1">Finances</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-16 scale-95 active:scale-90 transition-transform active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-sm text-body-sm mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

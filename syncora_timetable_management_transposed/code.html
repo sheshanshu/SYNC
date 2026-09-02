@@ -1,0 +1,314 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora Campus - Smart Timetable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#eaedff",
+                      "surface-variant": "#dae2fd",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d2d9f4",
+                      "surface-container-high": "#e2e7ff",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#283044",
+                      "surface-tint": "#3b4fd2",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-low": "#f2f3ff",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary": "#ffffff",
+                      "secondary": "#505f76",
+                      "on-primary-container": "#d7daff",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-container-highest": "#dae2fd",
+                      "outline": "#757686",
+                      "on-background": "#131b2e",
+                      "primary-fixed": "#dfe0ff",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface": "#faf8ff",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "background": "#faf8ff",
+                      "surface-bright": "#faf8ff",
+                      "tertiary-container": "#a44200",
+                      "outline-variant": "#c5c5d7",
+                      "on-primary-fixed": "#000d60",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-secondary-fixed": "#0b1c30",
+                      "tertiary": "#7e3100",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "on-surface-variant": "#454654",
+                      "primary": "#2036bd",
+                      "primary-container": "#3e52d5",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-primary": "#bbc3ff",
+                      "secondary-container": "#d0e1fb",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-tertiary-fixed": "#351000",
+                      "on-surface": "#131b2e",
+                      "tertiary-fixed-dim": "#ffb694"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter-grid": "16px",
+                      "base": "4px",
+                      "density-generous": "32px",
+                      "margin-page": "24px",
+                      "padding-card": "16px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background h-full font-body-md overflow-hidden flex flex-col md:flex-row">
+<!-- Mobile Top App Bar (Hidden on desktop) -->
+<header class="md:hidden bg-surface flex justify-between items-center w-full px-margin-page h-16 shrink-0 z-20">
+<div class="font-headline-md text-headline-md font-bold text-primary">Syncora</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer active:opacity-80 text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined cursor-pointer active:opacity-80 text-on-surface-variant">help</span>
+<img alt="Administrator Profile Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A small circular avatar profile picture of a young professional administrator in a brightly lit modern office setting, soft background blur, professional attire, clear natural lighting, exuding competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN6yBUnufyNsL8FIfY57XrEDMZSNwwrkQ5vFMADYdh5p8uGYUD2rWX0Y17e5NlYxLsv43PI7zI5NNC7LkwR5QpJD3gyA8uagDeEgryZI0yV1YqRf4ZZeyDhy4BwGubErziQIMachU2jtBwkPIqPW6UqDUdiBkIQDA5hpnzsgIwZCIzYhKr-dKEHxTpaRDvaTuv7xmR30vJ1qfPMr0sNj9okVckMolTkLPuRyx9qhD7YNBkC4ttWC9I">
+</div>
+</header>
+<!-- Side Navigation (Visible on Desktop) -->
+<nav class="hidden md:flex flex-col h-full w-64 bg-surface-container-low border-r border-outline-variant py-density-generous px-4 overflow-y-auto shrink-0 z-20">
+<div class="flex items-center gap-3 mb-density-generous px-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold">S</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">Syncora Campus</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Administrator Mode</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-mono text-label-mono">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="schedule" data-weight="fill" style="font-variation-settings: &quot;FILL&quot; 1;">schedule</span>
+<span class="font-label-mono text-label-mono">Smart Timetable</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-mono text-label-mono">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-mono text-label-mono">Approvals</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background relative z-10">
+<!-- Top Toolbar (Desktop Desktop) -->
+<div class="hidden md:flex justify-between items-center px-density-generous py-4 bg-surface border-b border-outline-variant shrink-0">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Smart Timetable</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded bg-surface hover:bg-surface-container-low transition-colors text-on-surface font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                    Filters
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded hover:bg-primary-container transition-colors font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Slot
+                </button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<img alt="Administrator Profile Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A small circular avatar profile picture of a young professional administrator in a brightly lit modern office setting, soft background blur, professional attire, clear natural lighting, exuding competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1DaFShxesbx3keGJJDpuQYhIwDkwSg4pwwUqsMcoLcqhSFOt4ZWhJDnYNqn8tHJqsk0zdbG-zUQkgVaKIxEZhsbq67TQox4H2QQdppyCGq2PM4J962Z2P2cqYjrvoYjem3mpkLwftrF40BNKVSIzf-mmoGEFawvZ7JV5T9zQiNwMFlOfQEWOLpsE736adfsT1Mre-WT7p19GdzQNc1g5ulXm7J8LIzBhmV90mFE62LhTNK6b76f7C">
+</div>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-margin-page lg:p-density-generous">
+<!-- Filters & Controls Row -->
+<div class="flex flex-col md:flex-row gap-4 mb-6">
+<div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-mono text-label-mono text-on-surface-variant">Department</label>
+<select class="w-full bg-surface border border-outline-variant rounded p-2 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+<option>Computer Science</option>
+<option>Engineering</option>
+<option>Mathematics</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-mono text-label-mono text-on-surface-variant">Semester</label>
+<select class="w-full bg-surface border border-outline-variant rounded p-2 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+<option>Fall 2024</option>
+<option>Spring 2024</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-mono text-label-mono text-on-surface-variant">View</label>
+<select class="w-full bg-surface border border-outline-variant rounded p-2 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+<option>Weekly Grid</option>
+<option>Daily List</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Timetable Grid -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-x-auto"><div class="min-w-[800px]"><div class="grid grid-cols-6 border-b border-outline-variant bg-surface-container-low"><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant">Day / Time</div><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant">08:00 AM</div><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant">09:30 AM</div><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant">11:00 AM</div><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant">01:00 PM</div><div class="p-3 text-center font-label-mono text-label-mono text-on-surface-variant">02:30 PM</div></div><div class="grid grid-cols-6 border-b border-outline-variant group"><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant bg-surface-container-lowest">Monday</div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors relative"><div class="bg-secondary-container border border-outline-variant rounded p-2 h-full flex flex-col gap-1 cursor-pointer hover:shadow-md transition-shadow"><div class="flex justify-between items-start"><span class="font-label-mono text-label-mono font-bold text-on-secondary-container">CS101</span><span class="material-symbols-outlined text-[16px] text-on-secondary-container">more_vert</span></div><div class="font-body-sm text-body-sm text-on-secondary-container truncate">Intro to Programming</div><div class="mt-auto pt-2 flex justify-between items-center text-on-surface-variant"><span class="font-label-mono text-label-mono text-[10px]">Room 304</span><span class="font-label-mono text-label-mono text-[10px]">Dr. Smith</span></div><div class="flex gap-1 mt-2">
+  <div class="flex-1 h-1.5 bg-primary rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-primary rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-primary rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-primary rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+</div></div></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 bg-surface group-hover:bg-surface-container-low transition-colors"></div></div><div class="grid grid-cols-6 border-b border-outline-variant group"><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant bg-surface-container-lowest">Tuesday</div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors relative"><div class="bg-primary-container border border-outline-variant rounded p-2 h-full flex flex-col gap-1 cursor-pointer hover:shadow-md transition-shadow"><div class="flex justify-between items-start"><span class="font-label-mono text-label-mono font-bold text-on-primary-container">ENG102</span></div><div class="font-body-sm text-body-sm text-on-primary-container truncate">Literature Analysis</div><div class="mt-auto pt-2 flex justify-between items-center text-on-primary-container opacity-80"><span class="font-label-mono text-label-mono text-[10px]">Hall B</span><span class="font-label-mono text-label-mono text-[10px]">Dr. Allen</span></div><div class="flex gap-1 mt-2">
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+  <div class="flex-1 h-1.5 bg-outline-variant rounded-full"></div>
+</div></div></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 bg-surface group-hover:bg-surface-container-low transition-colors"></div></div><div class="grid grid-cols-6 border-b border-outline-variant group"><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant bg-surface-container-lowest">Wednesday</div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors relative"><div class="bg-error-container border border-error rounded p-2 h-full flex flex-col gap-1 cursor-pointer hover:shadow-md transition-shadow border-2"><div class="flex justify-between items-start"><span class="font-label-mono text-label-mono font-bold text-on-error-container">MATH201</span><div class="flex items-center gap-1 bg-error text-on-error px-2 py-0.5 rounded-full"><span class="material-symbols-outlined text-[14px]" title="Conflict Alert">warning</span><span class="text-[10px] font-bold uppercase">Conflict</span></div></div><div class="font-body-sm text-body-sm text-on-error-container font-bold truncate">Calculus II</div><div class="mt-auto pt-2 flex justify-between items-center text-on-error-container"><span class="font-label-mono text-label-mono text-[10px] font-bold">Room 102</span><span class="font-label-mono text-label-mono text-[10px] font-bold">Prof. Davis</span></div><div class="flex gap-1 mt-2">
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+  <div class="flex-1 h-1.5 bg-error rounded-full opacity-40"></div>
+</div></div></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 bg-surface group-hover:bg-surface-container-low transition-colors"></div></div><div class="grid grid-cols-6 border-b border-outline-variant group"><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant bg-surface-container-lowest">Thursday</div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 bg-surface group-hover:bg-surface-container-low transition-colors"></div></div><div class="grid grid-cols-6 border-outline-variant group"><div class="p-3 text-center border-r border-outline-variant font-label-mono text-label-mono text-on-surface-variant bg-surface-container-lowest">Friday</div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 border-r border-outline-variant bg-surface group-hover:bg-surface-container-low transition-colors"></div><div class="p-2 bg-surface group-hover:bg-surface-container-low transition-colors"></div></div></div></div>
+</div>
+</main>
+<!-- Mobile Bottom Nav (Hidden on desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface border-t border-outline-variant shadow-lg tap-highlight-transparent">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-mono text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-mono text-[10px] mt-1">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="schedule" data-weight="fill" style="font-variation-settings: &quot;FILL&quot; 1;">schedule</span>
+<span class="font-label-mono text-[10px] mt-1">Timetable</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-mono text-[10px] mt-1">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-mono text-[10px] mt-1">More</span>
+</a>
+</nav>
+
+
+
+
+</body></html>

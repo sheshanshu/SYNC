@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Core Modules &amp; Impact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf8ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#454654",
+                        "secondary": "#505f76",
+                        "outline-variant": "#c5c5d7",
+                        "tertiary-container": "#a44200",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary-fixed": "#351000",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary-fixed": "#000d60",
+                        "on-background": "#131b2e",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-surface": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eef0ff",
+                        "primary": "#2036bd",
+                        "on-tertiary-container": "#ffd3bf",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container-highest": "#dae2fd",
+                        "surface": "#faf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary-container": "#54647a",
+                        "on-primary-container": "#d7daff",
+                        "inverse-surface": "#283044",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "outline": "#757686",
+                        "tertiary": "#7e3100",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-container": "#eaedff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "primary-container": "#3e52d5",
+                        "surface-variant": "#dae2fd",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "base": "4px",
+                        "density-generous": "32px",
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Main Content Area - Intentionally omitting top/side navs for a presentation slide layout as per intent logic -->
+<main class="flex-grow flex items-center justify-center p-margin-page md:p-density-generous">
+<div class="max-w-[1200px] w-full flex flex-col gap-density-generous">
+<!-- Slide Header -->
+<header class="flex flex-col gap-base border-b border-outline-variant pb-padding-card">
+<div class="flex items-center gap-density-compact text-primary">
+<span class="material-symbols-outlined text-[24px]">hub</span>
+<span class="font-label-mono text-label-mono uppercase tracking-widest text-secondary">Syncora Platform</span>
+</div>
+<h1 class="font-display text-display text-on-surface">Core Modules &amp; Institutional Impact</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    A high-level overview of the four foundational domains driving operational efficiency, academic excellence, and campus safety across the institution.
+                </p>
+</header>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-grid">
+<!-- Academic Domain -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-margin-page flex flex-col gap-padding-card hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-mono text-label-mono rounded">Module 1</span>
+</div>
+<div class="flex flex-col gap-base">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Academic Hub</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Streamlines curriculum management, student performance tracking, and faculty resourcing. Centralizes grading, attendance, and academic standing workflows into a unified, actionable dashboard.</p>
+</div>
+<div class="mt-auto pt-padding-card border-t border-outline-variant">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-label-mono text-label-mono">Impact: 30% reduction in administrative overhead.</span>
+</div>
+</div>
+</div>
+<!-- Student Experience Domain -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-margin-page flex flex-col gap-padding-card hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-mono text-label-mono rounded">Module 2</span>
+</div>
+<div class="flex flex-col gap-base">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Student Experience</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Fosters engagement through centralized club management, event ticketing, and housing coordination. Provides a single portal for students to interact with campus services and community initiatives.</p>
+</div>
+<div class="mt-auto pt-padding-card border-t border-outline-variant">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[16px]">volunteer_activism</span>
+<span class="font-label-mono text-label-mono">Impact: 45% increase in campus event participation.</span>
+</div>
+</div>
+</div>
+<!-- Finance Domain -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-margin-page flex flex-col gap-padding-card hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-mono text-label-mono rounded">Module 3</span>
+</div>
+<div class="flex flex-col gap-base">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Financial Engine</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Comprehensive tuition billing, grant management, and departmental budgeting. Automates reconciliation and provides real-time financial visibility to departmental stakeholders.</p>
+</div>
+<div class="mt-auto pt-padding-card border-t border-outline-variant">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+<span class="font-label-mono text-label-mono">Impact: Accelerated tuition collection by 14 days.</span>
+</div>
+</div>
+</div>
+<!-- Safety Domain -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-margin-page flex flex-col gap-padding-card hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-start justify-between">
+<div class="w-12 h-12 rounded-full bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant font-label-mono text-label-mono rounded">Module 4</span>
+</div>
+<div class="flex flex-col gap-base">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Campus Security</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Integrates access control, incident reporting, and emergency broadcasting. Provides security personnel with a real-time operational picture of campus status and threat levels.</p>
+</div>
+<div class="mt-auto pt-padding-card border-t border-outline-variant">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span class="font-label-mono text-label-mono">Impact: Reduced average incident response time to &lt; 2m.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full py-density-generous border-t border-outline-variant dark:border-outline mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-page max-w-7xl mx-auto gap-padding-card">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim font-bold">Syncora</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant">© 2024 Syncora Institutional OS. All rights reserved.</span>
+</div>
+<nav class="flex gap-margin-page">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors opacity-100 hover:opacity-80" href="#">Support</a>
+</nav>
+</div>
+</footer>
+</body></html>

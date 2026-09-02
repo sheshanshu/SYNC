@@ -1,0 +1,255 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Import Progress</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#faf8ff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary-container": "#d7daff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-dim": "#d2d9f4",
+                        "on-tertiary-fixed": "#351000",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary-fixed": "#dfe0ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "background": "#faf8ff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-background": "#131b2e",
+                        "secondary-container": "#d0e1fb",
+                        "inverse-surface": "#283044",
+                        "surface-variant": "#dae2fd",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4fe",
+                        "outline": "#757686",
+                        "on-secondary-container": "#54647a",
+                        "surface-bright": "#faf8ff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#7e3100",
+                        "tertiary-container": "#a44200",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "primary": "#2036bd",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "outline-variant": "#c5c5d7",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#131b2e",
+                        "surface-container": "#eaedff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-tint": "#3b4fd2",
+                        "on-surface-variant": "#454654",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-container-highest": "#dae2fd",
+                        "primary-container": "#3e52d5",
+                        "secondary": "#505f76"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "density-generous": "32px",
+                        "gutter-grid": "16px",
+                        "density-compact": "8px",
+                        "margin-page": "24px",
+                        "base": "4px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center antialiased">
+<!-- Mobile Container -->
+<div class="w-full max-w-[428px] h-screen max-h-[926px] bg-background relative flex flex-col overflow-hidden shadow-2xl sm:rounded-[40px] sm:h-[90vh] sm:border-[8px] border-surface-container-high mx-auto">
+<!-- Header -->
+<header class="flex justify-between items-center w-full px-margin-page h-16 border-b border-outline-variant bg-surface shrink-0 z-10">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Syncora OS</h1>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors cursor-pointer active:opacity-80 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</header>
+<!-- Stepper -->
+<div class="px-margin-page py-padding-card bg-surface shrink-0 border-b border-surface-container-low">
+<div class="flex items-center justify-between relative">
+<!-- Line background -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -z-0 -translate-y-1/2"></div>
+<!-- Line active -->
+<div class="absolute top-1/2 left-0 w-[75%] h-[2px] bg-primary -z-0 -translate-y-1/2 transition-all duration-500"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center z-10 bg-surface px-1">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+<span class="font-label-mono text-label-mono text-primary">Upld</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center z-10 bg-surface px-1">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+<span class="font-label-mono text-label-mono text-primary">Map</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center z-10 bg-surface px-1">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+<span class="font-label-mono text-label-mono text-primary">Rev</span>
+</div>
+<!-- Step 4 (Active) -->
+<div class="flex flex-col items-center z-10 bg-surface px-1">
+<div class="w-6 h-6 rounded-full bg-surface border-2 border-primary text-primary flex items-center justify-center mb-1">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+<span class="font-label-mono text-label-mono text-primary font-bold">Finl</span>
+</div>
+</div>
+</div>
+<!-- Main Content Scrollable Area -->
+<main class="flex-1 overflow-y-auto p-gutter-grid flex flex-col gap-gutter-grid bg-surface-container-low">
+<!-- Progress Card -->
+<div class="bg-surface rounded-xl border border-outline-variant p-padding-card flex flex-col items-center shadow-sm">
+<!-- Circular Progress -->
+<div class="relative w-48 h-48 flex items-center justify-center mb-6 mt-4">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<!-- Background Circle -->
+<circle class="text-surface-container-highest stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="6"></circle>
+<!-- Progress Circle -->
+<circle class="text-primary-container stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="87.92" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<!-- Center Text -->
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-display text-display text-primary">65%</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant mt-1">Complete</span>
+</div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2 text-center">Importing 150 Records...</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-center flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="memory">memory</span>
+                    Processing Batch #8821
+                </p>
+</div>
+<!-- Activity Log Card -->
+<div class="bg-surface rounded-xl border border-outline-variant flex flex-col overflow-hidden shadow-sm">
+<div class="px-4 py-3 border-b border-outline-variant bg-surface-container-lowest">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Activity Log</h3>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Log Item (Done) -->
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface">Validating CSV structure...</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-[11px] mt-1">Done</p>
+</div>
+</div>
+<!-- Log Item (Done) -->
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface">Mapping 15 columns...</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-[11px] mt-1">Done</p>
+</div>
+</div>
+<!-- Log Item (Done) -->
+<div class="flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface">Validating roles...</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-[11px] mt-1">Done (12 roles identified)</p>
+</div>
+</div>
+<!-- Log Item (Active/Spinning) -->
+<div class="flex items-start gap-3 relative before:absolute before:left-[9px] before:top-[-16px] before:bottom-6 before:w-[2px] before:bg-outline-variant before:-z-10 hidden">
+<!-- Hiding the connecting line for a cleaner look in a simple list, but keeping structure if needed -->
+</div>
+<div class="flex items-start gap-3 bg-surface-container-low p-2 -mx-2 rounded-lg">
+<div class="w-5 h-5 text-primary flex items-center justify-center shrink-0 mt-0.5 spin">
+<span class="material-symbols-outlined text-[18px]" data-icon="progress_activity">progress_activity</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm text-on-surface font-medium">Syncing departments...</p>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[56%] rounded-full"></div>
+</div>
+<p class="font-label-mono text-label-mono text-primary text-[11px] mt-2">(45/80)</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Actions -->
+<footer class="p-gutter-grid bg-surface border-t border-outline-variant shrink-0 pb-[calc(16px+env(safe-area-inset-bottom))]">
+<button class="w-full py-3 px-4 border border-outline-variant bg-surface text-error rounded-lg font-body-md text-body-md font-medium hover:bg-error-container transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]" data-icon="cancel">cancel</span>
+                Cancel Import
+            </button>
+</footer>
+</div>
+</body></html>

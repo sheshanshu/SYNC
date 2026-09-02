@@ -1,0 +1,165 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Login - Syncora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eef0ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3b4fd2",
+                        "on-surface-variant": "#454654",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-container": "#3e52d5",
+                        "on-secondary-container": "#54647a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-dim": "#d2d9f4",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "outline-variant": "#c5c5d7",
+                        "surface-container": "#eaedff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-primary-fixed": "#000d60",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary": "#505f76",
+                        "surface": "#faf8ff",
+                        "on-primary-container": "#d7daff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#7e3100",
+                        "on-surface": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "on-background": "#131b2e",
+                        "inverse-surface": "#283044",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-container": "#a44200",
+                        "background": "#faf8ff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "outline": "#757686",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-container-highest": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "primary": "#2036bd",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bbc3ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "surface-container-high": "#e2e7ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dfe0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "padding-card": "16px",
+                        "density-generous": "32px",
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "base": "4px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full bg-background font-body-md text-on-background flex flex-col antialiased">
+<main class="flex-grow flex items-center justify-center p-margin-page">
+<div class="w-full max-w-md bg-surface-container-lowest border border-outline-variant shadow-sm p-density-generous md:p-[48px] rounded-lg">
+<div class="flex flex-col items-center mb-density-generous">
+<div class="h-12 w-12 bg-surface-container-low rounded-lg flex items-center justify-center border border-outline-variant mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:font-display md:text-display text-on-surface mb-2">Syncora</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">Sign in to your administrator account</p>
+</div>
+<form class="space-y-4" id="loginForm">
+<div class="space-y-1">
+<label class="font-label-mono text-label-mono text-on-surface" for="email">Email Address</label>
+<input class="block w-full border-outline-variant rounded-DEFAULT focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm px-3 py-2 text-on-surface bg-surface-container-lowest" id="email" name="email" placeholder="admin@institution.edu" required="" type="email">
+</div>
+<div class="space-y-1">
+<div class="flex justify-between items-center">
+<label class="font-label-mono text-label-mono text-on-surface" for="password">Password</label>
+<a class="font-body-sm text-body-sm text-primary hover:text-on-primary-fixed-variant transition-colors" href="#">Forgot Password?</a>
+</div>
+<input class="block w-full border-outline-variant rounded-DEFAULT focus:ring-2 focus:ring-primary focus:border-primary sm:text-sm px-3 py-2 text-on-surface bg-surface-container-lowest" id="password" name="password" placeholder="••••••••" required="" type="password">
+</div>
+<div class="pt-2">
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-DEFAULT shadow-sm font-label-mono text-label-mono text-on-primary bg-primary hover:bg-on-primary-fixed-variant focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors relative h-[42px] items-center" id="submitBtn" type="submit">
+<span id="btnText">Sign In</span>
+<div class="hidden absolute inset-0 flex items-center justify-center bg-primary rounded-DEFAULT" id="btnSpinner">
+<svg class="animate-spin h-5 w-5 text-on-primary" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+</div>
+</button>
+</div>
+</form>
+<div class="mt-density-generous text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Need help? <a class="text-primary hover:underline" href="#">Contact Support</a>
+</p>
+</div>
+</div>
+</main>
+<script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const text = document.getElementById('btnText');
+            const spinner = document.getElementById('btnSpinner');
+            
+            // Show loading state
+            btn.disabled = true;
+            btn.classList.add('opacity-90', 'cursor-not-allowed');
+            text.classList.add('invisible');
+            spinner.classList.remove('hidden');
+            
+            // Simulate API call
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.classList.remove('opacity-90', 'cursor-not-allowed');
+                text.classList.remove('invisible');
+                spinner.classList.add('hidden');
+            }, 2000);
+        });
+    </script>
+</body></html>

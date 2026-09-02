@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Research Portal - Grant Proposal Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "fleet-delayed": "#b91c1c",
+                        "primary-container": "#2036bd",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#56657c",
+                        "surface": "#fbf8ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "inverse-surface": "#2f3038",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "tertiary": "#5a2100",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-tertiary-fixed": "#351000",
+                        "map-water": "#e0f2fe",
+                        "inverse-primary": "#bcc3ff",
+                        "on-secondary-fixed": "#0c1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "occupancy-maintenance": "#92400e",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f1effb",
+                        "on-tertiary": "#ffffff",
+                        "map-park": "#f0fdf4",
+                        "surface-container-highest": "#e3e1ed",
+                        "on-surface": "#1a1b23",
+                        "occupancy-available": "#15803d",
+                        "secondary": "#505f76",
+                        "map-road": "#ffffff",
+                        "surface-variant": "#e3e1ed",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "on-primary-fixed": "#000d60",
+                        "primary-fixed": "#dfe0ff",
+                        "occupancy-occupied": "#2036bd",
+                        "surface-container-low": "#f4f2fe",
+                        "tertiary-container": "#7e3100",
+                        "on-primary-container": "#a9b3ff",
+                        "background": "#fbf8ff",
+                        "outline": "#757686",
+                        "fleet-idle": "#64748b",
+                        "secondary-fixed": "#d4e3ff",
+                        "outline-variant": "#c5c5d7",
+                        "on-tertiary-container": "#ffa173",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dad9e4",
+                        "primary": "#001c9d",
+                        "surface-container-high": "#e9e7f2",
+                        "secondary-container": "#d4e3ff",
+                        "on-background": "#1a1b23",
+                        "fleet-transit": "#0369a1",
+                        "surface-tint": "#3b4fd3",
+                        "on-surface-variant": "#454654",
+                        "surface-bright": "#fbf8ff",
+                        "surface-container": "#eeecf8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "node-spacing": "8px",
+                        "grid-gutter": "16px",
+                        "dashboard-margin": "24px",
+                        "map-overlay-gap": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "data-viz": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface-container dark:bg-inverse-surface docked full-width top-0 bg-surface-container-high dark:bg-surface-dim shadow-sm flex justify-between items-center px-dashboard-margin w-full h-16 z-10 shrink-0">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Syncora Research Portal</span>
+<!-- Navigation Links -->
+<nav class="hidden md:flex gap-4 h-full">
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center h-full px-2" href="#">Dashboard</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center h-full px-2 opacity-80 transition-all duration-150" href="#">Grants</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center h-full px-2" href="#">Compliance</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center h-full px-2" href="#">Analytics</a>
+<a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors flex items-center h-full px-2" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search Bar: on_left conceptually placed near nav -->
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="pl-8 pr-3 py-1.5 bg-surface-container-lowest border border-outline-variant rounded text-body-sm w-48 focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Search..." type="text"/>
+</div>
+<!-- Trailing Primary Action -->
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-DEFAULT font-body-sm font-semibold hover:bg-surface-tint transition-colors">
+                New Proposal
+            </button>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-2">
+<button class="p-1.5 text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="p-1.5 text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="help_outline">help_outline</span></button>
+<button class="p-1.5 text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="settings">settings</span></button>
+</div>
+<!-- Profile Image -->
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A professional headshot of an academic researcher in a modern office environment. Soft, diffused lighting highlights their focused expression. The background is slightly blurred but suggests a high-tech laboratory or research facility. The overall color palette is cool and professional, aligning with the clean academic aesthetic of the Syncora Research Portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu-GQn6JJPpP0zzyQFF5-gUccaJXAUUpnKbFv7BFyOBhS4BsBvTr4WVw-Oj5rDuEBdY3Gq7_hKApsBNF-OwCZWhbhg78BG_fC0cwuSUw6mwoLi0vKFvrXlOlnVSsAqRM197C_Pp2IyKpmS_18Y9m8PUhcTaaKXEUGF957CZ_vp13HhvKVBEBXsq5-BkGOhYH6n-UIxC7uK8L3vgXvrLfOUyYOZcDxqy-wQjnh2P54YzbmUIRPM0oSL"/>
+</div>
+</header>
+<!-- Main Workspace Area -->
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar from JSON (Contextual adaptation for Grant Proposal Workspace) -->
+<aside class="bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline docked left-0 h-screen w-64 flex flex-col h-full py-dashboard-margin px-4 shrink-0 overflow-y-auto">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-2">
+<img alt="Academic Unit Logo" class="w-10 h-10 rounded-DEFAULT border border-outline-variant object-cover" data-alt="A clean, minimalist logo representing a Faculty of Science. It features geometric shapes interlocking in shades of deep blue and crisp white, evoking a sense of structure, logic, and scientific inquiry. The design is modern, professional, and free of clutter, perfectly suited for an academic administrative dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwGqMs5C799DYaPIjJNcxelTYeukzRJ1U7JkiQIFeJdV0YCeGvBx5YHN5lyKiqcwRuW8mgMgMVkiE-JA0i4BiGj1jdEAykkmLfee-QUNSVueEs6Bm4pLXzxGcQBADXAfZMsv8F93japU0C1CnNsGT47RLCl8xakWqCpmznn83dpA9GVKDJqRl1bHgqq5jda3V1dtW2jY_wMYMgMzMfdBpSVnYByr2swXJQKyEwJqK5r24ga-ZiA3RP"/>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface dark:text-on-surface-variant">Faculty of Science</h2>
+<p class="font-body-sm text-body-sm text-secondary">Grant Management Unit</p>
+</div>
+</div>
+<button class="w-full mt-4 bg-surface-container-highest text-primary border border-outline-variant py-2 rounded-DEFAULT font-body-sm font-semibold hover:border-primary transition-colors">
+                    Build Budget
+                </button>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all font-body-sm text-body-sm flex items-center gap-3 px-3 py-2 rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Overview
+                </a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all font-body-sm text-body-sm flex items-center gap-3 px-3 py-2 rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="folder_managed">folder_managed</span> Active Projects
+                </a>
+<a class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold rounded-lg font-body-sm text-body-sm flex items-center gap-3 px-3 py-2 scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span> Grant Pipeline
+                </a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all font-body-sm text-body-sm flex items-center gap-3 px-3 py-2 rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span> Financials
+                </a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all font-body-sm text-body-sm flex items-center gap-3 px-3 py-2 rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span> Team Access
+                </a>
+<a class="text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all font-body-sm text-body-sm flex items-center gap-3 px-3 py-2 rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Archived
+                </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<a class="text-secondary hover:text-primary transition-colors font-body-sm text-body-sm flex items-center gap-3 px-3 py-1.5" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span> System Status
+                </a>
+<a class="text-secondary hover:text-primary transition-colors font-body-sm text-body-sm flex items-center gap-3 px-3 py-1.5" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span> Documentation
+                </a>
+</div>
+</aside>
+<!-- Main Content Area - Split Pane Layout -->
+<main class="flex-1 flex overflow-hidden bg-surface-container-lowest">
+<!-- Left Pane: Proposal Stepper -->
+<div class="w-72 border-r border-outline-variant bg-surface overflow-y-auto p-6 shrink-0 hidden md:block">
+<div class="mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Proposal Draft</h3>
+<p class="font-body-sm text-body-sm text-secondary">NSF-2024-AI-Init</p>
+</div>
+<ol class="relative border-l border-outline-variant ml-3 space-y-6">
+<li class="ml-6">
+<span class="absolute flex items-center justify-center w-6 h-6 bg-surface-container-highest rounded-full -left-3 ring-4 ring-surface text-secondary">
+<span class="material-symbols-outlined text-sm">check</span>
+</span>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface">1. Project Info</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Completed</p>
+</li>
+<li class="ml-6">
+<span class="absolute flex items-center justify-center w-6 h-6 bg-surface-container-highest rounded-full -left-3 ring-4 ring-surface text-secondary">
+<span class="material-symbols-outlined text-sm">check</span>
+</span>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface">2. Research Team</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Completed</p>
+</li>
+<li class="ml-6">
+<span class="absolute flex items-center justify-center w-6 h-6 bg-primary rounded-full -left-3 ring-4 ring-surface text-on-primary">
+<span class="font-label-mono text-label-mono">3</span>
+</span>
+<h4 class="font-body-sm text-body-sm font-semibold text-primary">3. Budget Builder</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-1">In Progress</p>
+</li>
+<li class="ml-6">
+<span class="absolute flex items-center justify-center w-6 h-6 bg-surface-container-highest rounded-full -left-3 ring-4 ring-surface text-secondary">
+<span class="font-label-mono text-label-mono">4</span>
+</span>
+<h4 class="font-body-sm text-body-sm font-semibold text-secondary">4. Compliance &amp; Ethics</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Pending</p>
+</li>
+<li class="ml-6">
+<span class="absolute flex items-center justify-center w-6 h-6 bg-surface-container-highest rounded-full -left-3 ring-4 ring-surface text-secondary">
+<span class="font-label-mono text-label-mono">5</span>
+</span>
+<h4 class="font-body-sm text-body-sm font-semibold text-secondary">5. Supporting Documents</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Pending</p>
+</li>
+</ol>
+</div>
+<!-- Right Pane: Budget Builder Workspace -->
+<div class="flex-1 flex flex-col p-6 overflow-y-auto">
+<!-- Header -->
+<div class="flex justify-between items-center mb-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Budget Builder</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">Define line items for direct and indirect costs.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm font-semibold text-on-surface hover:bg-surface-container-low transition-colors">
+                            Save Draft
+                        </button>
+<button class="bg-primary text-on-primary px-5 py-2 rounded-DEFAULT font-body-sm text-body-sm font-semibold hover:bg-surface-tint transition-colors shadow-sm flex items-center gap-2">
+                            Review &amp; Submit <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Status Command Bar -->
+<div class="bg-surface-container-high rounded-lg p-4 mb-6 flex justify-between items-center border border-outline-variant">
+<div class="flex gap-8">
+<div>
+<p class="font-label-mono text-label-mono text-secondary mb-1">TOTAL DIRECT COSTS</p>
+<p class="font-data-viz text-lg text-on-surface">$145,500.00</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-secondary mb-1">INDIRECT COSTS (52%)</p>
+<p class="font-data-viz text-lg text-on-surface">$75,660.00</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-secondary mb-1">PROJECT TOTAL</p>
+<p class="font-data-viz text-lg font-bold text-primary">$221,160.00</p>
+</div>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-secondary text-right mb-1">BUDGET CAP</p>
+<p class="font-data-viz text-lg text-occupancy-available">$250,000.00</p>
+</div>
+</div>
+<!-- Interactive Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex-1 flex flex-col">
+<div class="border-b border-outline-variant bg-surface-container-low px-4 py-3 flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface text-base">Direct Costs</h2>
+<button class="flex items-center gap-1 text-primary font-body-sm text-body-sm hover:underline">
+<span class="material-symbols-outlined text-sm">add</span> Add Line Item
+                        </button>
+</div>
+<div class="overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant font-label-mono text-label-mono text-secondary">
+<th class="p-3 font-medium">Category</th>
+<th class="p-3 font-medium">Description</th>
+<th class="p-3 font-medium">Qty/Months</th>
+<th class="p-3 font-medium text-right">Unit Cost ($)</th>
+<th class="p-3 font-medium text-right">Total ($)</th>
+<th class="p-3 w-10"></th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<!-- Row 1: Personnel -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-3 align-top">
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 cursor-pointer text-on-surface font-body-sm">
+<option selected="">Personnel</option>
+<option>Equipment</option>
+<option>Travel</option>
+<option>Supplies</option>
+</select>
+</td>
+<td class="p-3 align-top">
+<input class="w-full bg-transparent border-b border-transparent focus:border-primary focus:ring-0 p-0 text-on-surface font-body-sm transition-colors" type="text" value="PI Salary (Summer)"/>
+<p class="font-label-mono text-data-viz text-secondary mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Dr. J. Smith</p>
+</td>
+<td class="p-3 align-top w-24">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="number" value="2"/>
+</td>
+<td class="p-3 align-top w-32 text-right">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="text" value="15,000"/>
+</td>
+<td class="p-3 align-top font-data-viz text-right pt-4">
+                                        30,000.00
+                                    </td>
+<td class="p-3 align-top text-center pt-3">
+<button class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</td>
+</tr>
+<!-- Row 2: Personnel -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-3 align-top">
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 cursor-pointer text-on-surface font-body-sm">
+<option selected="">Personnel</option>
+<option>Equipment</option>
+<option>Travel</option>
+<option>Supplies</option>
+</select>
+</td>
+<td class="p-3 align-top">
+<input class="w-full bg-transparent border-b border-transparent focus:border-primary focus:ring-0 p-0 text-on-surface font-body-sm transition-colors" type="text" value="Graduate Research Assistant"/>
+<p class="font-label-mono text-data-viz text-secondary mt-1 opacity-0 group-hover:opacity-100 transition-opacity">TBD</p>
+</td>
+<td class="p-3 align-top w-24">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="number" value="12"/>
+</td>
+<td class="p-3 align-top w-32 text-right">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="text" value="3,500"/>
+</td>
+<td class="p-3 align-top font-data-viz text-right pt-4">
+                                        42,000.00
+                                    </td>
+<td class="p-3 align-top text-center pt-3">
+<button class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</td>
+</tr>
+<!-- Row 3: Equipment -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-3 align-top">
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 cursor-pointer text-on-surface font-body-sm">
+<option>Personnel</option>
+<option selected="">Equipment</option>
+<option>Travel</option>
+<option>Supplies</option>
+</select>
+</td>
+<td class="p-3 align-top">
+<input class="w-full bg-transparent border-b border-transparent focus:border-primary focus:ring-0 p-0 text-on-surface font-body-sm transition-colors" type="text" value="High-Performance Compute Node"/>
+<p class="font-label-mono text-data-viz text-secondary mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Quote attached</p>
+</td>
+<td class="p-3 align-top w-24">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="number" value="1"/>
+</td>
+<td class="p-3 align-top w-32 text-right">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="text" value="65,000"/>
+</td>
+<td class="p-3 align-top font-data-viz text-right pt-4">
+                                        65,000.00
+                                    </td>
+<td class="p-3 align-top text-center pt-3">
+<button class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</td>
+</tr>
+<!-- Row 4: Travel -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-3 align-top">
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 cursor-pointer text-on-surface font-body-sm">
+<option>Personnel</option>
+<option>Equipment</option>
+<option selected="">Travel</option>
+<option>Supplies</option>
+</select>
+</td>
+<td class="p-3 align-top">
+<input class="w-full bg-transparent border-b border-transparent focus:border-primary focus:ring-0 p-0 text-on-surface font-body-sm transition-colors" type="text" value="Annual AI Conference (Domestic)"/>
+<p class="font-label-mono text-data-viz text-secondary mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Flight, Hotel, Per Diem</p>
+</td>
+<td class="p-3 align-top w-24">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="number" value="3"/>
+</td>
+<td class="p-3 align-top w-32 text-right">
+<input class="w-full bg-transparent border border-transparent focus:border-primary focus:ring-0 p-1 text-on-surface font-data-viz rounded transition-colors text-right" type="text" value="2,833.33"/>
+</td>
+<td class="p-3 align-top font-data-viz text-right pt-4">
+                                        8,500.00
+                                    </td>
+<td class="p-3 align-top text-center pt-3">
+<button class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Indirect Costs Configurator -->
+<div class="mt-6 flex justify-end">
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-4 w-96">
+<h3 class="font-label-mono text-label-mono text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">settings</span> Rate Configuration
+                         </h3>
+<div class="flex items-center justify-between mb-2">
+<label class="font-body-sm text-body-sm text-secondary">Indirect Cost Rate (F&amp;A)</label>
+<div class="flex items-center gap-1">
+<input class="w-16 bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded p-1 text-right font-data-viz text-sm" type="number" value="52"/>
+<span class="font-body-sm text-secondary">%</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary text-xs">Standard federally negotiated rate applied to Modified Total Direct Costs (MTDC).</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

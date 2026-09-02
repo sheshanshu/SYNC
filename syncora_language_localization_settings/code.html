@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora OS - Language &amp; Localization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eef0ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e2e7ff",
+                        "surface-bright": "#faf8ff",
+                        "on-surface-variant": "#454654",
+                        "tertiary-container": "#a44200",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-container-highest": "#dae2fd",
+                        "outline-variant": "#c5c5d7",
+                        "inverse-primary": "#bbc3ff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dfe0ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "secondary": "#505f76",
+                        "secondary-container": "#d0e1fb",
+                        "on-surface": "#131b2e",
+                        "on-primary-fixed": "#000d60",
+                        "on-secondary-fixed": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eaedff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#d7daff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-container": "#ffd3bf",
+                        "surface-variant": "#dae2fd",
+                        "inverse-surface": "#283044",
+                        "primary-container": "#3e52d5",
+                        "on-background": "#131b2e",
+                        "background": "#faf8ff",
+                        "outline": "#757686",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#351000",
+                        "tertiary": "#7e3100",
+                        "surface-dim": "#d2d9f4",
+                        "primary": "#2036bd",
+                        "surface-tint": "#3b4fd2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "base": "4px",
+                        "gutter-grid": "16px",
+                        "density-generous": "32px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ghost-border {
+            border: 1px solid theme('colors.outline-variant');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-surface dark:bg-surface-dim font-body-md text-body-md h-full w-64 border-r border-outline-variant fixed left-0 top-0 h-screen flex flex-col z-40 hidden md:flex">
+<div class="p-margin-page border-b border-outline-variant">
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">Syncora OS</h1>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-base">Institutional Admin</p>
+</div>
+<nav class="flex-1 py-margin-page px-density-compact overflow-y-auto space-y-base">
+<!-- General -->
+<a class="flex items-center gap-3 px-padding-card py-2.5 rounded-DEFAULT text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>General</span>
+</a>
+<!-- Identity -->
+<a class="flex items-center gap-3 px-padding-card py-2.5 rounded-DEFAULT text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span>Identity</span>
+</a>
+<!-- Academic -->
+<a class="flex items-center gap-3 px-padding-card py-2.5 rounded-DEFAULT text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span>Academic</span>
+</a>
+<!-- Security -->
+<a class="flex items-center gap-3 px-padding-card py-2.5 rounded-DEFAULT text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span>Security</span>
+</a>
+<!-- Localization (Active) -->
+<a class="flex items-center gap-3 px-padding-card py-2.5 rounded-DEFAULT text-primary dark:text-primary-fixed-dim font-bold bg-secondary-container/50 dark:bg-secondary-container/20 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">language</span>
+<span>Localization</span>
+</a>
+<!-- API -->
+<a class="flex items-center gap-3 px-padding-card py-2.5 rounded-DEFAULT text-on-surface-variant dark:text-outline-variant hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span>API</span>
+</a>
+</nav>
+<div class="p-margin-page border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-DEFAULT bg-surface-container border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors duration-200">
+<span class="material-symbols-outlined text-[18px]">dns</span>
+<span>System Status</span>
+</button>
+<div class="mt-margin-page flex items-center gap-3">
+<img alt="Syncora Admin Profile" class="w-8 h-8 rounded-full object-cover ghost-border" data-alt="A small, professional headshot avatar of an institutional administrator. The portrait is well-lit, sharp, set against a neutral light grey background, conveying competence and administrative authority in a modern light-mode interface context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgysvQjO_vku3mMCXHltCaySUuSwus2Vx0YM86cHIEyIo2RxK7JZ8ycLP2uExn8h5VwmDcPFb3gMqI6jK14pfGyQdJTuS_haTE_r_y__3qXTpu7_V9alZ5mAzrU5dDA7i2S2OvY8Z-TD8zoYShaHnpPSipw9Wmm_iTQCujf_UzdVnVNLckW1x4PpuEnU76Uy_q41h_nKW7toPXLZUv1-hd9p7QOEPl6M6hNtrJKD5x6KdMaF2OMHfE"/>
+<div class="flex-1 truncate">
+<p class="font-label-mono text-label-mono text-on-surface truncate">Admin.User</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim font-body-sm text-body-sm flex justify-between items-center w-full px-margin-page py-density-compact sticky top-0 z-50 docked full-width top border-b border-outline-variant">
+<!-- Left side: Mobile Brand & Search -->
+<div class="flex items-center gap-margin-page flex-1">
+<h1 class="md:hidden text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">Syncora OS</h1>
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-DEFAULT py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-sm text-body-sm text-on-surface placeholder-on-surface-variant transition-all" placeholder="Search settings, users, or reports..." type="text"/>
+</div>
+</div>
+<!-- Center: Navigation (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-gutter-grid">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all scale-95 active:scale-90 font-label-mono text-label-mono uppercase tracking-wider" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all scale-95 active:scale-90 font-label-mono text-label-mono uppercase tracking-wider" href="#">Users</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all scale-95 active:scale-90 font-label-mono text-label-mono uppercase tracking-wider" href="#">Reports</a>
+</nav>
+<!-- Right side: Actions -->
+<div class="flex items-center gap-density-compact ml-auto">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low rounded-DEFAULT">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low rounded-DEFAULT">
+<span class="material-symbols-outlined">help</span>
+</button>
+<img alt="Administrator Avatar" class="w-8 h-8 rounded-full object-cover ml-2 ghost-border md:hidden" data-alt="A small circular avatar placeholder for the top navigation bar. Similar to the sidebar avatar, it depicts a professional individual in a corporate or academic administrative setting, brightly lit with soft focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCirqjWOfHtCxKmLXagG0Fz18tglU3-ZKd4urSXYnXK0ZvDM-AxIpCCTLF4lcv2VmH7Ee0cVh_miuNWsHxFJ55_OA3DH69jMwczNSpPhJEeIFAHbHQo3A6NAJQrRoDCcUCUy9C6yWjdQ1l40yjws9rOtP_DRVzAdvfK82z1d5RQdTAopU_dSnksQCPe_xzV_CYq2-9gdezPgelURcShjayRjiMHOVcbiapdR9h1a1qAkQIMMcdO4QVK"/>
+<button class="hidden md:flex ml-4 bg-primary text-on-primary px-4 py-2 rounded-DEFAULT font-label-mono text-label-mono hover:bg-primary-container hover:text-on-primary-container transition-colors items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">save</span>
+                    Save Changes
+                </button>
+</div>
+</header>
+<!-- Canvas / Content -->
+<div class="flex-1 p-margin-page md:p-density-generous pb-32">
+<div class="max-w-5xl mx-auto space-y-density-generous">
+<!-- Page Header -->
+<div>
+<h2 class="font-display text-display text-on-surface">Language &amp; Localization</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">Manage institutional regional defaults and multi-language support across the platform.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-grid">
+<!-- Card 1: System Language (Spans 8 cols) -->
+<section class="lg:col-span-8 bg-surface-container-lowest ghost-border rounded-lg p-padding-card">
+<div class="flex items-start justify-between mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">translate</span>
+                                    System Language
+                                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Set the primary fallback language and manage enabled languages for users.</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Primary Platform Language</label>
+<select class="w-full bg-surface border border-outline-variant rounded-DEFAULT py-2.5 px-4 focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md text-on-surface appearance-none cursor-pointer">
+<option selected="" value="en-US">English (United States)</option>
+<option value="en-GB">English (United Kingdom)</option>
+<option value="es-ES">Spanish (Spain)</option>
+<option value="fr-FR">French (France)</option>
+</select>
+</div>
+<div>
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider block mb-3">Enabled Languages</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<!-- Enabled Toggle 1 -->
+<label class="flex items-center justify-between p-3 border border-primary/30 bg-primary-fixed-dim/10 rounded-DEFAULT cursor-pointer hover:bg-primary-fixed-dim/20 transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-2xl">🇺🇸</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">English (US)</span>
+</div>
+<input checked="" class="form-checkbox text-primary rounded-sm focus:ring-primary h-5 w-5 border-outline-variant" disabled="" type="checkbox"/>
+</label>
+<!-- Enabled Toggle 2 -->
+<label class="flex items-center justify-between p-3 border border-outline-variant bg-surface rounded-DEFAULT cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-2xl">🇪🇸</span>
+<span class="font-body-md text-body-md text-on-surface">Spanish</span>
+</div>
+<input checked="" class="form-checkbox text-primary rounded-sm focus:ring-primary h-5 w-5 border-outline-variant" type="checkbox"/>
+</label>
+<!-- Enabled Toggle 3 -->
+<label class="flex items-center justify-between p-3 border border-outline-variant bg-surface rounded-DEFAULT cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-2xl">🇫🇷</span>
+<span class="font-body-md text-body-md text-on-surface">French</span>
+</div>
+<input class="form-checkbox text-primary rounded-sm focus:ring-primary h-5 w-5 border-outline-variant" type="checkbox"/>
+</label>
+<!-- Enabled Toggle 4 -->
+<label class="flex items-center justify-between p-3 border border-outline-variant bg-surface rounded-DEFAULT cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-2xl">🇸🇦</span>
+<span class="font-body-md text-body-md text-on-surface">Arabic</span>
+</div>
+<input class="form-checkbox text-primary rounded-sm focus:ring-primary h-5 w-5 border-outline-variant" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Currency & Measurements (Spans 4 cols) -->
+<section class="lg:col-span-4 bg-surface-container-lowest ghost-border rounded-lg p-padding-card flex flex-col">
+<div class="mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">payments</span>
+                                Units &amp; Currency
+                            </h3>
+</div>
+<div class="space-y-6 flex-1">
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Default Currency</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-DEFAULT py-2.5 pl-4 pr-10 focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md text-on-surface appearance-none cursor-pointer">
+<option value="USD">USD ($)</option>
+<option value="EUR">EUR (€)</option>
+<option value="GBP">GBP (£)</option>
+<option value="JPY">JPY (¥)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Measurement System</label>
+<div class="flex border border-outline-variant rounded-DEFAULT overflow-hidden">
+<button class="flex-1 py-2 text-center font-label-mono text-label-mono bg-primary-container text-on-primary-container font-semibold transition-colors">Metric</button>
+<button class="flex-1 py-2 text-center font-label-mono text-label-mono bg-surface text-on-surface-variant hover:bg-surface-container-low transition-colors border-l border-outline-variant">Imperial</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 2: Regional Formats (Spans 12 cols) -->
+<section class="lg:col-span-12 bg-surface-container-lowest ghost-border rounded-lg p-padding-card">
+<div class="mb-6 border-b border-outline-variant pb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">public</span>
+                                Regional Formats
+                            </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-grid">
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Timezone</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-DEFAULT py-2.5 pl-9 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md text-on-surface" type="text" value="America/New_York (GMT-4)"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Date Format</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-DEFAULT py-2.5 pl-4 pr-10 focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md text-on-surface appearance-none cursor-pointer">
+<option value="MM/DD/YYYY">MM/DD/YYYY (12/31/2024)</option>
+<option value="DD/MM/YYYY">DD/MM/YYYY (31/12/2024)</option>
+<option value="YYYY-MM-DD">YYYY-MM-DD (2024-12-31)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Number Format</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-DEFAULT py-2.5 pl-4 pr-10 focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md text-on-surface appearance-none cursor-pointer">
+<option value="US">1,234,567.89</option>
+<option value="EU">1.234.567,89</option>
+<option value="CH">1'234'567.89</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 4: Institutional Content Translation (Spans 12 cols) -->
+<section class="lg:col-span-12 bg-surface-container-lowest ghost-border rounded-lg overflow-hidden flex flex-col">
+<div class="p-padding-card border-b border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">spellcheck</span>
+                                    Content Translation Status
+                                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Status of custom string localization across institutional modules.</p>
+</div>
+<button class="bg-surface border border-outline-variant text-on-surface px-4 py-2 rounded-DEFAULT font-label-mono text-label-mono hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+                                Import .PO
+                            </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="py-3 px-padding-card font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Module</th>
+<th class="py-3 px-padding-card font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider text-right">Total Strings</th>
+<th class="py-3 px-padding-card font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider w-1/3">Translation % (Non-EN)</th>
+<th class="py-3 px-padding-card font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant bg-surface-container-lowest">
+<tr class="hover:bg-surface transition-colors">
+<td class="py-4 px-padding-card font-body-md text-body-md text-on-surface font-semibold">Course Catalog</td>
+<td class="py-4 px-padding-card font-label-mono text-label-mono text-on-surface-variant text-right">1,245</td>
+<td class="py-4 px-padding-card">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 100%;"></div>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface">100%</span>
+</div>
+</td>
+<td class="py-4 px-padding-card text-right">
+<button class="text-primary hover:text-primary-container font-label-mono text-label-mono transition-colors">Review</button>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="py-4 px-padding-card font-body-md text-body-md text-on-surface font-semibold">Student Portal (Nav)</td>
+<td class="py-4 px-padding-card font-label-mono text-label-mono text-on-surface-variant text-right">312</td>
+<td class="py-4 px-padding-card">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 85%;"></div>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface">85%</span>
+</div>
+</td>
+<td class="py-4 px-padding-card text-right">
+<button class="text-primary hover:text-primary-container font-label-mono text-label-mono transition-colors">Edit Missing</button>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="py-4 px-padding-card font-body-md text-body-md text-on-surface font-semibold">Financial Aid Forms</td>
+<td class="py-4 px-padding-card font-label-mono text-label-mono text-on-surface-variant text-right">89</td>
+<td class="py-4 px-padding-card">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 12%;"></div>
+</div>
+<span class="font-label-mono text-label-mono text-error font-semibold">12%</span>
+</div>
+</td>
+<td class="py-4 px-padding-card text-right">
+<button class="text-error hover:text-on-error-container font-label-mono text-label-mono transition-colors">Prioritize</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer / Action Bar -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim font-label-mono text-label-mono fixed bottom-0 right-0 w-full md:w-[calc(100%-16rem)] flex justify-between items-center px-margin-page py-4 bg-surface/80 backdrop-blur-md z-40 docked full-width bottom-0 border-t border-outline-variant shadow-[0_-4px_24px_-12px_rgba(0,0,0,0.1)]">
+<div class="hidden sm:flex items-center gap-4 text-on-surface-variant">
+<p>© 2024 Syncora Institutional OS. All rights reserved.</p>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<a class="hover:text-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="hover:text-on-surface transition-colors opacity-80 hover:opacity-100" href="#">Documentation</a>
+</div>
+<div class="flex items-center gap-4 ml-auto sm:ml-0 w-full sm:w-auto justify-end">
+<button class="px-6 py-2.5 rounded-DEFAULT border border-outline-variant bg-surface text-on-surface hover:bg-surface-container-low transition-colors font-label-mono text-label-mono">
+                Cancel
+            </button>
+<button class="px-6 py-2.5 rounded-DEFAULT bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-mono text-label-mono flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                Save Changes
+            </button>
+</div>
+</footer>
+</body></html>

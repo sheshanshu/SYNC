@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>User Profile - Syncora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-high": "#e2e7ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary": "#7e3100",
+                        "outline-variant": "#c5c5d7",
+                        "surface-container-low": "#f2f3ff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "surface": "#faf8ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary-container": "#54647a",
+                        "primary-container": "#3e52d5",
+                        "on-surface-variant": "#454654",
+                        "surface-variant": "#dae2fd",
+                        "tertiary-container": "#a44200",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "inverse-surface": "#283044",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#bbc3ff",
+                        "primary": "#2036bd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "secondary": "#505f76",
+                        "surface-container-highest": "#dae2fd",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container": "#eaedff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#131b2e",
+                        "primary-fixed": "#dfe0ff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#faf8ff",
+                        "on-background": "#131b2e",
+                        "on-primary-fixed": "#000d60",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-tint": "#3b4fd2",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#757686",
+                        "on-primary-container": "#d7daff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "16px",
+                        "density-generous": "32px",
+                        "base": "4px",
+                        "padding-card": "16px",
+                        "density-compact": "8px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        /* 3D Flip Styles */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        .flip-card { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .flip-card-container.flipped .flip-card { transform: rotateY(180deg); }
+        
+        /* Barcode emulation */
+        .barcode-lines {
+            background: repeating-linear-gradient(
+                90deg,
+                #000,
+                #000 2px,
+                transparent 2px,
+                transparent 4px,
+                #000 4px,
+                #000 7px,
+                transparent 7px,
+                transparent 9px,
+                #000 9px,
+                #000 10px,
+                transparent 10px,
+                transparent 13px
+            );
+            height: 40px;
+            width: 100%;
+        }
+    </style>
+<script>
+        function toggleFlip(element) {
+            element.classList.toggle('flipped');
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-background/80 backdrop-blur-md border-b border-surface-container-high transition-colors">
+<div class="flex items-center justify-between px-margin-page h-16 w-full max-w-md mx-auto">
+<button aria-label="Go back" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container active:scale-95 duration-150 text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-semibold text-on-surface tracking-tight">Settings</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<main class="w-full max-w-md mx-auto px-margin-page py-6 space-y-density-generous">
+<!-- Interactive Glassmorphic ID Card Container -->
+<section class="relative w-full h-[220px] perspective-1000 cursor-pointer flip-card-container mx-auto flipped" onclick="toggleFlip(this)">
+<div class="flip-card relative w-full h-full transform-style-3d">
+<!-- Front of Card -->
+<div class="absolute inset-0 backface-hidden rounded-xl border border-white/30 shadow-lg backdrop-blur-2xl bg-white/10 overflow-hidden flex flex-col p-3 z-[2]">
+<div class="flex items-center border-b border-primary pb-1.5 mb-2">
+<div class="w-10 h-10 flex-shrink-0 rounded-full border border-primary bg-white flex items-center justify-center text-primary font-bold text-[10px] mr-2">
+<span class="material-symbols-outlined text-sm">school</span>
+</div>
+<div class="flex-1 text-center">
+<h5 class="text-[12px] font-bold text-on-surface tracking-tight uppercase">Syncora University</h5>
+<p class="text-[7px] text-on-surface-variant leading-tight">Approved under Section 2(f) &amp; 12(B) of UGC Act 1956</p>
+<p class="text-[7px] text-error font-semibold leading-tight">Accredited by NAAC with Grade A+</p>
+</div>
+</div>
+<div class="text-center mb-2">
+<h6 class="text-[10px] font-semibold text-primary border-b border-outline-variant/50 pb-0.5">School of Computing Sciences</h6>
+</div>
+<div class="flex gap-3">
+<div class="w-16 h-20 flex-shrink-0 border border-outline-variant rounded overflow-hidden">
+<img alt="Student Photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UjKhab4o_1rrN014TFu8afoczvT6xxZvslW8FuKpVVPFDCDexXvefbQdX1FUnDQovT2pMLJp2IrTCld5l0oCFRxAjnkYB10xRXUNvJmsrVQn61MpmbkY39JZuzNXyN-jPQ1QPBCq8z2HPktQ2-crd0NoCeeAamsxeEqS_DMEApesKeZzQoy6Me5pieBa03CWMKb9eeLGzWVaN46N4DwwdXStZGQwzg-zPJ9jvoZrC-xJ5wVE1W8KFK3Vk">
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<p class="font-bold text-[12px] text-on-surface mb-1">SHESHANSHU KUMAR</p>
+<div class="grid grid-cols-[auto_1fr] gap-x-2 text-[9px] text-on-surface-variant">
+<span class="font-semibold text-on-surface">Father's Name</span><span class="text-on-surface">: Raj Kumar</span>
+<span class="font-semibold text-on-surface">Course</span><span class="text-on-surface">: B.Tech CS</span>
+<span class="font-semibold text-on-surface">Batch</span><span class="text-on-surface">: 2021 - 2025</span>
+</div>
+<div class="w-full flex flex-col items-center justify-center -bottom-6 mt-2">
+<div class="barcode-lines opacity-80 mix-blend-multiply h-4 w-full"></div>
+<span class="text-[7px] font-bold text-on-surface mt-0.5">SYNC-21CS042</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Back of Card -->
+<div class="absolute inset-0 backface-hidden rotate-y-180 rounded-xl border border-white/30 shadow-lg backdrop-blur-2xl bg-white/10 p-3 flex flex-col justify-between z-[1]">
+<div class="flex flex-col h-full">
+<div class="mb-1">
+<h5 class="text-[11px] font-bold text-on-surface border-b border-outline-variant/50 pb-0.5 mb-1">Terms &amp; Conditions</h5>
+<ul class="text-[8px] text-on-surface-variant font-medium list-disc pl-3 space-y-0.5">
+<li class="">This card is non-transferable and remains property of Syncora University.</li>
+<li class="">Valid for the duration of the program only.</li>
+<li class="">Loss of card must be reported immediately to the administration.</li>
+</ul>
+</div>
+<div class="border-t border-outline-variant/50 my-1"></div>
+<div class="flex flex-col items-center justify-center py-1">
+<div class="barcode-lines mix-blend-multiply h-6 w-full"></div>
+<span class="text-[8px] font-bold text-on-surface mt-0.5">ID: UU-MCA-2022-8472</span>
+</div>
+<div class="border-t border-outline-variant/50 my-1"></div>
+<div class="text-center mt-auto pb-0.5">
+<p class="text-[8px] font-bold text-on-surface">If found, please return to:</p>
+<p class="text-[7px] text-on-surface-variant font-medium">Syncora Admin Block, Sector 4, Tech Valley, CA 90210</p>
+<p class="text-[7px] text-on-surface-variant font-medium">Contact: +91-135-2770300 | info@syncora.edu</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 text-on-surface-variant/60 font-body-sm text-xs">
+<span class="material-symbols-outlined text-[14px]">touch_app</span>
+Tap to flip
+</div>
+</section>
+<!-- Profile Settings Form -->
+<section class="space-y-6 pt-4">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface border-b border-surface-container-high pb-2">Profile Details</h3>
+<form class="space-y-4">
+<!-- Photo Upload Section -->
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl border border-surface-container-high">
+<div class="w-16 h-16 rounded-full overflow-hidden shrink-0 border border-outline-variant">
+<img alt="Current profile picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UjKhab4o_1rrN014TFu8afoczvT6xxZvslW8FuKpVVPFDCDexXvefbQdX1FUnDQovT2pMLJp2IrTCld5l0oCFRxAjnkYB10xRXUNvJmsrVQn61MpmbkY39JZuzNXyN-jPQ1QPBCq8z2HPktQ2-crd0NoCeeAamsxeEqS_DMEApesKeZzQoy6Me5pieBa03CWMKb9eeLGzWVaN46N4DwwdXStZGQwzg-zPJ9jvoZrC-xJ5wVE1W8KFK3Vk">
+</div>
+<div class="flex flex-col sm:flex-row gap-2 w-full">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-body-sm font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">upload</span> Upload
+                        </button>
+<button class="px-4 py-2 bg-surface text-error rounded-lg border border-error-container hover:bg-error-container/20 transition-colors font-body-sm font-medium" type="button">
+                            Remove
+                        </button>
+</div>
+</div>
+<!-- Inputs -->
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-medium text-on-surface" for="firstName">First Name</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface text-on-surface focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-shadow font-body-md text-body-md" id="firstName" type="text" value="Sheshanshu">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-medium text-on-surface" for="lastName">Last Name</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface text-on-surface focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-shadow font-body-md text-body-md" id="lastName" type="text" value="Kumar">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-medium text-on-surface" for="email">Email Address</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-surface text-on-surface focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-shadow font-body-md text-body-md" id="email" type="email" value="sheshanshu.k@syncora.edu">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-medium text-on-surface" for="role">Role</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant/50 bg-surface-container text-on-surface-variant cursor-not-allowed font-body-md text-body-md" disabled="" id="role" type="text" value="Student">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-medium text-on-surface" for="dept">Department</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant/50 bg-surface-container text-on-surface-variant cursor-not-allowed font-body-md text-body-md" disabled="" id="dept" type="text" value="Computer Sci.">
+</div>
+</div>
+</div>
+<div class="pt-6 pb-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-headline-md text-headline-md font-semibold shadow-sm hover:bg-primary/90 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+                        Save Changes
+                    </button>
+</div>
+</form>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-90 duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-mono text-label-mono mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-90 duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">groups</span>
+<span class="font-label-mono text-label-mono mt-1">Directory</span>
+</a>
+<a class="flex flex-col items-center justify-center flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-mono text-label-mono mt-1">Profile</span>
+</a>
+</nav>
+
+
+</body></html>

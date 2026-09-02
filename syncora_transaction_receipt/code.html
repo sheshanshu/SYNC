@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Transaction Receipt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "occupancy-available": "#15803d",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-highest": "#e3e1ed",
+                        "occupancy-maintenance": "#92400e",
+                        "on-primary-container": "#a9b3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#505f76",
+                        "on-error-container": "#93000a",
+                        "fleet-transit": "#0369a1",
+                        "inverse-surface": "#2f3038",
+                        "on-surface-variant": "#454654",
+                        "surface-container-high": "#e9e7f2",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "fleet-idle": "#64748b",
+                        "on-tertiary-container": "#ffa173",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d4e3ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "occupancy-occupied": "#2036bd",
+                        "on-secondary-fixed": "#0c1c30",
+                        "on-background": "#1a1b23",
+                        "surface-variant": "#e3e1ed",
+                        "background": "#fbf8ff",
+                        "on-surface": "#1a1b23",
+                        "outline": "#757686",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d4e3ff",
+                        "primary-fixed": "#dfe0ff",
+                        "surface": "#fbf8ff",
+                        "surface-container-low": "#f4f2fe",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#bcc3ff",
+                        "outline-variant": "#c5c5d7",
+                        "primary": "#001c9d",
+                        "map-park": "#f0fdf4",
+                        "map-road": "#ffffff",
+                        "surface-bright": "#fbf8ff",
+                        "map-water": "#e0f2fe",
+                        "surface-container": "#eeecf8",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "tertiary-container": "#7e3100",
+                        "tertiary": "#5a2100",
+                        "inverse-on-surface": "#f1effb",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dad9e4",
+                        "surface-tint": "#3b4fd3",
+                        "primary-container": "#2036bd",
+                        "on-secondary-container": "#56657c",
+                        "fleet-delayed": "#b91c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "node-spacing": "8px",
+                        "map-overlay-gap": "12px",
+                        "dashboard-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "data-viz": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            font-weight: 800;
+            color: rgba(21, 128, 61, 0.05); /* occupancy-available with low opacity */
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+        .receipt-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows transition-all duration-200 ease-in-out flex justify-between items-center w-full px-dashboard-margin py-4 z-40">
+<div class="flex items-center space-x-6">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Syncora Finance</span>
+<nav class="hidden md:flex space-x-6">
+<!-- Transaction screen implies Payments context -->
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Overview</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Invoices</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary dark:border-primary-fixed pb-1" href="#">Payments</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A clean, professional headshot of an administrator in a well-lit office setting. The lighting is soft and neutral, conveying trust and competence. The image is cropped to a perfect circle for a profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoFt95891iTthALvtp6P0trlFxbu37Pk3MUygdR0p8qG99WAeJXftJ9XNZR-KCIsFxPcc7HOaQ946sMc3Jj0jOp9bMCOOEmkXYyParpQEgjqW9HPU7oZCFYFOgsk3rBMQi5gr4cbyc49B_V7sETfK_4k02P75ow56YE1YiY1T-Gr7ZJ9cYBALsSYjgm9htxxcn2qHwIx7FZZYBCr32chMeHPk_msxEQq6IQ2O6OVc6YiwCvUaxP5rl"/>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar - Only visible on desktop if needed, but usually hidden for focused views. Showing it based on Shared Components logic for destination screens, though this is a detail view, it might be part of the main flow. Decided to keep it as it's a primary ecosystem app -->
+<nav class="hidden lg:flex bg-surface-container dark:bg-surface-container docked h-screen w-64 left-0 bg-surface-container-high dark:bg-surface-container-high flat no shadows flex-col p-4 space-y-node-spacing z-30">
+<div class="mb-8 flex items-center space-x-3">
+<img alt="Syncora Institution Logo" class="w-10 h-10 rounded-lg object-cover" data-alt="A highly stylized, minimalist institutional crest logo. It features geometric lines forming a stylized book and columns, rendered in deep primary blue. The background is pure white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCcZ2hVhOrDeVa6ir9HVZzQN8ok4dGZ8V3m-U7--FUdAD9t4TBZsqJda5do2px5heUQQlZ5zJg_UB5qX5kxcNFai6ZQE-YhsFGia0-ExhAPtnO4I4HIf-xAm3jz4x_R6e1lxo3QaVKfssR_zPLf54mkkmF8VD9_clfyGYxxpPGDwf-TsmeNm5qoEBFZZE4_9Z_QcgSnapIlSzvpsoZlWesP9FxF8sxd9spGD1pXsKM7LQaJFYIK8yX"/>
+<div>
+<h2 class="font-body-md text-body-md font-bold text-on-surface">Institutional Finance</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Billing &amp; Invoicing</p>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-body-md">Billing Nodes</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-body-md text-body-md">Fleet Accounts</span>
+</a>
+<!-- Payments maps closer to Fee Structure or Billing Nodes. Assuming Fee Structure for now -->
+<a class="flex items-center space-x-3 p-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary font-bold rounded-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Fee Structure</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md text-body-md">Audit Logs</span>
+</a>
+</div>
+<button class="w-full py-2 px-4 bg-primary text-on-primary font-body-md text-body-md rounded-lg mb-6 hover:bg-on-primary-fixed-variant transition-colors">
+                Generate Report
+            </button>
+<div class="mt-auto space-y-2 border-t border-outline-variant pt-4">
+<a class="flex items-center space-x-3 p-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-sm text-body-sm">Support</span>
+</a>
+<a class="flex items-center space-x-3 p-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-variant dark:hover:bg-inverse-surface rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-sm text-body-sm">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 p-dashboard-margin overflow-y-auto bg-surface-container-low flex justify-center items-start">
+<!-- Receipt Canvas -->
+<div class="w-full max-w-3xl bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm relative overflow-hidden flex flex-col min-h-[800px]">
+<!-- Watermark -->
+<div class="watermark font-headline-lg">PAID</div>
+<!-- Receipt Header Actions (Print/Download) - Kept outside the printable area conceptually, but docked top -->
+<div class="bg-surface-container px-6 py-4 border-b border-outline-variant flex justify-between items-center z-10 receipt-content">
+<a class="flex items-center text-on-surface-variant hover:text-primary transition-colors text-body-md font-body-md" href="#">
+<span class="material-symbols-outlined mr-2 text-[18px]">arrow_back</span>
+                        Back to Payments
+                    </a>
+<div class="flex space-x-3">
+<button class="flex items-center px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface rounded-lg hover:border-primary transition-colors font-body-md text-body-md">
+<span class="material-symbols-outlined mr-2 text-[18px]">mail</span>
+                            Email Receipt
+                        </button>
+<button class="flex items-center px-4 py-2 bg-primary text-on-primary rounded-lg hover:bg-on-primary-fixed-variant transition-colors font-body-md text-body-md">
+<span class="material-symbols-outlined mr-2 text-[18px]">download</span>
+                            Download PDF
+                        </button>
+</div>
+</div>
+<!-- Printable Receipt Body -->
+<div class="p-8 md:p-12 flex-1 receipt-content flex flex-col">
+<!-- Institution Header -->
+<div class="flex justify-between items-start mb-12">
+<div class="flex items-center space-x-4">
+<img alt="University Logo" class="w-16 h-16 object-contain" data-alt="A detailed, high-resolution rendering of a formal university seal. The seal features a shield with classical academic symbols—a torch, a book, and an olive branch—rendered in deep navy blue and metallic silver lines on a transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiL5XyQq5iIRYiL95OvUokd0N1yjM_sFvIQdRdd0FVpAf9Tx0hXXuI9R_LcdFNUSXIbiLF2A0RIDm3-51lncDA9CVQTrSBEY8ykqkFYOR2Mu_NAZsMKQKXrB05S7SBR77B3k33eZalwdJ71jbpT4ttBc6Ba1Say2PqYmAj66jqLKl4zRQatuPn7WiI14HyKJ9SqPxaF_GqCs0y0YI0tfKqgxxsbZWuXdGdj8UCVEXzL68SnFhx0bUv"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface m-0">Syncora University</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Office of the Bursar<br/>123 Academic Way, Techville</p>
+</div>
+</div>
+<div class="text-right">
+<h2 class="font-headline-md text-headline-md text-secondary m-0">Official Receipt</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-2">Date: <span class="text-on-surface">Oct 24, 2023</span></p>
+</div>
+</div>
+<!-- Transaction Meta Data -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 p-6 bg-surface-container-low rounded-lg border border-outline-variant/50">
+<div>
+<h3 class="font-label-mono text-label-mono text-secondary mb-3 uppercase tracking-wider">Student Details</h3>
+<div class="space-y-1">
+<p class="font-body-md text-body-md"><span class="text-on-surface-variant inline-block w-24">Name:</span> <span class="font-semibold text-on-surface">Eleanor Vance</span></p>
+<p class="font-body-md text-body-md"><span class="text-on-surface-variant inline-block w-24">Student ID:</span> <span class="font-label-mono text-on-surface">SU-8492-77</span></p>
+<p class="font-body-md text-body-md"><span class="text-on-surface-variant inline-block w-24">Department:</span> <span class="text-on-surface">Computer Science</span></p>
+</div>
+</div>
+<div>
+<h3 class="font-label-mono text-label-mono text-secondary mb-3 uppercase tracking-wider">Payment Details</h3>
+<div class="space-y-1">
+<p class="font-body-md text-body-md"><span class="text-on-surface-variant inline-block w-32">Transaction ID:</span> <span class="font-label-mono text-on-surface">TXN-99482100A</span></p>
+<p class="font-body-md text-body-md"><span class="text-on-surface-variant inline-block w-32">Method:</span> <span class="text-on-surface">Bank Transfer (ACH)</span></p>
+<p class="font-body-md text-body-md"><span class="text-on-surface-variant inline-block w-32">Reference:</span> <span class="font-label-mono text-on-surface">REF-8821</span></p>
+</div>
+</div>
+</div>
+<!-- Line Items Table -->
+<div class="mb-12 flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline-variant">
+<th class="py-3 px-4 font-label-mono text-label-mono text-secondary uppercase tracking-wider w-16">#</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-secondary uppercase tracking-wider">Description</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-secondary uppercase tracking-wider text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 px-4 font-label-mono text-on-surface-variant">01</td>
+<td class="py-4 px-4">Fall Semester Tuition (Undergraduate)</td>
+<td class="py-4 px-4 text-right font-data-viz text-[14px]">$12,500.00</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 px-4 font-label-mono text-on-surface-variant">02</td>
+<td class="py-4 px-4">Laboratory Fee (CS-301)</td>
+<td class="py-4 px-4 text-right font-data-viz text-[14px]">$450.00</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 px-4 font-label-mono text-on-surface-variant">03</td>
+<td class="py-4 px-4">Technology &amp; Infrastructure Fee</td>
+<td class="py-4 px-4 text-right font-data-viz text-[14px]">$200.00</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 px-4 font-label-mono text-on-surface-variant">04</td>
+<td class="py-4 px-4">Library Access Fee</td>
+<td class="py-4 px-4 text-right font-data-viz text-[14px]">$75.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals -->
+<div class="flex justify-end mb-16">
+<div class="w-64 space-y-3">
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-data-viz text-[14px]">$13,225.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+<span>Late Fees</span>
+<span class="font-data-viz text-[14px]">$0.00</span>
+</div>
+<div class="flex justify-between font-headline-md text-headline-md text-on-surface border-t-2 border-outline-variant pt-3 mt-3">
+<span>Total Paid</span>
+<span class="font-data-viz text-[18px] text-primary">$13,225.00</span>
+</div>
+</div>
+</div>
+<!-- Footer / Signatures -->
+<div class="mt-auto border-t border-outline-variant pt-6 flex justify-between items-end text-on-surface-variant">
+<div>
+<p class="font-label-mono text-[10px] uppercase tracking-wider mb-1">Processed By</p>
+<p class="font-body-sm text-body-sm">Automated System (SYNC-FIN-09)</p>
+</div>
+<div class="text-right">
+<p class="font-body-sm text-[11px] max-w-xs ml-auto">This is a computer-generated document. No signature is required. For inquiries, contact bursar@syncora.edu.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar - Mobile only -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg border-t border-outline-variant dark:border-none bg-surface-container-lowest dark:bg-inverse-surface flex justify-around items-center px-4 pb-4 pt-2 md:hidden tap-highlight-none transition-all duration-300">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 active:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="font-label-mono text-label-mono">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 active:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-label-mono text-label-mono">History</span>
+</a>
+<!-- Assuming Pay is active based on context -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+<span class="font-label-mono text-label-mono">Pay</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 active:bg-surface-container-high transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_circle">account_circle</span>
+<span class="font-label-mono text-label-mono">Profile</span>
+</a>
+</nav>
+</body></html>

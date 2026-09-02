@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Reset Password</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c5c5d7",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-bright": "#faf8ff",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#bbc3ff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "secondary": "#505f76",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#3b4fd2",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-highest": "#dae2fd",
+                        "surface-container-low": "#f2f3ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-dim": "#d2d9f4",
+                        "on-primary-container": "#d7daff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "tertiary": "#7e3100",
+                        "primary": "#2036bd",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-container": "#eaedff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-background": "#131b2e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-surface-variant": "#454654",
+                        "primary-container": "#3e52d5",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#000d60",
+                        "outline": "#757686",
+                        "surface-container-high": "#e2e7ff",
+                        "secondary-container": "#d0e1fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#54647a",
+                        "tertiary-container": "#a44200",
+                        "surface": "#faf8ff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#283044",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter-grid": "16px",
+                        "density-generous": "32px",
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:hidden">
+<!-- TopAppBar -->
+<header class="bg-background w-full top-0 sticky flex items-center justify-between px-margin-page h-16 transition-colors z-40">
+<button aria-label="Go back" class="text-on-surface-variant hover:bg-surface-container active:scale-95 duration-150 p-2 rounded-full -ml-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Syncora</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="flex-grow flex flex-col px-margin-page pt-density-generous pb-margin-page">
+<div class="mb-density-generous">
+<h2 class="font-display text-display text-on-background mb-base">Create New Password</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Please secure your account with a strong password.</p>
+</div>
+<form class="flex flex-col gap-gutter-grid" onsubmit="event.preventDefault();">
+<!-- New Password Field -->
+<div class="flex flex-col gap-base">
+<label class="font-body-md text-body-md text-on-background font-medium" for="new_password">New Password</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-50 py-3 px-4 font-body-md text-body-md text-on-background transition-shadow pr-12" id="new_password" placeholder="Enter new password" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="visibility_off">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Confirm New Password Field -->
+<div class="flex flex-col gap-base">
+<label class="font-body-md text-body-md text-on-background font-medium" for="confirm_password">Confirm New Password</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-50 py-3 px-4 font-body-md text-body-md text-on-background transition-shadow pr-12" id="confirm_password" placeholder="Confirm new password" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="visibility_off">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Password Strength Checklist -->
+<div class="bg-surface-container-low rounded-lg p-padding-card mt-density-compact border border-outline-variant">
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-3 uppercase tracking-wider">Password Requirements</p>
+<ul class="flex flex-col gap-2">
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="check_circle">check_circle</span>
+                        At least 8 characters
+                    </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+                        One uppercase letter
+                    </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+                        One lowercase letter
+                    </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+                        One number or symbol
+                    </li>
+</ul>
+</div>
+<div class="flex-grow"></div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-4 rounded-lg hover:bg-primary-container hover:text-on-primary-container active:scale-[0.98] transition-all duration-200 mt-density-generous flex justify-center items-center gap-2" type="submit">
+                Update Password
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+</main>
+<!-- Suppressed BottomNavBar for transactional flow -->
+</body></html>

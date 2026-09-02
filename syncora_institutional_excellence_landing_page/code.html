@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora: The Operating System for Institutional Excellence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container-high": "#e9e7f2",
+                            "error": "#ba1a1a",
+                            "on-tertiary-container": "#ff9f83",
+                            "surface-bright": "#fbf8ff",
+                            "on-tertiary-fixed": "#3a0a00",
+                            "on-primary-fixed-variant": "#1d33bb",
+                            "tertiary-container": "#892400",
+                            "surface-hero": "#fbf8ff",
+                            "surface-dim": "#dad9e4",
+                            "surface-variant": "#e3e1ed",
+                            "accent-gradient-start": "#2036bd",
+                            "primary": "#001c9d",
+                            "fleet-delayed": "#b91c1c",
+                            "secondary-container": "#7586ff",
+                            "primary-container": "#2036bd",
+                            "secondary-fixed": "#dfe0ff",
+                            "surface-container-lowest": "#ffffff",
+                            "outline-variant": "#c5c5d7",
+                            "outline": "#757686",
+                            "surface-tint": "#3b4fd3",
+                            "on-surface-variant": "#454654",
+                            "surface-container-low": "#f4f2fe",
+                            "occupancy-available": "#15803d",
+                            "on-error-container": "#93000a",
+                            "background": "#fbf8ff",
+                            "primary-fixed": "#dfe0ff",
+                            "on-tertiary": "#ffffff",
+                            "secondary-fixed-dim": "#bbc3ff",
+                            "inverse-surface": "#2f3038",
+                            "on-surface": "#1a1b23",
+                            "surface-container": "#eeecf8",
+                            "tertiary-fixed-dim": "#ffb59f",
+                            "on-tertiary-fixed-variant": "#862300",
+                            "on-secondary": "#ffffff",
+                            "tertiary": "#621700",
+                            "accent-gradient-end": "#4f69ff",
+                            "inverse-on-surface": "#f1effb",
+                            "secondary": "#4052c9",
+                            "inverse-primary": "#bcc3ff",
+                            "on-primary-container": "#a9b3ff",
+                            "on-background": "#1a1b23",
+                            "tertiary-fixed": "#ffdbd1",
+                            "surface": "#fbf8ff",
+                            "on-primary": "#ffffff",
+                            "on-error": "#ffffff",
+                            "surface-container-highest": "#e3e1ed",
+                            "error-container": "#ffdad6",
+                            "on-secondary-container": "#001685",
+                            "on-primary-fixed": "#000d60",
+                            "on-secondary-fixed-variant": "#2437b0",
+                            "on-secondary-fixed": "#000d60",
+                            "primary-fixed-dim": "#bcc3ff"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "section-gap-md": "80px",
+                            "container-max": "1280px",
+                            "section-gap-lg": "160px",
+                            "gutter": "24px",
+                            "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                            "headline-lg": [
+                                    "Inter"
+                            ],
+                            "body-xl": [
+                                    "Inter"
+                            ],
+                            "headline-xl": [
+                                    "Inter"
+                            ],
+                            "label-mono": [
+                                    "JetBrains Mono"
+                            ],
+                            "display-hero": [
+                                    "Inter"
+                            ],
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "display-hero-mobile": [
+                                    "Inter"
+                            ],
+                            "body-lg": [
+                                    "Inter"
+                            ]
+                    },
+                    "fontSize": {
+                            "headline-lg": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "40px",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-xl": [
+                                    "20px",
+                                    {
+                                            "lineHeight": "32px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-xl": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "56px",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "label-mono": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "20px",
+                                            "letterSpacing": "0.05em",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "display-hero": [
+                                    "72px",
+                                    {
+                                            "lineHeight": "80px",
+                                            "letterSpacing": "-0.03em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "24px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "display-hero-mobile": [
+                                    "44px",
+                                    {
+                                            "lineHeight": "48px",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "28px",
+                                            "fontWeight": "400"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+<style>
+        .ambient-shadow {
+            box-shadow: 0 20px 40px -10px rgba(32, 54, 189, 0.04), 0 10px 20px -5px rgba(32, 54, 189, 0.02);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2036bd 0%, #4f69ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 docked full-width top-0 sticky backdrop-blur-md flat no shadows transition-all duration-300 ease-in-out z-50">
+<div class="flex justify-between items-center px-gutter w-full max-w-container-max mx-auto h-20">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">Syncora</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors h-full flex items-center" href="#features">Features</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors h-full flex items-center" href="#solutions">Solutions</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors h-full flex items-center" href="#pricing">Pricing</a>
+</nav>
+<div class="flex items-center gap-4 hidden md:flex">
+<button class="font-body-md text-body-md text-primary hover:bg-surface-variant px-4 py-2 rounded-full transition-colors">Login</button>
+<button class="font-body-md text-body-md text-on-primary bg-gradient-to-r from-accent-gradient-start to-accent-gradient-end px-6 py-2 rounded-full shadow hover:shadow-md transition-shadow">Get Started</button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter pt-20 pb-section-gap-md md:pb-section-gap-lg grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-6 flex flex-col gap-6 z-10">
+<div class="font-label-mono text-label-mono text-primary uppercase tracking-wider">Institutional Excellence</div>
+<h1 class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-on-surface">
+                    The Operating System for <span class="gradient-text">Higher Education</span>
+</h1>
+<p class="font-body-xl text-body-xl text-on-surface-variant max-w-xl">
+                    Syncora unifies academic core, finance, security, and student life into one seamless platform. Built for the modern campus.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="font-body-lg text-body-lg text-on-primary bg-gradient-to-r from-accent-gradient-start to-accent-gradient-end px-8 py-4 rounded-full shadow hover:shadow-md transition-shadow flex items-center justify-center gap-2">
+                        Get Started
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="font-body-lg text-body-lg text-primary border-2 border-primary/20 hover:border-primary/50 bg-transparent px-8 py-4 rounded-full transition-colors flex items-center justify-center">
+                        View Demo
+                    </button>
+</div>
+</div>
+<div class="md:col-span-6 relative z-0 mt-12 md:mt-0">
+<!-- Abstract Dashboard Visual -->
+<div class="relative w-full aspect-square md:aspect-[4/3] rounded-xl overflow-hidden ambient-shadow bg-surface-container border border-surface-variant flex items-center justify-center p-4">
+<div class="w-full h-full bg-cover bg-center rounded-lg shadow-sm" data-alt="A highly detailed, ultra-modern digital dashboard interface glowing on a pristine white background. The interface features sleek, semi-transparent data visualizations, glowing line charts in deep blues and bright whites, and crisp typography. The lighting is soft and studio-quality, emphasizing a premium, cutting-edge software aesthetic. High-key lighting, modern minimalism, institutional tech." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9Kg_sqYAuC5yxS7za0MKCNAwGcc-p7pte8pb-zlj9WUh3HIHzO42DQn1PGeqT-n4I0WQ3FT-qWtER29ZT1EouECE8Iul4qDP7cfLaHW6mu5gS6jB7DAOLHRp7gvQcctoYrRRcFr6NH798dohd8zEFV4U4AZ7MHkoIZV5RvrI9S2Rj1pKH-5xqB3gSvCaaMyrGNvkcMqJy2fvFvtslIUNtObYLLX5Fy0Ou0ZeuA8qAT4sgLOG0W7X5')"></div>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="w-full bg-surface-container-low py-16 border-y border-surface-variant/50">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter text-center">
+<p class="font-label-mono text-label-mono text-outline mb-8 uppercase tracking-widest">Trusted by 500+ Leading Universities</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale">
+<!-- Partner Logos Placeholders -->
+<span class="font-headline-lg text-headline-lg text-on-surface-variant">STANFORD</span>
+<span class="font-headline-lg text-headline-lg text-on-surface-variant">MIT</span>
+<span class="font-headline-lg text-headline-lg text-on-surface-variant">OXFORD</span>
+<span class="font-headline-lg text-headline-lg text-on-surface-variant">CAMBRIDGE</span>
+<span class="font-headline-lg text-headline-lg text-on-surface-variant">HARVARD</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full pt-section-gap-md pb-gutter flat no shadows transition-opacity duration-200 mt-section-gap-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter w-full max-w-container-max mx-auto mb-12">
+<div class="col-span-1 md:col-span-2">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed mb-4">Syncora</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-6">
+                    Elevating institutional operations with precision, modularity, and unyielding reliability.
+                </p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-mono text-label-mono text-on-surface font-semibold mb-2">Legal</span>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-mono text-label-mono text-on-surface font-semibold mb-2">Resources</span>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Contact Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Documentation</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">System Status</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+<div class="px-gutter w-full max-w-container-max mx-auto pt-8 border-t border-surface-variant">
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">© 2024 Syncora Institutional Excellence. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduPortal - Submit Assignment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#2036bd",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "on-background": "#131b2e",
+                      "surface-container-high": "#e2e7ff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "primary-fixed": "#dfe0ff",
+                      "on-primary-container": "#d7daff",
+                      "on-surface": "#131b2e",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#bbc3ff",
+                      "outline-variant": "#c5c5d7",
+                      "on-primary-fixed": "#000d60",
+                      "surface-tint": "#3b4fd2",
+                      "tertiary": "#7e3100",
+                      "error": "#ba1a1a",
+                      "surface": "#faf8ff",
+                      "on-tertiary-fixed": "#351000",
+                      "background": "#faf8ff",
+                      "surface-container-highest": "#dae2fd",
+                      "on-secondary-fixed": "#0b1c30",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-surface-variant": "#454654",
+                      "surface-container-low": "#f2f3ff",
+                      "inverse-on-surface": "#eef0ff",
+                      "inverse-surface": "#283044",
+                      "tertiary-container": "#a44200",
+                      "secondary": "#505f76",
+                      "surface-variant": "#dae2fd",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#3e52d5",
+                      "on-tertiary-container": "#ffd3bf",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-fixed": "#ffdbcc",
+                      "secondary-container": "#d0e1fb",
+                      "surface-dim": "#d2d9f4",
+                      "surface-container": "#eaedff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#faf8ff",
+                      "outline": "#757686"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-page": "24px",
+                      "padding-card": "16px",
+                      "base": "4px",
+                      "density-generous": "32px",
+                      "gutter-grid": "16px",
+                      "density-compact": "8px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-surface-dim h-screen w-64 left-0 sticky border-r border-outline-variant dark:border-outline flex flex-col h-full py-density-generous px-4 gap-base z-30 hidden md:flex">
+<div class="mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary">University Central</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Student Portal</p>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-mono text-label-mono text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-transform duration-200 ease-in-out hover:bg-surface-container transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-mono text-label-mono text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-transform duration-200 ease-in-out hover:bg-surface-container transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">school</span>
+                Courses
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl font-bold font-label-mono text-label-mono transition-transform duration-200 ease-in-out hover:bg-surface-container transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+                Assignments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-mono text-label-mono text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-transform duration-200 ease-in-out hover:bg-surface-container transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+                Schedule
+            </a>
+</div>
+<div class="mt-auto flex flex-col gap-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-mono text-label-mono text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-mono text-label-mono text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-h-screen max-w-[1440px] mx-auto w-full relative">
+<!-- TopNavBar (Mobile only for this contextual flow, but acting as header) -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-page h-16 w-full z-40 sticky top-0 md:hidden">
+<div class="flex items-center gap-3">
+<button class="text-on-surface-variant md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">EduPortal</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant cursor-pointer active:scale-95 duration-150 hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="Student Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, circular avatar portrait of a modern university student, brightly lit, high quality, professional yet approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsMqmn4Kphrn9SaYM9Y5NeXZB_K9S66UWfW3ualvZp5qEwlxA2b6qJP7Nqq1kV-7twC_WlEwTp3NujWUmnMrUaIFV8tCCD_8RcTv4wFBAcj6PvMtC-H4x2uCJtKGp9R2p7v64PIENFkeowh38jCq8NxC5hRhwGsGMoRDkRq9appUpVaC76SXh0AWG-S30xMmNh_UVgGepy-Rz3bfZiegnZ_1vt0rdJfNQg1c1VYJpmOwDRdK_1RTys"/>
+</div>
+</header>
+<!-- Page Header / Breadcrumbs -->
+<div class="px-margin-page py-6 md:py-8 border-b border-outline-variant bg-surface">
+<div class="flex items-center gap-2 font-label-mono text-label-mono text-on-surface-variant mb-4">
+<a class="hover:text-primary transition-colors" href="#">Courses</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">CS301: Algorithms</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Assignments</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div>
+<h2 class="font-display text-display text-on-surface mb-2">Lab 4: Dynamic Programming</h2>
+<div class="flex flex-wrap items-center gap-4 font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            Due: Oct 15, 11:59 PM
+                        </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+                            100 Points Possible
+                        </span>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-label-mono text-label-mono border border-outline-variant">
+                            Not Submitted
+                        </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Two Column Layout for Submission Flow -->
+<div class="flex-1 p-margin-page flex flex-col lg:flex-row gap-gutter-grid max-w-7xl mx-auto w-full">
+<!-- Main Submission Canvas -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Instructions Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col gap-4">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                        Instructions
+                    </h3>
+<div class="font-body-md text-body-md text-on-surface-variant space-y-4 max-w-3xl">
+<p>Implement a dynamic programming solution for the classic Knapsack problem and the Longest Common Subsequence problem. Your submission must include thoroughly commented source code and a brief report analyzing the time and space complexity of your implementations.</p>
+<ul class="list-disc pl-5 space-y-2">
+<li>File format: Zip archive containing <code>.py</code> files and a <code>.pdf</code> report.</li>
+<li>Naming convention: <code>Lastname_Firstname_Lab4.zip</code></li>
+<li>Late submissions will incur a 10% penalty per day.</li>
+</ul>
+</div>
+<div class="pt-4 border-t border-outline-variant mt-2">
+<a class="inline-flex items-center gap-2 font-label-mono text-label-mono text-primary hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Download Full Rubric.pdf
+                        </a>
+</div>
+</section>
+<!-- Upload Area -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col gap-4">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+                        Submission
+                    </h3>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center text-center bg-surface hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-primary">cloud_upload</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface mb-1">Drag and drop files here</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">or click to browse your computer</p>
+<button class="bg-surface text-on-surface border border-outline-variant px-4 py-2 rounded-lg font-label-mono text-label-mono hover:bg-surface-container-high transition-colors">
+                            Browse Files
+                        </button>
+<p class="font-label-mono text-label-mono text-outline mt-4 text-[10px]">Max file size: 50MB. Allowed types: .zip, .pdf, .py</p>
+</div>
+<!-- Comments Text Area -->
+<div class="flex flex-col gap-2 mt-2">
+<label class="font-label-mono text-label-mono text-on-surface-variant" for="comments">Comments for Instructor (Optional)</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none resize-y placeholder:text-outline" id="comments" placeholder="Add any notes about your submission here..." rows="3"></textarea>
+</div>
+<!-- Action Bar -->
+<div class="flex items-center justify-end gap-3 mt-4 pt-4 border-t border-outline-variant">
+<button class="px-6 py-2 rounded-lg font-label-mono text-label-mono text-on-surface-variant hover:bg-surface-container-low transition-colors">
+                            Cancel
+                        </button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-mono text-label-mono hover:bg-primary-container transition-colors shadow-sm">
+                            Submit Assignment
+                        </button>
+</div>
+</section>
+</div>
+<!-- Contextual Sidebar (History/Status) -->
+<aside class="w-full lg:w-80 flex flex-col gap-6 shrink-0">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-4 border-b border-outline-variant pb-2">Submission Status</h4>
+<div class="flex flex-col gap-4 relative">
+<!-- Timeline Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-outline-variant opacity-30"></div>
+<!-- Step 1 -->
+<div class="flex gap-4 relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border-2 border-outline-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Assigned</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">Oct 1, 9:00 AM</p>
+</div>
+</div>
+<!-- Step 2 (Current) -->
+<div class="flex gap-4 relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface border-2 border-primary flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_0_4px_rgba(32,54,189,0.1)]">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-primary font-medium">In Progress</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">Not submitted yet</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-4 relative z-10 opacity-50">
+<div class="w-6 h-6 rounded-full bg-surface border-2 border-outline-variant flex items-center justify-center shrink-0 mt-0.5">
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Graded</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">Pending Review</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-padding-card">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5">info</span>
+<div>
+<p class="font-label-mono text-label-mono font-bold text-on-surface mb-1">Academic Integrity</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">By submitting this assignment, you agree to the University Honor Code. Ensure all work is your own and properly cited.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

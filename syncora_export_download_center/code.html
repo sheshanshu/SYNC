@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface dark:bg-inverse-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Export &amp; Download Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#283044",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#eaedff",
+                      "surface-variant": "#dae2fd",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface-tint": "#3b4fd2",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "surface-dim": "#d2d9f4",
+                      "on-primary-container": "#d7daff",
+                      "surface-container-high": "#e2e7ff",
+                      "outline-variant": "#c5c5d7",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "primary-container": "#3e52d5",
+                      "surface-container-low": "#f2f3ff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface": "#faf8ff",
+                      "primary": "#2036bd",
+                      "on-primary-fixed": "#000d60",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "surface-bright": "#faf8ff",
+                      "on-tertiary-fixed": "#351000",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#54647a",
+                      "tertiary": "#7e3100",
+                      "secondary-container": "#d0e1fb",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface": "#131b2e",
+                      "inverse-primary": "#bbc3ff",
+                      "secondary": "#505f76",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#a44200",
+                      "background": "#faf8ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "surface-container-highest": "#dae2fd",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#454654",
+                      "outline": "#757686",
+                      "on-background": "#131b2e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "density-generous": "32px",
+                      "gutter-grid": "16px",
+                      "density-compact": "8px",
+                      "margin-page": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="h-full flex text-on-surface">
+<!-- SideNavBar (from JSON) -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col h-full py-padding-card px-4 z-20">
+<div class="mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Syncora</h1>
+<p class="font-label-mono text-label-mono text-secondary mt-1">Analytics Suite</p>
+</div>
+<div class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="school">school</span>
+                Academic
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+                Financial
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="security">security</span>
+                Activity Log
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-primary dark:text-primary-fixed-dim font-bold bg-surface-container dark:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+                Exports
+            </a>
+</div>
+<button class="w-full bg-primary text-on-primary font-body-md text-body-md py-2 px-4 rounded hover:bg-primary-container transition-colors mb-6 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+            New Report
+        </button>
+<div class="mt-auto space-y-1 pt-4 border-t border-outline-variant dark:border-outline">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen bg-background">
+<!-- TopAppBar (from JSON) -->
+<header class="flex justify-between items-center w-full px-density-generous h-16 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-10">
+<div class="flex-1 flex items-center">
+<!-- search_bar: "on_left" -->
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-surface-container-low border-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 rounded font-body-sm text-body-sm text-on-surface placeholder-secondary transition-all" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed absolute left-1/2 -translate-x-1/2">
+                Reporting &amp; Analytics
+            </div>
+<div class="flex-1 flex items-center justify-end gap-4">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim scale-98 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim scale-98 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-density-generous max-w-[1440px] mx-auto w-full flex flex-col md:flex-row gap-margin-page">
+<!-- Left Column: Requested Exports List -->
+<div class="flex-1 flex flex-col gap-padding-card">
+<div class="flex items-center justify-between mb-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Export History</h2>
+<span class="font-label-mono text-label-mono text-secondary">Showing last 30 days</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 p-4 border-b border-outline-variant bg-surface sticky top-0 font-label-mono text-label-mono text-secondary">
+<div class="col-span-4">Export Name</div>
+<div class="col-span-2">Format &amp; Size</div>
+<div class="col-span-3">Status</div>
+<div class="col-span-3 text-right">Actions</div>
+</div>
+<!-- List Items -->
+<div class="divide-y divide-outline-variant/50">
+<!-- Item 1: Completed -->
+<div class="grid grid-cols-12 gap-4 p-4 items-center hover:bg-[#F1F5F9] transition-colors group">
+<div class="col-span-4 flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Q3 Financial Summary</span>
+<span class="font-body-sm text-body-sm text-secondary">Requested by A. Smith · Oct 24, 10:30 AM</span>
+</div>
+<div class="col-span-2 flex flex-col">
+<span class="font-body-md text-body-md text-on-surface uppercase">CSV</span>
+<span class="font-body-sm text-body-sm text-secondary">4.2 MB</span>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#E6F4EA] text-[#137333] font-label-mono text-label-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-[#137333]"></span>
+                                    Completed
+                                </span>
+</div>
+<div class="col-span-3 flex justify-end gap-2">
+<button class="px-3 py-1.5 border border-outline-variant rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                                    Download
+                                </button>
+<button class="p-1.5 text-secondary hover:text-on-surface transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 2: Processing -->
+<div class="grid grid-cols-12 gap-4 p-4 items-center hover:bg-[#F1F5F9] transition-colors group">
+<div class="col-span-4 flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Fall 2023 Student Directory</span>
+<span class="font-body-sm text-body-sm text-secondary">Requested by J. Doe · Oct 25, 09:15 AM</span>
+</div>
+<div class="col-span-2 flex flex-col">
+<span class="font-body-md text-body-md text-on-surface uppercase">JSON</span>
+<span class="font-body-sm text-body-sm text-secondary">Estimating...</span>
+</div>
+<div class="col-span-3 flex flex-col gap-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#FEF7E0] text-[#B06000] font-label-mono text-label-mono w-max">
+<span class="material-symbols-outlined text-[14px] animate-spin">sync</span>
+                                    Processing
+                                </span>
+<div class="w-24 h-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-[#B06000] w-2/3 rounded-full"></div>
+</div>
+</div>
+<div class="col-span-3 flex justify-end gap-2">
+<button class="px-3 py-1.5 border border-outline-variant/50 rounded bg-surface-container-lowest text-secondary opacity-50 cursor-not-allowed font-body-sm text-body-sm flex items-center gap-2" disabled="">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                                    Download
+                                </button>
+</div>
+</div>
+<!-- Item 3: Expired -->
+<div class="grid grid-cols-12 gap-4 p-4 items-center hover:bg-[#F1F5F9] transition-colors group opacity-75 grayscale-[20%]">
+<div class="col-span-4 flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface line-through decoration-secondary/50">Library Assets Audit</span>
+<span class="font-body-sm text-body-sm text-secondary">Requested Oct 10 · Expired Oct 17</span>
+</div>
+<div class="col-span-2 flex flex-col">
+<span class="font-body-md text-body-md text-on-surface uppercase">PDF</span>
+<span class="font-body-sm text-body-sm text-secondary">12.8 MB</span>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-error-container/30 text-error font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[14px]">timer_off</span>
+                                    Expired
+                                </span>
+</div>
+<div class="col-span-3 flex justify-end gap-2">
+<button class="px-3 py-1.5 text-primary hover:bg-primary/10 rounded font-body-sm text-body-sm transition-colors font-medium">
+                                    Re-run
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: New Export Request -->
+<div class="w-full md:w-80 lg:w-96 flex flex-col gap-padding-card shrink-0">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">New Export</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card shadow-[0_4px_12px_rgba(0,0,0,0.02)]">
+<form class="flex flex-col gap-4">
+<!-- Data Source -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono text-label-mono text-on-surface">Data Source</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:ring-offset-2">
+<option>Students Directory</option>
+<option>Staff &amp; Faculty</option>
+<option>Library Circulation</option>
+<option>Financial Aid Distributions</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-mono text-label-mono text-on-surface">Date Range (Optional)</label>
+<div class="grid grid-cols-2 gap-2">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:ring-offset-2 text-sm" type="date"/>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent focus:ring-offset-2 text-sm" type="date"/>
+</div>
+</div>
+<!-- Format Selection (Bento-style radio) -->
+<div class="flex flex-col gap-1.5 mt-2">
+<label class="font-label-mono text-label-mono text-on-surface">Output Format</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="format" type="radio" value="csv"/>
+<div class="p-3 border border-outline-variant rounded flex flex-col items-center gap-1 bg-surface-container-lowest peer-checked:border-primary peer-checked:bg-primary/5 transition-all text-secondary peer-checked:text-primary">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-mono text-label-mono">CSV</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="format" type="radio" value="pdf"/>
+<div class="p-3 border border-outline-variant rounded flex flex-col items-center gap-1 bg-surface-container-lowest peer-checked:border-primary peer-checked:bg-primary/5 transition-all text-secondary peer-checked:text-primary">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+<span class="font-label-mono text-label-mono">PDF</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="format" type="radio" value="json"/>
+<div class="p-3 border border-outline-variant rounded flex flex-col items-center gap-1 bg-surface-container-lowest peer-checked:border-primary peer-checked:bg-primary/5 transition-all text-secondary peer-checked:text-primary">
+<span class="material-symbols-outlined">data_object</span>
+<span class="font-label-mono text-label-mono">JSON</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Additional Options -->
+<div class="flex flex-col gap-2 mt-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Include inactive records</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Notify me when ready</span>
+</label>
+</div>
+<!-- Submit Action -->
+<div class="mt-6 pt-4 border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary font-body-md text-body-md font-semibold py-2.5 px-4 rounded hover:bg-primary-container transition-colors flex items-center justify-center gap-2" type="button">
+                                Generate Export
+                                <span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<p class="font-label-mono text-label-mono text-center text-secondary mt-3">Exports are retained for 7 days.</p>
+</div>
+</form>
+</div>
+</div>
+</main>
+</div>
+</body></html>

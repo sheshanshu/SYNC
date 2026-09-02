@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Smart Timetable</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eaedff",
+                        "surface-variant": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "surface-tint": "#3b4fd2",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f2f3ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "on-primary-container": "#d7daff",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-container-highest": "#dae2fd",
+                        "outline": "#757686",
+                        "on-background": "#131b2e",
+                        "primary-fixed": "#dfe0ff",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "background": "#faf8ff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-container": "#a44200",
+                        "outline-variant": "#c5c5d7",
+                        "on-primary-fixed": "#000d60",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary": "#7e3100",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-surface-variant": "#454654",
+                        "primary": "#2036bd",
+                        "primary-container": "#3e52d5",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-fixed": "#351000",
+                        "on-surface": "#131b2e",
+                        "tertiary-fixed-dim": "#ffb694"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "density-generous": "32px",
+                        "margin-page": "24px",
+                        "padding-card": "16px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .timeline-line {
+            width: 2px;
+            background-color: #e2e8f0; /* Default outline color for light mode */
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md font-sans antialiased min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-page h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flat no shadows sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Syncora</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80 text-on-surface-variant dark:text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80 text-on-surface-variant dark:text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:opacity-80 text-primary dark:text-inverse-primary relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<img alt="Administrator Profile Avatar" class="w-8 h-8 rounded-full ml-2 object-cover border border-outline-variant" data-alt="A small circular avatar of an administrator profile, clean corporate style, soft lighting, professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQLfsKwnouGJk0_PM9pLJWE7HlSYpxPBC7Tb5QQzCQzUdhEjQARIyCqxy4fcdneZkiJnBHTRCcAkuq8bLC4SHeUBd8U07z3KKh0QFHWGhKYV4TyM3OFocUm4T1C4hBpyCnIX22gaaMPqmfb1E_6FGokKS5tRb1xr8XXs8_s-KUlDnJTmiMdk6WHYczzH6rOxtwe7AznFa_ERR-ClE91hlhnGKk1mmGNUFGUCBTV0S-5uXcqaFZHy86"/>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden lg:flex flex-col h-full py-density-generous px-4 overflow-y-auto bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline w-64 shrink-0">
+<div class="mb-8 flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold font-headline-sm">SC</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-black text-primary dark:text-primary-fixed leading-tight">Syncora Campus</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Administrator Mode</p>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-label-mono text-label-mono">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-secondary-container text-on-secondary-container font-bold hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<span class="font-label-mono text-label-mono">Smart Timetable</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span class="font-label-mono text-label-mono">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span class="font-label-mono text-label-mono">Approvals</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+<button class="w-full flex items-center justify-center gap-2 mt-4 py-2 border border-outline text-secondary rounded-lg font-label-mono text-label-mono hover:bg-surface-variant transition-colors">
+                    Log Out
+                 </button>
+</div>
+</nav>
+<!-- Canvas / Main Content -->
+<main class="flex-1 overflow-y-auto bg-background p-4 md:p-8 relative">
+<div class="max-w-2xl mx-auto">
+<!-- Date Selector Header -->
+<div class="mb-6 flex justify-between items-end">
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-1">Today</p>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Oct 24, 2023</h2>
+</div>
+<button class="text-primary font-label-mono text-label-mono flex items-center gap-1 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                        Select Date
+                    </button>
+</div>
+<!-- Timeline Container -->
+<div class="relative pl-12 py-2">
+<div class="timeline-line"></div>
+<!-- Event: Completed -->
+<div class="relative mb-8 group">
+<!-- Node -->
+<div class="absolute -left-12 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center border-2 border-surface z-10 shadow-sm mt-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">check</span>
+</div>
+<!-- Time -->
+<div class="absolute -left-16 w-12 text-right top-1 font-label-mono text-label-mono text-on-surface-variant pr-8 opacity-70">
+                            09:00
+                        </div>
+<!-- Card -->
+<div class="bg-surface border border-outline-variant rounded-xl p-padding-card opacity-70 hover:opacity-100 transition-opacity">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Advanced Calculus</h3>
+<span class="bg-surface-container text-secondary font-label-mono text-label-mono px-2 py-1 rounded-sm text-[10px] uppercase tracking-wider">Completed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Prof. Eleanor Vance • Lecture</p>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-label-mono text-label-mono">Science Bldg, Rm 402</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-mono text-label-mono">09:00 - 10:30</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event: Ongoing (Active) -->
+<div class="relative mb-8">
+<!-- Pulsing Node Background -->
+<div class="absolute -left-12 w-6 h-6 rounded-full bg-primary-container animate-ping opacity-50 z-0 mt-1"></div>
+<!-- Node -->
+<div class="absolute -left-12 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-2 border-surface z-10 shadow-sm mt-1">
+<div class="w-2 h-2 rounded-full bg-on-primary"></div>
+</div>
+<!-- Time -->
+<div class="absolute -left-16 w-12 text-right top-1 font-label-mono text-label-mono text-primary font-bold pr-8">
+                            11:00
+                        </div>
+<!-- Card -->
+<div class="bg-surface border-2 border-primary rounded-xl p-padding-card shadow-[0_4px_20px_-4px_rgba(32,54,189,0.15)] relative overflow-hidden">
+<!-- Subtle decorative gradient for active card -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container rounded-full blur-3xl opacity-20 -mr-16 -mt-16 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Data Structures</h3>
+<span class="bg-error-container text-on-error-container font-label-mono text-label-mono px-2 py-1 rounded-sm text-[10px] uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                                    Ongoing
+                                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 relative z-10">Prof. Marcus Thorne • Lab Session</p>
+<div class="flex items-center gap-4 text-on-surface-variant mb-6 relative z-10">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-label-mono text-label-mono">Tech Hub, Lab 3</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-mono text-label-mono text-primary font-bold">11:00 - 13:00</span>
+</div>
+</div>
+<!-- Attendance Action Area -->
+<div class="bg-surface-container-low -mx-padding-card -mb-padding-card p-padding-card border-t border-outline-variant flex flex-col gap-3 relative z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">my_location</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">In designated area</span>
+</div>
+<div class="font-label-mono text-label-mono text-secondary text-[10px]">Closes in 15m</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-headline-md text-body-md font-bold hover:bg-surface-tint transition-colors flex justify-center items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+                                    Mark Attendance
+                                </button>
+</div>
+</div>
+</div>
+<!-- Event: Next -->
+<div class="relative mb-8">
+<!-- Node -->
+<div class="absolute -left-12 w-6 h-6 rounded-full bg-surface flex items-center justify-center border-2 border-outline-variant z-10 mt-1"></div>
+<!-- Time -->
+<div class="absolute -left-16 w-12 text-right top-1 font-label-mono text-label-mono text-on-surface-variant pr-8">
+                            14:30
+                        </div>
+<!-- Card -->
+<div class="bg-surface border border-outline-variant rounded-xl p-padding-card hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-background leading-tight">Software Engineering</h3>
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-label-mono px-2 py-1 rounded-sm text-[10px] uppercase tracking-wider">Next</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Prof. Sarah Jenkins • Seminar</p>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-label-mono text-label-mono">Main Hall, Audit 1</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-mono text-label-mono">14:30 - 16:00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Visible only on Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 lg:hidden px-2 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant w-16 h-full tap-highlight-transparent active:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-mono text-label-mono text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant w-16 h-full tap-highlight-transparent active:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-mono text-label-mono text-[10px]">Calendar</span>
+</a>
+<!-- Active Tab -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 h-12 mt-1 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label-mono text-label-mono text-[10px] font-bold mt-0.5">Timetable</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant w-16 h-full tap-highlight-transparent active:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">assignment_turned_in</span>
+<span class="font-label-mono text-label-mono text-[10px]">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant w-16 h-full tap-highlight-transparent active:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">menu</span>
+<span class="font-label-mono text-label-mono text-[10px]">More</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Exams - Student Results Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c5c5d7",
+                      "data-viz-grid": "#e3e1ec",
+                      "on-primary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "secondary": "#5d5e67",
+                      "inverse-primary": "#bcc3ff",
+                      "on-primary-container": "#a9b3ff",
+                      "surface": "#fbf8ff",
+                      "on-secondary-fixed": "#1a1b23",
+                      "tertiary-fixed": "#ffdbd1",
+                      "on-secondary-container": "#63646d",
+                      "secondary-fixed": "#e3e1ed",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-primary-fixed": "#000d60",
+                      "secure-shield": "#2036bd",
+                      "on-background": "#1a1b23",
+                      "on-tertiary-fixed-variant": "#862300",
+                      "secondary-container": "#e3e1ed",
+                      "on-surface": "#1a1b23",
+                      "primary-container": "#2036bd",
+                      "primary-fixed": "#dfe0ff",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#ff9f83",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#621700",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#3a0a00",
+                      "primary": "#001c9d",
+                      "status-pass": "#15803d",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "outline": "#757686",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "on-secondary-fixed-variant": "#45464f",
+                      "tertiary-fixed-dim": "#ffb59f",
+                      "status-distinction": "#7c3aed",
+                      "surface-container-low": "#f4f2fe",
+                      "inverse-on-surface": "#f1effb",
+                      "on-surface-variant": "#454654",
+                      "surface-variant": "#e3e1ed",
+                      "error": "#ba1a1a",
+                      "status-pending": "#ca8a04",
+                      "surface-container": "#eeecf8",
+                      "status-fail": "#b91c1c",
+                      "tertiary-container": "#892400",
+                      "surface-dim": "#dad9e4",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#c6c5d0",
+                      "surface-tint": "#3b4fd3",
+                      "inverse-surface": "#2f3038",
+                      "surface-bright": "#fbf8ff",
+                      "surface-container-high": "#e9e7f2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-margin": "48px",
+                      "table-cell-padding": "16px",
+                      "stack-gap": "24px",
+                      "gutter-md": "1rem"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "display-result": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-result": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .watermark-bg {
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(0, 28, 157, 0.03) 0px,
+                rgba(0, 28, 157, 0.03) 2px,
+                transparent 2px,
+                transparent 10px
+            );
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased h-screen overflow-hidden flex flex-col">
+<!-- TopAppBar -->
+<nav class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 max-w-[1200px] mx-auto">
+<div class="flex items-center gap-4">
+<span class="text-headline-lg font-headline-lg font-bold text-primary dark:text-inverse-primary">Syncora Exams</span>
+</div>
+<div class="hidden md:flex gap-6 h-full items-end">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary pb-1" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary pb-1" href="#">Analytics</a>
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary pb-1" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-dim transition-colors duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-dim transition-colors duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A small circular profile picture of a young professional in a formal setting, neutral background, sharp focus, professional lighting, conveying a serious academic tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr1SrfiErgIlyx5xavnSGsxTcsR07p7rXwcC2HXrsgb8ReXH0UVVJwR0HLz3ThIuNRPjalfJyablynbGjHnIb8QV0luffHeo1Gru45alxptXptZuCla08o1OYcuqjQ7s3yi3p1zUTQsnVwPfhSGjFMl1khBroc6aBPUZZe-tfNlS-KOXGsLJNY9OEGsJv1RkSUO0JFAhE5aailOUMBjBURxLTTmnNt2O1TjXAQ1ovHKPzwmLdL5yC7"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 mt-16 max-w-[1200px] mx-auto w-full flex overflow-hidden">
+<!-- SideNavBar (Hidden on Mobile, acts as contextual filter here) -->
+<aside class="hidden md:flex bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline h-full flex-col p-4 w-64 shrink-0">
+<div class="mb-8 flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="school">school</span>
+</div>
+<div>
+<h2 class="text-headline-md font-headline-md text-primary dark:text-inverse-primary">Syncora Academic</h2>
+<p class="text-label-mono font-label-mono text-on-surface-variant">Exams &amp; Results</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded-lg transition-all hover:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-mono font-label-mono">Scheduling</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container font-bold rounded-lg transition-all hover:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="text-label-mono font-label-mono">Results</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded-lg transition-all hover:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-label-mono font-label-mono">Evaluation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded-lg transition-all hover:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="text-label-mono font-label-mono">Moderation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-variant rounded-lg transition-all hover:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-mono font-label-mono">Archives</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded-lg font-headline-md text-body-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                    Official Transcripts
+                </button>
+<div class="flex flex-col gap-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-mono font-label-mono">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="text-label-mono font-label-mono">Security</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Canvas Area -->
+<main class="flex-1 overflow-y-auto bg-surface-bright p-4 md:p-8 relative watermark-bg">
+<!-- Page Header -->
+<div class="mb-section-margin flex justify-between items-end border-b border-outline-variant pb-4">
+<div>
+<h1 class="text-headline-lg md:font-headline-lg font-headline-lg-mobile md:text-headline-lg text-headline-lg-mobile text-on-surface">Fall 2023 Academic Record</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Student ID: 89012345 • Bachelor of Science, Computer Science</p>
+</div>
+<div class="hidden md:flex items-center gap-2 bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-secure-shield text-sm" data-icon="verified">verified</span>
+<span class="text-label-mono font-label-mono text-secure-shield">Identity Verified</span>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-stack-gap">
+<!-- Left Column (Main Data) -->
+<div class="xl:col-span-2 flex flex-col gap-stack-gap">
+<!-- Term Summary Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg flex flex-col justify-between">
+<span class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Term GPA</span>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-display-result font-display-result text-on-surface">3.84</span>
+<span class="text-body-md font-body-md text-on-surface-variant">/ 4.0</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg flex flex-col justify-between">
+<span class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider">Credits Earned</span>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-display-result font-display-result text-on-surface">15.0</span>
+<span class="text-body-md font-body-md text-on-surface-variant">Attempted: 15.0</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-lg flex flex-col justify-between relative overflow-hidden">
+<div class="absolute right-0 top-0 w-24 h-24 bg-primary/5 rounded-bl-full z-0"></div>
+<span class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider relative z-10">Cohort Rank</span>
+<div class="mt-4 flex items-baseline gap-2 relative z-10">
+<span class="text-display-result font-display-result text-primary">Top 12%</span>
+</div>
+</div>
+</div>
+<!-- Transcript Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md text-on-surface">Detailed Results</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/30">
+<th class="p-table-cell-padding text-label-mono font-label-mono text-on-surface-variant font-medium border-b border-outline-variant">Course Code</th>
+<th class="p-table-cell-padding text-label-mono font-label-mono text-on-surface-variant font-medium border-b border-outline-variant">Course Title</th>
+<th class="p-table-cell-padding text-label-mono font-label-mono text-on-surface-variant font-medium border-b border-outline-variant text-right">Credits</th>
+<th class="p-table-cell-padding text-label-mono font-label-mono text-on-surface-variant font-medium border-b border-outline-variant text-center">Grade</th>
+<th class="p-table-cell-padding text-label-mono font-label-mono text-on-surface-variant font-medium border-b border-outline-variant text-right">Points</th>
+<th class="p-table-cell-padding text-label-mono font-label-mono text-on-surface-variant font-medium border-b border-outline-variant text-center">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant last:border-0">
+<td class="p-table-cell-padding font-label-mono text-body-md text-on-surface">CS301</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface font-medium">Data Structures and Algorithms</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface-variant text-right">3.0</td>
+<td class="p-table-cell-padding font-headline-md text-headline-md text-on-surface text-center">A</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface-variant text-right">12.0</td>
+<td class="p-table-cell-padding text-center">
+<span class="inline-flex items-center gap-1 bg-status-distinction text-white px-2 py-1 rounded text-label-mono font-label-mono uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                                                Distinction
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant last:border-0">
+<td class="p-table-cell-padding font-label-mono text-body-md text-on-surface">MATH205</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface font-medium">Linear Algebra</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface-variant text-right">4.0</td>
+<td class="p-table-cell-padding font-headline-md text-headline-md text-on-surface text-center">B+</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface-variant text-right">13.2</td>
+<td class="p-table-cell-padding text-center">
+<span class="inline-flex items-center gap-1 bg-status-pass text-white px-2 py-1 rounded text-label-mono font-label-mono uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                                Pass
+                                            </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant last:border-0">
+<td class="p-table-cell-padding font-label-mono text-body-md text-on-surface">PHYS102</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface font-medium">Quantum Mechanics Intro</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface-variant text-right">3.0</td>
+<td class="p-table-cell-padding font-headline-md text-headline-md text-on-surface text-center">A-</td>
+<td class="p-table-cell-padding font-body-md text-body-md text-on-surface-variant text-right">11.1</td>
+<td class="p-table-cell-padding text-center">
+<span class="inline-flex items-center gap-1 bg-status-pass text-white px-2 py-1 rounded text-label-mono font-label-mono uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                                Pass
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column (Sidebar / Context) -->
+<div class="flex flex-col gap-stack-gap">
+<!-- Secure Shield Badge -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-6 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="gpp_good">gpp_good</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-on-surface mb-2">Official Academic Record</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4 text-sm">This document is digitally signed and cryptographically secured by Syncora Academic Registry.</p>
+<div class="text-label-mono font-label-mono text-outline w-full pt-4 border-t border-outline-variant flex justify-between">
+<span>Issued:</span>
+<span>2023-12-15 14:32 UTC</span>
+</div>
+</div>
+<!-- Performance Trend Chart Placeholder -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 flex flex-col h-64">
+<h4 class="text-headline-md font-headline-md text-on-surface mb-4">GPA Trend</h4>
+<div class="flex-1 border-b-2 border-l-2 border-outline-variant relative">
+<!-- Simulated Line Chart -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<polyline fill="none" points="0,80 25,60 50,40 75,50 100,20" stroke="#001c9d" stroke-width="2"></polyline>
+<circle cx="0" cy="80" fill="#001c9d" r="3"></circle>
+<circle cx="25" cy="60" fill="#001c9d" r="3"></circle>
+<circle cx="50" cy="40" fill="#001c9d" r="3"></circle>
+<circle cx="75" cy="50" fill="#001c9d" r="3"></circle>
+<circle cx="100" cy="20" fill="#001c9d" r="3"></circle>
+</svg>
+<!-- Grid lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-data-viz-grid w-full h-0"></div>
+<div class="border-t border-data-viz-grid w-full h-0"></div>
+<div class="border-t border-data-viz-grid w-full h-0"></div>
+<div class="border-t border-data-viz-grid w-full h-0"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2 text-label-mono font-label-mono text-on-surface-variant">
+<span>F21</span>
+<span>S22</span>
+<span>F22</span>
+<span>S23</span>
+<span>F23</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

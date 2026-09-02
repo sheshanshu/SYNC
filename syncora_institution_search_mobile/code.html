@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Institution Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c5c5d7",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "surface-bright": "#faf8ff",
+                      "background": "#faf8ff",
+                      "inverse-primary": "#bbc3ff",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "secondary": "#505f76",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#3b4fd2",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-container-highest": "#dae2fd",
+                      "surface-container-low": "#f2f3ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "surface-dim": "#d2d9f4",
+                      "on-primary-container": "#d7daff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "tertiary": "#7e3100",
+                      "primary": "#2036bd",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#eaedff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-background": "#131b2e",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "on-surface-variant": "#454654",
+                      "primary-container": "#3e52d5",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#000d60",
+                      "outline": "#757686",
+                      "surface-container-high": "#e2e7ff",
+                      "secondary-container": "#d0e1fb",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-secondary-container": "#54647a",
+                      "tertiary-container": "#a44200",
+                      "surface": "#faf8ff",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface": "#131b2e",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#283044",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#dae2fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "gutter-grid": "16px",
+                      "density-generous": "32px",
+                      "margin-page": "24px",
+                      "density-compact": "8px",
+                      "padding-card": "16px"
+              },
+              "fontFamily": {
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased md:hidden pb-[80px]">
+<!-- TopAppBar from JSON -->
+<header class="w-full top-0 sticky bg-background flex items-center justify-between px-margin-page h-16 z-50">
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded-full active:scale-95 duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Syncora</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="px-gutter-grid py-density-compact flex flex-col gap-margin-page">
+<!-- Search Section -->
+<section class="flex flex-col gap-density-compact">
+<h2 class="font-headline-md text-headline-md text-on-background">Find your institution</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-3 pl-10 font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-shadow placeholder:text-on-surface-variant" placeholder="Search by name or domain..." type="text"/>
+</div>
+</section>
+<!-- Recently Visited Section -->
+<section class="flex flex-col gap-gutter-grid">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Recently Visited</h3>
+<div class="flex flex-col gap-base">
+<!-- Institution Card 1 -->
+<button class="bg-surface-container-lowest border border-outline-variant rounded p-padding-card flex items-center gap-gutter-grid hover:bg-surface-container-low transition-colors text-left active:scale-[0.99] duration-150">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant/30 shrink-0">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, professional logo for a prestigious university, featuring a classic crimson shield with subtle gold accents, set against a stark white background. The image should convey academic excellence and tradition within a clean, modern UI context, lit with soft, even studio lighting to emphasize clarity and premium quality. 4k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBhTER2qzhN07aw36-MBsnP3q1eVJiQktUvtzjsxKs-O-QUArsRkfc7NZy38QUXAuVhJKsuGN986BBbWFOWYvE8ubk8z8dfZzVu_APEdn2Cfj-rouecAakpMs72W7VS9ri1Z3tyRx_WHmAm4GUXL0yg4i7tyklceRFAbPhober4zLuH9ATp1tOEo8NA_pYn-HgRKimc4hXsX8nukLnHg4VWbwtqd65CWNsPsv4UcJ4tWmaBCbiQUIf"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-background font-medium">Stanford University</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">stanford.edu</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant ml-auto">chevron_right</span>
+</button>
+<!-- Institution Card 2 -->
+<button class="bg-surface-container-lowest border border-outline-variant rounded p-padding-card flex items-center gap-gutter-grid hover:bg-surface-container-low transition-colors text-left active:scale-[0.99] duration-150">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant/30 shrink-0">
+<img class="w-full h-full object-cover" data-alt="A precise, modern logo for an institute of technology, characterized by geometric shapes in deep indigo and slate gray on a pure white background. The design must reflect technological advancement and structural integrity, suitable for a professional software interface. The lighting should be crisp and high-key to maintain a pristine, clinical aesthetic. 4k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqt4lO68reBeY_B5VjsiEJ49v5DEssZEUkz68svlpAzWwYHknhbcRFSNc9qNBSkW_40W07RJSvVezIjal8Z_BR_i1PjXiftj5Pt5N2iK1QvgDvmuHvM8EdBXxNuSLVng428KF6DNP4zZN_rl4VMxiCpjjmNFY2Zl8Y_wR_5FRA30JPJ5myjq2NTnVryDxXFYFY0ebi04nHRITx_l68bYSuqb0yXFPd1Sy2KUlt91FOIdKwieZJ5EJE"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-background font-medium">Massachusetts Institute of Technology</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">mit.edu</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant ml-auto">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Request Access Link -->
+<section class="mt-density-generous flex justify-center">
+<a class="font-body-sm text-body-sm text-primary hover:text-primary-fixed-variant underline transition-colors flex items-center gap-2" href="#">
+                Can't find your institution? Request access
+                <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</section>
+</main>
+</body></html>

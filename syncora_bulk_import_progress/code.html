@@ -1,0 +1,233 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Bulk Data Import</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d3e4fe",
+                        "outline-variant": "#c5c5d7",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#3b4fd2",
+                        "primary-container": "#3e52d5",
+                        "on-tertiary-container": "#ffd3bf",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "tertiary": "#7e3100",
+                        "on-secondary-container": "#54647a",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-container": "#eaedff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-primary-fixed": "#000d60",
+                        "outline": "#757686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#131b2e",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a44200",
+                        "surface-variant": "#dae2fd",
+                        "primary": "#2036bd",
+                        "on-surface-variant": "#454654",
+                        "surface-dim": "#d2d9f4",
+                        "background": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#283044",
+                        "primary-fixed": "#dfe0ff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-surface": "#131b2e",
+                        "inverse-primary": "#bbc3ff",
+                        "on-primary-container": "#d7daff",
+                        "secondary": "#505f76",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container-low": "#f2f3ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-highest": "#dae2fd",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container-high": "#e2e7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "padding-card": "16px",
+                        "density-compact": "8px",
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "density-generous": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, 
+                theme('colors.surface-container') 0%, 
+                theme('colors.surface-container-high') 50%, 
+                theme('colors.surface-container') 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full flex flex-col font-body-md overflow-hidden">
+<!-- Top App Bar (Shared Component - Nav Shell hidden for linear flow, only Top Bar shown for branding/cancel) -->
+<header class="bg-surface-container-lowest text-primary w-full h-16 border-b border-outline-variant flex justify-between items-center px-margin-page shrink-0 z-10 relative">
+<div class="flex items-center gap-density-compact cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary text-[24px]">sync</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">Syncora</span>
+</div>
+<div class="flex items-center">
+<button class="text-label-mono font-label-mono text-error hover:bg-error-container/20 px-4 py-2 rounded transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">close</span>
+                Cancel Import
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto flex flex-col relative">
+<!-- Subtle Grid Background Overlay -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: radial-gradient(theme('colors.primary') 1px, transparent 1px); background-size: 24px 24px;"></div>
+<!-- Layout Container -->
+<div class="max-w-4xl mx-auto w-full px-margin-page py-density-generous flex flex-col gap-density-generous z-10 flex-1 justify-center">
+<!-- Stepper Header -->
+<div class="w-full flex justify-between items-center relative mb-8">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0">
+<div class="h-full bg-primary w-3/4 transition-all duration-1000 ease-in-out"></div>
+</div>
+<!-- Step 1: Upload (Completed) -->
+<div class="flex flex-col items-center gap-2 z-10 relative bg-background px-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-label-mono font-label-mono text-on-surface-variant">1. Upload</span>
+</div>
+<!-- Step 2: Mapping (Completed) -->
+<div class="flex flex-col items-center gap-2 z-10 relative bg-background px-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-label-mono font-label-mono text-on-surface-variant">2. Mapping</span>
+</div>
+<!-- Step 3: Review (Completed) -->
+<div class="flex flex-col items-center gap-2 z-10 relative bg-background px-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-label-mono font-label-mono text-on-surface-variant">3. Review</span>
+</div>
+<!-- Step 4: Finalizing (Active) -->
+<div class="flex flex-col items-center gap-2 z-10 relative bg-background px-2">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container ring-4 ring-primary-container/20 flex items-center justify-center shadow-sm animate-pulse">
+<span class="text-label-mono font-label-mono font-bold">4</span>
+</div>
+<span class="text-label-mono font-label-mono text-primary font-bold">4. Finalizing</span>
+</div>
+</div>
+<!-- Main Progress Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-density-generous shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col md:flex-row gap-density-generous items-center">
+<!-- Circular Progress Indicator -->
+<div class="relative w-48 h-48 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<circle class="text-surface-variant stroke-current" cx="50" cy="50" fill="transparent" r="44" stroke-width="6"></circle>
+<circle class="text-primary stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="44" stroke-dasharray="276.46" stroke-dashoffset="96.76" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="text-display font-display font-bold text-primary">65%</span>
+<span class="text-label-mono font-label-mono text-on-surface-variant mt-1">Complete</span>
+</div>
+</div>
+<!-- Status & Log -->
+<div class="flex flex-col gap-padding-card flex-1 w-full">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-background mb-1">Importing 150 Records...</h2>
+<p class="text-body-md font-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">folder_zip</span>
+                            Processing Batch #8821
+                        </p>
+</div>
+<!-- Horizontal Bar (Secondary indicator) -->
+<div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden mb-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-500 ease-out" style="width: 65%"></div>
+</div>
+<!-- Live Log Terminal -->
+<div class="bg-surface-container rounded-lg p-padding-card border border-outline-variant/50 flex flex-col gap-2 max-h-40 overflow-y-auto relative">
+<div class="flex items-start gap-2 text-label-mono font-label-mono text-on-surface-variant opacity-50">
+<span class="material-symbols-outlined text-[14px] mt-0.5">check_circle</span>
+<span>Validating CSV structure... Done</span>
+</div>
+<div class="flex items-start gap-2 text-label-mono font-label-mono text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined text-[14px] mt-0.5">check_circle</span>
+<span>Mapping 15 columns... Done</span>
+</div>
+<div class="flex items-start gap-2 text-label-mono font-label-mono text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] mt-0.5">check_circle</span>
+<span>Validating roles... Done (12 roles identified)</span>
+</div>
+<div class="flex items-start gap-2 text-label-mono font-label-mono text-primary font-bold">
+<span class="material-symbols-outlined text-[14px] mt-0.5 animate-spin">sync</span>
+<span>Syncing departments... (45/80)</span>
+</div>
+<!-- Shimmer loading effect for next steps -->
+<div class="flex items-start gap-2 text-label-mono font-label-mono mt-2">
+<div class="w-4 h-4 rounded-full shimmer opacity-50"></div>
+<div class="h-4 w-32 rounded shimmer opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

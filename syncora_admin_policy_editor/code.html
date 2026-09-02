@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Admin - Policy Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#d0e1fb",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "tertiary": "#7e3100",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container-low": "#f2f3ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-primary-container": "#d7daff",
+                        "on-primary-fixed": "#000d60",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#dae2fd",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-highest": "#dae2fd",
+                        "on-background": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-surface": "#131b2e",
+                        "background": "#faf8ff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary-container": "#3e52d5",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eef0ff",
+                        "tertiary-container": "#a44200",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#283044",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c5c5d7",
+                        "surface-container-high": "#e2e7ff",
+                        "outline": "#757686",
+                        "on-surface-variant": "#454654",
+                        "on-tertiary-fixed": "#351000",
+                        "inverse-primary": "#bbc3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary": "#2036bd",
+                        "secondary-fixed": "#d3e4fe",
+                        "primary-fixed": "#dfe0ff",
+                        "surface": "#faf8ff",
+                        "on-tertiary-fixed-variant": "#7a2f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "gutter-grid": "16px",
+                        "density-generous": "32px",
+                        "base": "4px",
+                        "margin-page": "24px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 bottom-0 z-40 flex flex-col pt-20 pb-4 px-4 w-64 bg-surface-container-lowest/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-r border-outline-variant/20 hidden md:flex">
+<div class="mb-8 px-2">
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">Syncora Admin</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">Central Command</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-body-md text-body-md">Academic</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="font-body-md text-body-md">Student</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Finance</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary-container text-on-primary-container font-semibold translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined icon-filled" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-body-md text-body-md">Security</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto">
+<ul class="flex flex-col gap-2 border-t border-outline-variant/20 pt-4">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Sign Out</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<header class="fixed top-0 right-0 left-0 z-50 flex justify-between items-center px-gutter-grid h-16 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 md:hidden">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">Syncora</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant/30 ml-2" data-alt="A small circular profile picture of an administrative user, featuring a professional headshot against a clean, light blue background. The image is brightly lit, conveying a sense of competence and reliability in an enterprise software environment. The aesthetic is modern corporate, aligning with the institutional UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaiWArv8K9i4OH__1KfEr7CjXBhzahTtOn_UY7m5HurpEHF0hPfVDyw3tfyA3ddNn2hIDtJo-hRtnNjiUgCFYrwxNha8YznaCaLVXIKYNQ5dyCWQ3v49va0eZbpiBjJ0DOvriqPSHgU6oI5koTWDLUxaxVrUKl2cCo6yRSEgYHFYJdBBFoVove3NcCaF_iBOSPAoCpcrdiDaloDXowi4e2YSgD_td_DtMleOK_LIRDI_Oe29x-LUyx"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 pt-16 md:pt-0 p-4 md:p-margin-page lg:p-density-generous max-w-[1440px] mx-auto w-full">
+<!-- Header -->
+<header class="mb-8 md:mb-12">
+<h1 class="font-display text-display text-on-background mb-2">Policy &amp; Automation Editor</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-3xl">Configure institutional rules, automation triggers, and permission thresholds. Changes made here directly impact system-wide evaluation engines and alert protocols.</p>
+</header>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+<!-- Left Column (Main Configs) -->
+<div class="lg:col-span-8 flex flex-col gap-6 lg:gap-8">
+<!-- Attendance Thresholds Card -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-padding-card md:p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6 border-b border-outline-variant/20 pb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="rule_settings">rule_settings</span>
+                                Attendance Thresholds
+                            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Define baseline requirements and multi-tier action triggers.</p>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-label-mono text-[10px] uppercase tracking-wider">Active Policy</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Threshold & Date Config -->
+<div class="flex flex-col gap-6">
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-2">Minimum Threshold</label>
+<div class="flex items-center gap-4">
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="75"/>
+<div class="w-16 px-3 py-2 bg-surface-container-lowest border border-outline-variant/50 rounded flex items-center justify-center">
+<span class="font-body-lg text-body-lg font-semibold">75%</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-2">Cut-off Date Selector</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<input class="w-full pl-10 pr-3 py-2 bg-surface-container-lowest border border-outline-variant/50 rounded font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none" readonly="" type="text" value="End of Term (Dynamic)"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 opacity-70">Final eligibility evaluated relative to academic calendar.</p>
+</div>
+</div>
+<!-- Multi-Tier Actions -->
+<div class="bg-surface-container-low rounded-lg p-4 border border-outline-variant/10">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant mb-4 uppercase tracking-wide">Multi-Tier Actions</h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant/20 rounded hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<span class="block font-body-md text-body-md font-semibold">Tier 1: Student Warning</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Triggered at threshold breach</span>
+</div>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-primary cursor-pointer" for="toggle1"></label>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant/20 rounded hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<div>
+<span class="block font-body-md text-body-md font-semibold">Tier 2: Faculty Alert</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Escalation after 48hrs</span>
+</div>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle2" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-primary cursor-pointer" for="toggle2"></label>
+</div>
+</label>
+<label class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant/20 rounded hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div>
+<span class="block font-body-md text-body-md font-semibold text-error">Tier 3: Exam Hold</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Automatic eligibility suspension</span>
+</div>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle3" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-primary cursor-pointer" for="toggle3"></label>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Logic Reference Image -->
+<div class="mt-6 border-t border-outline-variant/20 pt-6">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant mb-3 uppercase tracking-wide">System Logic Reference</h3>
+<div class="rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container">
+<img alt="Technical flowchart for Attendance Threshold Alert System" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida/AEtjO1WmBIhffPAzz2DS0x2pPZUV0wltfp9_2dmD6cjxciBoZtmdPXDOGFj6IyNqqRFG6H5nqsX6UFsLr2hSvL9470ClIgRyGPm3zcxTj3JcB3nyIOemRZKtXTNtasjXcFy6phyFbUHR1dGR94Y1N3E6aRJYA-V584q8Q4JULqG6Astox71H1GpC5YUeuiiKr2tBTcENtUc3stqTaJ5CrtMzYfawu6bEQT4NjWjYWOENwC3Y-IiCY4YPqZjaB7E"/>
+</div>
+</div>
+</section>
+<!-- Automation Rule-Builder Preview -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-padding-card md:p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="account_tree">account_tree</span>
+                            Automation Rule-Builder
+                        </h2>
+<button class="flex items-center gap-1 text-primary hover:text-on-primary-fixed-variant transition-colors font-label-mono text-label-mono">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                            New Rule
+                        </button>
+</div>
+<div class="border border-outline-variant/20 rounded-lg overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-12 bg-surface-container-low px-4 py-3 border-b border-outline-variant/20">
+<div class="col-span-5 font-label-mono text-label-mono text-on-surface-variant">Rule Name</div>
+<div class="col-span-3 font-label-mono text-label-mono text-on-surface-variant">Status</div>
+<div class="col-span-3 font-label-mono text-label-mono text-on-surface-variant">Last Updated</div>
+<div class="col-span-1 text-right"></div>
+</div>
+<!-- List Items -->
+<div class="divide-y divide-outline-variant/10">
+<div class="grid grid-cols-12 items-center px-4 py-3 hover:bg-surface-container-lowest transition-colors group bg-surface-container-lowest">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-md text-body-md font-semibold">Late Fee Calculation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">Applies 5% penalty after +7 days overdue.</span>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container/50 text-primary-container font-label-mono text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span> Active
+                                    </span>
+</div>
+<div class="col-span-3 font-body-sm text-body-sm text-on-surface-variant">
+                                    Oct 12, 2023
+                                </div>
+<div class="col-span-1 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1" title="Edit Logic">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-12 items-center px-4 py-3 hover:bg-surface-container-lowest transition-colors group bg-surface-container-lowest">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-md text-body-md font-semibold">Timetable Conflict Auto-Resolve</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">Prioritizes core modules over electives.</span>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-mono text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-outline mr-1.5"></span> Inactive
+                                    </span>
+</div>
+<div class="col-span-3 font-body-sm text-body-sm text-on-surface-variant">
+                                    Sep 04, 2023
+                                </div>
+<div class="col-span-1 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1" title="Edit Logic">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-12 items-center px-4 py-3 hover:bg-surface-container-lowest transition-colors group bg-surface-container-lowest">
+<div class="col-span-5 flex flex-col">
+<span class="font-body-md text-body-md font-semibold">Probation Status Trigger</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">GPA &lt; 2.0 flags account for review.</span>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container/50 text-primary-container font-label-mono text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span> Active
+                                    </span>
+</div>
+<div class="col-span-3 font-body-sm text-body-sm text-on-surface-variant">
+                                    Aug 21, 2023
+                                </div>
+<div class="col-span-1 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1" title="Edit Logic">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column (Sidebar Configs) -->
+<div class="lg:col-span-4 flex flex-col gap-6 lg:gap-8">
+<!-- Permission Matrix Control -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-padding-card shadow-sm">
+<div class="mb-4">
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="key">key</span>
+                            Access Matrix
+                        </h2>
+</div>
+<div class="bg-surface-container-low rounded p-3 mb-4 border border-outline-variant/20">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Roles with modification privileges for current policies:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-lowest border border-outline-variant/30 rounded text-xs font-label-mono text-on-background">Super Admin</span>
+<span class="px-2 py-1 bg-surface-container-lowest border border-outline-variant/30 rounded text-xs font-label-mono text-on-background">Org Admin</span>
+<span class="px-2 py-1 bg-surface-container-lowest border border-outline-variant/30 rounded text-xs font-label-mono text-on-background opacity-70">Registrar (View Only)</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-on-primary-fixed-variant transition-colors font-body-sm text-body-sm font-semibold" href="#">
+                        Manage RBAC Details
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</section>
+<!-- Security Audit Log -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-padding-card shadow-sm flex-grow">
+<div class="mb-4 flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="history">history</span>
+                            Audit Log
+                        </h2>
+<a class="text-primary hover:text-on-primary-fixed-variant transition-colors font-label-mono text-label-mono" href="#">View Full Log</a>
+</div>
+<div class="relative border-l border-outline-variant/30 ml-3 pl-4 pb-2 flex flex-col gap-4">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-outline-variant border-2 border-surface-container-lowest"></div>
+<p class="font-body-sm text-body-sm text-on-background leading-tight">Attendance minimum raised to 75%.</p>
+<span class="font-label-mono text-[10px] text-on-surface-variant">by J. Doe (Super Admin) • 2 hrs ago</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-outline-variant border-2 border-surface-container-lowest"></div>
+<p class="font-body-sm text-body-sm text-on-background leading-tight">Tier 3 Exam Hold toggle activated.</p>
+<span class="font-label-mono text-[10px] text-on-surface-variant">by System • Yesterday</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-outline-variant border-2 border-surface-container-lowest"></div>
+<p class="font-body-sm text-body-sm text-on-background leading-tight">Late Fee Rule logic updated.</p>
+<span class="font-label-mono text-[10px] text-on-surface-variant">by A. Smith (Org Admin) • Oct 12</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Global Actions -->
+<div class="mt-8 pt-6 border-t border-outline-variant/30 flex justify-end gap-4 pb-20 md:pb-8">
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-body-md text-body-md rounded hover:bg-surface-container-low transition-colors">
+                Reset to Defaults
+            </button>
+<button class="px-6 py-2 bg-primary text-on-primary font-body-md text-body-md font-semibold rounded hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+                Save Changes
+            </button>
+</div>
+</main>
+<style>
+        /* Custom styles for the toggle switch to match Tailwind colors */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #ffffff; /* bg-white */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2036bd; /* bg-primary */
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #ffffff; /* bg-white */
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 40px;
+            background-color: #c5c5d7; /* outline-variant */
+            transition: all 0.3s;
+        }
+        .toggle-checkbox:not(:checked) {
+            right: 20px;
+        }
+    </style>
+</body></html>

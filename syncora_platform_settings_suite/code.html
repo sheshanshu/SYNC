@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Console - Global Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e9e7f2",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "occupancy-available": "#15803d",
+                      "inverse-on-surface": "#f1effb",
+                      "on-primary-container": "#a9b3ff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#1a1b23",
+                      "primary-fixed": "#dfe0ff",
+                      "primary-container": "#2036bd",
+                      "on-secondary-container": "#56657c",
+                      "secondary": "#505f76",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-secondary-fixed": "#0c1c30",
+                      "surface-tint": "#3b4fd3",
+                      "map-road": "#ffffff",
+                      "inverse-primary": "#bcc3ff",
+                      "occupancy-occupied": "#2036bd",
+                      "outline-variant": "#c5c5d7",
+                      "primary": "#001c9d",
+                      "fleet-idle": "#64748b",
+                      "occupancy-maintenance": "#92400e",
+                      "on-background": "#1a1b23",
+                      "secondary-fixed": "#d4e3ff",
+                      "error-container": "#ffdad6",
+                      "fleet-delayed": "#b91c1c",
+                      "map-water": "#e0f2fe",
+                      "on-error-container": "#93000a",
+                      "outline": "#757686",
+                      "surface-bright": "#fbf8ff",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "tertiary-container": "#7e3100",
+                      "secondary-container": "#d4e3ff",
+                      "on-tertiary-fixed": "#351000",
+                      "on-surface-variant": "#454654",
+                      "surface-variant": "#e3e1ed",
+                      "map-park": "#f0fdf4",
+                      "on-tertiary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "surface-container-low": "#f4f2fe",
+                      "inverse-surface": "#2f3038",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#000d60",
+                      "on-tertiary-container": "#ffa173",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "surface-dim": "#dad9e4",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "surface-container": "#eeecf8",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "fleet-transit": "#0369a1",
+                      "tertiary": "#5a2100",
+                      "surface": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "node-spacing": "8px",
+                      "map-overlay-gap": "12px",
+                      "grid-gutter": "16px",
+                      "dashboard-margin": "24px"
+              },
+              "fontFamily": {
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for an academic/clean feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: theme('borderRadius.DEFAULT');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+        
+        /* Toggle Switch CSS */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: theme('colors.primary');
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: theme('colors.primary');
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        
+        /* Focus ring utility */
+        .focus-ring {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        .focus-ring:focus-within {
+            outline-color: theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased overflow-hidden flex h-screen">
+<!-- SideNavBar (Docked Left) -->
+<nav class="hidden lg:flex flex-col h-screen fixed left-0 top-0 p-4 bg-surface-container-lowest border-r border-outline-variant docked h-full w-64 z-40">
+<!-- Brand / Header -->
+<div class="flex items-center gap-3 mb-8 px-2">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-variant" data-alt="A clean, minimalist logo for an institutional management platform named Syncora. It uses geometric shapes in shades of deep blue and white, conveying reliability and academic rigor. The design is modern, vector-style, set against a pristine white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwhWzIRo4MvZjjrqcEo1E3aqcXTvsS0_ZNP6OPgLNR9gUF0grKvblZfTqmRCSMs_d5h0D_3u2HMGVnkJlC7muyLEuHfVUc5olSe2d3ycDM_QzOcx-mK8J8l4FSjPXScYIVPa2y41qDNVhmY1wQc3LCilYOGK4rNBcJkC5v1Eg-6oYWYnzQ6MZoi0S7U0y8Y9c6_MEMbbw9loMEqOXRzzUk714IOMmiFWju6ZZwOWKI8V8KPtd_41gB"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Syncora Console</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Institutional Management</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex-1 space-y-2">
+<!-- Overview -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span>Overview</span>
+</a>
+</li>
+<!-- Hostels -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">domain</span>
+<span>Hostels</span>
+</a>
+</li>
+<!-- Fleet -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+<span>Fleet</span>
+</a>
+</li>
+<!-- API Portal -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">api</span>
+<span>API Portal</span>
+</a>
+</li>
+<!-- Users -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">group</span>
+<span>Users</span>
+</a>
+</li>
+<!-- Settings (ACTIVE) -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-secondary-container text-on-secondary-container font-bold font-body-sm text-body-sm transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">settings_applications</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+<!-- CTA -->
+<div class="mt-4 mb-6">
+<button class="w-full py-2 px-4 bg-primary text-on-primary rounded-lg font-label-mono text-label-mono hover:bg-surface-tint transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                Add New Module
+            </button>
+</div>
+<!-- Footer Links -->
+<div class="border-t border-outline-variant pt-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">menu_book</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-all duration-200 ease-in-out font-body-sm text-body-sm group" href="#">
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col lg:ml-64 h-screen bg-surface relative">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-dashboard-margin py-2 z-50 bg-surface-container-low border-b border-outline-variant docked full-width top-0 h-16">
+<!-- Left: Mobile Menu & Product Name (Desktop hidden nav links for this layout, but preserving brand) -->
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+                    Syncora
+                </div>
+</div>
+<!-- Center: Navigation Links (as per TopNavBar spec, though contextually overlapping with SideNav, keeping spec for TopNav presence) -->
+<nav class="hidden md:flex space-x-6">
+<a class="text-on-surface-variant hover:text-on-surface font-body-md text-body-md hover:bg-surface-container-high transition-colors px-3 py-1 rounded cursor-pointer active:scale-95" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-on-surface font-body-md text-body-md hover:bg-surface-container-high transition-colors px-3 py-1 rounded cursor-pointer active:scale-95" href="#">Docs</a>
+<a class="text-on-surface-variant hover:text-on-surface font-body-md text-body-md hover:bg-surface-container-high transition-colors px-3 py-1 rounded cursor-pointer active:scale-95" href="#">Logs</a>
+<a class="text-on-surface-variant hover:text-on-surface font-body-md text-body-md hover:bg-surface-container-high transition-colors px-3 py-1 rounded cursor-pointer active:scale-95" href="#">Support</a>
+</nav>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-4">
+<!-- Search Bar (on_left contextually relative to actions) -->
+<div class="hidden md:flex relative focus-ring rounded-full bg-surface-container h-9 w-64 items-center px-3 border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-[18px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-full h-full text-on-surface placeholder:text-outline ml-2" placeholder="Search settings..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="p-2 text-primary bg-primary-fixed rounded-full transition-colors active:scale-95 cursor-pointer hidden">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+</button>
+</div>
+<button class="px-4 py-1.5 bg-surface-container-highest text-on-surface font-label-mono text-label-mono rounded hover:bg-outline-variant transition-colors border border-outline-variant cursor-pointer active:scale-95">
+                    Deploy
+                </button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant cursor-pointer active:scale-95 object-cover" data-alt="A small, circular avatar image of a professional user in a corporate setting. The background is a subtle office environment. The image is bright and crisp, suitable for a light-mode UI profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdubrJ8CBY1mTwSe-u-H4P1vWvIvDHnDdG5T7XCFYIRFx2tFpJQWxNcBQy1M-h3PvoS8LP0sHkamaUuDZOYtl5Zx4i0_WcbYgBhum1S9I_b4BvMFi38edGJpCu2Ahstc2iU1YwmfCgH1stYmj5yEqQhQEi-q2Hp2V1mnj0nHEaloM1i68PethRf2eAGtxaLDo7cQSZaR4FuzhUvfkWMlRtKPBi_QZO_jLooJtCfg5BcV97pVyoP6hi"/>
+</div>
+</header>
+<!-- Status Command Bar (System-specific header) -->
+<div class="bg-surface-container-high border-b border-outline-variant px-dashboard-margin py-3 flex justify-between items-center z-30">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Platform Settings</span>
+<span class="px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed font-label-mono text-label-mono rounded-full border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">admin_panel_settings</span>
+                    Super Admin Access
+                </span>
+</div>
+<div class="font-data-viz text-data-viz text-on-surface-variant flex gap-6">
+<span>Last Backup: <strong class="text-on-surface">2hrs ago</strong></span>
+<span>System Status: <strong class="text-occupancy-available">Healthy</strong></span>
+</div>
+</div>
+<!-- Scrollable Settings Canvas -->
+<main class="flex-1 overflow-y-auto p-dashboard-margin bg-surface pb-32">
+<div class="max-w-5xl mx-auto space-y-grid-gutter">
+<!-- 1. Global Security Policy (Bento-style layout) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="border-b border-outline-variant bg-surface-container-low px-6 py-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Global Security Policy</h2>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-grid-gutter">
+<!-- JWT Expiry -->
+<div class="border border-outline-variant rounded-lg p-4 flex flex-col justify-between hover:border-primary transition-colors bg-surface-bright">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">JWT Expiry</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Set the lifespan of authentication tokens.</p>
+</div>
+<div class="flex items-center gap-3">
+<input class="w-20 rounded border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-data-viz bg-surface-container" type="number" value="15"/>
+<span class="font-label-mono text-label-mono text-secondary">Minutes</span>
+</div>
+</div>
+<!-- MFA Enforcement -->
+<div class="border border-outline-variant rounded-lg p-4 flex items-start justify-between hover:border-primary transition-colors bg-surface-bright">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">MFA Enforcement</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Require Multi-Factor Auth for all admin roles.</p>
+</div>
+<!-- Toggle -->
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in mt-1">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-outline-variant z-10 top-0 left-0 transition-transform duration-300 ease-in-out" id="toggle_mfa" name="toggle_mfa" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-dim cursor-pointer transition-colors duration-300 ease-in-out" for="toggle_mfa"></label>
+</div>
+</div>
+<!-- IP Whitelisting -->
+<div class="border border-outline-variant rounded-lg p-4 md:col-span-2 hover:border-primary transition-colors bg-surface-bright">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">IP Whitelisting</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Restrict dashboard access to specific IP ranges.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-outline-variant z-10 top-0 left-0 transition-transform duration-300 ease-in-out" id="toggle_ip" name="toggle_ip" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-dim cursor-pointer transition-colors duration-300 ease-in-out" for="toggle_ip"></label>
+</div>
+</div>
+<textarea class="w-full rounded border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-data-viz bg-surface-container-lowest text-on-surface opacity-50 cursor-not-allowed" disabled="" placeholder="e.g., 192.168.1.1/24, 10.0.0.0/8" rows="2"></textarea>
+<p class="font-data-viz text-data-viz text-fleet-idle mt-2">Enable toggle to edit IP ranges.</p>
+</div>
+<!-- Password Complexity -->
+<div class="border border-outline-variant rounded-lg p-4 md:col-span-2 flex items-center justify-between hover:border-primary transition-colors bg-surface-bright">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">Password Complexity</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Minimum 12 chars, 1 uppercase, 1 symbol, 1 number.</p>
+</div>
+<select class="rounded border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-body-sm bg-surface-container-lowest text-on-surface py-1.5 pl-3 pr-8">
+<option>Standard (NIST)</option>
+<option selected="">Strict (Financial)</option>
+<option>Custom</option>
+</select>
+</div>
+</div>
+</section>
+<!-- 2. Branding Defaults -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="border-b border-outline-variant bg-surface-container-low px-6 py-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">palette</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Branding Defaults</h2>
+</div>
+<div class="p-6 space-y-6">
+<!-- Logo Upload -->
+<div class="flex items-start gap-6">
+<div class="w-24 h-24 rounded-lg border-2 border-dashed border-outline-variant flex flex-col items-center justify-center bg-surface-container hover:bg-surface-container-high hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary mb-1">upload</span>
+<span class="font-label-mono text-label-mono text-outline group-hover:text-primary">SVG/PNG</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">Global Institution Logo</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">Used in emails, login screens, and tenant portals. Max 2MB.</p>
+<button class="px-3 py-1.5 bg-surface-container-highest text-on-surface font-label-mono text-label-mono rounded border border-outline-variant hover:bg-outline-variant transition-colors text-xs">
+                                    Choose File
+                                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-grid-gutter">
+<!-- Custom Domain -->
+<div>
+<label class="block font-body-sm text-body-sm font-semibold text-on-surface mb-2">Custom Domain Suffix</label>
+<div class="flex focus-ring rounded">
+<span class="inline-flex items-center px-3 rounded-l border border-r-0 border-outline-variant bg-surface-container-high text-on-surface-variant font-label-mono text-label-mono">
+                                        https://*.
+                                    </span>
+<input class="flex-1 min-w-0 block w-full px-3 py-1.5 rounded-none rounded-r border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-data-viz bg-surface-container-lowest" type="text" value="syncora.edu"/>
+</div>
+</div>
+<!-- Default Language -->
+<div>
+<label class="block font-body-sm text-body-sm font-semibold text-on-surface mb-2">Default Language</label>
+<select class="w-full rounded border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-body-sm bg-surface-container-lowest text-on-surface py-1.5 pl-3 pr-8">
+<option selected="">English (US)</option>
+<option>Spanish (ES)</option>
+<option>French (FR)</option>
+<option>German (DE)</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Data Governance -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="border-b border-outline-variant bg-surface-container-low px-6 py-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">policy</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Data Governance</h2>
+</div>
+<div class="p-0 divide-y divide-outline-variant">
+<!-- GDPR -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1 flex items-center gap-2">
+                                    GDPR Compliance Mode
+                                    <span class="px-2 py-0.5 bg-primary-container text-on-primary-container font-label-mono text-label-mono rounded text-[10px]">Strict</span>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enforces automatic anonymization of inactive users after 90 days.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-outline-variant z-10 top-0 left-0 transition-transform duration-300 ease-in-out" id="toggle_gdpr" name="toggle_gdpr" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-dim cursor-pointer transition-colors duration-300 ease-in-out" for="toggle_gdpr"></label>
+</div>
+</div>
+<!-- Retention -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">Soft Delete Retention Period</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Time before softly deleted records are permanently purged.</p>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-20 rounded border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-data-viz bg-surface-container-lowest text-center" type="number" value="30"/>
+<span class="font-label-mono text-label-mono text-secondary">Days</span>
+</div>
+</div>
+<!-- Audit Logging -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-1">Audit Logging Level</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Detail level for system event tracking.</p>
+</div>
+<select class="rounded border-outline-variant focus:border-primary focus:ring-primary text-body-sm font-body-sm bg-surface-container-lowest text-on-surface py-1.5 pl-3 pr-8">
+<option>Errors Only</option>
+<option>Standard</option>
+<option selected="">Verbose (All Actions)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- 4. Subscription & Billing -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden mb-8">
+<div class="border-b border-outline-variant bg-surface-container-low px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Subscription &amp; Billing</h2>
+</div>
+<span class="px-2 py-1 bg-occupancy-available bg-opacity-10 text-occupancy-available font-label-mono text-label-mono rounded border border-occupancy-available border-opacity-20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Active
+                        </span>
+</div>
+<div class="p-6">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<!-- Capacity Visualization (Simple representation) -->
+<div class="flex-1 w-full space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Active Tenants vs Limit</p>
+<p class="font-headline-lg text-headline-lg text-on-surface">42 <span class="text-secondary text-headline-md font-headline-md font-normal">/ 50</span></p>
+</div>
+<p class="font-data-viz text-data-viz text-occupancy-available">84% Utilized</p>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 84%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 text-xs">Plan renews on Oct 1, 2024. Next tier includes unlimited tenants.</p>
+</div>
+<!-- Actions -->
+<div class="w-full md:w-auto flex flex-col gap-3 min-w-[200px]">
+<button class="w-full py-2 px-4 bg-primary text-on-primary rounded font-label-mono text-label-mono hover:bg-surface-tint transition-colors flex items-center justify-center gap-2">
+                                    Upgrade Plan
+                                </button>
+<a class="w-full py-2 px-4 bg-surface-container-lowest text-primary rounded font-label-mono text-label-mono border border-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors flex items-center justify-center gap-2 text-center" href="#">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+                                    View Detailed Billing
+                                </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Footer within Canvas -->
+<div class="flex justify-end gap-3 pt-4 border-t border-outline-variant mt-8">
+<button class="px-6 py-2 bg-surface-container text-on-surface rounded font-label-mono text-label-mono hover:bg-surface-container-high transition-colors border border-outline-variant shadow-sm">
+                        Cancel Changes
+                    </button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded font-label-mono text-label-mono hover:bg-surface-tint transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save All Settings
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Syncora Admin Lite - System Health Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#e9e7f2",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "occupancy-available": "#15803d",
+                      "inverse-on-surface": "#f1effb",
+                      "on-primary-container": "#a9b3ff",
+                      "on-error": "#ffffff",
+                      "on-surface": "#1a1b23",
+                      "primary-fixed": "#dfe0ff",
+                      "primary-container": "#2036bd",
+                      "on-secondary-container": "#56657c",
+                      "secondary": "#505f76",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-secondary-fixed": "#0c1c30",
+                      "surface-tint": "#3b4fd3",
+                      "map-road": "#ffffff",
+                      "inverse-primary": "#bcc3ff",
+                      "occupancy-occupied": "#2036bd",
+                      "outline-variant": "#c5c5d7",
+                      "primary": "#001c9d",
+                      "fleet-idle": "#64748b",
+                      "occupancy-maintenance": "#92400e",
+                      "on-background": "#1a1b23",
+                      "secondary-fixed": "#d4e3ff",
+                      "error-container": "#ffdad6",
+                      "fleet-delayed": "#b91c1c",
+                      "map-water": "#e0f2fe",
+                      "on-error-container": "#93000a",
+                      "outline": "#757686",
+                      "surface-bright": "#fbf8ff",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "tertiary-container": "#7e3100",
+                      "secondary-container": "#d4e3ff",
+                      "on-tertiary-fixed": "#351000",
+                      "on-surface-variant": "#454654",
+                      "surface-variant": "#e3e1ed",
+                      "map-park": "#f0fdf4",
+                      "on-tertiary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "surface-container-low": "#f4f2fe",
+                      "inverse-surface": "#2f3038",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#000d60",
+                      "on-tertiary-container": "#ffa173",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "surface-dim": "#dad9e4",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "surface-container": "#eeecf8",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "fleet-transit": "#0369a1",
+                      "tertiary": "#5a2100",
+                      "surface": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "node-spacing": "8px",
+                      "map-overlay-gap": "12px",
+                      "grid-gutter": "16px",
+                      "dashboard-margin": "24px"
+              },
+              "fontFamily": {
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .pt-safe { padding-top: env(safe-area-inset-top); }
+        
+        /* Pulse Animation for Node Status */
+        @keyframes ping-slow {
+            0% { transform: scale(1); opacity: 0.8; }
+            70% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .animate-ping-slow {
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        
+        /* Smooth Toggle switch styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #001c9d; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #001c9d; /* primary */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col pt-safe">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed-dim font-headline-md text-headline-md fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline flat no shadows hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 flex justify-between items-center px-4 h-16 w-full pt-safe md:hidden">
+<button aria-label="Menu" class="p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim truncate">Syncora Admin Lite</span>
+<button aria-label="Profile" class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional, high-quality, perfectly lit studio headshot of a system administrator in their 30s. The portrait is corporate, modern, and confident. The lighting is crisp and natural, highlighting a clean, sharp appearance against a minimal, neutral gray background. The aesthetic is clean, academic, and systematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxmVGlt0sGHdtF8IBZ8XuvXYeKaa3kV352L85IWlGbvKqz9gjdsfrQcc6YIwCBrv5EIrbqOZfVY6qKmkLuXfdubWAIjWqS1Djgw0f4JKIkLJSkkHiWVLCdlS6xxsAfRYo00fheKBooAsnCfPtXKbKv1RX77QmwCCdz6VLuD-v-STyNpgwD9yDAyh7saubM7wS-1mkVRRhRpJCI7OMEOlfuCQ2BQRaU2FT58tAMTTwRhQrGWZ0VARlL"/>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto pt-16 pb-24 px-4 flex flex-col gap-4">
+<!-- Status Command Bar (System Health Status) -->
+<section class="bg-surface-container-high rounded-xl p-4 flex flex-col gap-2 relative overflow-hidden border border-outline-variant shadow-sm">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-occupancy-available opacity-10 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start z-10">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-1">Global Status</span>
+<h1 class="font-headline-lg text-headline-lg text-occupancy-available flex items-center gap-2">
+<span class="relative flex h-3 w-3 mr-1">
+<span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-occupancy-available opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-occupancy-available"></span>
+</span>
+                        System Operational
+                    </h1>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-1">Uptime</span>
+<span class="font-data-viz text-data-viz text-on-surface">99.98%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Last 30d</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 mt-2 overflow-hidden flex">
+<div class="bg-occupancy-available h-1.5 rounded-l-full" style="width: 98%"></div>
+<div class="bg-fleet-delayed h-1.5" style="width: 1%"></div>
+<div class="bg-occupancy-available h-1.5 rounded-r-full" style="width: 1%"></div>
+</div>
+</section>
+<!-- Active Node Monitoring (Grid Layout) -->
+<section class="flex flex-col gap-3">
+<h2 class="font-headline-md text-headline-md text-on-surface">Core Nodes</h2>
+<div class="grid grid-cols-2 gap-3">
+<!-- Node: Auth -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 flex flex-col gap-2 hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="relative flex h-2 w-2">
+<span class="relative inline-flex rounded-full h-2 w-2 bg-occupancy-available"></span>
+</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Auth Svc</div>
+<div class="font-data-viz text-data-viz text-on-surface-variant mt-1">12ms response</div>
+</div>
+</div>
+<!-- Node: DB -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 flex flex-col gap-2 hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-icon="database">database</span>
+<span class="relative flex h-2 w-2">
+<span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-occupancy-maintenance opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-occupancy-maintenance"></span>
+</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Primary DB</div>
+<div class="font-data-viz text-data-viz text-occupancy-maintenance mt-1">Load: 82%</div>
+</div>
+</div>
+<!-- Node: Notifications -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 flex flex-col gap-2 hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="relative flex h-2 w-2">
+<span class="relative inline-flex rounded-full h-2 w-2 bg-occupancy-available"></span>
+</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Notify Engine</div>
+<div class="font-data-viz text-data-viz text-on-surface-variant mt-1">Queue: 0</div>
+</div>
+</div>
+<!-- Node: Cache -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 flex flex-col gap-2 hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-icon="memory">memory</span>
+<span class="relative flex h-2 w-2">
+<span class="relative inline-flex rounded-full h-2 w-2 bg-fleet-idle"></span>
+</span>
+</div>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface">Redis Cache</div>
+<div class="font-data-viz text-data-viz text-fleet-idle mt-1">Standby</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Urgent Alerts -->
+<section class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">Active Alerts</h2>
+<span class="font-label-mono text-label-mono text-fleet-delayed bg-error-container px-2 py-0.5 rounded-full">1 Urgent</span>
+</div>
+<div class="bg-error-container border border-fleet-delayed/30 rounded-lg p-4 flex items-start gap-3 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-fleet-delayed"></div>
+<span class="material-symbols-outlined text-fleet-delayed mt-0.5" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-mono text-label-mono text-on-error-container font-bold mb-1">API Latency Spike</h3>
+<span class="font-data-viz text-data-viz text-on-error-container opacity-80">2m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-error-container mb-3">Endpoint /v1/auth/verify is experiencing &gt; 500ms p99 latency.</p>
+<div class="flex gap-2">
+<button class="bg-fleet-delayed text-on-error px-3 py-1.5 rounded text-label-mono font-label-mono hover:bg-on-error-container transition-colors shadow-sm">Acknowledge</button>
+<button class="border border-fleet-delayed/50 text-on-error-container px-3 py-1.5 rounded text-label-mono font-label-mono hover:bg-fleet-delayed/10 transition-colors">View Trace</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Toggles -->
+<section class="flex flex-col gap-3">
+<h2 class="font-headline-md text-headline-md text-on-surface">System Controls</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl divide-y divide-outline-variant overflow-hidden">
+<!-- Toggle Item -->
+<div class="p-4 flex justify-between items-center hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-on-surface mb-0.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="lock_clock">lock_clock</span>
+                            Emergency Lock
+                        </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Halt all new login requests</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-outline-variant appearance-none cursor-pointer z-10 top-0 -left-1" id="toggle_lock" name="toggle_lock" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-dim cursor-pointer transition-colors duration-200 ease-in" for="toggle_lock"></label>
+</div>
+</div>
+<!-- Toggle Item -->
+<div class="p-4 flex justify-between items-center hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-on-surface mb-0.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="engineering">engineering</span>
+                            Maintenance Mode
+                        </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Show 503 to non-admin users</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-outline-variant appearance-none cursor-pointer z-10 top-0 -left-1" id="toggle_maint" name="toggle_maint" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-dim cursor-pointer transition-colors duration-200 ease-in" for="toggle_maint"></label>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container-lowest font-label-mono text-label-mono fixed bottom-0 w-full z-50 border-t border-outline-variant flat no shadows flex justify-around items-center h-20 pb-safe w-full md:hidden">
+<!-- Health (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] uppercase tracking-wide">Health</span>
+</a>
+<!-- Alerts -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<div class="relative">
+<span class="material-symbols-outlined mb-1" data-icon="notifications_active">notifications_active</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-fleet-delayed rounded-full border border-surface-container"></span>
+</div>
+<span class="text-[10px] uppercase tracking-wide mt-1">Alerts</span>
+</a>
+<!-- Toggles -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="toggle_on">toggle_on</span>
+<span class="text-[10px] uppercase tracking-wide mt-1">Toggles</span>
+</a>
+<!-- Logs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant scale-95 active:scale-90 transition-transform rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="text-[10px] uppercase tracking-wide mt-1">Logs</span>
+</a>
+</nav>
+</body></html>

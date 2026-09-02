@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Admin - Sections</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c5c5d7",
+                    "on-tertiary-fixed-variant": "#7a2f00",
+                    "surface-bright": "#faf8ff",
+                    "background": "#faf8ff",
+                    "inverse-primary": "#bbc3ff",
+                    "primary-fixed-dim": "#bbc3ff",
+                    "secondary": "#505f76",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#3b4fd2",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#ffd3bf",
+                    "on-tertiary-fixed": "#351000",
+                    "surface-container-highest": "#dae2fd",
+                    "surface-container-low": "#f2f3ff",
+                    "tertiary-fixed-dim": "#ffb694",
+                    "surface-dim": "#d2d9f4",
+                    "on-primary-container": "#d7daff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-primary-fixed-variant": "#1d34ba",
+                    "tertiary": "#7e3100",
+                    "primary": "#2036bd",
+                    "primary-fixed": "#dfe0ff",
+                    "surface-container": "#eaedff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-background": "#131b2e",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-surface-variant": "#454654",
+                    "primary-container": "#3e52d5",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#000d60",
+                    "outline": "#757686",
+                    "surface-container-high": "#e2e7ff",
+                    "secondary-container": "#d0e1fb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "on-secondary-container": "#54647a",
+                    "tertiary-container": "#a44200",
+                    "surface": "#faf8ff",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-surface": "#131b2e",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#283044",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "gutter-grid": "16px",
+                    "density-generous": "32px",
+                    "margin-page": "24px",
+                    "density-compact": "8px",
+                    "padding-card": "16px"
+            },
+            "fontFamily": {
+                    "display": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "display": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-mono": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="flex bg-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-surface-dim h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline flex flex-col py-density-generous px-density-compact z-20 hidden md:flex">
+<div class="mb-density-generous px-margin-page">
+<h1 class="font-display text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Syncora Admin</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1 uppercase tracking-wider">Academic Management</p>
+</div>
+<nav class="flex-1 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-margin-page py-2 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors transition-all duration-200 ease-in-out font-body-md text-body-md rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+                Programs
+            </a>
+<a class="flex items-center gap-3 px-margin-page py-2 text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary dark:border-primary-fixed-dim bg-primary-container/10 transition-all duration-200 ease-in-out font-body-md text-body-md rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+                Sections
+            </a>
+<a class="flex items-center gap-3 px-margin-page py-2 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors transition-all duration-200 ease-in-out font-body-md text-body-md rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined" data-icon="meeting_room">meeting_room</span>
+                Rooms
+            </a>
+<a class="flex items-center gap-3 px-margin-page py-2 text-on-surface-variant dark:text-on-secondary-fixed-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors transition-all duration-200 ease-in-out font-body-md text-body-md rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                Semesters
+            </a>
+</nav>
+<div class="mt-auto px-margin-page py-4 border-t border-outline-variant/30 flex items-center gap-3">
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar placeholder image for the administrator profile. It should be a simple geometric pattern in subtle indigo and gray tones, conveying a professional administrative identity in a light-mode UI context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpU3SwinbwESbBIpGY_6utViL4-coVTgCILXcFm8wad3K3_XJ0GOHJnLYDHYCXiZ7Q_opPQ_QmfMkDDqstLwNPQKUlSEMXeycUvLnq1r0hAPhcfM2EewZnEQC3qwUEo8CzXfzDYsZ9yv6ttE8GRK5RCzj8gMxG5YpH_26AXZKfuRnl6qPmnjNuKPBnHAKwE_yhrhLTCNuKdUezcoWbqGyaZN3yWHtIjgKKhVs59epQnkX-Ks2Bmku2"/>
+<div class="flex-1 min-w-0">
+<p class="font-body-sm text-body-sm text-on-surface truncate font-semibold">Admin User</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant truncate">admin@syncora.edu</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen relative">
+<!-- TopNavBar -->
+<header class="bg-surface-bright dark:bg-surface-container-lowest fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] h-16 border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-page z-10">
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-on-surface-variant p-2 -ml-2 rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex-1 flex items-center max-w-xl relative">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant transition-colors bg-surface-container-low hover:bg-surface-container-high" placeholder="Search sections, programs, advisors..." type="text"/>
+</div>
+<div class="flex items-center gap-4 ml-4">
+<button class="text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors p-2 rounded-full hover:bg-surface-container-high relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors p-2 rounded-full hover:bg-surface-container-high hidden sm:block">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="hidden lg:flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded-DEFAULT text-on-surface-variant font-label-mono text-label-mono hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+                    Profile Settings
+                </button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 pt-24 px-margin-page pb-density-generous max-w-[1440px] mx-auto w-full">
+<!-- Page Header & Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-density-generous">
+<div>
+<h2 class="font-display text-headline-lg font-bold text-on-surface">Sections</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Manage student cohorts, capacities, and advisors.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors px-4 py-2 rounded-DEFAULT font-label-mono text-label-mono uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="group_add">group_add</span>
+                        Bulk Assign Students
+                    </button>
+<button class="bg-primary text-on-primary hover:bg-primary-container transition-colors px-4 py-2 rounded-DEFAULT font-label-mono text-label-mono uppercase tracking-wider flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                        Create New Section
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Structure for Filters and Insights -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-gutter-grid mb-density-generous">
+<!-- Quick Filters -->
+<div class="bg-surface-container-lowest border border-outline-variant p-padding-card rounded-lg flex flex-col gap-3 lg:col-span-1 shadow-sm">
+<h3 class="font-label-mono text-label-mono uppercase text-on-surface-variant tracking-wider">Quick Filters</h3>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded text-primary focus:ring-primary border-outline-variant bg-surface" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Active Sections</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-outline-variant bg-surface" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Under Capacity</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-outline-variant bg-surface" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary transition-colors">Missing Advisor</span>
+</label>
+</div>
+</div>
+<!-- Stats Summary -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-gutter-grid lg:col-span-3">
+<div class="bg-surface-container-lowest border border-outline-variant p-padding-card rounded-lg flex flex-col justify-center relative overflow-hidden shadow-sm">
+<div class="absolute top-0 right-0 p-3 opacity-10">
+<span class="material-symbols-outlined text-4xl" data-icon="grid_view">grid_view</span>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-1">Total Sections</p>
+<p class="font-display text-display text-on-surface">142</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-padding-card rounded-lg flex flex-col justify-center relative overflow-hidden shadow-sm">
+<div class="absolute top-0 right-0 p-3 opacity-10">
+<span class="material-symbols-outlined text-4xl" data-icon="group">group</span>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-1">Total Enrolled</p>
+<p class="font-display text-display text-on-surface">3,250</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-padding-card rounded-lg flex flex-col justify-center relative overflow-hidden shadow-sm">
+<div class="absolute top-0 right-0 p-3 opacity-10 text-error">
+<span class="material-symbols-outlined text-4xl" data-icon="warning">warning</span>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-1">Over Capacity</p>
+<p class="font-display text-display text-error">4</p>
+</div>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm flex flex-col">
+<!-- Table Header Actions -->
+<div class="px-margin-page py-3 border-b border-outline-variant/50 flex justify-between items-center bg-surface-container-low/50">
+<div class="flex items-center gap-4">
+<select class="bg-transparent border-none text-on-surface font-body-sm text-body-sm focus:ring-0 py-1 pl-0 cursor-pointer">
+<option>All Programs</option>
+<option>B.Sc. Computer Science</option>
+<option>B.A. Business Admin</option>
+</select>
+<select class="bg-transparent border-none text-on-surface font-body-sm text-body-sm focus:ring-0 py-1 pl-0 cursor-pointer">
+<option>Fall 2024</option>
+<option>Spring 2025</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:text-primary p-1.5 rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary p-1.5 rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant/80">
+<th class="p-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider font-semibold whitespace-nowrap w-[25%]">Section Name</th>
+<th class="p-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider font-semibold whitespace-nowrap w-[25%]">Program</th>
+<th class="p-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider font-semibold whitespace-nowrap w-[15%]">Semester</th>
+<th class="p-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider font-semibold whitespace-nowrap w-[15%]">Capacity</th>
+<th class="p-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider font-semibold whitespace-nowrap w-[20%]">Advisor</th>
+<th class="p-4 w-12"></th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-semibold text-on-surface">Fall-2024-A</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">B.Sc. CS</td>
+<td class="p-4 text-on-surface-variant">Semester 1</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface">45<span class="text-on-surface-variant">/50</span></span>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 90%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-primary">DR</div>
+<span class="text-on-surface-variant">Dr. Rivera</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-semibold text-on-surface">Fall-2024-B</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">B.Sc. CS</td>
+<td class="p-4 text-on-surface-variant">Semester 1</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface">48<span class="text-on-surface-variant">/50</span></span>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 96%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-primary">DR</div>
+<span class="text-on-surface-variant">Dr. Rivera</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 (Over Capacity Example) -->
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group bg-error-container/20">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-semibold text-on-surface">Spring-2025-A</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">B.A. BusAdmin</td>
+<td class="p-4 text-on-surface-variant">Semester 2</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="text-error font-semibold">62<span class="text-on-surface-variant font-normal">/60</span></span>
+<div class="w-16 h-1.5 bg-error-container rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-primary">MS</div>
+<span class="text-on-surface-variant">Prof. Smith</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="font-semibold text-on-surface">Fall-2024-C</span>
+</div>
+</td>
+<td class="p-4 text-on-surface-variant">B.Sc. IT</td>
+<td class="p-4 text-on-surface-variant">Semester 1</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface">12<span class="text-on-surface-variant">/40</span></span>
+<div class="w-16 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full opacity-60" style="width: 30%"></div>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="text-on-surface-variant italic text-sm">Unassigned</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-on-surface-variant hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-margin-page py-3 border-t border-outline-variant/50 bg-surface-container-lowest flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1-4 of 142 sections</span>
+<div class="flex items-center gap-2">
+<button class="p-1 text-outline hover:text-on-surface transition-colors" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<span class="font-label-mono text-label-mono text-on-surface px-2">Page 1 of 36</span>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

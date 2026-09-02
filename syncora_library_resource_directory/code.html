@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Library - Resource Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb694",
+                        "error": "#ba1a1a",
+                        "primary-container": "#3e52d5",
+                        "secondary": "#505f76",
+                        "primary-fixed": "#dfe0ff",
+                        "category-digital": "#7c3aed",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d4e3ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "status-overdue": "#b91c1c",
+                        "on-background": "#1a1b23",
+                        "inverse-surface": "#2f3038",
+                        "on-surface-variant": "#454654",
+                        "surface-container-high": "#e9e7f2",
+                        "surface-dim": "#dad9e4",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1b23",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#7e3100",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "tertiary-fixed": "#ffdbcc",
+                        "outline": "#757686",
+                        "surface-container-highest": "#e3e1ec",
+                        "bookshelf-wood": "#fdfaf6",
+                        "category-physical": "#0891b2",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed": "#000d60",
+                        "category-periodical": "#ca8a04",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container": "#eeecf8",
+                        "outline-variant": "#c5c5d7",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f4f2fe",
+                        "surface-bright": "#fbf8ff",
+                        "status-issued": "#3e52d5",
+                        "primary": "#2036bd",
+                        "status-available": "#15803d",
+                        "background": "#fbf8ff",
+                        "surface": "#fbf8ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a44200",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e1ec",
+                        "inverse-primary": "#bbc3ff",
+                        "on-secondary-container": "#56657c",
+                        "on-primary-container": "#d7daff",
+                        "inverse-on-surface": "#f1effb",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-tertiary-fixed": "#351000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "bookshelf-gap": "24px",
+                        "search-gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "asset-card-padding": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "search-ui": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "search-ui": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full overflow-hidden flex flex-col font-body-md">
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 flex items-center justify-between px-margin-desktop w-full h-16 bg-background dark:bg-on-background bg-surface-bright dark:bg-surface-dim border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Syncora Library</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Student Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, circular avatar portrait of a student, casually dressed, in a bright modern library setting, soft natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR-6TVnc_bvC6ff8t_y15RSBrLldKTyhh3_s3ewBVKKeFr7c0GcbaJX1c4IYj54jJ_spZEtC-bd5yJPcn5_e-bin7fRGbhdFX7O3tpo0NHUVR19dupp3fGXq1vchgJa9gozuTCm2pwqI_Y61Yh_DXFzMJKSO8Z_ySG49D2DdPsx1btm-2YOQj6alSsrzryoxcjmqs-ZUmEyYKiIHBvhagzclxTCwFzIOowN2kEkQLtdKBSvaqZPKcF"/>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-16 bottom-0 w-72 py-6 border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest bg-surface-container-low dark:bg-surface-container-high flat no shadows">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Academic Institution Logo" class="w-10 h-10 rounded object-cover" data-alt="A sleek, minimalist logo of an academic institution, featuring a stylized book and a sunburst, in dark blue and gold tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo_mzV72NeMUnooHO3MViZL1HPegWPljNujZ9nF9prLLQ0unS1cw-cTtErZ4Gobmj5rXIQWIt1yPSUAEVjRlwg8NLwzwO19kx52Zs00R-fTc75FH4_F4QDPwKDxX_1ByGsNqvzXepFDNEwm6x4TcwTlFxJBDiDmdXE9T3W20eY20nQo-rGPT0AV-SrXGFpL0PZ0ArXIs5ciIXV19Krf0FkEC0t4OnCElZONaxglyHk76rKyy3XtZrs"/>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Library Hub</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central Collection</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-2 rounded-lg font-body-md font-semibold hover:bg-opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">search</span>
+                    Refine Search
+                </button>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">home</span>
+                            Home
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">library_books</span>
+                            Catalog
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">book_2</span>
+                            My Bookshelf
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">event_available</span>
+                            Reservations
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">history</span>
+                            History
+                        </a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto pt-4 px-6 border-t border-outline-variant">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 py-3 text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm rounded-lg px-3 -mx-3" href="#">
+<span class="material-symbols-outlined">help</span>
+                            Help
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 py-3 text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm rounded-lg px-3 -mx-3" href="#">
+<span class="material-symbols-outlined">logout</span>
+                            Sign Out
+                        </a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 lg:ml-72 overflow-y-auto bg-surface p-margin-mobile md:p-margin-desktop">
+<!-- Search & Filters -->
+<div class="mb-8">
+<div class="relative max-w-3xl mx-auto flex gap-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-xl font-search-ui text-search-ui text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-sm" placeholder="Search books, journals, digital media..." type="text"/>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4 max-w-3xl mx-auto items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant mr-2">Filters:</span>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-secondary-container text-on-secondary-container rounded-full font-body-sm text-body-sm hover:bg-opacity-80 transition-colors">
+                        Books
+                        <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-surface-container-high border border-outline-variant text-on-surface-variant rounded-full font-body-sm text-body-sm hover:bg-surface-container-highest transition-colors">
+                        Journals
+                    </button>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-surface-container-high border border-outline-variant text-on-surface-variant rounded-full font-body-sm text-body-sm hover:bg-surface-container-highest transition-colors">
+                        Digital Media
+                    </button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-1 px-3 py-1.5 bg-surface-container-high border border-outline-variant text-on-surface-variant rounded-full font-body-sm text-body-sm hover:bg-surface-container-highest transition-colors">
+                        Available Only
+                    </button>
+</div>
+</div>
+<!-- Resource Grid -->
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-6">Directory Results</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Asset Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow flex flex-col p-asset-card-padding">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4 bg-surface-variant">
+<img alt="Book Cover" class="w-full h-full object-cover" data-alt="A clean, modern book cover with geometric shapes in blues and greens, titled 'Principles of Data Science', brightly lit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtiq1QO38KcJRaOpQmuwc1B39VP0RzaB98bGSDMugTeGeLaVL42-lnDaNlRnApeHrKGZqmLvgOh673IK2LKtxZHY2yRl9jAnNc3tbiEX-JbmihDwlKzJkRFYd_RYv6c2ZFRpc60XslWBGD0kNAlguJPJS7MV1dAKLX9fNLWPRihvi7XtvuN9_mg1UomYTp5RYeIEg-cbC40mo2sAzolrsVyE_TxN_VS_fzQ9L8tZCffgR9uuGZ62Hj"/>
+</div>
+<div class="flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-2 mb-1">Principles of Data Science</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Dr. Eleanor Vance</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+<span class="inline-flex items-center px-2 py-1 bg-green-100 text-status-available rounded-full font-label-mono text-label-mono bg-opacity-30 border border-green-200">
+                                    Available
+                                </span>
+<button class="text-primary hover:bg-primary-container hover:bg-opacity-20 p-2 rounded-full transition-colors" title="Save to Bookshelf">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Asset Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow flex flex-col p-asset-card-padding">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4 bg-surface-variant">
+<img alt="Journal Cover" class="w-full h-full object-cover" data-alt="A minimalist journal cover, solid dark crimson with elegant serif typography reading 'Quarterly Review of Literature', sophisticated lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1pBdysTHX1Hss8QwMSu6gCigLkIaknY0UI9IAClIny4WEeiSNOuLV4vQNfnNYok4N-DZBv5m3epNtHOCHRtmpv3sbF7T6f3vJ9yLA8Ae0ZfeOYTURvTACkq5HgjK-7e-yJMkpguO7O-9b-FlwDd2ABudAE7lI_iieHpfocOCxLwoRepJA-79rhXNNajheTpHvC9DynvqpCK4i8MBac978yET7a8C7dN6ceHn54dZ3R0_7VYCHG3pE"/>
+</div>
+<div class="flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-2 mb-1">Quarterly Review of Literature</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Humanities Dept.</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+<span class="inline-flex items-center px-2 py-1 bg-indigo-100 text-status-issued rounded-full font-label-mono text-label-mono bg-opacity-30 border border-indigo-200">
+                                    Issued
+                                </span>
+<button class="text-primary hover:bg-primary-container hover:bg-opacity-20 p-2 rounded-full transition-colors" title="Save to Bookshelf">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Asset Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow flex flex-col p-asset-card-padding">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4 bg-surface-variant relative">
+<div class="absolute inset-0 bg-category-digital bg-opacity-10 flex flex-col items-center justify-center text-category-digital">
+<span class="material-symbols-outlined" style="font-size: 48px;">play_circle</span>
+<span class="mt-2 font-label-mono text-label-mono font-bold">DIGITAL MEDIA</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-2 mb-1">Introduction to Quantum Computing (Lecture Series)</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Prof. James Sterling</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+<span class="inline-flex items-center px-2 py-1 bg-green-100 text-status-available rounded-full font-label-mono text-label-mono bg-opacity-30 border border-green-200">
+                                    Available
+                                </span>
+<button class="text-primary hover:bg-primary-container hover:bg-opacity-20 p-2 rounded-full transition-colors" title="Save to Bookshelf">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Asset Card 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow flex flex-col p-asset-card-padding">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4 bg-surface-variant">
+<img alt="Book Cover" class="w-full h-full object-cover" data-alt="A vintage looking textbook cover, worn edges, warm yellow tone, titled 'Modern European History', soft overhead lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXtq4SIUzJ6ew8Lbb-s-sF5Ztl8rCc3jjXkvuGeZm7uvOAQJP2InJ5B1gPJ5Ae-_ecuaGDW8Zh8hSfpqaLClsm-9IX4Ce4q89VPamIFoOmX1a02IXvMpcCroNL8BwZBdZQEoBUIfg_c03RONT9Hni3YhwvuGR30SpHX1-3FIEpY0j1dFBXHeHBfWYznC-tsDOK04xLpeo2a_UyqdlvqdsYkByiC4vxRJutSWHaw1fPftbFUWeXSKAK"/>
+</div>
+<div class="flex-1 flex flex-col">
+<h4 class="font-headline-md text-headline-md text-on-surface line-clamp-2 mb-1">Modern European History</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Sarah Jenkins</p>
+<div class="mt-auto flex items-center justify-between pt-4 border-t border-surface-variant">
+<span class="inline-flex items-center px-2 py-1 bg-red-100 text-status-overdue rounded-full font-label-mono text-label-mono bg-opacity-30 border border-red-200">
+                                    Overdue
+                                </span>
+<button class="text-primary hover:bg-primary-container hover:bg-opacity-20 p-2 rounded-full transition-colors" title="Save to Bookshelf">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+</div>
+</body></html>

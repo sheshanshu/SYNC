@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Forgot Password</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "background": "#faf8ff",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface": "#faf8ff",
+                      "inverse-primary": "#bbc3ff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "primary": "#2036bd",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "inverse-on-surface": "#eef0ff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "tertiary": "#7e3100",
+                      "secondary-container": "#d0e1fb",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#dae2fd",
+                      "on-error-container": "#93000a",
+                      "on-surface-variant": "#454654",
+                      "surface-container": "#eaedff",
+                      "on-surface": "#131b2e",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-low": "#f2f3ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#dfe0ff",
+                      "on-tertiary-fixed": "#351000",
+                      "on-secondary-fixed": "#0b1c30",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#dae2fd",
+                      "surface-tint": "#3b4fd2",
+                      "on-primary-container": "#d7daff",
+                      "on-primary-fixed": "#000d60",
+                      "primary-container": "#3e52d5",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "secondary": "#505f76",
+                      "inverse-surface": "#283044",
+                      "surface-bright": "#faf8ff",
+                      "surface-container-high": "#e2e7ff",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#a44200",
+                      "on-background": "#131b2e",
+                      "outline-variant": "#c5c5d7",
+                      "outline": "#757686",
+                      "surface-dim": "#d2d9f4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "margin-page": "24px",
+                      "density-compact": "8px",
+                      "density-generous": "32px",
+                      "gutter-grid": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopNavBar (Suppressed for transactional intent, but rules state public header, resolving to minimal header) -->
+<header class="w-full border-b border-outline-variant bg-surface-container-lowest">
+<div class="flex justify-between items-center w-full px-margin-page py-density-compact max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-primary">Syncora</span>
+</div>
+<nav class="hidden md:flex gap-6 items-center">
+<!-- Transactional page, minimal nav -->
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Contact Support</a>
+</nav>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center p-margin-page relative overflow-hidden">
+<!-- Minimal background decoration -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center opacity-[0.03]">
+<span class="material-symbols-outlined text-[40rem] text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl border border-outline-variant p-density-generous shadow-sm relative z-10">
+<div class="text-center mb-8">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center mx-auto mb-4 border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-2xl">lock_reset</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Forgot Password</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Enter your registered institutional email address. We'll send you a secure link to reset your password.
+                </p>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="block font-label-mono text-label-mono text-on-surface" for="email">Institutional Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-xl">mail</span>
+</div>
+<input class="w-full pl-10 pr-3 py-2.5 bg-surface-container-lowest border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md text-on-surface placeholder:text-outline-variant transition-all" id="email" name="email" placeholder="admin@institution.edu" required="" type="email"/>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full bg-primary text-on-primary font-body-md text-body-md font-bold py-3 px-4 rounded hover:bg-primary-container hover:text-on-primary-container transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary flex justify-center items-center gap-2" type="submit">
+<span>Send Recovery Code</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="text-center pt-4 border-t border-outline-variant mt-6">
+<a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                        Return to Login
+                    </a>
+</div>
+</form>
+<!-- Status Indicator Example (Hidden by default, shown via JS in a real app) -->
+<div class="hidden mt-6 p-3 rounded bg-surface-container-low border border-primary-fixed text-primary font-body-sm text-body-sm flex items-start gap-2" id="status-message">
+<span class="material-symbols-outlined text-sm mt-0.5">info</span>
+<p>If an account matches that email, a recovery link will be sent shortly.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-outline-variant bg-surface-container-low py-density-generous mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-page max-w-7xl mx-auto gap-gutter-grid">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-on-surface font-bold text-primary">Syncora</span>
+<span class="font-label-mono text-label-mono text-secondary">© 2024 Institutional Management Platform. All rights reserved.</span>
+</div>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-secondary hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-secondary hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-secondary hover:text-primary transition-colors underline decoration-transparent hover:decoration-primary underline-offset-4" href="#">Accessibility Statement</a>
+</div>
+</div>
+</footer>
+</body></html>

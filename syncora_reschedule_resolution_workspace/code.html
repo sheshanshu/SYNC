@@ -1,0 +1,479 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Reschedule Timetable Slot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#000d60",
+                      "on-primary-container": "#d7daff",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#505f76",
+                      "primary-fixed": "#dfe0ff",
+                      "inverse-primary": "#bbc3ff",
+                      "on-secondary-container": "#54647a",
+                      "tertiary": "#7e3100",
+                      "primary-container": "#3e52d5",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-tint": "#3b4fd2",
+                      "on-error-container": "#93000a",
+                      "on-surface-variant": "#454654",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "inverse-surface": "#283044",
+                      "on-tertiary-fixed": "#351000",
+                      "on-primary": "#ffffff",
+                      "surface": "#faf8ff",
+                      "tertiary-container": "#a44200",
+                      "surface-dim": "#d2d9f4",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "primary": "#2036bd",
+                      "surface-container-highest": "#dae2fd",
+                      "surface-bright": "#faf8ff",
+                      "on-background": "#131b2e",
+                      "outline": "#757686",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-surface": "#131b2e",
+                      "inverse-on-surface": "#eef0ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "secondary-fixed": "#d3e4fe",
+                      "secondary-container": "#d0e1fb",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "surface-container-high": "#e2e7ff",
+                      "surface-variant": "#dae2fd",
+                      "surface-container": "#eaedff",
+                      "outline-variant": "#c5c5d7",
+                      "tertiary-fixed": "#ffdbcc",
+                      "background": "#faf8ff",
+                      "surface-container-low": "#f2f3ff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "base": "4px",
+                      "density-generous": "32px",
+                      "density-compact": "8px",
+                      "margin-page": "24px",
+                      "gutter-grid": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .ghost-outline { box-shadow: 0 0 0 1px #E2E8F0; }
+        .tonal-elevation-2 { box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 0 0 1px #E2E8F0; }
+        .bg-error-subtle { background-color: rgba(186, 26, 26, 0.1); }
+        .bg-success-subtle { background-color: rgba(32, 189, 134, 0.1); }
+        .text-success { color: #16a34a; }
+        
+        .progress-segment {
+            height: 4px;
+            flex-grow: 1;
+            margin-right: 2px;
+            border-radius: 1px;
+            background-color: #eef0ff; /* inverse-on-surface */
+        }
+        .progress-segment.filled {
+            background-color: #2036bd; /* primary */
+        }
+        .progress-segment:last-child {
+            margin-right: 0;
+        }
+        
+        /* Grid lines for preview */
+        .schedule-grid {
+            background-image: 
+                linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+                linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+            background-size: 50px 30px;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-body-md text-on-surface antialiased overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface w-full h-16 sticky top-0 z-50 border-b border-outline-variant flex items-center justify-between px-6 transition-colors duration-200">
+<div class="flex items-center gap-4">
+<span class="font-display text-display text-primary tracking-tight">Syncora</span>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<span class="font-headline-md text-headline-md text-on-surface">Reschedule Session</span>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search Bar -->
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-sm" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-64 h-9 pl-9 pr-3 rounded border border-outline-variant bg-surface-container-low text-body-sm font-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search resources..." type="text">
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors" title="Help">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors" title="Notifications">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors" title="Settings">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<div class="h-8 w-8 ml-2 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden cursor-pointer hover:ring-2 hover:ring-primary-container transition-all">
+<img alt="Administrator Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdXGQQ0sMDGnBOatd3rz4jrKszACkqcKN3TBQFYzdUksB1MoY0x-5TVphHdoUBaN1DFainsdD2RetK0QktU6UJHdyjEVlwfj3ajNJFFjxNktbmkCBfTFlFKOq6E3rFFQ_B76d_T13bqZE9s4oeG6PMowajFwTlqwF8T6-I_r-sJ4XIaXGZDKMEuf96nOjJBAimwBWTas7JZnPCDNF9tAHzUkOShptuzONgIllwBJnQJf2PGLyV1Mil">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<div class="flex flex-1 overflow-hidden bg-background">
+<!-- Left Content Area (Forms & Lists) -->
+<main class="flex-1 overflow-y-auto p-density-generous max-w-4xl border-r border-outline-variant bg-surface">
+<!-- Context Header -->
+<div class="mb-8 flex items-start justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg mb-1">Resolve Conflict: MATH201</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Select an alternative time or room to resolve the double-booking.</p>
+</div>
+<button class="px-4 py-2 bg-surface text-on-surface border border-outline-variant rounded font-body-sm text-body-sm hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span>
+                    Cancel
+                </button>
+</div>
+<!-- Conflicting Session Details (Bento/Card) -->
+<div class="mb-8 bg-surface rounded-lg ghost-outline p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-error-subtle flex items-center justify-center text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Calculus II (Section A)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prof. Alan Turing</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-error-subtle text-error font-label-mono text-label-mono uppercase tracking-wider">Conflict</span>
+</div>
+<div class="grid grid-cols-3 gap-6 pt-4 border-t border-outline-variant">
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1 uppercase tracking-wider">Current Time</p>
+<p class="font-body-md text-body-md">Mon, 10:00 AM - 11:30 AM</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1 uppercase tracking-wider">Current Room</p>
+<p class="font-body-md text-body-md text-error font-medium flex items-center gap-1">
+                            Science Bldg, Room 102
+                            <span class="material-symbols-outlined text-[16px]" title="Double booked">error</span>
+</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1 uppercase tracking-wider">Capacity Req.</p>
+<p class="font-body-md text-body-md">45 Students</p>
+</div>
+</div>
+</div>
+<!-- Search Alternatives -->
+<section class="mb-8">
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant">search_insights</span>
+                    Search Parameters
+                </h3>
+<div class="bg-surface rounded-lg ghost-outline p-4 flex items-end gap-4">
+<div class="flex-1">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Room Type</label>
+<select class="w-full h-9 rounded border border-outline-variant bg-surface text-body-sm font-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Lecture Hall (Tiered)</option>
+<option>Classroom (Flat)</option>
+<option>Lab</option>
+</select>
+</div>
+<div class="flex-1">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Building</label>
+<select class="w-full h-9 rounded border border-outline-variant bg-surface text-body-sm font-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Any Available</option>
+<option>Science Building</option>
+<option>Main Campus</option>
+</select>
+</div>
+<button class="px-4 py-2 bg-surface text-on-surface border border-outline-variant rounded font-body-sm text-body-sm hover:bg-surface-container-low transition-colors h-9 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] mr-1">tune</span> Filters
+                    </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded font-body-sm text-body-sm hover:bg-primary-fixed-variant transition-colors h-9">
+                        Search
+                    </button>
+</div>
+</section>
+<!-- Suggested Slots List -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-headline-md">Suggested Alternatives</h3>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Sorted by: Best Fit</span>
+</div>
+<div class="space-y-3">
+<!-- Suggestion Card 1 (Best Match) -->
+<div class="bg-surface rounded-lg ghost-outline p-4 hover:bg-surface-container-lowest transition-colors group cursor-pointer border-l-4 border-l-success">
+<div class="flex justify-between items-start mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-headline-md text-headline-md text-on-surface">Mon, 1:00 PM - 2:30 PM</h4>
+<span class="px-2 py-0.5 rounded bg-success-subtle text-success font-label-mono text-[10px] uppercase tracking-wider border border-[#16a34a] border-opacity-20">98% Match</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Science Bldg, Room 204 (Capacity: 50)
+                                </p>
+</div>
+<button class="px-4 py-2 bg-primary-container text-on-primary-container rounded font-body-sm text-body-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">preview</span>
+                                Select &amp; Preview
+                            </button>
+</div>
+<!-- Segmented Progress Bar -->
+<div class="mt-2">
+<div class="flex justify-between font-label-mono text-[10px] text-on-surface-variant mb-1">
+<span class="">Availability Score</span>
+<span class="text-success">High</span>
+</div>
+<div class="flex w-full">
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+</div>
+</div>
+</div>
+<!-- Suggestion Card 2 -->
+<div class="bg-surface rounded-lg ghost-outline p-4 hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-headline-md text-headline-md text-on-surface">Mon, 10:00 AM - 11:30 AM</h4>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-mono text-[10px] uppercase tracking-wider">85% Match</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Arts Bldg, Room 101 (Capacity: 60)
+                                </p>
+<p class="font-body-sm text-[12px] text-error mt-1">Different Building</p>
+</div>
+<button class="px-4 py-2 bg-surface border border-outline-variant text-on-surface rounded font-body-sm text-body-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">preview</span>
+                                Select
+                            </button>
+</div>
+<div class="mt-2">
+<div class="flex justify-between font-label-mono text-[10px] text-on-surface-variant mb-1">
+<span class="">Availability Score</span>
+<span class="">Medium-High</span>
+</div>
+<div class="flex w-full">
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment"></div>
+</div>
+</div>
+</div>
+<!-- Suggestion Card 3 -->
+<div class="bg-surface rounded-lg ghost-outline p-4 hover:bg-surface-container-lowest transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-headline-md text-headline-md text-on-surface">Tue, 9:00 AM - 10:30 AM</h4>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-mono text-[10px] uppercase tracking-wider">70% Match</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Science Bldg, Room 305 (Capacity: 45)
+                                </p>
+<p class="font-body-sm text-[12px] text-error mt-1">Different Day</p>
+</div>
+<button class="px-4 py-2 bg-surface border border-outline-variant text-on-surface rounded font-body-sm text-body-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">preview</span>
+                                Select
+                            </button>
+</div>
+<div class="mt-2">
+<div class="flex justify-between font-label-mono text-[10px] text-on-surface-variant mb-1">
+<span class="">Availability Score</span>
+<span class="">Medium</span>
+</div>
+<div class="flex w-full">
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment filled"></div>
+<div class="progress-segment"></div>
+<div class="progress-segment"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Side Panel (Preview) -->
+<aside class="w-96 bg-surface-container-lowest flex flex-col h-full border-l border-outline-variant hidden lg:flex">
+<div class="p-6 border-b border-outline-variant bg-surface">
+<h3 class="font-headline-md text-headline-md mb-1">Impact Preview</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Prof. Alan Turing's Schedule</p>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Before View -->
+<div>
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Current Conflicts</h4>
+<div class="relative h-48 rounded bg-surface-container-lowest ghost-outline overflow-hidden schedule-grid">
+<!-- Grid labels -->
+<div class="absolute left-1 top-2 font-label-mono text-[10px] text-on-surface-variant">10:00</div>
+<div class="absolute left-1 top-16 font-label-mono text-[10px] text-on-surface-variant">11:00</div>
+<div class="absolute left-1 top-32 font-label-mono text-[10px] text-on-surface-variant">12:00</div>
+<!-- Conflicting Blocks -->
+<div class="absolute left-10 top-4 w-40 h-16 bg-error-subtle border border-error rounded p-1">
+<p class="font-label-mono text-[10px] text-error font-bold truncate">MATH201</p>
+<p class="font-label-mono text-[9px] text-error truncate">Room 102</p>
+</div>
+<div class="absolute left-20 top-4 w-40 h-16 bg-error-subtle border border-error rounded p-1 opacity-80" style="mix-blend-mode: multiply;">
+<p class="font-label-mono text-[10px] text-error font-bold truncate">PHYS101</p>
+<p class="font-label-mono text-[9px] text-error truncate">Room 102</p>
+</div>
+<div class="absolute left-10 top-4 w-full h-24 bg-error/5 border-y border-error border-dashed pointer-events-none"></div><div class="absolute right-2 top-2 px-1.5 py-0.5 bg-error text-white text-[9px] rounded font-bold uppercase tracking-tighter">Double Booked</div></div>
+</div>
+<!-- Arrow divider -->
+<div class="flex justify-center">
+<span class="material-symbols-outlined text-outline-variant">arrow_downward</span>
+</div>
+<!-- After View (Previewing Selection) -->
+<div>
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Optimized Schedule</h4>
+<div class="relative h-64 rounded bg-surface-container-lowest ghost-outline overflow-hidden schedule-grid">
+<div class="absolute left-1 top-2 font-label-mono text-[10px] text-on-surface-variant">10:00</div>
+<div class="absolute left-1 top-16 font-label-mono text-[10px] text-on-surface-variant">11:00</div>
+<div class="absolute left-1 top-32 font-label-mono text-[10px] text-on-surface-variant">12:00</div>
+<div class="absolute left-1 top-46 font-label-mono text-[10px] text-on-surface-variant">13:00</div>
+<!-- Other class remains -->
+<div class="absolute left-10 top-4 w-40 h-16 bg-surface-container-highest border border-outline-variant rounded p-1">
+<p class="font-label-mono text-[10px] text-on-surface font-bold truncate">PHYS101</p>
+<p class="font-label-mono text-[9px] text-on-surface-variant truncate">Room 102</p>
+</div><div class="absolute left-10 top-20 w-40 h-28 border-l border-dashed border-outline-variant flex items-center justify-center"><span class="text-[9px] text-on-surface-variant font-label-mono uppercase">Gap Created (3.5h)</span><div class="flex w-full gap-0.5 mt-1 opacity-40"><div class="h-0.5 flex-1 bg-success rounded-full"></div><div class="h-0.5 flex-1 bg-success rounded-full"></div><div class="h-0.5 flex-1 bg-success rounded-full"></div><div class="h-0.5 flex-1 bg-success rounded-full"></div><div class="h-0.5 flex-1 bg-success rounded-full"></div></div></div>
+<!-- Proposed New Block -->
+<div class="absolute left-10 top-48 w-40 h-16 bg-success-subtle border border-[#16a34a] rounded p-1 shadow-sm ring-2 ring-[#16a34a] ring-opacity-50">
+<p class="font-label-mono text-[10px] text-success font-bold truncate">MATH201</p>
+<p class="font-label-mono text-[9px] text-success truncate">Room 204</p>
+<span class="absolute -top-2 -right-2 bg-success text-white rounded-full w-4 h-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]">check</span>
+</span>
+<div class="absolute -left-1 -top-1 px-1 bg-success text-white text-[8px] rounded font-bold">NEW</div><div class="absolute -bottom-6 left-0 flex items-center gap-1 text-[9px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full border border-outline-variant"><span class="material-symbols-outlined text-[10px]">swap_horiz</span> Room Swap</div></div>
+</div>
+</div>
+</div>
+<!-- Confirmation Action -->
+<div class="p-6 border-t border-outline-variant bg-surface mt-auto">
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-headline-md text-body-md hover:bg-primary-fixed-variant transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                    Confirm Changes
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</aside>
+</div>
+
+
+</body></html>

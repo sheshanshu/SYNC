@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Quick Resolve</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1a1b23",
+                    "tertiary-fixed": "#ffdbcc",
+                    "on-surface": "#1a1b23",
+                    "outline-variant": "#c5c5d7",
+                    "outline": "#757686",
+                    "surface-container-high": "#e9e7f2",
+                    "surface-container-highest": "#e3e1ed",
+                    "primary-fixed-dim": "#bcc3ff",
+                    "occupancy-occupied": "#2036bd",
+                    "tertiary": "#5a2100",
+                    "on-secondary-fixed-variant": "#39485e",
+                    "on-primary-fixed-variant": "#1d33bb",
+                    "tertiary-container": "#7e3100",
+                    "secondary-fixed": "#d4e3ff",
+                    "error-container": "#ffdad6",
+                    "fleet-idle": "#64748b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#3b4fd3",
+                    "on-surface-variant": "#454654",
+                    "inverse-on-surface": "#f1effb",
+                    "secondary-fixed-dim": "#b8c7e2",
+                    "fleet-delayed": "#b91c1c",
+                    "surface-container-low": "#f4f2fe",
+                    "background": "#fbf8ff",
+                    "surface-container": "#eeecf8",
+                    "occupancy-available": "#15803d",
+                    "on-primary-container": "#a9b3ff",
+                    "tertiary-fixed-dim": "#ffb694",
+                    "on-tertiary-fixed-variant": "#7a2f00",
+                    "primary-fixed": "#dfe0ff",
+                    "surface": "#fbf8ff",
+                    "on-primary-fixed": "#000d60",
+                    "on-tertiary-fixed": "#351000",
+                    "on-secondary-fixed": "#0c1c30",
+                    "fleet-transit": "#0369a1",
+                    "on-secondary-container": "#56657c",
+                    "on-secondary": "#ffffff",
+                    "map-road": "#ffffff",
+                    "occupancy-maintenance": "#92400e",
+                    "inverse-primary": "#bcc3ff",
+                    "map-park": "#f0fdf4",
+                    "primary": "#001c9d",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fbf8ff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#dad9e4",
+                    "map-water": "#e0f2fe",
+                    "surface-variant": "#e3e1ed",
+                    "inverse-surface": "#2f3038",
+                    "primary-container": "#2036bd",
+                    "secondary-container": "#d4e3ff",
+                    "on-primary": "#ffffff",
+                    "secondary": "#505f76",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#ffa173"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "dashboard-margin": "24px",
+                    "grid-gutter": "16px",
+                    "node-spacing": "8px",
+                    "map-overlay-gap": "12px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "data-viz": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-viz": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface h-screen w-full flex flex-col font-body-md text-body-md md:hidden overflow-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-high dark:bg-surface-container-highest transition-colors duration-200 ease-in-out h-16">
+<div class="flex justify-between items-center px-4 h-full w-full">
+<button class="text-on-surface-variant hover:bg-surface-container-highest p-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Timetable Conflict</h1>
+<button class="text-on-surface-variant hover:bg-surface-container-highest p-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-16 overflow-y-auto px-4 py-6 bg-surface-container pb-28">
+<!-- High-urgency Card -->
+<div class="bg-error-container text-on-error-container rounded-xl p-4 mb-6 shadow-sm border border-error/20 flex flex-col gap-4 relative overflow-hidden">
+<!-- Simplified Conflict Visual -->
+<div class="absolute right-0 top-0 opacity-10 flex -mt-4 -mr-4 pointer-events-none">
+<div class="w-16 h-16 bg-error rotate-45 transform translate-x-2"></div>
+<div class="w-16 h-16 bg-error rotate-45 transform -translate-x-2"></div>
+</div>
+<div class="flex items-start gap-3 z-10">
+<span class="material-symbols-outlined text-error mt-0.5" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h2 class="font-headline-md text-headline-md mb-1">New Timetable Conflict Detected</h2>
+<p class="font-body-sm text-body-sm text-on-error-container/80">Room 402 double-booked for CS301 and ENG205.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/50 rounded-lg p-3 font-label-mono text-label-mono flex flex-col gap-2 z-10">
+<div class="flex justify-between border-b border-error/10 pb-2">
+<span class="text-on-error-container/70">Time</span>
+<span class="font-semibold text-error">10:00 AM - 11:30 AM</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-error-container/70">Affected Students</span>
+<span class="font-semibold">~120</span>
+</div>
+</div>
+</div>
+<!-- AI Recommendation Section -->
+<div class="bg-surface-container-lowest rounded-xl p-5 mb-6 border border-outline-variant shadow-sm relative">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-primary text-opacity-50" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-2 text-on-surface">
+                AI Recommendation
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Relocate ENG205 to an available lecture hall.</p>
+<!-- Best Fit Slot -->
+<div class="border-2 border-primary rounded-lg p-4 bg-primary/5 flex items-center justify-between mb-2">
+<div class="flex flex-col gap-1">
+<span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Best Fit</span>
+<span class="font-headline-md text-headline-md text-on-surface">Room 105 (Auditorium)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Capacity: 150 | Available: 10:00 AM</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+</div>
+<!-- Primary/Secondary CTA -->
+<div class="flex flex-col gap-3 mt-8">
+<button class="w-full bg-primary text-on-primary rounded-full py-4 font-headline-md text-headline-md flex items-center justify-center gap-2 hover:bg-primary/90 active:scale-95 transition-all shadow-sm">
+                Confirm Reschedule
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<button class="w-full bg-transparent border border-outline text-on-surface-variant rounded-full py-3 font-body-md text-body-md flex items-center justify-center hover:bg-surface-variant/50 active:scale-95 transition-all">
+                Ignore / Dismiss
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline h-20 flex justify-around items-center px-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-mono text-label-mono text-[10px]">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">event_busy</span>
+<span class="font-label-mono text-label-mono text-[10px] font-bold">Conflicts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<span class="font-label-mono text-label-mono text-[10px]">Schedules</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-mono text-label-mono text-[10px]">Settings</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora API Documentation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#001c9d",
+                      "occupancy-available": "#15803d",
+                      "fleet-delayed": "#b91c1c",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#454654",
+                      "outline": "#757686",
+                      "primary-container": "#2036bd",
+                      "surface-container": "#eeecf8",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "on-secondary-container": "#56657c",
+                      "on-primary-container": "#a9b3ff",
+                      "surface": "#fbf8ff",
+                      "occupancy-maintenance": "#92400e",
+                      "on-surface": "#1a1b23",
+                      "outline-variant": "#c5c5d7",
+                      "on-background": "#1a1b23",
+                      "fleet-transit": "#0369a1",
+                      "surface-container-high": "#e9e7f2",
+                      "map-park": "#f0fdf4",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container-low": "#f4f2fe",
+                      "error-container": "#ffdad6",
+                      "map-water": "#e0f2fe",
+                      "inverse-primary": "#bcc3ff",
+                      "on-secondary-fixed": "#0c1c30",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "on-tertiary-container": "#ffa173",
+                      "on-error": "#ffffff",
+                      "background": "#fbf8ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-tertiary-fixed": "#351000",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#3b4fd3",
+                      "tertiary-container": "#7e3100",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "surface-dim": "#dad9e4",
+                      "occupancy-occupied": "#2036bd",
+                      "tertiary-fixed": "#ffdbcc",
+                      "secondary-container": "#d4e3ff",
+                      "tertiary": "#5a2100",
+                      "on-primary-fixed": "#000d60",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "surface-container-highest": "#e3e1ed",
+                      "secondary-fixed": "#d4e3ff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#505f76",
+                      "surface-variant": "#e3e1ed",
+                      "surface-bright": "#fbf8ff",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "map-road": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "fleet-idle": "#64748b",
+                      "inverse-on-surface": "#f1effb",
+                      "inverse-surface": "#2f3038"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "map-overlay-gap": "12px",
+                      "grid-gutter": "16px",
+                      "node-spacing": "8px",
+                      "dashboard-margin": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .token.property,
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #d73a49;
+        }
+
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #032f62;
+        }
+
+        .token.operator,
+        .token.entity,
+        .token.url,
+        .language-css .token.string,
+        .style .token.string {
+            color: #d73a49;
+            background: transparent;
+        }
+
+        .token.atrule,
+        .token.attr-value,
+        .token.keyword {
+            color: #d73a49;
+        }
+
+        .token.function,
+        .token.class-name {
+            color: #6f42c1;
+        }
+
+        .token.regex,
+        .token.important,
+        .token.variable {
+            color: #e36209;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-background border-b border-outline-variant docked full-width top-0 sticky flex justify-between items-center h-16 px-dashboard-margin w-full ml-0 md:ml-64 z-50">
+<div class="flex items-center gap-4 hidden md:flex">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none text-on-surface focus:ring-0 font-body-md w-64 placeholder-on-surface-variant" placeholder="Search documentation..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-mono text-label-mono text-primary font-bold border-b-2 border-primary cursor-pointer">API Reference</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Guides</span>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors scale-98 active:opacity-80 transition-transform">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors scale-98 active:opacity-80 transition-transform">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors scale-98 active:opacity-80 transition-transform">account_circle</button>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface-container dark:bg-surface-dim h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline flex flex-col z-40 hidden md:flex transition-all duration-200 ease-in-out">
+<div class="p-6 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="Institution Logo" class="w-8 h-8 object-cover rounded-DEFAULT" data-alt="A minimalist geometric institution logo composed of sharp blue triangles on a pure white background. High-tech, pristine, academic precision aesthetic. Soft overhead lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe9h29MP0b79VttxhJhdmwHyMjeL6pxSPoDxw1-0E6CwnYiuvAzfqI6ncCsdwCvYYIIOwJZmje2qVAnHQANx2QuExbRF8hya4DhPUBot4IVr2PieMyvuhGYQzrj7hWRkISZKoU-0lUKtdcWyKMlNydwHbQSnsxhhOozLs7fL2lwEucXVzcXH7duQqUNRNC6fhdEenHC1mpCRM2ghrHYPq5_ZOTOUdUOswzIlLihofe0k904ce4Kdtj"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed tracking-tight">Syncora</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant">API Documentation</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1">
+<li class="px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Overview</span>
+</a>
+</li>
+<li class="px-3 mt-4 mb-2">
+<span class="px-3 font-label-mono text-data-viz text-outline uppercase tracking-wider">Authentication</span>
+</li>
+<li class="px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-container text-on-primary-container font-semibold font-body-md transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">security</span>
+<span>OAuth 2.0</span>
+</a>
+</li>
+<li class="px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined text-lg">key</span>
+<span>API Keys</span>
+</a>
+</li>
+<li class="px-3 mt-4 mb-2">
+<span class="px-3 font-label-mono text-data-viz text-outline uppercase tracking-wider">Resources</span>
+</li>
+<li class="px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span>Users</span>
+</a>
+</li>
+<li class="px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined text-lg">school</span>
+<span>Academic Core</span>
+</a>
+</li>
+<li class="px-3">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors font-body-md" href="#">
+<span class="material-symbols-outlined text-lg">payments</span>
+<span>Finance</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded-lg text-primary font-label-mono text-label-mono hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">settings</span>
+                    Manage Keys
+                </button>
+</div>
+</aside>
+<!-- Main Content Area (Three-pane layout on desktop) -->
+<main class="flex-1 md:ml-64 flex flex-col lg:flex-row h-[calc(100vh-64px)] overflow-hidden">
+<!-- Central Content: Endpoint Description -->
+<div class="flex-1 overflow-y-auto p-dashboard-margin lg:border-r border-outline-variant bg-surface">
+<div class="max-w-3xl">
+<div class="mb-2">
+<span class="inline-flex items-center px-2 py-1 rounded-DEFAULT bg-primary/10 text-primary font-label-mono text-data-viz border border-primary/20">POST</span>
+<span class="ml-3 font-label-mono text-label-mono text-on-surface-variant">/v1/auth/token</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-background mb-4 mt-2">Generate Access Token</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Exchanges client credentials or an authorization code for an OAuth 2.0 access token. This token is required to authenticate requests to the Syncora API. See {{DATA:DOCUMENT:DOCUMENT_134}} for our comprehensive authentication strategy and lifecycle management details.
+                    </p>
+<div class="mb-8">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-4 border-b border-outline-variant pb-2">Request Body</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low font-label-mono text-label-mono text-on-surface-variant">
+<tr>
+<th class="py-3 px-4 border-b border-outline-variant font-medium">Parameter</th>
+<th class="py-3 px-4 border-b border-outline-variant font-medium">Type</th>
+<th class="py-3 px-4 border-b border-outline-variant font-medium">Description</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4">
+<span class="font-label-mono text-primary font-semibold">grant_type</span>
+<span class="block text-data-viz text-fleet-delayed mt-1">Required</span>
+</td>
+<td class="py-3 px-4 font-label-mono text-data-viz text-on-surface-variant">string</td>
+<td class="py-3 px-4 text-on-surface-variant">Must be set to <code class="bg-surface-container px-1 py-0.5 rounded text-primary border border-outline-variant/30">client_credentials</code>.</td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4">
+<span class="font-label-mono text-on-background font-semibold">client_id</span>
+<span class="block text-data-viz text-fleet-delayed mt-1">Required</span>
+</td>
+<td class="py-3 px-4 font-label-mono text-data-viz text-on-surface-variant">string</td>
+<td class="py-3 px-4 text-on-surface-variant">Your application's unique identifier.</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4">
+<span class="font-label-mono text-on-background font-semibold">client_secret</span>
+<span class="block text-data-viz text-fleet-delayed mt-1">Required</span>
+</td>
+<td class="py-3 px-4 font-label-mono text-data-viz text-on-surface-variant">string</td>
+<td class="py-3 px-4 text-on-surface-variant">Your application's secret key. Keep this secure.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-4 border-b border-outline-variant pb-2">Response</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">A successful request returns a JSON object containing the access token and its metadata.</p>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="bg-surface-container-low px-4 py-2 border-b border-outline-variant flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-occupancy-available flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-occupancy-available"></span>
+                                    200 OK
+                                </span>
+</div>
+<div class="p-4 bg-[#f8f9fa] overflow-x-auto">
+<pre class="font-label-mono text-body-sm text-on-surface m-0"><code>{
+  <span class="token property">"access_token"</span>: <span class="token string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span>,
+  <span class="token property">"token_type"</span>: <span class="token string">"Bearer"</span>,
+  <span class="token property">"expires_in"</span>: <span class="token number">3600</span>,
+  <span class="token property">"scope"</span>: <span class="token string">"read:users write:academic"</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Pane: Code Snippets -->
+<div class="w-full lg:w-[400px] xl:w-[480px] bg-surface-container-low border-l border-outline-variant flex flex-col overflow-y-auto">
+<div class="p-6 sticky top-0 bg-surface-container-low/90 backdrop-blur-sm border-b border-outline-variant z-10">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-4">Code Example</h3>
+<div class="flex gap-2 border-b border-outline-variant/50 pb-2">
+<button class="font-label-mono text-label-mono px-3 py-1.5 rounded-DEFAULT bg-primary text-on-primary font-medium">cURL</button>
+<button class="font-label-mono text-label-mono px-3 py-1.5 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-colors">Node.js</button>
+<button class="font-label-mono text-label-mono px-3 py-1.5 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-colors">Python</button>
+</div>
+</div>
+<div class="p-6 flex-1"><div class="space-y-6">
+<div>
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-3">Try it Now</h4>
+<div class="bg-inverse-surface rounded-lg overflow-hidden border border-outline-variant/30">
+<div class="bg-on-surface-variant/20 px-4 py-2 border-b border-outline-variant/30 flex justify-between items-center">
+<span class="font-label-mono text-body-sm text-inverse-on-surface">JSON Request Body</span>
+<span class="text-data-viz text-secondary-fixed-dim">application/json</span>
+</div>
+<textarea class="w-full bg-transparent border-none text-secondary-fixed-dim font-label-mono text-body-sm p-4 focus:ring-0 min-h-[120px] resize-none" spellcheck="false">{
+  "grant_type": "client_credentials",
+  "client_id": "YOUR_CLIENT_ID",
+  "client_secret": "YOUR_CLIENT_SECRET"
+}</textarea>
+</div>
+</div>
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-semibold font-body-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+        Execute Request
+    </button>
+<div class="border-t border-outline-variant/30 pt-6">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Response</h4>
+<div class="flex gap-4">
+<span class="text-data-viz text-outline">Status: --</span>
+<span class="text-data-viz text-outline">Time: --ms</span>
+</div>
+</div>
+<div class="bg-surface-container-highest rounded-lg p-8 border border-dashed border-outline-variant flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline mb-2">hourglass_empty</span>
+<p class="text-body-sm text-on-surface-variant">Waiting for request...</p>
+</div>
+</div>
+</div></div>
+</div>
+</main>
+</div>
+</body></html>

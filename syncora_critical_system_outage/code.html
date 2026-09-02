@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Critical Enrollment System Outage - Syncora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#bcc3ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-dim": "#dad9e4",
+                        "surface-container": "#eeecf8",
+                        "surface-container-low": "#f4f2fe",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e9e7f2",
+                        "on-background": "#1a1b23",
+                        "fleet-transit": "#0369a1",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "map-park": "#f0fdf4",
+                        "on-secondary-fixed": "#0c1c30",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-tint": "#3b4fd3",
+                        "map-water": "#e0f2fe",
+                        "on-tertiary-container": "#ffa173",
+                        "inverse-on-surface": "#f1effb",
+                        "map-road": "#ffffff",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "primary-fixed": "#dfe0ff",
+                        "inverse-surface": "#2f3038",
+                        "surface": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fbf8ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "secondary-container": "#d4e3ff",
+                        "on-tertiary-fixed": "#351000",
+                        "outline-variant": "#c5c5d7",
+                        "on-primary-container": "#a9b3ff",
+                        "tertiary-container": "#7e3100",
+                        "surface-container-highest": "#e3e1ed",
+                        "occupancy-occupied": "#2036bd",
+                        "on-primary": "#ffffff",
+                        "primary": "#001c9d",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#505f76",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf8ff",
+                        "fleet-idle": "#64748b",
+                        "on-error-container": "#93000a",
+                        "fleet-delayed": "#b91c1c",
+                        "primary-container": "#2036bd",
+                        "outline": "#757686",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-error": "#ffffff",
+                        "occupancy-available": "#15803d",
+                        "on-secondary-container": "#56657c",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1a1b23",
+                        "on-surface-variant": "#454654",
+                        "on-primary-fixed": "#000d60",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "occupancy-maintenance": "#92400e",
+                        "tertiary": "#5a2100",
+                        "surface-variant": "#e3e1ed"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "map-overlay-gap": "12px",
+                        "dashboard-margin": "24px",
+                        "node-spacing": "8px",
+                        "grid-gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "data-viz": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .safety-pattern {
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(185, 28, 28, 0.03),
+                rgba(185, 28, 28, 0.03) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface h-screen flex flex-col items-center justify-center safety-pattern overflow-hidden">
+<div class="max-w-2xl w-full mx-4 bg-surface-container-lowest rounded-xl shadow-lg border border-error relative overflow-hidden flex flex-col">
+<!-- Danger Header Bar -->
+<div class="h-2 w-full bg-error absolute top-0 left-0"></div>
+<div class="p-8 md:p-12 flex flex-col items-center text-center mt-4">
+<!-- Massive Warning Icon -->
+<div class="bg-error-container text-error rounded-full p-6 mb-8 inline-flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-4">Service Temporarily Unavailable</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-8">
+                Due to scheduled database maintenance, enrollment services are offline until <span class="font-data-viz text-data-viz font-bold text-on-surface">04:00 AM UTC</span>. We apologize for the disruption to your institutional management tasks.
+            </p>
+<div class="bg-surface-container rounded-lg p-4 mb-8 border border-outline-variant w-full max-w-md flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Incident Tracking ID</span>
+<span class="font-data-viz text-data-viz text-on-surface bg-surface-container-highest px-2 py-1 rounded">INC-2023-894A</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+<button class="bg-primary text-on-primary font-body-md text-body-md font-semibold px-6 py-3 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">monitor_heart</span>
+                    System Status
+                </button>
+<button class="bg-transparent text-error border border-error font-body-md text-body-md font-semibold px-6 py-3 rounded-full hover:bg-error-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">campaign</span>
+                    Report an Emergency
+                </button>
+</div>
+</div>
+<!-- Footer Info -->
+<div class="bg-surface-container-low border-t border-outline-variant p-4 text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+                Need immediate administrative support? Contact <a class="text-primary hover:underline font-semibold" href="#">IT Operations</a>.
+            </p>
+</div>
+</div>
+</body></html>

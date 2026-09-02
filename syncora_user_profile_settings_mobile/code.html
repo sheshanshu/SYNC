@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora User Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#131b2e",
+                        "surface-container": "#eaedff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#283044",
+                        "surface": "#faf8ff",
+                        "outline-variant": "#c5c5d7",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-dim": "#d2d9f4",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "inverse-primary": "#bbc3ff",
+                        "tertiary": "#7e3100",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-surface-variant": "#454654",
+                        "surface-tint": "#3b4fd2",
+                        "on-primary-container": "#d7daff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "surface-variant": "#dae2fd",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-container-highest": "#dae2fd",
+                        "inverse-on-surface": "#eef0ff",
+                        "secondary": "#505f76",
+                        "on-primary-fixed": "#000d60",
+                        "primary-container": "#3e52d5",
+                        "surface-container-low": "#f2f3ff",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-error-container": "#93000a",
+                        "background": "#faf8ff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "surface-bright": "#faf8ff",
+                        "on-background": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary-container": "#a44200",
+                        "outline": "#757686",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary": "#2036bd",
+                        "secondary-fixed": "#d3e4fe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "density-generous": "32px",
+                        "gutter-grid": "16px",
+                        "density-compact": "8px",
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col md:hidden">
+<!-- TopNavBar -->
+<header class="bg-surface text-primary font-display text-body-lg docked full-width top-0 border-b border-outline-variant flex justify-between items-center w-full px-margin-page py-density-compact sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="font-display text-headline-lg-mobile font-bold text-primary">Syncora</span>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="help" class="text-secondary hover:bg-surface-container-low transition-colors rounded-full p-2">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button aria-label="notifications" class="text-secondary hover:bg-surface-container-low transition-colors rounded-full p-2">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-margin-page py-density-generous space-y-density-generous pb-[100px]">
+<!-- Profile Header -->
+<section class="flex flex-col items-center space-y-4">
+<div class="w-24 h-24 rounded-full overflow-hidden border-4 border-surface-container-high relative">
+<img alt="Administrator profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a campus administrator. The individual is looking directly at the camera with a subtle, confident smile. The background is a slightly blurred, modern office environment with soft, cool lighting emphasizing a clean, work-forward aesthetic. The portrait should feel authentic and approachable yet highly professional, suitable for a corporate or academic directory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu6E7y3zBC5jJFvRTzk_QOZlRmpDa5v57fXBVB1Cp83tXPSKkfG6Gg4bTk3jAqy91uI4AObB2VEfAb7TKYYNfyr8PDagEkQkLWxotmPU7ZPlVCDg9JUyX9Kn75PP38wCrJl4HK-0sDC3t_2cN8UtyFeY9eTZkko2OCb4IDDUIxY9HroYZju3lB1c36FQbp3nGtpHQR74O2JZK1mPHvQefkqjl8ZFGHBZ8syawtjP3SlY_bKtVRpuOZ"/>
+</div>
+<div class="text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Alex Mercer</h1>
+<p class="font-body-md text-body-md text-secondary">Senior Administrator, Admissions</p>
+<div class="mt-2 inline-flex items-center px-2 py-1 rounded bg-primary-container/10 text-primary">
+<span class="font-label-mono text-label-mono">ID: SYNC-4921</span>
+</div>
+</div>
+</section>
+<!-- Settings List -->
+<section class="space-y-gutter-grid">
+<h2 class="font-label-mono text-label-mono text-secondary uppercase tracking-wider px-2">Account Settings</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Personal Info Row -->
+<button class="w-full flex items-center justify-between p-padding-card hover:bg-surface-container-low transition-colors border-b border-outline-variant text-left group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-high text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Personal Information</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Update your name, photo, and contact details</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Security Row -->
+<button class="w-full flex items-center justify-between p-padding-card hover:bg-surface-container-low transition-colors border-b border-outline-variant text-left group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-high text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Security</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Password, 2FA, and active sessions</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Notifications Row -->
+<button class="w-full flex items-center justify-between p-padding-card hover:bg-surface-container-low transition-colors text-left group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-high text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Notifications</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage alerts and email preferences</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<h2 class="font-label-mono text-label-mono text-secondary uppercase tracking-wider px-2 pt-4">App Preferences</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Appearance Row -->
+<button class="w-full flex items-center justify-between p-padding-card hover:bg-surface-container-low transition-colors border-b border-outline-variant text-left group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-high text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Appearance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Theme and display settings</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Data Sync Row -->
+<button class="w-full flex items-center justify-between p-padding-card hover:bg-surface-container-low transition-colors text-left group">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded bg-surface-container-high text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Data Sync</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Background updates and cache</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="pt-6">
+<button class="w-full py-3 px-4 border border-outline-variant rounded-lg text-error font-body-md text-body-md hover:bg-error-container/20 transition-colors flex items-center justify-center gap-2 bg-surface-container-lowest">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                    Sign Out
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Nav) -->
+<!-- Suppressed based on semantic rule: This is a sub-page/details screen (User Profile & Settings drill-down). It is not a top-level destination. -->
+</body></html>

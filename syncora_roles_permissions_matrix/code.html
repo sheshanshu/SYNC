@@ -1,0 +1,454 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Roles &amp; Permissions - Syncora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#505f76",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-container": "#3e52d5",
+                        "on-surface-variant": "#454654",
+                        "on-surface": "#131b2e",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-tertiary-container": "#ffd3bf",
+                        "surface-dim": "#d2d9f4",
+                        "inverse-on-surface": "#eef0ff",
+                        "surface-bright": "#faf8ff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-primary-fixed": "#000d60",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary-container": "#d0e1fb",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "outline": "#757686",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-container-high": "#e2e7ff",
+                        "primary": "#2036bd",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-container": "#eaedff",
+                        "tertiary": "#7e3100",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "inverse-primary": "#bbc3ff",
+                        "on-background": "#131b2e",
+                        "tertiary-container": "#a44200",
+                        "surface": "#faf8ff",
+                        "surface-variant": "#dae2fd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary-container": "#d7daff",
+                        "error-container": "#ffdad6",
+                        "background": "#faf8ff",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c5c5d7",
+                        "surface-container-highest": "#dae2fd",
+                        "inverse-surface": "#283044",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "gutter-grid": "16px",
+                        "padding-card": "16px",
+                        "base": "4px",
+                        "density-generous": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+            background-color: #94a3b8;
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #2036bd;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2036bd;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 36px;
+            height: 20px;
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-64 hidden lg:flex flex-col bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline flat no shadows py-density-generous px-4 gap-2 z-40 pt-20">
+<!-- Header Info -->
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-surface-variant flex items-center justify-center shrink-0">
+<img alt="Syncora Logo" class="w-full h-full object-cover" data-alt="A clean, minimalist vector logo icon for Syncora, composed of interwoven geometric lines in shades of deep indigo and soft grey, set against a pure white background. High-quality corporate branding aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYT9DL1B5SwsixdyxNvOMQ0MERBTMSHys6AZoh2wWAj-2Q8pyb3GvPRhZIO4ZVW04lmvVIYNR87j0ies0Vd7YEt-yno6UWNEyymtno0Mjb1L3LGesKUU6RExxuEVYBSYK-f6fUCZ3L32TaiW_1t24TBPuyDn7FmW1Rr6rCVZscddBy-yWnasxSRMgsc05f8k7vs-OVNLVUmv6sJefolbPA9mLaKRkCmMGItvUD4I9G_MoxwC3lhR32">
+</div>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface dark:text-on-primary-fixed leading-tight">Syncora Admin</div>
+<div class="text-secondary dark:text-secondary-fixed-dim text-xs">Campus Operations</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-body-md text-body-md">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-lg duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rule_settings</span>
+<span class="font-body-md text-body-md font-medium">Permissions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">school</span>
+<span class="font-body-md text-body-md">Courses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+<span class="font-body-md text-body-md">Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="font-body-md text-body-md">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 lg:ml-64 flex flex-col min-h-screen relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flat no shadows lg:pl-64 transition-all h-16">
+<div class="flex justify-between items-center h-full px-margin-page w-full max-w-7xl mx-auto">
+<!-- Left: Logo/Brand (Hidden on Desktop to avoid duplication with sidebar, visible on mobile) -->
+<div class="flex items-center gap-4 lg:hidden">
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Syncora</span>
+</div>
+<div class="hidden lg:block w-8"></div> <!-- Spacer for desktop layout balance if needed -->
+<!-- Middle: Search Bar (on_left configuration per JSON) -->
+<div class="flex-1 max-w-md hidden md:flex mr-auto lg:mr-0 ml-4">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search settings..." type="text">
+</div>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant p-2 rounded-full hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant p-2 rounded-full hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant ml-2 overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an administrative staff member, neutral expression, well-lit studio lighting, soft blurred background, corporate business attire. Professional light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXAxL69sP7zgNm-LrYbpCagRTQ9daArWF1ES0pPHu2kLWp2vyc7pm4juhIrenFpVmbp4Xrvd-2GeIVDyssBKVDAYniWMeFffUM1hQ9uLZwFVeatLPVeg4-Nz18o6Qa5LxcEYoPE2Ol2yZOW4Ic_B8zxj_lV_iTIA_HC6Sbf8wHX7pfVm-KOmsfsLiXSLeKGeFQqPCyWIU9TqDUfrFQ24DEJ5V2rbyXpYB55KqA55BGS0Q3Ad0tucY5">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 pt-16 px-margin-page pb-24 lg:pb-margin-page overflow-x-hidden max-w-7xl mx-auto w-full">
+<div class="py-density-generous">
+<!-- Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<div>
+<h1 class="font-display text-display text-on-surface mb-2">Organization Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Configure and oversee the institutional hierarchy, academic periods, and system access levels.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface border border-outline-variant text-on-surface rounded-lg font-body-sm text-body-sm font-medium hover:bg-surface-container-low transition-colors">
+                            Reset to Defaults
+                        </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-body-sm text-body-sm font-medium hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+                            Save Changes
+                        </button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="border-b border-outline-variant mb-8 flex overflow-x-auto hide-scrollbar">
+<button class="px-4 py-3 font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors">
+                        Departments
+                    </button>
+<button class="px-4 py-3 font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors">
+                        Sections
+                    </button>
+<button class="px-4 py-3 font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors">
+                        Academic Sessions
+                    </button>
+<button class="px-4 py-3 font-body-sm text-body-sm font-medium text-primary border-b-2 border-primary whitespace-nowrap">
+                        Roles &amp; Permissions
+                    </button>
+</div>
+<!-- Content Area -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Toolbar -->
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex flex-col sm:flex-row gap-4 justify-between items-center">
+<div class="relative w-full sm:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg pl-9 pr-3 py-1.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Filter permissions..." type="text">
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Quick Actions:</span>
+<button class="text-xs font-medium text-primary hover:underline">Select All Admin</button>
+<span class="text-outline-variant">|</span>
+<button class="text-xs font-medium text-primary hover:underline">Clear Faculty</button>
+</div>
+</div>
+<!-- Matrix Table -->
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full min-w-[800px] text-left border-collapse">
+<thead>
+<tr>
+<th class="sticky left-0 z-10 bg-surface-bright p-4 border-b border-outline-variant border-r font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider w-1/3">
+                                        Module &amp; Action
+                                    </th>
+<th class="p-4 border-b border-outline-variant text-center font-body-sm text-body-sm font-medium text-on-surface w-1/6">
+                                        Institution Admin
+                                    </th>
+<th class="p-4 border-b border-outline-variant text-center font-body-sm text-body-sm font-medium text-on-surface w-1/6">
+                                        Faculty
+                                    </th>
+<th class="p-4 border-b border-outline-variant text-center font-body-sm text-body-sm font-medium text-on-surface w-1/6">
+                                        Student
+                                    </th>
+<th class="p-4 border-b border-outline-variant text-center font-body-sm text-body-sm font-medium text-on-surface w-1/6">
+                                        Staff
+                                    </th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<!-- Category: Dashboard -->
+<tr class="bg-surface-container-low">
+<td class="px-4 py-2 font-body-sm text-body-sm font-semibold text-on-surface flex items-center gap-2 sticky left-0 z-10 border-r border-outline-variant w-full" colspan="5">
+<span class="material-symbols-outlined text-[16px] text-primary">dashboard</span>
+                                        Dashboard Access
+                                    </td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3">View Overview Metrics</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3">Customize Layout</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+<!-- Category: People -->
+<tr class="bg-surface-container-low border-t-2 border-outline-variant">
+<td class="px-4 py-2 font-body-sm text-body-sm font-semibold text-on-surface flex items-center gap-2 sticky left-0 z-10 border-r border-outline-variant w-full" colspan="5">
+<span class="material-symbols-outlined text-[16px] text-primary">group</span>
+                                        User Directory
+                                    </td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3">View Profiles</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3">Edit Profiles (Others)</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-outline-variant font-label-mono text-[10px]">N/A</span>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3 text-error">Delete Users</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-outline-variant font-label-mono text-[10px]">N/A</span>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+<!-- Category: Academics -->
+<tr class="bg-surface-container-low border-t-2 border-outline-variant">
+<td class="px-4 py-2 font-body-sm text-body-sm font-semibold text-on-surface flex items-center gap-2 sticky left-0 z-10 border-r border-outline-variant w-full" colspan="5">
+<span class="material-symbols-outlined text-[16px] text-primary">school</span>
+                                        Academic Records
+                                    </td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3">View Results</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-4 py-3 pl-10 border-r border-outline-variant sticky left-0 z-10 bg-inherit w-1/3">Publish Results</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input checked="" class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+<td class="px-4 py-3 text-center">
+<span class="text-outline-variant font-label-mono text-[10px]">N/A</span>
+</td>
+<td class="px-4 py-3 text-center">
+<label class="inline-flex items-center cursor-pointer"><input class="hidden toggle-checkbox" type="checkbox"><div class="toggle-label"></div></label>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-4 pb-safe bg-surface dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline flat no shadows lg:hidden z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim active:bg-surface-container-high scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-sm text-body-sm-mobile">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim active:bg-surface-container-high scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-sm text-body-sm-mobile">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:bg-surface-container-high scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">rule_settings</span>
+<span class="font-body-sm text-body-sm-mobile">Perms</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim active:bg-surface-container-high scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-body-sm text-body-sm-mobile">More</span>
+</a>
+</nav>
+</body></html>

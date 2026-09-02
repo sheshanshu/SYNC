@@ -1,0 +1,288 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - People</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#454654",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "surface-variant": "#dae2fd",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface": "#faf8ff",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#2036bd",
+                      "primary-container": "#3e52d5",
+                      "surface-container-highest": "#dae2fd",
+                      "background": "#faf8ff",
+                      "outline-variant": "#c5c5d7",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#3b4fd2",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "tertiary": "#7e3100",
+                      "on-surface": "#131b2e",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-tertiary-fixed": "#351000",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-dim": "#d2d9f4",
+                      "tertiary-container": "#a44200",
+                      "on-secondary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f2f3ff",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#283044",
+                      "surface-bright": "#faf8ff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-tertiary-container": "#ffd3bf",
+                      "outline": "#757686",
+                      "secondary-container": "#d0e1fb",
+                      "secondary": "#505f76",
+                      "on-background": "#131b2e",
+                      "on-primary-fixed": "#000d60",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#54647a",
+                      "on-primary-container": "#d7daff",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "secondary-fixed": "#d3e4fe",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container-high": "#e2e7ff",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#bbc3ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "surface-container": "#eaedff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "density-compact": "8px",
+                      "gutter-grid": "16px",
+                      "margin-page": "24px",
+                      "base": "4px",
+                      "density-generous": "32px",
+                      "padding-card": "16px"
+              },
+              "fontFamily": {
+                      "display": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:hidden pb-16">
+<!-- Top App Bar (Search focused) -->
+<header class="bg-surface sticky top-0 z-10 pt-4 px-margin-page pb-2 border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary flex-grow">People</h1><button class="text-secondary hover:text-primary p-2 flex items-center justify-center rounded-full active:bg-surface-container-highest transition-colors" title="Bulk Import">
+  <span class="material-symbols-outlined">upload_file</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="mt-4 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant text-on-surface rounded-lg py-2 pl-10 pr-4 font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Search students, faculty..." type="text">
+</div>
+<!-- Filter Chips -->
+<div class="mt-4 flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="bg-secondary-container text-on-secondary-container font-label-mono text-label-mono px-4 py-1.5 rounded-full whitespace-nowrap">All</button>
+<button class="bg-surface text-on-surface border border-outline-variant hover:bg-surface-container-low font-label-mono text-label-mono px-4 py-1.5 rounded-full whitespace-nowrap transition-colors">Students</button>
+<button class="bg-surface text-on-surface border border-outline-variant hover:bg-surface-container-low font-label-mono text-label-mono px-4 py-1.5 rounded-full whitespace-nowrap transition-colors">Faculty</button>
+<button class="bg-surface text-on-surface border border-outline-variant hover:bg-surface-container-low font-label-mono text-label-mono px-4 py-1.5 rounded-full whitespace-nowrap transition-colors">Staff</button>
+</div>
+</header>
+<!-- Main Content: People List -->
+<main class="flex-grow p-gutter-grid flex flex-col gap-density-compact">
+<!-- User Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-padding-card flex items-center gap-4 hover:bg-surface-container-lowest transition-colors active:opacity-80">
+<img class="w-12 h-12 rounded-full object-cover border border-outline-variant flex-shrink-0" data-alt="A professional headshot of a young woman with dark curly hair wearing glasses and a neat blue collared shirt. Soft, natural lighting. The background is a slightly blurred, modern office setting. Light, clean aesthetic typical of enterprise software avatars." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi8tD4dIncQ6Vbvn4ikelTMmRIKcIe2_GgwmQyec3kNS-mE-efhQoS2-6Q-ytjVOqn2lhebpjfxPHFVVALgBnVTfWLRDJDhdv67eSJA17UjMI5lg_OPw8Anw16I8Bg-_3UNafaXpQw8KkTqW0d3mlebw5btQ-ZD8KWd-ZYYSRdrvQq2qZ2l8EvhoPLkk0oDG1w94yr_ass6UuyKTorg3zUcSY6Uiqi5UsYCUp51pocKovAUWKcmH10">
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Sarah Jenkins</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Faculty • Computer Science</p>
+</div>
+<button class="text-secondary hover:text-primary p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-padding-card flex items-center gap-4 hover:bg-surface-container-lowest transition-colors active:opacity-80">
+<img class="w-12 h-12 rounded-full object-cover border border-outline-variant flex-shrink-0" data-alt="A clear headshot of a young man with short blond hair, wearing a casual grey t-shirt. He has a friendly expression. The lighting is bright and even, set against a neutral light grey background to fit a minimalist directory aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH8x34hOukx-80cAUiaP3n9qFsXd0PIMzIOZEDuMYC53Tq3RBludQNOCUXyj2mp7GW_hd0WjXUvg9NSrlKwGdWGO69AGGgOzZaClRXGuwYDTZzOQ0xRYAiyMAC3GpSah5_KO_3S5mBBca8VYJ9EVP78qnx_32Ajs91B1Ai11uXf41qTaAwWMeNDjlZXn4RPAD2l9dTVApidpq_oY3AGeIFlgVFgMmfyMA4CBf5MQ1AqojNN5Pu6TVy">
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">David Chen</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Student • Year 3</p>
+</div>
+<button class="text-secondary hover:text-primary p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-padding-card flex items-center gap-4 hover:bg-surface-container-lowest transition-colors active:opacity-80">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant text-on-surface-variant font-bold flex-shrink-0">
+                MR
+            </div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Marcus Reed</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Staff • Administration</p>
+</div>
+<button class="text-secondary hover:text-primary p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User Card 4 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-padding-card flex items-center gap-4 hover:bg-surface-container-lowest transition-colors active:opacity-80">
+<img class="w-12 h-12 rounded-full object-cover border border-outline-variant flex-shrink-0" data-alt="Professional portrait of an older woman with short grey hair, wearing a tailored navy blazer. She looks approachable yet authoritative. The background is a soft, out-of-focus library environment with bright, diffused light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU7FBLFdmPt0AtmQCX8mi-0J-W24Fk4rP7tmPEKm8r0GSoqPCqd6t635k6QuPrh4cZr-iHEw17MoLjmUIjGKTrv6-inBYeGJTyF-kbYam3Cn6oHAuoLh-A9GFiviYwmW8I4ghwnubv2Yrv82xEiTqocjx51SK9txHc-VkMrGq6Go0MaaJefK7m0RrALhD-HU_lwNndjqvCSltyH9WYVS953OJuCZpgHXWeA876eKC167I-0ZvOyokQ">
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Dr. Emily Stanton</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Faculty • Biology</p>
+</div>
+<button class="text-secondary hover:text-primary p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- User Card 5 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-padding-card flex items-center gap-4 hover:bg-surface-container-lowest transition-colors active:opacity-80">
+<img class="w-12 h-12 rounded-full object-cover border border-outline-variant flex-shrink-0" data-alt="Headshot of a young woman with a hijab in a soft pastel color. She is wearing a professional light blouse and smiling gently. Bright, clear lighting against a clean white backdrop, fitting a modern productivity app style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABlb9FVnJcCIfy7zXNAHWmKDChTluRdkTfFI-aLT8E0qdbvOrEo9BGYXlRqbKbVc__EZqHKR_sTX0yLcfC6TLFMA46UAO-pQbsc6qzAKDSEsPP1fKbCXcerNZ_iKSaD9iRPRga9oNSQBkFrJ4UEYLyF3bl2fsUFGg5BP_5p8HkXAqmWCiO0QPtjKraiZtp99c2JINSXxkb37-Fsf9g-MaAyi2yAzHBru121HG_-J_RNoWnGVnOQN1v">
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface line-clamp-1">Aisha Patel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Student • Year 1</p>
+</div>
+<button class="text-secondary hover:text-primary p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</main>
+<!-- Floating Action Button (Add Member) -->
+<button class="fixed bottom-24 right-4 bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-95 z-40">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Bottom Navigation (from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 lg:hidden px-2 bg-surface dark:bg-inverse-surface border-t border-outline-variant shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest tap-highlight-transparent px-4 py-1 rounded-full w-16" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="font-label-mono text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest tap-highlight-transparent px-4 py-1 rounded-full w-16" href="#">
+<span class="material-symbols-outlined text-2xl">calendar_today</span>
+<span class="font-label-mono text-[10px] mt-1">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest tap-highlight-transparent px-4 py-1 rounded-full w-16" href="#">
+<span class="material-symbols-outlined text-2xl">assignment</span>
+<span class="font-label-mono text-[10px] mt-1">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest tap-highlight-transparent px-4 py-1 rounded-full w-16" href="#">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+<span class="font-label-mono text-[10px] mt-1">Approvals</span>
+</a>
+<!-- 'More' is active as People likely falls under here in this context -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container active:bg-surface-container-highest tap-highlight-transparent px-4 py-1 rounded-full w-16" href="#">
+<span class="material-symbols-outlined text-2xl">menu</span>
+<span class="font-label-mono text-[10px] mt-1">More</span>
+</a>
+</nav>
+
+
+</body></html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Field Mapping</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#faf8ff",
+                      "tertiary-container": "#a44200",
+                      "surface-container-high": "#e2e7ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "surface-tint": "#3b4fd2",
+                      "secondary-container": "#d0e1fb",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdbcc",
+                      "outline": "#757686",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "on-primary-container": "#d7daff",
+                      "surface-variant": "#dae2fd",
+                      "surface": "#faf8ff",
+                      "background": "#faf8ff",
+                      "surface-container-low": "#f2f3ff",
+                      "on-primary-fixed": "#000d60",
+                      "on-error-container": "#93000a",
+                      "primary": "#2036bd",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "outline-variant": "#c5c5d7",
+                      "tertiary": "#7e3100",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-dim": "#d2d9f4",
+                      "primary-container": "#3e52d5",
+                      "on-secondary-container": "#54647a",
+                      "on-tertiary-fixed": "#351000",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "inverse-surface": "#283044",
+                      "on-surface": "#131b2e",
+                      "on-surface-variant": "#454654",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-secondary-fixed": "#0b1c30",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container-highest": "#dae2fd",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "surface-container": "#eaedff",
+                      "inverse-primary": "#bbc3ff",
+                      "secondary": "#505f76",
+                      "on-background": "#131b2e",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter-grid": "16px",
+                      "padding-card": "16px",
+                      "base": "4px",
+                      "density-generous": "32px",
+                      "density-compact": "8px",
+                      "margin-page": "24px"
+              },
+              "fontFamily": {
+                      "label-mono": ["JetBrains Mono"],
+                      "body-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "headline-md": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for data preview */
+        .preview-scroll::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .preview-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .preview-scroll::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex">
+<!-- App Shell structure (Navigation suppressed as this is a transactional flow) -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- Header / Top Bar -->
+<header class="h-16 flex items-center justify-between px-6 bg-surface border-b border-outline-variant z-10 shrink-0">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+                    S
+                </div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Bulk Import: Staff Directory</h1>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<!-- Stepper -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Upload</span>
+</div>
+<div class="h-[1px] w-8 bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-primary font-body-sm text-body-sm font-semibold">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px]">2</span>
+<span>Mapping</span>
+</div>
+<div class="h-[1px] w-8 bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-outline font-body-sm text-body-sm">
+<span class="w-5 h-5 rounded-full border border-outline text-outline flex items-center justify-center text-[11px]">3</span>
+<span>Review</span>
+</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden bg-background">
+<!-- Mapping Canvas -->
+<div class="flex-1 flex flex-col overflow-y-auto px-density-generous py-8">
+<div class="max-w-5xl mx-auto w-full">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Map Your Fields</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                            We've auto-matched columns from <span class="font-label-mono text-label-mono bg-surface-container px-1 py-0.5 rounded border border-outline-variant">staff_q3_update.csv</span>. Please review and map the remaining fields.
+                        </p>
+</div>
+<!-- Mapping Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col shadow-sm">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 bg-surface-container-low border-b border-outline-variant items-center">
+<div class="col-span-3 font-label-mono text-label-mono text-on-surface-variant">YOUR COLUMN</div>
+<div class="col-span-1 flex justify-center text-outline"></div>
+<div class="col-span-3 font-label-mono text-label-mono text-on-surface-variant">SYNCORA FIELD</div>
+<div class="col-span-5 font-label-mono text-label-mono text-on-surface-variant pl-4">DATA PREVIEW (FIRST 3 ROWS)</div>
+</div>
+<!-- Rows Container -->
+<div class="divide-y divide-outline-variant">
+<!-- Row 1: Valid Auto-match -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 items-start hover:bg-surface-variant transition-colors group">
+<div class="col-span-3">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-outline">drag_indicator</span>
+<span class="font-body-md text-body-md font-semibold">FirstName</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-6">Text (String)</span>
+</div>
+<div class="col-span-1 flex justify-center mt-1">
+<span class="material-symbols-outlined text-[20px] text-outline">arrow_forward</span>
+</div>
+<div class="col-span-3 mt-1">
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface border border-outline-variant rounded px-3 py-1.5 font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<option>First Name</option>
+<option>Last Name</option>
+<option>Full Name</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</div>
+</div>
+<div class="mt-2 flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm">Auto-matched</span>
+</div>
+</div>
+<div class="col-span-5 pl-4 preview-scroll overflow-x-auto whitespace-nowrap">
+<div class="inline-flex gap-2">
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">Sarah</div>
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">Michael</div>
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">David</div>
+</div>
+</div>
+</div>
+<!-- Row 2: Unmapped (Warning) -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 items-start hover:bg-surface-variant transition-colors group bg-error-container/20">
+<div class="col-span-3">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-outline">drag_indicator</span>
+<span class="font-body-md text-body-md font-semibold text-error">Emp_ID_Num</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-6">Numeric</span>
+</div>
+<div class="col-span-1 flex justify-center mt-1">
+<span class="material-symbols-outlined text-[20px] text-outline">arrow_forward</span>
+</div>
+<div class="col-span-3 mt-1">
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface border border-error rounded px-3 py-1.5 font-body-md text-body-md text-error focus:outline-none focus:ring-2 focus:ring-error focus:border-transparent">
+<option disabled="" selected="" value="">Select field...</option>
+<option>Employee ID</option>
+<option>Department Code</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-error">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</div>
+</div>
+<div class="mt-2 flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-[14px]">error</span>
+<span class="font-body-sm text-body-sm">Required field mapping missing</span>
+</div>
+</div>
+<div class="col-span-5 pl-4 preview-scroll overflow-x-auto whitespace-nowrap">
+<div class="inline-flex gap-2">
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">10482</div>
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">10483</div>
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">10485</div>
+</div>
+</div>
+</div>
+<!-- Row 3: Manual Map -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 items-start hover:bg-surface-variant transition-colors group">
+<div class="col-span-3">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-outline">drag_indicator</span>
+<span class="font-body-md text-body-md font-semibold">Role_Desc</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-6">Text (String)</span>
+</div>
+<div class="col-span-1 flex justify-center mt-1">
+<span class="material-symbols-outlined text-[20px] text-outline">arrow_forward</span>
+</div>
+<div class="col-span-3 mt-1">
+<div class="relative w-full">
+<select class="w-full appearance-none bg-surface border border-outline-variant rounded px-3 py-1.5 font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<option>Job Title</option>
+<option>Department</option>
+<option>Role Category</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<div class="col-span-5 pl-4 preview-scroll overflow-x-auto whitespace-nowrap">
+<div class="inline-flex gap-2">
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">Professor</div>
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">Asst. Dean</div>
+<div class="bg-surface-container px-2 py-1 rounded font-label-mono text-label-mono text-on-surface">Lecturer</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Info Panel -->
+<div class="w-80 border-l border-outline-variant bg-surface-container-lowest flex flex-col">
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Mapping Guide</h3>
+<div class="mb-6">
+<div class="text-on-surface-variant font-body-sm text-body-sm mb-2">Required Fields</div>
+<ul class="space-y-2">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">First Name</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span class="font-body-md text-body-md text-on-surface">Employee ID</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span class="font-body-md text-body-md text-on-surface">Email Address</span>
+</li>
+</ul>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">lightbulb</span>
+<div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface mb-1">Pro Tip</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fields left unmapped will be ignored during the import process. Ensure all critical data is assigned to a Syncora field.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Actions -->
+<footer class="h-16 px-6 bg-surface border-t border-outline-variant flex items-center justify-between shrink-0">
+<button class="px-4 py-2 border border-outline-variant rounded text-on-surface hover:bg-surface-container-low font-body-md text-body-md font-medium transition-colors">
+                Back to Upload
+            </button>
+<div class="flex items-center gap-3">
+<span class="font-body-sm text-body-sm text-error mr-2">1 required field missing</span>
+<button class="px-4 py-2 border border-outline-variant text-on-surface rounded font-body-md text-body-md font-medium opacity-50 cursor-not-allowed">
+                    Skip Unmapped
+                </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded hover:bg-primary-container font-body-md text-body-md font-medium transition-colors opacity-50 cursor-not-allowed flex items-center gap-2">
+                    Review Import
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</footer>
+</div>
+</body></html>

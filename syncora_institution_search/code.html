@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institution Search - EduManage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "background": "#faf8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface": "#faf8ff",
+                        "inverse-primary": "#bbc3ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary": "#2036bd",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary": "#7e3100",
+                        "secondary-container": "#d0e1fb",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#454654",
+                        "surface-container": "#eaedff",
+                        "on-surface": "#131b2e",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dfe0ff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary-fixed": "#0b1c30",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "surface-tint": "#3b4fd2",
+                        "on-primary-container": "#d7daff",
+                        "on-primary-fixed": "#000d60",
+                        "primary-container": "#3e52d5",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "secondary": "#505f76",
+                        "inverse-surface": "#283044",
+                        "surface-bright": "#faf8ff",
+                        "surface-container-high": "#e2e7ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#a44200",
+                        "on-background": "#131b2e",
+                        "outline-variant": "#c5c5d7",
+                        "outline": "#757686",
+                        "surface-dim": "#d2d9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "density-generous": "32px",
+                        "gutter-grid": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-background dark:bg-background border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-page py-density-compact max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity" href="#">
+                EduManage
+            </a>
+<!-- Navigation Links (Hidden on mobile for simplicity, but mapped to semantic shell logic if this was a destination) -->
+<!-- This is a transactional/search splash, so we suppress main nav shell links as per 'Semantic Shell' rules, leaving only the provided links -->
+<div class="hidden md:flex items-center gap-gutter-grid">
+<a class="text-on-surface-variant dark:text-outline hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-dim transition-colors px-3 py-2 rounded" href="#">
+                    Contact Support
+                </a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary hover:bg-surface-container-low dark:hover:bg-surface-dim transition-colors px-3 py-2 rounded" href="#">
+                    Back to Search
+                </a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center">
+<button aria-label="help_outline" class="p-2 text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low dark:hover:bg-surface-dim rounded-full transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-page py-density-generous md:py-[100px]">
+<!-- Search Container -->
+<div class="w-full max-w-3xl flex flex-col items-center gap-8">
+<!-- Header Section -->
+<div class="text-center space-y-4">
+<h1 class="font-display text-display text-on-surface">Find Your Institution</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto">
+                    Access your specific campus environment to manage workflows, review applications, and access institutional data.
+                </p>
+</div>
+<!-- Search Bar (Prominent) -->
+<div class="w-full relative shadow-sm rounded-xl bg-surface-container-lowest border border-outline-variant hover:border-outline focus-within:border-primary focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 transition-all group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 font-body-lg text-body-lg text-on-surface bg-transparent border-none rounded-xl focus:ring-0 placeholder:text-outline placeholder:font-body-lg" placeholder="Search by institution name, code, or domain..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+<button class="bg-primary text-on-primary font-body-md text-body-md px-6 py-2 rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm">
+                        Search
+                   </button>
+</div>
+</div>
+<!-- Recently Visited (Bento-style quick access) -->
+<div class="w-full mt-12 space-y-6">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Recently Visited</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1 -->
+<a class="group relative flex flex-col bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:bg-surface-container-low transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Stanford University</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">stanford.edu • SU-001</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/50 flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-secondary">Last accessed 2 hours ago</span>
+<span class="inline-flex items-center gap-1 font-label-mono text-label-mono text-primary bg-primary/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+                                SSO Active
+                            </span>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="group relative flex flex-col bg-surface-container-lowest border border-outline-variant rounded-xl p-6 hover:bg-surface-container-low transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">MIT</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">mit.edu • MIT-092</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/50 flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-secondary">Last accessed yesterday</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Alternative Action -->
+<div class="mt-8 text-center">
+<a class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors flex items-center justify-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_business">add_business</span>
+                    Don't see your institution? <span class="underline group-hover:no-underline">Request Access</span>
+</a>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant dark:border-outline full-width bottom-0 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-page py-density-generous max-w-7xl mx-auto gap-gutter-grid">
+<!-- Brand / Copyright -->
+<div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+<span class="font-headline-md text-headline-md text-on-surface">EduManage</span>
+<span class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed">
+                    © 2024 Institutional Management Platform. All rights reserved.
+                </span>
+</div>
+<!-- Links -->
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-mono text-label-mono text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed underline transition-opacity duration-150" href="#">
+                    Privacy Policy
+                </a>
+<a class="font-label-mono text-label-mono text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed underline transition-opacity duration-150" href="#">
+                    Terms of Service
+                </a>
+<a class="font-label-mono text-label-mono text-secondary dark:text-secondary-fixed hover:text-primary dark:hover:text-primary-fixed underline transition-opacity duration-150" href="#">
+                    Accessibility Statement
+                </a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c5c5d7",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "surface-bright": "#faf8ff",
+                      "background": "#faf8ff",
+                      "inverse-primary": "#bbc3ff",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "secondary": "#505f76",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#3b4fd2",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-container-highest": "#dae2fd",
+                      "surface-container-low": "#f2f3ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "surface-dim": "#d2d9f4",
+                      "on-primary-container": "#d7daff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "tertiary": "#7e3100",
+                      "primary": "#2036bd",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#eaedff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-background": "#131b2e",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "on-surface-variant": "#454654",
+                      "primary-container": "#3e52d5",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#000d60",
+                      "outline": "#757686",
+                      "surface-container-high": "#e2e7ff",
+                      "secondary-container": "#d0e1fb",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-secondary-container": "#54647a",
+                      "tertiary-container": "#a44200",
+                      "surface": "#faf8ff",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface": "#131b2e",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#283044",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#dae2fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "gutter-grid": "16px",
+                      "density-generous": "32px",
+                      "margin-page": "24px",
+                      "density-compact": "8px",
+                      "padding-card": "16px"
+              },
+              "fontFamily": {
+                      "display": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-mono": ["JetBrains Mono"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen text-on-background flex flex-col md:hidden">
+<!-- TopAppBar -->
+<header class="bg-background w-full top-0 sticky flex items-center justify-between px-margin-page h-16 w-full z-40">
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150 p-2 -ml-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Syncora</h1>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col px-margin-page pb-density-generous pt-gutter-grid">
+<!-- Hero Section -->
+<section class="flex flex-col items-center text-center mb-density-generous pt-8">
+<div class="w-20 h-20 bg-primary-container rounded-xl flex items-center justify-center mb-6 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-[40px] text-primary icon-fill" data-icon="domain">domain</span>
+</div>
+<h2 class="font-display text-display text-on-background mb-4">
+                Welcome to Syncora
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-[280px]">
+                Your centralized management system for campus administration and educational workflows.
+            </p>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-4">
+<button class="w-full bg-primary text-on-primary font-label-mono text-label-mono py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-fixed-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="search">search</span>
+                    Find my Institution
+                </button>
+<button class="w-full bg-surface-container-lowest border border-outline-variant text-primary font-label-mono text-label-mono py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="login">login</span>
+                    Login
+                </button>
+</div>
+</section>
+<!-- Graphic / Visual -->
+<div class="w-full h-48 rounded-xl bg-surface-container overflow-hidden mb-density-generous border border-outline-variant relative">
+<div class="bg-cover bg-center w-full h-full opacity-80 mix-blend-multiply" data-alt="A clean, abstract architectural visualization of a modern campus building. The scene uses a bright light-mode aesthetic with soft shadows and precise geometry. The color palette is minimal, utilizing pristine whites, subtle greys, and intentional accents of deep indigo blue to match the UI branding. The mood is highly professional and organized." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDYEl29JeMu4ksJJ-jNW9CMc4o0cCK39mlPzWNXW7Ez3H-DkLOZHQIhKcmHgZ9Q1NnhNm4_u8lklvzf9VoSLYU7CYmakpOo9tyjRLQ_RZiO2ZQYHBR1woQ0AjPR5lTp4-O-YDJc6Bi0ByJM8QT-85EBwGRntTVQNswAexJfynimJxkKfTSh5K9E6Kx-X9kHuwuO_R4SPQPnDr85Hx8kRHkfh7fi8KsqEQ7o1B8xtm2OZv5NY6xdqw9')"></div>
+<!-- Decorative Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<!-- Platform Highlights (Bento-style layout for mobile) -->
+<section class="flex flex-col gap-4">
+<h3 class="font-headline-md text-headline-md text-on-background mb-2">Platform Highlights</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Highlight Card 1 (Full Width) -->
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant p-padding-card rounded-xl flex items-start gap-4">
+<div class="p-2 bg-secondary-container rounded-lg shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container icon-fill" data-icon="security">security</span>
+</div>
+<div>
+<h4 class="font-headline-lg-mobile text-[16px] text-on-background mb-1">Secure Records</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Encrypted, role-based access to all institutional data.</p>
+</div>
+</div>
+<!-- Highlight Card 2 -->
+<div class="col-span-1 bg-surface-container-lowest border border-outline-variant p-padding-card rounded-xl flex flex-col gap-3">
+<div class="p-2 bg-tertiary-container rounded-lg w-fit">
+<span class="material-symbols-outlined text-on-tertiary-container icon-fill" data-icon="account_tree">account_tree</span>
+</div>
+<div>
+<h4 class="font-label-mono text-label-mono text-on-background mb-1">Automated Workflows</h4>
+<p class="font-body-sm text-[11px] leading-tight text-on-surface-variant">Streamline approvals.</p>
+</div>
+</div>
+<!-- Highlight Card 3 -->
+<div class="col-span-1 bg-surface-container-lowest border border-outline-variant p-padding-card rounded-xl flex flex-col gap-3">
+<div class="p-2 bg-primary-container rounded-lg w-fit">
+<span class="material-symbols-outlined text-on-primary-container icon-fill" data-icon="contacts">contacts</span>
+</div>
+<div>
+<h4 class="font-label-mono text-label-mono text-on-background mb-1">Central Directory</h4>
+<p class="font-body-sm text-[11px] leading-tight text-on-surface-variant">Unified profiles.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

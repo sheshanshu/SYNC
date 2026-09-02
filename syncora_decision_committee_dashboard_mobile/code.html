@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Decision Committee Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "inverse-surface": "#2f3038",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-surface": "#1a1b23",
+                      "on-secondary-fixed": "#0c1c30",
+                      "secondary-fixed": "#d4e3ff",
+                      "on-primary-container": "#a9b3ff",
+                      "on-background": "#1a1b23",
+                      "surface": "#fbf8ff",
+                      "outline": "#757686",
+                      "tertiary-fixed-dim": "#ffb59f",
+                      "primary": "#001c9d",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "surface-dim": "#dad9e4",
+                      "tertiary-container": "#892400",
+                      "surface-tint": "#3b4fd3",
+                      "pending-bg": "#fffbeb",
+                      "on-tertiary-fixed-variant": "#862300",
+                      "surface-bright": "#fbf8ff",
+                      "secondary": "#505f76",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f4f2fe",
+                      "allocated-blue": "#1d4ed8",
+                      "surface-container-high": "#e9e7f2",
+                      "tertiary-fixed": "#ffdbd1",
+                      "on-tertiary-fixed": "#3a0a00",
+                      "surface-container": "#eeecf8",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#c5c5d7",
+                      "error": "#ba1a1a",
+                      "awarded-bg": "#f0fdf4",
+                      "primary-fixed": "#dfe0ff",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#56657c",
+                      "rejected-slate": "#475569",
+                      "inverse-on-surface": "#f1effb",
+                      "tertiary": "#621700",
+                      "inverse-primary": "#bcc3ff",
+                      "surface-variant": "#e3e1ed",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "background": "#fbf8ff",
+                      "rejected-bg": "#f8fafc",
+                      "pending-amber": "#b45309",
+                      "allocated-bg": "#eff6ff",
+                      "primary-container": "#2036bd",
+                      "secondary-container": "#d4e3ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#ff9f83",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "on-surface-variant": "#454654",
+                      "on-primary-fixed": "#000d60",
+                      "awarded-green": "#15803d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "gutter-grid": "16px",
+                      "base": "4px",
+                      "compact-gap": "8px",
+                      "allocation-row": "12px",
+                      "margin-page": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "data-tabular": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-tabular": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16 pb-20 md:pb-0 md:pl-64">
+<!-- TopNavBar (Mobile) -->
+<header class="flex justify-between items-center px-margin-page h-16 w-full fixed top-0 z-50 bg-surface border-b border-outline-variant flat no shadows md:hidden">
+<div class="flex items-center gap-compact-gap">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Scholarship Authority</span>
+</div>
+<div class="flex items-center gap-compact-gap">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar placeholder showing a professional headshot of an institutional administrator in a neutral background setting. The image should be minimalist and high-contrast, fitting a modern dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Jpu4FwtnUfrp6poyRSuNz36Iw1HAKGmeJ7M7wI9f_4TV1ZcirhXtStdENcuaX8AtCjctcbWhHN8HrEBV0hb-6RsZGWNctlylJEuB1HY00KJ2CCqt5QJmB7dvr7PZ0zb24EzHR_Jv2y-M5xF17kz3Wy3RQwpQFXHRsZ3CdIxTpLT7aLeoC_hZnbpUNCtg-mCEgnMUQtmfxVWUeVVSrE-tlxQMwGtRVe9o0nO35xj9-7zpbwg9RIh6"/>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-64 bg-surface-container-low border-r border-outline-variant flex-col z-50">
+<div class="p-margin-page flex items-center gap-compact-gap border-b border-outline-variant">
+<img alt="Committee Seal" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A small circular placeholder for an institutional seal or logo, rendered in dark monochrome on a light background, symbolizing authority and rigorous process." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqds0IWMuIBo52MYUBKI6WkJenHJlsYkxZWGvYlINzl7yGB0kJXTdZA6eX_kBGQST79vfIFp56ynWAsB6RPj0YLRZ5-B3MxuhZ80vs3j2LWA1uWep9md8mWGPZh0Py4ztClaOBzjx5ME9jl4tVRDHila3mxCsC8hWCVmUT3l6P17Dyztb4ayCeKeUVSKpi9jLJY0qKV6lQ_3VTTiqJYOFndqAA3j-ssWBn0CNVIPWeja--iCJGw6Rf"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Decision Portal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">FY2024 Cycle</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-padding-card">
+<div class="px-padding-card mb-compact-gap">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded-lg font-body-md text-body-md font-medium hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                    New Cycle
+                </button>
+</div>
+<ul class="flex flex-col gap-1 px-compact-gap">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                        Overview
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+                        Approval Queue
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">payments</span>
+                        Fund Allocation
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">group_add</span>
+                        Consensus Tracker
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+                        Audit Log
+                    </a>
+</li>
+</ul>
+</div>
+<div class="border-t border-outline-variant p-compact-gap">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+                        Policy
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-margin-page flex flex-col gap-gutter-grid max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col gap-compact-gap">
+<h2 class="font-display text-display text-on-surface">Overview</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">FY2024 Award Cycle Finalization</p>
+</div>
+<!-- Cycle Progress -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col gap-compact-gap">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Cycle Progress</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Phase 4: Final Committee Sign-off</p>
+</div>
+<span class="font-label-mono text-label-mono font-bold text-primary">85% Complete</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 85%;"></div>
+</div>
+</section>
+<!-- KPI Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-grid">
+<!-- Fund Utilization Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col gap-allocation-row">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<h3 class="font-body-sm text-body-sm uppercase tracking-wider font-semibold">Fund Utilization</h3>
+</div>
+<div class="font-display text-display text-on-surface">
+                    $2.4M <span class="font-body-lg text-body-lg text-on-surface-variant font-normal">/ $3.0M</span>
+</div>
+<!-- Allocation Bar Component -->
+<div class="flex flex-col gap-base mt-2">
+<div class="flex h-3 rounded-full overflow-hidden w-full">
+<div class="bg-awarded-green h-full" style="width: 60%;" title="Awarded"></div>
+<div class="bg-allocated-blue h-full" style="width: 20%;" title="Reserved"></div>
+<div class="bg-surface-container-highest h-full" style="width: 20%;" title="Remaining"></div>
+</div>
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface-variant mt-1">
+<span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-awarded-green"></div> $1.8M Awarded</span>
+<span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-allocated-blue"></div> $600k Reserved</span>
+</div>
+</div>
+</div>
+<!-- Pending Sign-offs Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col gap-allocation-row">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span>
+<h3 class="font-body-sm text-body-sm uppercase tracking-wider font-semibold">Pending Sign-offs</h3>
+</div>
+<div class="font-display text-display text-pending-amber flex items-baseline gap-2">
+                    12 <span class="font-body-lg text-body-lg text-on-surface-variant font-normal">files require attention</span>
+</div>
+<div class="mt-auto">
+<button class="text-primary font-body-sm text-body-sm font-medium hover:underline flex items-center gap-1">
+                        Review Queue <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-compact-gap flex items-center gap-compact-gap overflow-x-auto whitespace-nowrap">
+<span class="material-symbols-outlined text-on-surface-variant px-2">filter_list</span>
+<button class="px-3 py-1 rounded-full border border-outline-variant bg-surface-container-lowest font-body-sm text-body-sm flex items-center gap-1 hover:bg-surface-variant transition-colors">
+                Department: Engineering <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<button class="px-3 py-1 rounded-full border border-outline-variant bg-surface-container-lowest font-body-sm text-body-sm flex items-center gap-1 hover:bg-surface-variant transition-colors">
+                Status: Pending Sign-off <span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+<!-- Finalist Approvals List -->
+<section class="flex flex-col gap-compact-gap">
+<h3 class="font-headline-md text-headline-md text-on-surface">Finalist Approvals</h3>
+<div class="flex flex-col gap-base">
+<!-- Row 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex items-center justify-between hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="flex items-center gap-padding-card w-1/2">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold font-body-md text-body-md">
+                            JD
+                        </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Jane Doe</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">ID: 982-A4F</span>
+</div>
+</div>
+<div class="hidden md:flex w-1/4 justify-center">
+<span class="bg-pending-bg text-pending-amber px-2 py-0.5 rounded font-label-mono text-label-mono">Pending</span>
+</div>
+<div class="flex items-center gap-padding-card w-1/2 md:w-1/4 justify-end">
+<div class="flex flex-col items-end">
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface">Score: 94/100</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">$15,000</span>
+</div>
+<button class="bg-primary text-on-primary p-2 rounded-lg hover:bg-primary-container transition-colors" title="Sign-off">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex items-center justify-between hover:bg-surface-container-high transition-colors group cursor-pointer">
+<div class="flex items-center gap-padding-card w-1/2">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold font-body-md text-body-md">
+                            MS
+                        </div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Michael Smith</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">ID: 441-B9K</span>
+</div>
+</div>
+<div class="hidden md:flex w-1/4 justify-center">
+<span class="bg-awarded-bg text-awarded-green px-2 py-0.5 rounded font-label-mono text-label-mono">Awarded</span>
+</div>
+<div class="flex items-center gap-padding-card w-1/2 md:w-1/4 justify-end">
+<div class="flex flex-col items-end">
+<span class="font-data-tabular text-data-tabular font-bold text-on-surface">Score: 91/100</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">$10,000</span>
+</div>
+<button class="text-awarded-green p-2 rounded-lg bg-awarded-bg pointer-events-none" title="Signed-off">
+<span class="material-symbols-outlined text-[20px]">done_all</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant flex justify-around items-center h-16 z-50">
+<a class="flex flex-col items-center justify-center w-full h-full text-primary border-t-2 border-primary pt-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-sm text-[10px] mt-1">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-sm text-[10px] mt-1">Queue</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-sm text-[10px] mt-1">Funds</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span class="font-body-sm text-[10px] mt-1">Consensus</span>
+</a>
+</nav>
+</body></html>

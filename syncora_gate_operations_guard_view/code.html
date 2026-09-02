@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gate Operations - Terminal V.2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&amp;family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e3e1ec",
+                      "surface-tint": "#4052c9",
+                      "inverse-on-surface": "#f1effa",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#efecf7",
+                      "on-surface": "#1a1b22",
+                      "surface-variant": "#e3e1ec",
+                      "secondary": "#505f76",
+                      "surface-container-high": "#e9e7f1",
+                      "outline-variant": "#c5c5d6",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#351000",
+                      "tertiary-container": "#5a2100",
+                      "on-primary-container": "#8392ff",
+                      "on-primary-fixed": "#000d60",
+                      "on-background": "#1a1b22",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#db855b",
+                      "on-error": "#ffffff",
+                      "access-active": "#2036bd",
+                      "status-denied": "#ba1a1a",
+                      "inverse-surface": "#2f3038",
+                      "secondary-fixed": "#d4e3ff",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "on-primary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary-fixed": "#0c1c30",
+                      "primary": "#000e65",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#381200",
+                      "tertiary-fixed-dim": "#ffb693",
+                      "status-permitted": "#15803d",
+                      "on-primary-fixed-variant": "#2437b0",
+                      "secondary-container": "#d4e3ff",
+                      "on-surface-variant": "#454653",
+                      "security-high": "#7e3100",
+                      "on-tertiary-fixed-variant": "#743411",
+                      "surface": "#fbf8ff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#001c9d",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "map-shield": "#0369a1",
+                      "inverse-primary": "#bbc3ff",
+                      "on-secondary": "#ffffff",
+                      "status-expired": "#92400e",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-secondary-container": "#56657c",
+                      "surface-dim": "#dbd9e3",
+                      "outline": "#757685",
+                      "surface-container-low": "#f4f2fd",
+                      "surface-bright": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "alert-gap": "12px",
+                      "node-tight": "8px",
+                      "margin-dashboard": "24px",
+                      "touch-target": "44px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      }
+              }
+            },
+          }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background h-full flex flex-col font-body-lg">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 h-16 border-b border-outline-variant bg-surface-container text-primary font-headline-md flex justify-between items-center px-gutter w-full sticky z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary">Terminal V.2</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-highest transition-colors rounded p-2 focus-within:ring-2 focus-within:ring-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="hover:bg-surface-container-highest transition-colors rounded p-2 focus-within:ring-2 focus-within:ring-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">notifications_active</span>
+</button>
+<button class="hover:bg-surface-container-highest transition-colors rounded p-2 focus-within:ring-2 focus-within:ring-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</button>
+<button class="bg-primary text-on-primary font-body-md px-4 py-2 rounded flex items-center gap-2 hover:bg-primary-container transition-colors focus:ring-2 focus:ring-primary">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Entry
+            </button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen w-72 bg-surface-container-low border-r border-outline-variant text-primary font-body-md py-margin-dashboard">
+<div class="px-gutter mb-8">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed overflow-hidden border border-outline flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Campus Command</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">North Sector Terminal</p>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-surface-container-high transition-colors duration-200 active:scale-95 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Command Center
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-surface-container-high transition-colors duration-200 active:scale-95 text-primary font-bold border-r-4 border-primary bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+                    Visitor Log
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-surface-container-high transition-colors duration-200 active:scale-95 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+                    Incident Reports
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-surface-container-high transition-colors duration-200 active:scale-95 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">block</span>
+                    Blacklist
+                </a>
+</div>
+<div class="px-4 mt-auto space-y-4">
+<button class="w-full flex items-center justify-center gap-2 bg-error text-on-error font-headline-md py-3 rounded shadow-sm hover:bg-on-error-container transition-colors active:scale-95">
+<span class="material-symbols-outlined">lock</span>
+                    Emergency Lock
+                </button>
+<div class="flex flex-col gap-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-surface-container-high transition-colors duration-200 active:scale-95 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded hover:bg-surface-container-high transition-colors duration-200 active:scale-95 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Support
+                    </a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface p-gutter md:p-margin-dashboard flex flex-col gap-alert-gap">
+<!-- Top Action Bar for Mobile -->
+<div class="md:hidden flex justify-between items-center bg-surface-container-lowest p-4 border border-outline-variant rounded shadow-sm mb-4">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Gate Ops</h1>
+<button class="flex items-center justify-center gap-1 bg-error text-on-error font-body-sm px-3 py-2 rounded hover:bg-on-error-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+                    Lockdown
+                </button>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter flex-1">
+<!-- Left Column: Scanner (60% on Desktop) -->
+<div class="xl:col-span-7 flex flex-col gap-gutter h-full">
+<!-- Scanner Viewfinder -->
+<div class="relative flex-1 bg-inverse-surface border border-outline rounded overflow-hidden shadow-sm flex flex-col min-h-[400px]">
+<div class="absolute top-0 left-0 right-0 p-4 flex justify-between items-start z-10 bg-gradient-to-b from-black/50 to-transparent">
+<div class="flex items-center gap-2 bg-surface-container/80 backdrop-blur-sm px-2 py-1 rounded border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-status-permitted animate-pulse"></span>
+<span class="font-label-mono text-label-mono text-primary">CAM-01-NORTH (SCANNER)</span>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container/80 backdrop-blur-sm flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">flashlight_on</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container/80 backdrop-blur-sm flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">flip_camera_ios</span>
+</button>
+</div>
+</div>
+<!-- Simulated Camera Feed -->
+<div class="flex-1 w-full h-full relative" data-alt="A slightly blurred, bright daylight view from a security camera looking at a gate entrance with a car approaching. The lighting is harsh and high-contrast, typical of a sunny day. The color palette is natural but slightly desaturated, emphasizing the technical, surveillance nature of the image." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA777yjZknqvW3l7hmWAmpw1zWsZXSBCsef2r5CZ_cJozyxjhkZRO_ahKcxKtW1TeA3FypMbbwVwqkefsJXdweroqp_NwNDVglMkeetRCOruG246vwZPGhii2jdr_WJNa8BYwq3Yixuy895wiF2NhjcWEe8Lsm8fUTLsbNj7SA8Je7EOlbEJfS0b-S0UNi_RMfmbcx8kyFUSn4jnVVZl0dOQd7QRjcaEJe7tPLGwtPzcgzPxwN7yEhY')">
+<!-- Scanning Reticle -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-64 h-64 border-2 border-primary/50 relative">
+<div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary"></div>
+<!-- Animated Scan Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary/80 shadow-[0_0_8px_2px_rgba(0,14,101,0.5)] animate-[scan_2s_ease-in-out_infinite]"></div>
+</div>
+</div>
+<!-- Scanner Status Overlay -->
+<div class="absolute bottom-6 left-0 right-0 flex justify-center z-10">
+<div class="bg-surface-container-lowest/90 backdrop-blur px-6 py-3 rounded-full border border-primary flex items-center gap-3 shadow-md">
+<span class="material-symbols-outlined text-primary animate-spin" style="animation-duration: 3s;">qr_code_scanner</span>
+<span class="font-headline-md text-headline-md text-primary font-semibold">Ready to Scan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Manual Entry Toggle -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-4 shadow-sm">
+<div class="flex justify-between items-center cursor-pointer" onclick="document.getElementById('manual-entry').classList.toggle('hidden')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">keyboard</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Manual ID Entry</h3>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform" id="manual-toggle-icon">expand_more</span>
+</div>
+<div class="hidden mt-4 pt-4 border-t border-outline-variant flex gap-node-tight" id="manual-entry">
+<input class="flex-1 bg-surface border border-outline rounded px-3 py-2 font-body-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder:text-on-surface-variant/50" placeholder="Enter Visitor ID or License Plate" type="text"/>
+<button class="bg-primary text-on-primary px-6 py-2 rounded font-body-md font-semibold hover:bg-primary-container transition-colors">Search</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Inspector (40% on Desktop) -->
+<div class="xl:col-span-5 flex flex-col gap-gutter">
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface mb-2 px-1">Last Scanned</h2>
+<!-- Result: Success -->
+<div class="bg-surface-container-lowest border border-status-permitted rounded p-6 shadow-[0_2px_8px_rgba(21,128,61,0.1)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-2 h-full bg-status-permitted"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 bg-status-permitted/10 text-status-permitted px-3 py-1 rounded-full border border-status-permitted/20">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-data-viz text-data-viz uppercase">Access Granted</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">10:42 AM</span>
+</div>
+<div class="flex items-center gap-4 mb-6 border-b border-outline-variant pb-4">
+<div class="w-16 h-16 rounded bg-surface border border-outline flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">person</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-surface">Dr. Alan Grant</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+                                     Visitor - Academic Dept
+                                 </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1">Host</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Prof. E. Sattler</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1">Clearance</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Sector 4 (Basic)</p>
+</div>
+<div class="col-span-2">
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1">Vehicle</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold border border-outline-variant px-2 py-1 rounded inline-block bg-surface-container-high">JEEP-42</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface border border-outline text-on-surface font-body-md py-2 rounded hover:bg-surface-container transition-colors">Print Pass</button>
+<button class="flex-1 bg-surface border border-outline text-on-surface font-body-md py-2 rounded hover:bg-surface-container transition-colors">Open Gate</button>
+</div>
+</div>
+<!-- Result: Denied (Example for context, normally only one shows) -->
+<div class="bg-surface-container-lowest border-2 border-status-denied rounded p-6 shadow-[0_4px_12px_rgba(186,26,26,0.15)] relative overflow-hidden opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<div class="absolute top-0 left-0 w-full h-1 bg-status-denied"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2 bg-status-denied text-on-error px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[18px]">block</span>
+<span class="font-data-viz text-data-viz uppercase">Access Denied</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">09:15 AM</span>
+</div>
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Dennis Nedry</h3>
+<p class="font-body-md text-body-md text-status-denied font-semibold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+                                Reason: Pass Expired (3 days ago)
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<style>
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+</body></html>

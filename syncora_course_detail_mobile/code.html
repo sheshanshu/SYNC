@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduPortal - Course Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-error-container": "#93000a",
+                            "secondary-fixed": "#d3e4fe",
+                            "on-secondary": "#ffffff",
+                            "on-secondary-container": "#54647a",
+                            "surface-container-lowest": "#ffffff",
+                            "primary": "#2036bd",
+                            "on-primary-fixed-variant": "#1d34ba",
+                            "on-background": "#131b2e",
+                            "surface-container-high": "#e2e7ff",
+                            "on-secondary-fixed-variant": "#38485d",
+                            "on-tertiary-fixed-variant": "#7a2f00",
+                            "primary-fixed": "#dfe0ff",
+                            "on-primary-container": "#d7daff",
+                            "on-surface": "#131b2e",
+                            "on-error": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "inverse-primary": "#bbc3ff",
+                            "outline-variant": "#c5c5d7",
+                            "on-primary-fixed": "#000d60",
+                            "surface-tint": "#3b4fd2",
+                            "tertiary": "#7e3100",
+                            "error": "#ba1a1a",
+                            "surface": "#faf8ff",
+                            "on-tertiary-fixed": "#351000",
+                            "background": "#faf8ff",
+                            "surface-container-highest": "#dae2fd",
+                            "on-secondary-fixed": "#0b1c30",
+                            "primary-fixed-dim": "#bbc3ff",
+                            "on-surface-variant": "#454654",
+                            "surface-container-low": "#f2f3ff",
+                            "inverse-on-surface": "#eef0ff",
+                            "inverse-surface": "#283044",
+                            "tertiary-container": "#a44200",
+                            "secondary": "#505f76",
+                            "surface-variant": "#dae2fd",
+                            "on-tertiary": "#ffffff",
+                            "primary-container": "#3e52d5",
+                            "on-tertiary-container": "#ffd3bf",
+                            "secondary-fixed-dim": "#b7c8e1",
+                            "tertiary-fixed": "#ffdbcc",
+                            "secondary-container": "#d0e1fb",
+                            "surface-dim": "#d2d9f4",
+                            "surface-container": "#eaedff",
+                            "tertiary-fixed-dim": "#ffb694",
+                            "error-container": "#ffdad6",
+                            "surface-bright": "#faf8ff",
+                            "outline": "#757686"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "margin-page": "16px",
+                            "padding-card": "16px",
+                            "base": "4px",
+                            "density-generous": "32px",
+                            "gutter-grid": "16px",
+                            "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                            "body-lg": ["Inter"],
+                            "label-mono": ["JetBrains Mono"],
+                            "display": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "body-md": ["Inter"],
+                            "headline-lg-mobile": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "label-mono": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                            "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "headline-md": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                            "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:hidden">
+<!-- Top Navigation for Mobile (Destination Screen) -->
+<header class="bg-surface text-primary font-body-md w-full top-0 sticky border-b border-outline-variant flat no shadows flex justify-between items-center px-margin-page h-16 w-full z-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary cursor-pointer" onclick="window.history.back()">arrow_back</span>
+<span class="font-headline-md text-headline-md text-primary">EduPortal</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95 duration-150" data-icon="notifications">notifications</span>
+<img alt="Student Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, circular avatar portrait of a modern university student, shot in bright natural light against a neutral background. The lighting is crisp and the tone is professional yet approachable, fitting an academic portal context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo0EwrXfELNJOPO6muApdaf_YSFP54UlGzCHiTefILw1rZLN5KAnWuF6lXZWSlAd4IpApB-_HNOopo0bA2Arwu9Xd63FayxWKQ_VO-bD5ds5cnBcUIJRue09GBiLTrlsJMjD7v11SJC2pAM6fgrRr_pmTzKm74b7wzXSN89e6AYXDeAICpJIHoXvbswZmSCxqmlTFgxeH0vWHknLSWFcDNaA7JMta6TTSAQB2LdB-vG894LbagSX-y"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow p-margin-page space-y-6 pb-24">
+<!-- Course Header -->
+<section class="space-y-4">
+<div class="inline-flex items-center px-2 py-1 bg-surface-container-highest text-on-secondary-fixed rounded-sm font-label-mono text-label-mono">
+                CS-401
+            </div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Advanced Algorithms &amp; Data Structures</h1>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-2 border-t border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">person</span>
+                    Prof. Alan Turing
+                </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                    Mon, Wed 10:00 AM
+                </div>
+</div>
+</section>
+<!-- Quick Actions Bento -->
+<section class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center p-4 bg-primary text-on-primary rounded-xl active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-2" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="font-body-sm text-body-sm font-semibold">Next Lesson</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-low text-primary border border-outline-variant rounded-xl active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-2">mail</span>
+<span class="font-body-sm text-body-sm font-semibold">Contact</span>
+</button>
+</section>
+<!-- Progress Overview -->
+<section class="bg-surface p-padding-card rounded-xl border border-outline-variant">
+<div class="flex justify-between items-end mb-2">
+<h2 class="font-headline-md text-headline-md">Course Progress</h2>
+<span class="font-label-mono text-label-mono text-primary">64%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 64%;"></div>
+</div>
+</section>
+<!-- Collapsible Sections -->
+<section class="space-y-2">
+<!-- Curriculum -->
+<details class="group bg-surface rounded-xl border border-outline-variant overflow-hidden" open="">
+<summary class="flex justify-between items-center p-padding-card cursor-pointer font-headline-md text-headline-md list-none [&amp;::-webkit-details-marker]:hidden">
+                    Curriculum
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-padding-card pt-0 border-t border-outline-variant">
+<ul class="space-y-0">
+<li class="py-3 flex items-start gap-3 border-b border-outline-variant last:border-b-0 hover:bg-surface-container-low transition-colors px-2 rounded-lg -mx-2">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h3 class="font-body-md text-body-md font-medium text-on-background">1. Graph Theory Fundamentals</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Completed • 45m</p>
+</div>
+</li>
+<li class="py-3 flex items-start gap-3 border-b border-outline-variant last:border-b-0 hover:bg-surface-container-low transition-colors px-2 rounded-lg -mx-2 bg-surface-container-lowest">
+<span class="material-symbols-outlined text-outline mt-0.5">radio_button_unchecked</span>
+<div>
+<h3 class="font-body-md text-body-md font-medium text-on-background">2. Dynamic Programming Approaches</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Up Next • 1h 15m</p>
+</div>
+</li>
+</ul>
+</div>
+</details>
+<!-- Assignments -->
+<details class="group bg-surface rounded-xl border border-outline-variant overflow-hidden">
+<summary class="flex justify-between items-center p-padding-card cursor-pointer font-headline-md text-headline-md list-none [&amp;::-webkit-details-marker]:hidden">
+                    Assignments
+                    <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-padding-card pt-0 border-t border-outline-variant">
+<div class="py-3 flex items-start justify-between border-b border-outline-variant last:border-b-0">
+<div>
+<h3 class="font-body-md text-body-md font-medium text-on-background">Midterm Project: Pathfinding</h3>
+<p class="font-body-sm text-body-sm text-error">Due: Oct 24, 11:59 PM</p>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 bg-error-container text-on-error-container rounded-sm font-label-mono text-label-mono opacity-90">
+                            Pending
+                        </span>
+</div>
+</div>
+</details>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Technical Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "background": "#faf8ff",
+                        "surface-container-highest": "#dae2fd",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-background": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "surface-variant": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "surface-tint": "#3b4fd2",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface": "#faf8ff",
+                        "on-primary-fixed": "#000d60",
+                        "on-secondary-container": "#54647a",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#d7daff",
+                        "secondary": "#505f76",
+                        "on-surface-variant": "#454654",
+                        "primary-container": "#3e52d5",
+                        "inverse-primary": "#bbc3ff",
+                        "primary-fixed": "#dfe0ff",
+                        "error": "#ba1a1a",
+                        "outline": "#757686",
+                        "on-surface": "#131b2e",
+                        "surface-container-low": "#f2f3ff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary": "#2036bd",
+                        "tertiary-container": "#a44200",
+                        "inverse-on-surface": "#eef0ff",
+                        "tertiary": "#7e3100",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-bright": "#faf8ff",
+                        "outline-variant": "#c5c5d7",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d2d9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "base": "4px",
+                        "density-compact": "8px",
+                        "gutter-grid": "16px",
+                        "density-generous": "32px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface text-primary font-body-md text-body-md border-b border-outline-variant flex justify-between items-center w-full px-margin-page h-16 shrink-0 z-10 relative">
+<div class="flex items-center gap-8">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">architecture</span>
+                EduArch OS
+            </div>
+<nav class="hidden md:flex items-center h-full gap-6">
+<a class="text-secondary font-medium hover:bg-surface-container transition-colors h-full flex items-center px-2" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary h-full flex items-center px-2" href="#">Diagrams</a>
+<a class="text-secondary font-medium hover:bg-surface-container transition-colors h-full flex items-center px-2" href="#">Library</a>
+<a class="text-secondary font-medium hover:bg-surface-container transition-colors h-full flex items-center px-2" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border-outline-variant rounded-full text-body-sm font-body-sm focus:ring-2 focus:ring-primary focus:border-primary w-64" placeholder="Search diagrams..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg text-body-sm font-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-95 duration-150 font-medium ml-2">
+                Deploy
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant ml-2">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close up professional headshot of an administrator in a modern office, soft lighting, sharp focus, corporate aesthetic, wearing a subtle blue blazer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9Yi054nXbfg1KO7i2Ak7C7_hny9wIOGHJoziJQPMDgyqXlGSqX1laevSswZneBQNIapXS6N5Cu_3Rh84fPmxmM9t60MgNuu8R__i_X7Xh1Avi5m_mpufJUqMz4t3ZCe8Ar_H_FBvERT3iZS5W1_LxCOGZ6ae5o_KCY8ZXoej3nN9ZwJNtz_RlmS3o3j8LtnwLXiTGTg4WwVHjZ-vfmpSArH2vhLjrZgJ1H16WKoX9tXY9v-anhQZ1"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full bg-surface-container-low border-r border-outline-variant w-64 py-density-generous px-density-compact shrink-0">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+                    EA
+                </div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary leading-tight">Architecture</h2>
+<span class="font-label-mono text-label-mono text-secondary">v2.4.0-stable</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary px-4 py-2.5 rounded-lg mb-6 flex items-center justify-center gap-2 hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="font-body-md text-body-md font-medium">New Diagram</span>
+</button>
+<nav class="flex-1 flex flex-col gap-1 font-label-mono text-label-mono text-on-surface-variant">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-surface-container transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+                    Flowcharts
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-surface-container transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">database</span>
+                    Entity Relation
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-surface-container-highest text-primary font-bold transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">hub</span>
+                    System Maps
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-surface-container transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">history_edu</span>
+                    Audit Logs
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-surface-container transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">api</span>
+                    API Docs
+                </a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 font-label-mono text-label-mono text-on-surface-variant pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                    Archive
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-surface-container-lowest p-margin-page md:p-density-generous">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-gutter-grid">
+<!-- Diagram Area -->
+<div class="flex-1 bg-surface border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant bg-surface flex justify-between items-center">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Syncora Multi-Tenant Platform</h1>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Application Workflow &amp; Substrate Layer</p>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 text-secondary border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">zoom_in</span>
+</button>
+<button class="p-1.5 text-secondary border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">zoom_out</span>
+</button>
+<button class="p-1.5 text-secondary border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">fit_screen</span>
+</button>
+</div>
+</div>
+<div class="flex-1 bg-[#f8fafe] p-8 min-h-[500px] flex items-center justify-center relative overflow-hidden">
+<img alt="Syncora Technical Architecture Diagram" class="max-w-full h-auto object-contain drop-shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBok2PKV8doIUAawEwuv2VGePvFr7kh2l_Xl0mRZ3X31f02_Dn_3vhd23lPhjiz6qz5InRSQLQXyqoj2QTc7_CGOHK4g-bUIA1f9wy69t3k4xuJpVGZTGD_9_3QNmRBQYTYLV0WIhx6YwFbduTcdpcB8pVatFUTzC8eWC1aQtVo8Gzp2P3kHibaO-Z4PPp41alICUUhXwMrS9G5ecfiIW85XlFXuOpBPA39vbQtfxRIqXRhF0nDDDWg"/>
+</div>
+</div>
+<!-- Documentation/Specs Sidebar -->
+<div class="w-full lg:w-80 flex flex-col gap-4">
+<div class="bg-surface border border-outline-variant rounded-xl p-5">
+<div class="flex items-center gap-2 mb-3 pb-2 border-b border-outline-variant/50">
+<span class="material-symbols-outlined text-primary text-[20px]">dns</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Multi-Tenant Substrate</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                            The core database leverages a PostgreSQL cluster utilizing a logical separation model (Schema-per-tenant). This ensures strict data isolation while maintaining operational efficiency for schema migrations across the Syncora client base.
+                        </p>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-5">
+<div class="flex items-center gap-2 mb-3 pb-2 border-b border-outline-variant/50">
+<span class="material-symbols-outlined text-primary text-[20px]">view_module</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Modular Monolith</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                            Built on NestJS, the core application avoids premature microservice fragmentation. Domain logic is strictly bounded into modules (User Mgmt, Billing, Sync), communicating via internal event buses rather than network hops, optimizing latency for standard admin operations.
+                        </p>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-5">
+<div class="flex items-center gap-2 mb-3 pb-2 border-b border-outline-variant/50">
+<span class="material-symbols-outlined text-primary text-[20px]">cloud_sync</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Shared Services</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-3">
+                            Cross-cutting concerns are abstracted into dedicated engine clusters to handle high-throughput asymmetric loads.
+                        </p>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-2 pl-2">
+<li class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
+<span><strong>Notification:</strong> Twilio/SendGrid router</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></span>
+<span><strong>Audit:</strong> ELK Stack for immutable logging</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-5 mt-auto">
+<h4 class="font-label-mono text-label-mono text-secondary mb-2">Metadata</h4>
+<div class="space-y-2 font-body-sm text-body-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Last Updated</span>
+<span class="text-on-surface font-medium">Oct 24, 2023</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Status</span>
+<span class="text-primary font-medium bg-primary-container/20 px-2 py-0.5 rounded">Approved</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

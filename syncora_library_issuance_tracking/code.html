@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Library - Issuance Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb694",
+                        "error": "#ba1a1a",
+                        "primary-container": "#3e52d5",
+                        "secondary": "#505f76",
+                        "primary-fixed": "#dfe0ff",
+                        "category-digital": "#7c3aed",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d4e3ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "status-overdue": "#b91c1c",
+                        "on-background": "#1a1b23",
+                        "inverse-surface": "#2f3038",
+                        "on-surface-variant": "#454654",
+                        "surface-container-high": "#e9e7f2",
+                        "surface-dim": "#dad9e4",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1b23",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#7e3100",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "tertiary-fixed": "#ffdbcc",
+                        "outline": "#757686",
+                        "surface-container-highest": "#e3e1ec",
+                        "bookshelf-wood": "#fdfaf6",
+                        "category-physical": "#0891b2",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed": "#000d60",
+                        "category-periodical": "#ca8a04",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container": "#eeecf8",
+                        "outline-variant": "#c5c5d7",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f4f2fe",
+                        "surface-bright": "#fbf8ff",
+                        "status-issued": "#3e52d5",
+                        "primary": "#2036bd",
+                        "status-available": "#15803d",
+                        "background": "#fbf8ff",
+                        "surface": "#fbf8ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a44200",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e1ec",
+                        "inverse-primary": "#bbc3ff",
+                        "on-secondary-container": "#56657c",
+                        "on-primary-container": "#d7daff",
+                        "inverse-on-surface": "#f1effb",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-tertiary-fixed": "#351000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "bookshelf-gap": "24px",
+                        "search-gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "asset-card-padding": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "search-ui": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "search-ui": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body-md overflow-hidden flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-margin-desktop w-full h-16 bg-background border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">Syncora Library</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64 hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-highest border-none rounded-full text-body-sm font-search-ui text-on-surface focus:ring-2 focus:ring-primary focus:outline-none placeholder:text-on-surface-variant/70" placeholder="Search resources..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Student Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A clean, professional portrait of a library administrator, wearing smart-casual attire. The background is a soft, out-of-focus modern library setting with good natural lighting. The mood is approachable and professional, fitting for a modern digital interface profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrJ5hcBTWZn8Al3hIINEQ9fi90O2kJdE79wbsttFsXO7oXqr_Kk1Pt7cjgxcWyUYZ_9c0EQuYzy3pKydGV2sm2xfe5ooZ_sK5NLwqYrbsq75PS_5ETTkcTGimG2Tb8GY7dwZ1tx46jv2-M6KaM1aNADhsuagIDCKkNxYk-sqsXew749zkwJOt0_lYbDqX4G6DDCBI1siKrXU9ARRgJ8K3Z-FghJIDzG-MThfJZk7KDWWfn_VUqrzhA"/>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col w-72 h-full bg-surface-container-low border-r border-outline-variant py-6 flex-shrink-0">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Library Hub</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central Collection</p>
+</div>
+</div>
+<button class="w-full py-2 px-4 bg-primary text-on-primary rounded font-body-sm text-body-sm font-medium hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Refine Search
+                </button>
+</div>
+<ul class="flex flex-col gap-1 flex-1 px-4">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-secondary-container/50 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+                        Home
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-secondary-container/50 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">library_books</span>
+                        Catalog
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-secondary-container/50 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">book_2</span>
+                        My Bookshelf
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">event_available</span>
+                        Reservations
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-secondary-container/50 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+                        History
+                    </a>
+</li>
+</ul>
+<div class="px-4 mt-auto pt-6 border-t border-outline-variant/30">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-secondary-fixed-variant hover:bg-secondary-container/50 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                            Help
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-secondary-fixed-variant hover:bg-secondary-container/50 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                            Sign Out
+                        </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-desktop bg-surface">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Issuance Tracking</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitor active loans, manage returns, and track overdue items.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-high text-on-surface rounded border border-outline-variant hover:bg-surface-dim transition-colors flex items-center gap-2 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">barcode_scanner</span>
+                        Scan Barcode
+                    </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded hover:opacity-90 transition-opacity flex items-center gap-2 font-body-sm text-body-sm font-medium shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                        Quick Issue
+                    </button>
+</div>
+</div>
+<!-- Summary KPI Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Active Issues</p>
+<p class="font-headline-lg text-headline-lg text-on-surface text-3xl">1,248</p>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-status-available">trending_up</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant"><span class="text-status-available font-medium">+12%</span> vs last month</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-error/5 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Overdue Today</p>
+<p class="font-headline-lg text-headline-lg text-error text-3xl">42</p>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Requires immediate action</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-secondary/5 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Pending Returns</p>
+<p class="font-headline-lg text-headline-lg text-on-surface text-3xl">86</p>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">pending_actions</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Expected in next 48 hours</span>
+</div>
+</div>
+</div>
+<!-- Complex Layout Area -->
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Main Data Table -->
+<div class="flex-1 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface">Active Issuances</h3>
+<div class="flex gap-2">
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_alt</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Resource Details</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Borrower</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Issue Date</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Due Date</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50 font-body-sm text-body-sm">
+<tr class="hover:bg-surface-container-low/50 transition-colors group cursor-pointer">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-10 bg-surface-container-highest rounded border border-outline-variant/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[16px] text-category-physical">menu_book</span>
+</div>
+<div>
+<p class="font-medium text-on-surface group-hover:text-primary transition-colors">Advanced Calculus, 4th Ed.</p>
+<p class="text-on-surface-variant text-[11px]">ID: B-492-019</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold">JD</div>
+<span>John Doe <span class="text-on-surface-variant text-[11px] ml-1">(Student)</span></span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">Oct 12, 2023</td>
+<td class="py-3 px-4 font-medium text-on-surface">Oct 26, 2023</td>
+<td class="py-3 px-4 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-issued/10 text-status-issued font-medium text-[11px]">
+                                            Active
+                                        </span>
+</td>
+</tr>
+<tr class="bg-error/5 hover:bg-error/10 transition-colors group cursor-pointer border-l-2 border-l-error">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-10 bg-surface-container-highest rounded border border-outline-variant/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[16px] text-category-periodical">article</span>
+</div>
+<div>
+<p class="font-medium text-on-surface group-hover:text-error transition-colors">Journal of Physics, Vol 42</p>
+<p class="text-on-surface-variant text-[11px]">ID: P-112-998</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center text-[10px] font-bold">AS</div>
+<span>Dr. Alan Smith <span class="text-on-surface-variant text-[11px] ml-1">(Faculty)</span></span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">Sep 28, 2023</td>
+<td class="py-3 px-4 font-medium text-error flex items-center gap-1">
+                                        Oct 12, 2023
+                                        <span class="material-symbols-outlined text-[14px]">warning</span>
+</td>
+<td class="py-3 px-4 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-overdue/10 text-status-overdue font-medium text-[11px]">
+                                            Overdue (3 days)
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors group cursor-pointer">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-10 bg-surface-container-highest rounded border border-outline-variant/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[16px] text-category-digital">laptop_mac</span>
+</div>
+<div>
+<p class="font-medium text-on-surface group-hover:text-primary transition-colors">MacBook Pro - Lab 2</p>
+<p class="text-on-surface-variant text-[11px]">ID: E-002-L2</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold">MR</div>
+<span>Maria Rodriguez <span class="text-on-surface-variant text-[11px] ml-1">(Student)</span></span>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">Oct 15, 2023</td>
+<td class="py-3 px-4 font-medium text-on-surface">Oct 16, 2023</td>
+<td class="py-3 px-4 text-right">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-issued/10 text-status-issued font-medium text-[11px]">
+                                            Active
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 border-t border-outline-variant bg-surface-bright flex justify-center">
+<button class="text-primary font-body-sm text-body-sm font-medium hover:underline">View All Records</button>
+</div>
+</div>
+<!-- Right Sidebar for Alerts & Actions -->
+<div class="w-full lg:w-80 flex flex-col gap-6 flex-shrink-0">
+<!-- Overdue Alerts -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-error/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">notification_important</span>
+<h3 class="font-headline-md text-body-md font-semibold text-on-surface">Action Required</h3>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="p-3 border border-error/30 bg-error/5 rounded text-body-sm flex gap-3 items-start">
+<span class="material-symbols-outlined text-error text-[18px] mt-0.5">mail</span>
+<div>
+<p class="font-medium text-on-surface">Send Overdue Notices</p>
+<p class="text-on-surface-variant text-[12px] mt-1">12 students have items overdue by more than 7 days.</p>
+<button class="mt-2 text-primary font-medium text-[12px] hover:underline">Draft Emails</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Return Requests -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex-1">
+<div class="p-4 border-b border-outline-variant bg-surface-bright flex items-center justify-between">
+<h3 class="font-headline-md text-body-md font-semibold text-on-surface">Recent Returns</h3>
+<span class="text-[12px] text-on-surface-variant">Today</span>
+</div>
+<ul class="divide-y divide-outline-variant/30 p-2">
+<li class="p-2 hover:bg-surface-container-low rounded transition-colors flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">check_circle</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-on-surface line-clamp-1">Introduction to Algorithms</p>
+<p class="text-[11px] text-on-surface-variant">Returned 10:42 AM</p>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-1 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</li>
+<li class="p-2 hover:bg-surface-container-low rounded transition-colors flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">check_circle</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-on-surface line-clamp-1">Design Patterns</p>
+<p class="text-[11px] text-on-surface-variant">Returned 09:15 AM</p>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-1 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

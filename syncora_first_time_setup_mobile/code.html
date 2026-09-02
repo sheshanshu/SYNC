@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>First-Time Setup - Personalize Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c5c5d7",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-bright": "#faf8ff",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#bbc3ff",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "secondary": "#505f76",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#3b4fd2",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-highest": "#dae2fd",
+                        "surface-container-low": "#f2f3ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "surface-dim": "#d2d9f4",
+                        "on-primary-container": "#d7daff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "tertiary": "#7e3100",
+                        "primary": "#2036bd",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-container": "#eaedff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-background": "#131b2e",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-surface-variant": "#454654",
+                        "primary-container": "#3e52d5",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#000d60",
+                        "outline": "#757686",
+                        "surface-container-high": "#e2e7ff",
+                        "secondary-container": "#d0e1fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-container": "#54647a",
+                        "tertiary-container": "#a44200",
+                        "surface": "#faf8ff",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface": "#131b2e",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#283044",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter-grid": "16px",
+                        "density-generous": "32px",
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopAppBar (Transactional - Nav hidden, but showing step progress) -->
+<header class="w-full top-0 sticky bg-background border-b border-outline-variant/30 z-10 flex flex-col justify-center px-margin-page py-4">
+<div class="flex items-center justify-between mb-4">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Setup</h1>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Step 1 of 3</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3 rounded-full transition-all duration-300"></div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-margin-page py-density-generous">
+<div class="mb-density-generous">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Personalize your Profile</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Let's set up the basics so your team knows who you are.</p>
+</div>
+<!-- Form Area -->
+<form class="flex-grow flex flex-col space-y-gutter-grid">
+<!-- Avatar Upload -->
+<div class="flex flex-col items-center justify-center py-4">
+<div class="relative group cursor-pointer">
+<div class="w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 48px;">person</span>
+<!-- Hover overlay -->
+<div class="absolute inset-0 bg-on-surface/10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">photo_camera</span>
+</div>
+</div>
+</div>
+<button class="mt-4 font-label-mono text-label-mono text-primary hover:text-primary-fixed-variant transition-colors" type="button">Upload Photo</button>
+</div>
+<!-- Preferred Name Input -->
+<div class="flex flex-col">
+<label class="font-label-mono text-label-mono text-on-surface-variant mb-1" for="preferred-name">Preferred Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-on-surface-variant/50 transition-shadow" id="preferred-name" name="preferred-name" placeholder="e.g., Alex" type="text"/>
+</div>
+<!-- Timezone Dropdown -->
+<div class="flex flex-col">
+<label class="font-label-mono text-label-mono text-on-surface-variant mb-1" for="timezone">Timezone</label>
+<div class="relative">
+<select class="appearance-none w-full bg-surface-container-lowest border border-outline-variant rounded px-3 py-2 pr-10 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="timezone" name="timezone">
+<option value="pst">Pacific Time (PT)</option>
+<option value="mst">Mountain Time (MT)</option>
+<option value="cst">Central Time (CT)</option>
+<option selected="" value="est">Eastern Time (ET)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</form>
+<!-- Action Buttons (Bottom anchored for mobile) -->
+<div class="mt-density-generous flex flex-col space-y-4 pt-4 border-t border-outline-variant/30">
+<button class="w-full bg-primary text-on-primary font-label-mono text-label-mono py-3 rounded flex justify-center items-center hover:bg-primary-container hover:text-on-primary-container transition-colors active:scale-[0.98]" type="button">
+                Next Step
+                <span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full bg-transparent text-secondary font-label-mono text-label-mono py-3 rounded border border-outline-variant flex justify-center items-center hover:bg-surface-container transition-colors active:scale-[0.98]" type="button">
+                Skip for now
+            </button>
+</div>
+</main>
+<!-- Shell suppressed as requested by rules for transactional linear flows -->
+</body></html>

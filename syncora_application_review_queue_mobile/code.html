@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Application Review Queue - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e1ed",
+                        "tertiary-container": "#631700",
+                        "primary": "#000e65",
+                        "surface-container-highest": "#e3e1ed",
+                        "on-primary-container": "#8392ff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8ff",
+                        "pending-bg": "#fffbeb",
+                        "inverse-surface": "#2f3038",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#4052c9",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-container": "#d4e3ff",
+                        "pending-amber": "#b45309",
+                        "surface": "#fbf8ff",
+                        "on-surface": "#1a1b23",
+                        "surface-container-high": "#e8e7f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2437b0",
+                        "on-background": "#1a1b23",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface-dim": "#dad9e4",
+                        "on-secondary": "#ffffff",
+                        "allocated-blue": "#1d4ed8",
+                        "outline-variant": "#c5c5d6",
+                        "surface-container": "#eeecf8",
+                        "on-secondary-container": "#56657c",
+                        "rejected-slate": "#475569",
+                        "awarded-green": "#15803d",
+                        "on-tertiary-fixed-variant": "#7e2b10",
+                        "tertiary": "#3e0b00",
+                        "awarded-bg": "#f0fdf4",
+                        "surface-container-low": "#f4f2fe",
+                        "primary-container": "#001c9d",
+                        "outline": "#757685",
+                        "rejected-bg": "#f8fafc",
+                        "surface-container-lowest": "#ffffff",
+                        "allocated-bg": "#eff6ff",
+                        "inverse-on-surface": "#f1effb",
+                        "primary-fixed": "#dfe0ff",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#ea7c5b",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "secondary": "#505f76",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "surface-bright": "#fbf8ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "inverse-primary": "#bbc3ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#454653"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "compact-gap": "8px",
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "sidebar-width": "320px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "data-tabular": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface flex flex-col min-h-screen relative overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="bg-surface w-full h-16 flex justify-between items-center px-margin-page z-40 sticky top-0 shadow-sm border-b border-outline-variant md:hidden">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary font-bold">Review Workspace</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="search">search</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="notifications">notifications</span>
+<img alt="Reviewer Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A detailed headshot of a professional reviewer in a brightly lit modern office setting, looking directly at the camera with a neutral, focused expression. Professional attire, shallow depth of field, high-resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFkzC_iHakOkwcEfex8sCyEdAGijQDzGJQXXFVNgpGpQVHABDIqmDpQA2T0GhUB5ad4bbFPI2eg2W-OJs7llmCwcbG7WNOmVEHv0DtguzONhqYjGsdNRdCj9Qv3WUy9a6SQR-DKSDhmCu8rSlB1ChqaoW4u_5qbwlVE6AbATmKGpgHzVyoBysllrTiQB0ImxeK-Bj6rPF8o5zIJDgPskerVKfaMV_AT3ZqAkM4UlWM_uTIuwRfDYAH"/>
+</div>
+</header>
+<!-- Filter Bar -->
+<div class="bg-surface-container-low px-4 py-3 sticky top-16 z-30 shadow-sm overflow-x-auto whitespace-nowrap md:hidden">
+<div class="flex gap-2">
+<button class="bg-secondary-container text-on-secondary-container font-label-mono text-label-mono px-4 py-2 rounded-lg font-bold">All</button>
+<button class="bg-surface text-on-surface-variant font-label-mono text-label-mono px-4 py-2 rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">My Reviews</button>
+<button class="bg-surface text-on-surface-variant font-label-mono text-label-mono px-4 py-2 rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">Urgent</button>
+<button class="bg-surface text-on-surface-variant font-label-mono text-label-mono px-4 py-2 rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">Pending</button>
+</div>
+</div>
+<!-- Main Content Queue -->
+<main class="flex-1 p-4 pb-24 md:hidden">
+<div class="flex flex-col gap-compact-gap">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-lg border border-outline-variant p-padding-card flex flex-col gap-3 shadow-sm relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-pending-amber opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-md text-body-md font-bold text-on-surface">Alex Mercer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Global Tech Fund</p>
+</div>
+<span class="bg-pending-amber/10 text-pending-amber font-label-mono text-label-mono px-2 py-1 rounded-full whitespace-nowrap">Pending</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant mt-1">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">ID: 8492-AM</span>
+<button class="bg-primary text-on-primary font-body-sm text-body-sm px-4 py-1.5 rounded flex items-center gap-1 active:opacity-80 transition-opacity">
+                        Review
+                        <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-lg border border-outline-variant p-padding-card flex flex-col gap-3 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-allocated-blue opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-md text-body-md font-bold text-on-surface">Elena Rodriguez</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sustainability Grant</p>
+</div>
+<span class="bg-allocated-blue/10 text-allocated-blue font-label-mono text-label-mono px-2 py-1 rounded-full whitespace-nowrap">Under Review</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant mt-1">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">ID: 7104-ER</span>
+<button class="bg-primary text-on-primary font-body-sm text-body-sm px-4 py-1.5 rounded flex items-center gap-1 active:opacity-80 transition-opacity">
+                        Continue
+                        <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-lg border border-outline-variant p-padding-card flex flex-col gap-3 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-awarded-green opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-md text-body-md font-bold text-on-surface">Marcus Thorne</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Creative Arts Fellowship</p>
+</div>
+<span class="bg-awarded-green/10 text-awarded-green font-label-mono text-label-mono px-2 py-1 rounded-full whitespace-nowrap">Recommended</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant mt-1">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">ID: 9931-MT</span>
+<button class="bg-transparent border border-outline text-outline font-body-sm text-body-sm px-4 py-1.5 rounded flex items-center gap-1 active:opacity-80 transition-opacity">
+                        View
+                        <span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest rounded-lg border border-outline-variant p-padding-card flex flex-col gap-3 shadow-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-pending-amber opacity-50"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-body-md text-body-md font-bold text-on-surface">Sarah Jenkins</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Urban Development Fund</p>
+</div>
+<span class="bg-pending-amber/10 text-pending-amber font-label-mono text-label-mono px-2 py-1 rounded-full whitespace-nowrap">Pending</span>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-surface-variant mt-1">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">ID: 2284-SJ</span>
+<button class="bg-primary text-on-primary font-body-sm text-body-sm px-4 py-1.5 rounded flex items-center gap-1 active:opacity-80 transition-opacity">
+                        Review
+                        <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden flex justify-around items-center h-16 z-50">
+<a class="flex flex-col items-center justify-center w-full h-full text-primary active:opacity-80 transition-opacity" href="#">
+<div class="bg-secondary-container rounded-lg px-4 py-1 mb-1">
+<span class="material-symbols-outlined text-[24px]" data-icon="list_alt" data-weight="fill">list_alt</span>
+</div>
+<span class="font-label-mono text-[10px] font-bold">Queue</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary active:opacity-80 transition-opacity" href="#">
+<div class="px-4 py-1 mb-1">
+<span class="material-symbols-outlined text-[24px]" data-icon="rate_review">rate_review</span>
+</div>
+<span class="font-label-mono text-[10px]">My Reviews</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary active:opacity-80 transition-opacity" href="#">
+<div class="px-4 py-1 mb-1">
+<span class="material-symbols-outlined text-[24px]" data-icon="inventory_2">inventory_2</span>
+</div>
+<span class="font-label-mono text-[10px]">Archive</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary active:opacity-80 transition-opacity" href="#">
+<div class="px-4 py-1 mb-1">
+<span class="material-symbols-outlined text-[24px]" data-icon="analytics">analytics</span>
+</div>
+<span class="font-label-mono text-[10px]">Reports</span>
+</a>
+</nav>
+<!-- Desktop Warning (Hidden on Mobile) -->
+<div class="hidden md:flex flex-col items-center justify-center min-h-screen bg-surface w-full p-8 text-center">
+<span class="material-symbols-outlined text-display text-primary mb-4" data-icon="devices">devices</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Mobile View Requested</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">This design is specifically optimized for mobile devices. Please resize your browser window to a mobile width to view the Application Review Queue.</p>
+</div>
+</body></html>

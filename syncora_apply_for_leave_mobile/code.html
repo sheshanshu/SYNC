@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>CampusFlow - Apply for Leave</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e3e1ed",
+                        "tertiary": "#5a2100",
+                        "surface-variant": "#e3e1ed",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-background": "#1a1b23",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "occupancy-maintenance": "#92400e",
+                        "primary-container": "#2036bd",
+                        "secondary": "#505f76",
+                        "primary": "#001c9d",
+                        "surface-tint": "#3b4fd3",
+                        "on-secondary-fixed": "#0c1c30",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "primary-fixed": "#dfe0ff",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary-container": "#d4e3ff",
+                        "on-surface-variant": "#454654",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf8ff",
+                        "outline-variant": "#c5c5d7",
+                        "inverse-surface": "#2f3038",
+                        "on-secondary-container": "#56657c",
+                        "occupancy-occupied": "#2036bd",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "map-park": "#f0fdf4",
+                        "map-road": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8ff",
+                        "surface-container": "#eeecf8",
+                        "inverse-primary": "#bcc3ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "surface-bright": "#fbf8ff",
+                        "tertiary-container": "#7e3100",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "on-tertiary-container": "#ffa173",
+                        "surface-dim": "#dad9e4",
+                        "occupancy-available": "#15803d",
+                        "inverse-on-surface": "#f1effb",
+                        "map-water": "#e0f2fe",
+                        "surface-container-low": "#f4f2fe",
+                        "outline": "#757686",
+                        "on-primary-container": "#a9b3ff",
+                        "fleet-idle": "#64748b",
+                        "fleet-delayed": "#b91c1c",
+                        "on-surface": "#1a1b23",
+                        "surface-container-high": "#e9e7f2",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#000d60",
+                        "fleet-transit": "#0369a1",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "dashboard-margin": "24px",
+                        "node-spacing": "8px",
+                        "grid-gutter": "16px",
+                        "map-overlay-gap": "12px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "data-viz": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar to match the "Clean Academic" look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: theme('borderRadius.full');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary font-body-md fixed top-0 w-full z-40 border-b border-outline-variant flat no shadows flex justify-between items-center px-4 md:px-dashboard-margin h-16 w-full md:hidden">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-opacity" type="button">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Apply for Leave</h1>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="notifications" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-opacity" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant flex items-center justify-center">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a school administrator in a modern office, softly lit with cool corporate lighting, conveying reliability and academic precision. The portrait is framed tightly from the shoulders up against a bright white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7z_-DrclUjo_hvkIqOUeE74n-uTh6hJ_ceB24Pn0kXSoa_XPaeB0KWnq-5iNEYdCNaCtY2LNUPXi0Tr417iAzxHEN_uWOcOdRV0yq2PpHD55xONvm4NGHxKc5JWRtd4EjCKP7y85JGW5wmeFSFKulCwhT0tJv2TghSVxL-MQEclJczvTOjG383HgIKJVTxx-6XleybJMjRAXZBgiA0CzoluhZXy7JQKMx6qadWhIs5z4si1_NWZh0"/>
+</div>
+</div>
+</header>
+<!-- TopAppBar (Desktop / Tablet) -->
+<header class="bg-surface text-primary font-body-md fixed top-0 w-full z-40 border-b border-outline-variant flat no shadows hidden md:flex justify-between items-center px-dashboard-margin h-16 w-full">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</h1>
+<div class="flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-body-md text-on-surface placeholder-on-surface-variant focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-colors" placeholder="Search..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="notifications" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-opacity" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="help" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:opacity-80 transition-opacity" type="button">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant flex items-center justify-center ml-2">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a school administrator in a modern office, softly lit with cool corporate lighting, conveying reliability and academic precision. The portrait is framed tightly from the shoulders up against a bright white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6oqV5vvDaqBDqZP11bvlucfIBWlUpXuFlKclmTg7uhfoz0MKXQEB79AeBWxINJehXPrI3SrVn3ztzup6aJrr6-lNJ_1MZ4AdRwytdJnUW7mNX3uXmPgNlVDjGyPYGy_tc1AvStym9jF0MYmEyr46WoURAAXjflA-UTOCzSfqYqq2Qd2gURgJ-fLXdVeyzd9AUb_aGuvEqNHywivnTIFXOTTO9KaEjOONIc4HlBKkCeVg2sXrCEvGg"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop/Tablet) -->
+<nav class="bg-surface-container-low text-primary font-body-sm fixed left-0 top-0 h-full w-64 z-50 bg-surface-container-low border-r border-outline-variant flat no shadows flex flex-col py-6 px-4 gap-node-spacing hidden md:flex">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined font-bold text-2xl" data-weight="fill">account_balance</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Management Portal</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">Academic Year 23-24</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1 overflow-y-auto pr-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="how_to_reg">how_to_reg</span>
+<span>Student Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="badge">badge</span>
+<span>Faculty Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-secondary-container text-on-secondary-container font-bold hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="event_busy" data-weight="fill">event_busy</span>
+<span>Leave Requests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="assessment">assessment</span>
+<span>Reports</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-full text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all scale-95 duration-150 group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-16 pb-24 md:pb-8 md:pl-64 min-h-screen">
+<div class="max-w-2xl mx-auto p-4 md:p-dashboard-margin space-y-6">
+<!-- Context & Balance -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Available Balance</h2>
+<span class="material-symbols-outlined text-occupancy-available" data-weight="fill">verified_user</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container rounded-lg p-3 border border-outline-variant/50">
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wide">Casual Leave (CL)</p>
+<p class="font-headline-lg text-headline-lg text-primary mt-1">12 <span class="font-body-sm text-body-sm text-on-surface-variant">days</span></p>
+</div>
+<div class="bg-surface-container rounded-lg p-3 border border-outline-variant/50">
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wide">Sick Leave (SL)</p>
+<p class="font-headline-lg text-headline-lg text-primary mt-1">08 <span class="font-body-sm text-body-sm text-on-surface-variant">days</span></p>
+</div>
+</div>
+</section>
+<!-- Leave Application Form -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 md:p-6 shadow-sm">
+<form action="#" class="space-y-6" method="POST">
+<!-- Leave Type Dropdown -->
+<div class="space-y-2">
+<label class="block font-label-mono text-label-mono text-on-surface-variant" for="leave_type">Leave Type</label>
+<div class="relative">
+<select class="appearance-none w-full bg-surface-container-lowest border border-outline-variant rounded-lg py-3 px-4 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors cursor-pointer" id="leave_type" name="leave_type">
+<option disabled="" selected="" value="">Select type of leave</option>
+<option value="cl">Casual Leave (CL)</option>
+<option value="sl">Sick Leave (SL)</option>
+<option value="el">Earned Leave (EL)</option>
+<option value="lwp">Leave Without Pay (LWP)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="block font-label-mono text-label-mono text-on-surface-variant" for="start_date">Start Date</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg py-3 px-4 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" id="start_date" name="start_date" type="date"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-mono text-label-mono text-on-surface-variant" for="end_date">End Date</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg py-3 px-4 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors" id="end_date" name="end_date" type="date"/>
+</div>
+</div>
+</div>
+<!-- Duration Summary (Auto-calculated UI mockup) -->
+<div class="bg-secondary-container/50 border border-secondary-fixed-dim rounded-lg p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-secondary-container">schedule</span>
+<p class="font-body-sm text-body-sm text-on-secondary-container">Total Duration: <strong class="font-bold">3 Days</strong></p>
+</div>
+<!-- Reason Textarea -->
+<div class="space-y-2">
+<label class="block font-label-mono text-label-mono text-on-surface-variant" for="reason">Reason for Leave</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg py-3 px-4 text-body-md text-on-surface placeholder-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none" id="reason" name="reason" placeholder="Briefly describe the reason for your request..." rows="4"></textarea>
+</div>
+<!-- Attachment Upload -->
+<div class="space-y-2">
+<label class="block font-label-mono text-label-mono text-on-surface-variant">Supporting Documents (Optional)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-6 flex flex-col items-center justify-center text-center bg-surface-container-low hover:bg-surface-container-high transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors mb-2">upload_file</span>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold">Tap to upload or drag &amp; drop</p>
+<p class="font-data-viz text-data-viz text-on-surface-variant mt-1">PDF, JPG, PNG up to 5MB</p>
+<input accept=".pdf,.jpg,.jpeg,.png" class="hidden" id="file_upload" type="file"/>
+</div>
+<!-- Mock Attached File -->
+<div class="mt-3 flex items-center justify-between bg-surface-container border border-outline-variant rounded-md p-2 hidden" id="mock_attachment">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<span class="font-label-mono text-label-mono text-on-surface truncate max-w-[200px]">medical_certificate_2023.pdf</span>
+</div>
+<button aria-label="Remove attachment" class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-full hover:bg-error-container" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full bg-primary text-on-primary font-body-lg font-semibold py-4 rounded-xl shadow-sm hover:shadow-md hover:bg-surface-tint active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="button">
+<span>Submit Request</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</form>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface-container text-primary font-label-mono fixed bottom-0 w-full z-50 rounded-t-full bg-surface-container shadow-lg shadow-md md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:opacity-100 active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined mb-1 transition-colors" data-icon="analytics">analytics</span>
+<span>Status</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-container opacity-70 hover:opacity-100 active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined mb-1 transition-colors" data-icon="alarm_on">alarm_on</span>
+<span>Clock-In</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-6 py-1 hover:opacity-100 active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined mb-1 transition-colors" data-icon="edit_calendar" data-weight="fill">edit_calendar</span>
+<span>Leaves</span>
+</a>
+</nav>
+<script>
+        // Simple script to toggle mock attachment visibility for demonstration
+        const uploadZone = document.querySelector('.border-dashed');
+        const mockAttachment = document.getElementById('mock_attachment');
+        
+        if(uploadZone && mockAttachment) {
+            uploadZone.addEventListener('click', () => {
+                mockAttachment.classList.remove('hidden');
+                uploadZone.classList.add('hidden');
+            });
+            
+            const removeBtn = mockAttachment.querySelector('button');
+            if(removeBtn) {
+                removeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mockAttachment.classList.add('hidden');
+                    uploadZone.classList.remove('hidden');
+                });
+            }
+        }
+    </script>
+</body></html>

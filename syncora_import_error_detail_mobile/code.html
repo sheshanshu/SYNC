@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Import Error Detail - Syncora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-tertiary-container": "#ffd3bf",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-background": "#131b2e",
+                      "primary": "#2036bd",
+                      "primary-container": "#3e52d5",
+                      "on-surface": "#131b2e",
+                      "on-primary-container": "#d7daff",
+                      "secondary": "#505f76",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#283044",
+                      "surface-container-highest": "#dae2fd",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "surface-variant": "#dae2fd",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "background": "#faf8ff",
+                      "outline-variant": "#c5c5d7",
+                      "surface": "#faf8ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#351000",
+                      "secondary-container": "#d0e1fb",
+                      "surface-container": "#eaedff",
+                      "surface-bright": "#faf8ff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#3b4fd2",
+                      "inverse-on-surface": "#eef0ff",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-dim": "#d2d9f4",
+                      "tertiary": "#7e3100",
+                      "on-secondary-container": "#54647a",
+                      "outline": "#757686",
+                      "on-surface-variant": "#454654",
+                      "inverse-primary": "#bbc3ff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#a44200",
+                      "surface-container-high": "#e2e7ff",
+                      "surface-container-low": "#f2f3ff",
+                      "on-primary-fixed": "#000d60"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "padding-card": "16px",
+                      "density-compact": "8px",
+                      "gutter-grid": "16px",
+                      "margin-page": "24px",
+                      "density-generous": "32px"
+              },
+              "fontFamily": {
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased pb-[80px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex items-center justify-between px-margin-page h-16 transition-colors duration-200">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 active:opacity-70 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">Import Errors</h1>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 active:opacity-70 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-16 pt-gutter-grid px-margin-page pb-density-generous space-y-gutter-grid">
+<!-- Error Summary Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card shadow-sm">
+<div class="flex items-center gap-density-compact mb-density-compact">
+<span class="material-symbols-outlined text-error" data-weight="fill" style="font-variation-settings: 'FILL' 1;">error</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">8 Records Skipped</h2>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-mono text-label-mono bg-error-container text-on-error-container">
+                    5 Missing Field
+                </span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-mono text-label-mono bg-tertiary-container text-on-tertiary">
+                    2 Duplicate
+                </span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-mono text-label-mono bg-secondary-container text-on-secondary-container">
+                    1 Invalid Format
+                </span>
+</div>
+</section>
+<!-- Search & Filter -->
+<section class="flex gap-density-compact">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none font-body-sm text-body-sm placeholder:text-outline transition-shadow" placeholder="Search records..." type="text">
+</div>
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</section>
+<!-- Error List -->
+<section class="space-y-6">
+<!-- Error Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<div><span class="font-label-mono text-label-mono text-outline">Row 142</span><h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold mt-1">Sarah Jenkins</h3><p class="font-body-sm text-body-sm text-secondary">s.jenkins@example.edu</p></div>
+<span class="inline-flex items-center px-2 py-0.5 rounded border border-error-container bg-error-container/10 font-label-mono text-[10px] text-error">
+                        Missing Field
+                    </span>
+</div>
+<div class="mt-2 p-density-compact bg-surface-container-low border border-error-container/30 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[16px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Required field <span class="font-label-mono">"Department_ID"</span> is empty.</p>
+</div>
+<div class="mt-2 flex justify-end">
+<button class="flex items-center gap-1 text-primary font-body-sm text-body-sm hover:opacity-80 transition-opacity py-2">
+                        Edit Record <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Error Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<div><span class="font-label-mono text-label-mono text-outline">Row 205</span><h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold mt-1">Michael Chang</h3><p class="font-body-sm text-body-sm text-secondary">m.chang@example.edu</p></div>
+<span class="inline-flex items-center px-2 py-0.5 rounded border border-tertiary-container/30 bg-tertiary-container/10 font-label-mono text-[10px] text-tertiary">
+                        Duplicate
+                    </span>
+</div>
+<div class="mt-2 p-density-compact bg-surface-container-low border border-tertiary-container/30 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[16px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Email address already exists in current directory.</p>
+</div>
+<div class="mt-2 flex justify-end">
+<button class="flex items-center gap-1 text-primary font-body-sm text-body-sm hover:opacity-80 transition-opacity py-2">
+                        Resolve <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Error Card 3 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-2 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<div><span class="font-label-mono text-label-mono text-outline">Row 311</span><h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold mt-1">Elena Rostova</h3><p class="font-body-sm text-body-sm text-secondary">elena.r@example.edu</p></div>
+<span class="inline-flex items-center px-2 py-0.5 rounded border border-secondary-container/50 bg-secondary-container/20 font-label-mono text-[10px] text-secondary">
+                        Invalid Format
+                    </span>
+</div>
+<div class="mt-2 p-density-compact bg-surface-container-low border border-secondary-container/50 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Date of Birth format must be YYYY-MM-DD.</p>
+</div>
+<div class="mt-2 flex justify-end">
+<button class="flex items-center gap-1 text-primary font-body-sm text-body-sm hover:opacity-80 transition-opacity py-2">
+                        Edit Record <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+</section>
+<!-- Global Action -->
+<div class="pt-4 pb-8">
+<button class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface py-3 rounded-lg font-body-md text-body-md font-medium hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                Download Full Error Log
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center h-20 px-density-compact pb-safe transition-transform duration-200 active:scale-95 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors rounded-full p-2 w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-surface-container-low transition-colors w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="upload_file">upload_file</span>
+<span class="font-label-mono text-label-mono">Imports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors rounded-full p-2 w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="font-label-mono text-label-mono">Records</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant hover:bg-surface-container-low transition-colors rounded-full p-2 w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+</nav>
+
+
+</body></html>

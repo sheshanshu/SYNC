@@ -1,0 +1,366 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Roles &amp; Permissions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#505f76",
+                      "on-secondary-fixed": "#0b1c30",
+                      "primary-container": "#3e52d5",
+                      "on-surface-variant": "#454654",
+                      "on-surface": "#131b2e",
+                      "secondary-fixed": "#d3e4fe",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-tertiary-container": "#ffd3bf",
+                      "surface-dim": "#d2d9f4",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-bright": "#faf8ff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-primary-fixed": "#000d60",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#351000",
+                      "secondary-container": "#d0e1fb",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#54647a",
+                      "outline": "#757686",
+                      "surface-container-low": "#f2f3ff",
+                      "surface-container-high": "#e2e7ff",
+                      "primary": "#2036bd",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#eaedff",
+                      "tertiary": "#7e3100",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "inverse-primary": "#bbc3ff",
+                      "on-background": "#131b2e",
+                      "tertiary-container": "#a44200",
+                      "surface": "#faf8ff",
+                      "surface-variant": "#dae2fd",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-primary-container": "#d7daff",
+                      "error-container": "#ffdad6",
+                      "background": "#faf8ff",
+                      "surface-tint": "#3b4fd2",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#c5c5d7",
+                      "surface-container-highest": "#dae2fd",
+                      "inverse-surface": "#283044",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-page": "24px",
+                      "density-compact": "8px",
+                      "gutter-grid": "16px",
+                      "padding-card": "16px",
+                      "base": "4px",
+                      "density-generous": "32px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #3e52d5; /* primary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #3e52d5; /* primary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 44px;
+            height: 24px;
+            background-color: #c5c5d7; /* outline-variant */
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar (Simplified for transactional/task flow) -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-4">
+<button class="flex items-center text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-semibold text-on-surface flex-grow text-center">Roles &amp; Permissions</h1>
+<div class="w-10"></div> <!-- Spacer for center alignment -->
+</header>
+<!-- Main Content -->
+<main class="pt-20 px-4 max-w-lg mx-auto">
+<!-- Role Selector -->
+<div class="mb-6">
+<label class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-2 block">Select Role</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<option selected="" value="teacher">Teacher</option>
+<option value="admin">Administrator</option>
+<option value="student">Student</option>
+<option value="staff">Support Staff</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-on-surface-variant">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Permissions Matrix Accordions -->
+<div class="space-y-4">
+<!-- Category: Dashboard -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full px-4 py-4 flex justify-between items-center bg-surface-container-low hover:bg-surface-container transition-colors" onclick="toggleAccordion('acc-dashboard')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Dashboard</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform" id="icon-dashboard">expand_more</span>
+</button>
+<div class="px-4 py-3 space-y-4 hidden" id="acc-dashboard">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">View Overview</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Access to the main dashboard overview.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-dash-1" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-dash-1"></label>
+</div>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Customize Widgets</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Allow user to add/remove dashboard widgets.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-dash-2" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-dash-2"></label>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: Attendance -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full px-4 py-4 flex justify-between items-center bg-surface-container-low hover:bg-surface-container transition-colors" onclick="toggleAccordion('acc-attendance')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">how_to_reg</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Attendance</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform" id="icon-attendance">expand_less</span>
+</button>
+<div class="px-4 py-3 space-y-4 block" id="acc-attendance">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">View Attendance</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">View attendance records for assigned classes.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-att-1" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-att-1"></label>
+</div>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Mark Attendance</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ability to take daily attendance.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-att-2" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-att-2"></label>
+</div>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Edit Past Records</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Modify attendance older than 48 hours.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-att-3" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-att-3"></label>
+</div>
+</div>
+</div>
+</div>
+<!-- Category: Results -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full px-4 py-4 flex justify-between items-center bg-surface-container-low hover:bg-surface-container transition-colors" onclick="toggleAccordion('acc-results')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">grade</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Results &amp; Grades</h2>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform" id="icon-results">expand_more</span>
+</button>
+<div class="px-4 py-3 space-y-4 hidden" id="acc-results">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">View Grades</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Read-only access to student grades.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-res-1" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-res-1"></label>
+</div>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Enter Grades</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ability to input and edit active semester grades.</p>
+</div>
+<div class="relative inline-block w-11 h-6 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 opacity-0" id="toggle-res-2" name="toggle" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-outline-variant cursor-pointer" for="toggle-res-2"></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant p-4 pb-safe flex justify-end gap-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
+<button class="px-6 py-2 rounded-lg font-body-lg text-body-lg font-medium text-on-surface border border-outline-variant bg-surface hover:bg-surface-container-low transition-colors">
+            Discard
+        </button>
+<button class="px-6 py-2 rounded-lg font-body-lg text-body-lg font-medium text-on-primary bg-primary hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+            Save Changes
+        </button>
+</div>
+<script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const iconId = 'icon-' + id.split('-')[1];
+            const icon = document.getElementById(iconId);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                content.classList.add('block');
+                icon.textContent = 'expand_less';
+            } else {
+                content.classList.remove('block');
+                content.classList.add('hidden');
+                icon.textContent = 'expand_more';
+            }
+        }
+    </script>
+</body></html>

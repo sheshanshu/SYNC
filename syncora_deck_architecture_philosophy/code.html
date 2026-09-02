@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Platform Philosophy &amp; Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf8ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#454654",
+                        "secondary": "#505f76",
+                        "outline-variant": "#c5c5d7",
+                        "tertiary-container": "#a44200",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary-fixed": "#351000",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary-fixed": "#000d60",
+                        "on-background": "#131b2e",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-surface": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eef0ff",
+                        "primary": "#2036bd",
+                        "on-tertiary-container": "#ffd3bf",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container-highest": "#dae2fd",
+                        "surface": "#faf8ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary-container": "#54647a",
+                        "on-primary-container": "#d7daff",
+                        "inverse-surface": "#283044",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "outline": "#757686",
+                        "tertiary": "#7e3100",
+                        "surface-container-high": "#e2e7ff",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-container": "#eaedff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "primary-container": "#3e52d5",
+                        "surface-variant": "#dae2fd",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "density-compact": "8px",
+                        "base": "4px",
+                        "density-generous": "32px",
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-mono": ["JetBrains Mono", "monospace"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center p-8">
+<!-- Main Slide Container -->
+<main class="w-full max-w-6xl bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden flex flex-col h-[819px] min-h-[600px]">
+<!-- Header Section -->
+<header class="p-density-generous border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<div>
+<h1 class="font-display text-display text-on-surface">Platform Philosophy &amp; Architecture</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">The foundation of Syncora's Institutional OS</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">Syncora</span>
+</div>
+</header>
+<!-- Content Section (Three Pillars) -->
+<section class="flex-1 p-density-generous grid grid-cols-1 md:grid-cols-3 gap-gutter-grid bg-surface">
+<!-- Pillar 1: Multi-tenancy -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col group hover:bg-surface-container-low transition-colors duration-300">
+<div class="h-16 w-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="domain" data-weight="fill" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Multi-tenancy</h2>
+<div class="w-12 h-1 bg-primary mb-6"></div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">
+                    True data isolation ensuring individual institutional autonomy within a shared, high-performance infrastructure. Data siloes are maintained logically, preventing cross-contamination while allowing centralized updates.
+                </p>
+<ul class="mt-6 space-y-2">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Logical DB Separation</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Custom Instance Branding</span>
+</li>
+</ul>
+</article>
+<!-- Pillar 2: Security (JWT/RBAC) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col group hover:bg-surface-container-low transition-colors duration-300">
+<div class="h-16 w-16 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="shield_lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Security</h2>
+<div class="w-12 h-1 bg-tertiary mb-6"></div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">
+                    Zero-trust architecture leveraging JSON Web Tokens (JWT) for stateless authentication and granular Role-Based Access Control (RBAC) ensuring minimal privilege principles across all API endpoints.
+                </p>
+<ul class="mt-6 space-y-2">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Stateless JWT Auth</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Granular RBAC Matrix</span>
+</li>
+</ul>
+</article>
+<!-- Pillar 3: Scalability -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col group hover:bg-surface-container-low transition-colors duration-300">
+<div class="h-16 w-16 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="trending_up" data-weight="fill" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Scalability</h2>
+<div class="w-12 h-1 bg-secondary mb-6"></div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">
+                    Designed for elastic growth. Containerized microservices deployed via Kubernetes allow for auto-scaling during peak registration periods, maintaining sub-second response times regardless of load.
+                </p>
+<ul class="mt-6 space-y-2">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">K8s Orchestration</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Elastic Auto-scaling</span>
+</li>
+</ul>
+</article>
+</section>
+<!-- Footer / Metadata -->
+<footer class="p-4 border-t border-outline-variant bg-surface-container-highest flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant">CONFIDENTIAL - Syncora Stakeholder Review</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Slide 12 / 45</span>
+</footer>
+</main>
+</body></html>

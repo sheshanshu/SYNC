@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background dark:bg-background" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet &amp; Transport Management - CampusFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "occupancy-maintenance": "#92400e",
+                        "primary": "#001c9d",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-background": "#1a1b23",
+                        "map-water": "#e0f2fe",
+                        "fleet-idle": "#64748b",
+                        "surface-container-high": "#e9e7f2",
+                        "map-road": "#ffffff",
+                        "occupancy-occupied": "#2036bd",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "secondary": "#505f76",
+                        "surface-variant": "#e3e1ed",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#56657c",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "surface-bright": "#fbf8ff",
+                        "error-container": "#ffdad6",
+                        "surface": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2f3038",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-low": "#f4f2fe",
+                        "fleet-delayed": "#b91c1c",
+                        "on-secondary-fixed": "#0c1c30",
+                        "outline-variant": "#c5c5d7",
+                        "tertiary-container": "#7e3100",
+                        "secondary-container": "#d4e3ff",
+                        "occupancy-available": "#15803d",
+                        "primary-container": "#2036bd",
+                        "surface-container-highest": "#e3e1ed",
+                        "tertiary-fixed": "#ffdbcc",
+                        "outline": "#757686",
+                        "on-surface-variant": "#454654",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-surface": "#1a1b23",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#3b4fd3",
+                        "on-primary-container": "#a9b3ff",
+                        "map-park": "#f0fdf4",
+                        "surface-container": "#eeecf8",
+                        "surface-dim": "#dad9e4",
+                        "on-primary-fixed": "#000d60",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f1effb",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-tertiary-container": "#ffa173",
+                        "inverse-primary": "#bcc3ff",
+                        "tertiary": "#5a2100",
+                        "secondary-fixed": "#d4e3ff",
+                        "fleet-transit": "#0369a1",
+                        "background": "#fbf8ff",
+                        "primary-fixed": "#dfe0ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "map-overlay-gap": "12px",
+                        "dashboard-margin": "24px",
+                        "grid-gutter": "16px",
+                        "node-spacing": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-viz": ["JetBrains Mono"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom map styling to match the aesthetic */
+        .map-bg {
+            background-color: #f0fdf4;
+            background-image: 
+                linear-gradient(45deg, #e0f2fe 25%, transparent 25%, transparent 75%, #e0f2fe 75%, #e0f2fe), 
+                linear-gradient(45deg, #e0f2fe 25%, transparent 25%, transparent 75%, #e0f2fe 75%, #e0f2fe);
+            background-size: 100px 100px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.8;
+        }
+        
+        .route-line {
+            stroke-dasharray: 10;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+    </style>
+</head>
+<body class="h-full overflow-hidden text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] flex justify-between items-center h-16 px-dashboard-margin bg-surface dark:bg-surface z-40 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim font-bold">CampusFlow</span>
+</div>
+<div class="flex-1 flex justify-end items-center gap-6">
+<div class="relative focus-within:ring-2 focus-within:ring-primary rounded-full transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-data-viz">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-md font-body-md focus:outline-none w-64 text-on-surface-variant placeholder:text-on-surface-variant/70" placeholder="Search Fleet or Routes..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-all">
+<span class="material-symbols-outlined font-data-viz text-headline-md">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-all">
+<span class="material-symbols-outlined font-data-viz text-headline-md">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Administrator Portrait" class="w-full h-full object-cover" data-alt="A professional headshot of a campus administrator in a modern office setting. The lighting is bright and clean, reflecting a professional and organized atmosphere. High resolution, corporate style portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW-LwhaqxhhktnSkGT0gshyd_VMc664rr7h1MS8BWktMg5m6VPrLn0UnBrG0sWceYKpkS02Sv-zkC09D8m1s7DGpRtRowAiwja-Y1dLWlNge64p3QBlCuHOxLyaYDjLLEwPaMVJkR8ieF4wRKTn9-ryKn6Hh4QHCo0NTHcto1G_vdT4Fiy9nwebrqzbzw3d-Qq_wyxc5QciatD3nIOLiFSJf8vbQFl9lfuWELLquQVIMR10a2fu0rs"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="w-[280px] h-screen fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-low z-50 flex flex-col h-full py-6 border-r border-outline-variant dark:border-outline flat no shadows">
+<div class="px-6 mb-8 flex flex-col gap-1">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant mb-2">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a campus administrator in a modern office setting. The lighting is bright and clean, reflecting a professional and organized atmosphere. High resolution, corporate style portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPHacjROwf3VNDwuTZJa5PWifrXdUOwwGObKr0wpzY5jMrIP-3SaBjupB7EZO2RkuWp2d_4Hf62KhjkZ6eBK9oUW1liwt0A0XzVTx7YNOe0W1EMoWbLamdCAMZLaXQJ_XXhQvFiY1tWYmBys7MsmsJSup0A65Q9FHnWbdrcrfneVpoZWqbb9TVuVNKkOcWi_4K8Lh92K1WORpMZ0TAtWZgVmqzhvZ3NT224T_QIA6qJpBlSusvvkSo"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Campus Admin</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hostel &amp; Transport Dept</p>
+</div>
+<div class="flex-1 overflow-y-auto px-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-secondary-container hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined font-data-viz">domain</span>
+<span class="font-body-md text-body-md">Hostel Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-secondary-container hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined font-data-viz">bed</span>
+<span class="font-body-md text-body-md">Room Allocation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-secondary-container hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined font-data-viz">engineering</span>
+<span class="font-body-md text-body-md">Maintenance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-primary dark:text-primary-fixed-dim font-bold bg-secondary-container dark:bg-on-secondary-fixed-variant transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined font-data-viz" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span class="font-body-md text-body-md">Fleet Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-on-secondary-container hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined font-data-viz">route</span>
+<span class="font-body-md text-body-md">Route Management</span>
+</a>
+</div>
+<div class="px-4 mt-auto pt-4 border-t border-outline-variant flex flex-col gap-2">
+<button class="w-full flex justify-center items-center gap-2 py-3 bg-error text-on-error rounded-full font-body-md font-bold cursor-pointer active:scale-95 transition-transform duration-150 hover:bg-opacity-90">
+<span class="material-symbols-outlined font-data-viz">warning</span>
+                Emergency Alert
+            </button>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center gap-3 px-4 py-2 rounded-full text-on-secondary-container hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined font-data-viz text-body-lg">settings</span>
+<span class="font-body-sm text-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-full text-on-secondary-container hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined font-data-viz text-body-lg">contact_support</span>
+<span class="font-body-sm text-body-sm">Support</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-[280px] mt-16 h-[calc(100vh-64px)] relative flex">
+<!-- Interactive Map Canvas -->
+<div class="flex-1 relative bg-surface-container-low overflow-hidden">
+<!-- Simulated Map Background -->
+<div class="absolute inset-0 map-bg z-0" data-location="Campus Map View" style="">
+<!-- SVG Routes Layer -->
+<svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<!-- Route 1: North Campus Loop -->
+<path class="route-line" d="M 100,150 C 300,100 500,400 700,200 S 900,100 1100,300" fill="none" stroke="#001c9d" stroke-opacity="0.3" stroke-width="4"></path>
+<!-- Route 2: South Campus Express -->
+<path class="route-line" d="M 150,500 C 400,600 600,300 800,500 S 1000,700 1200,600" fill="none" stroke="#15803d" stroke-opacity="0.3" stroke-width="4"></path>
+</svg>
+</div>
+<!-- Map Markers -->
+<!-- Fleet Transit Marker -->
+<div class="absolute top-[220px] left-[650px] z-10 group cursor-pointer">
+<div class="w-10 h-10 bg-fleet-transit rounded-full border-2 border-surface-container-lowest flex items-center justify-center shadow-sm relative z-10 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-surface-container-lowest font-data-viz text-[20px]" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+</div>
+<!-- ETA Badge -->
+<div class="absolute -top-3 -right-3 bg-surface-container-lowest border border-outline-variant rounded px-1.5 py-0.5 shadow-sm">
+<span class="font-label-mono text-label-mono text-fleet-transit">2m</span>
+</div>
+<!-- Tooltip -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-surface-container-lowest border border-outline-variant rounded-lg p-3 shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-mono text-label-mono text-on-surface font-bold">BUS-042</span>
+<span class="font-data-viz text-data-viz text-fleet-transit uppercase">In Transit</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Next: Science Block</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Speed: 25 km/h</p>
+</div>
+</div>
+<!-- Fleet Delayed Marker -->
+<div class="absolute top-[480px] left-[750px] z-10 group cursor-pointer">
+<div class="w-10 h-10 bg-fleet-delayed rounded-full border-2 border-surface-container-lowest flex items-center justify-center shadow-sm relative z-10 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-surface-container-lowest font-data-viz text-[20px]" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+</div>
+<div class="absolute -top-3 -right-3 bg-surface-container-lowest border border-outline-variant rounded px-1.5 py-0.5 shadow-sm">
+<span class="font-label-mono text-label-mono text-fleet-delayed">+8m</span>
+</div>
+<!-- Tooltip -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-surface-container-lowest border border-outline-variant rounded-lg p-3 shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-mono text-label-mono text-on-surface font-bold">BUS-018</span>
+<span class="font-data-viz text-data-viz text-fleet-delayed uppercase">Delayed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Loc: South Gate Traffic</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Driver: M. Singh</p>
+</div>
+</div>
+<!-- Fleet Idle Marker -->
+<div class="absolute top-[120px] left-[250px] z-10 group cursor-pointer">
+<div class="w-10 h-10 bg-fleet-idle rounded-full border-2 border-surface-container-lowest flex items-center justify-center shadow-sm relative z-10 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-surface-container-lowest font-data-viz text-[20px]" style="font-variation-settings: 'FILL' 1;">airport_shuttle</span>
+</div>
+<!-- Tooltip -->
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-surface-container-lowest border border-outline-variant rounded-lg p-3 shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-mono text-label-mono text-on-surface font-bold">VAN-005</span>
+<span class="font-data-viz text-data-viz text-fleet-idle uppercase">Idle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Depot: North Parking</p>
+<p class="font-body-sm text-body-sm text-occupancy-available">Status: Ready</p>
+</div>
+</div>
+<!-- Map Controls (Floating) -->
+<div class="absolute bottom-map-overlay-gap right-map-overlay-gap flex flex-col gap-2 z-30">
+<button class="w-10 h-10 bg-surface-container-lowest border border-outline-variant rounded shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined font-data-viz">add</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-lowest border border-outline-variant rounded shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined font-data-viz">remove</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-lowest border border-outline-variant rounded shadow-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors mt-2">
+<span class="material-symbols-outlined font-data-viz">my_location</span>
+</button>
+</div>
+</div>
+<!-- Sidebar / Command Panel -->
+<aside class="w-[360px] h-full bg-surface-container-lowest border-l border-outline-variant flex flex-col z-20 shadow-[-4px_0_15px_rgba(0,0,0,0.03)]">
+<!-- KPI Header -->
+<div class="p-dashboard-margin border-b border-outline-variant bg-surface-container-high">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Fleet Operations</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined font-data-viz text-body-lg text-secondary">groups</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Daily Pax</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">4,250</div>
+<div class="font-data-viz text-data-viz text-occupancy-available flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12%
+                        </div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined font-data-viz text-body-lg text-secondary">health_and_safety</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Fleet Health</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">92%</div>
+<div class="font-data-viz text-data-viz text-fleet-idle flex items-center mt-1">
+<span class="material-symbols-outlined text-[14px]">build</span> 3 in maint
+                        </div>
+</div>
+</div>
+</div>
+<!-- List Controls -->
+<div class="px-dashboard-margin py-3 border-b border-outline-variant flex justify-between items-center bg-surface">
+<span class="font-label-mono text-label-mono text-on-surface font-bold">ACTIVE ROUTES (12)</span>
+<button class="text-primary hover:bg-secondary-container rounded p-1 transition-colors">
+<span class="material-symbols-outlined font-data-viz text-body-lg">filter_list</span>
+</button>
+</div>
+<!-- Active Routes List -->
+<div class="flex-1 overflow-y-auto p-dashboard-margin flex flex-col gap-3">
+<!-- Resource Card: On Time -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 hover:border-primary transition-colors cursor-pointer group relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-occupancy-available"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<span class="font-label-mono text-label-mono text-on-surface font-bold bg-surface-container px-2 py-0.5 rounded">BUS-042</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-2">North Loop</span>
+</div>
+<span class="font-data-viz text-data-viz text-occupancy-available px-2 py-1 bg-[#f0fdf4] rounded uppercase">On Time</span>
+</div>
+<div class="pl-2 mt-3 flex flex-col gap-1">
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined font-data-viz text-secondary text-[16px]">location_on</span>
+                            Current: Approaching Library
+                        </div>
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined font-data-viz text-secondary text-[16px]">schedule</span>
+                            Next Stop in 2 mins
+                        </div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-end gap-2 pl-2">
+<button class="px-3 py-1.5 font-label-mono text-label-mono text-secondary hover:text-primary transition-colors">Contact Driver</button>
+<button class="px-3 py-1.5 font-label-mono text-label-mono text-primary hover:bg-secondary-container rounded transition-colors">View Details</button>
+</div>
+</div>
+<!-- Resource Card: Delayed -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 hover:border-primary transition-colors cursor-pointer group relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-fleet-delayed"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<span class="font-label-mono text-label-mono text-on-surface font-bold bg-surface-container px-2 py-0.5 rounded">BUS-018</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-2">South Exp</span>
+</div>
+<span class="font-data-viz text-data-viz text-fleet-delayed px-2 py-1 bg-error-container rounded uppercase">Delayed</span>
+</div>
+<div class="pl-2 mt-3 flex flex-col gap-1">
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined font-data-viz text-secondary text-[16px]">location_on</span>
+                            Current: Main Gate Traffic
+                        </div>
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-fleet-delayed">
+<span class="material-symbols-outlined font-data-viz text-[16px]">warning</span>
+                            Estimated Delay: +8 mins
+                        </div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-end gap-2 pl-2">
+<button class="px-3 py-1.5 font-label-mono text-label-mono text-secondary hover:text-primary transition-colors">Contact Driver</button>
+<button class="px-3 py-1.5 font-label-mono text-label-mono text-primary hover:bg-secondary-container rounded transition-colors">Reroute</button>
+</div>
+</div>
+<!-- Resource Card: Idle -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 hover:border-primary transition-colors cursor-pointer group relative overflow-hidden opacity-75">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-fleet-idle"></div>
+<div class="flex justify-between items-start mb-2 pl-2">
+<div>
+<span class="font-label-mono text-label-mono text-on-surface font-bold bg-surface-container px-2 py-0.5 rounded">VAN-005</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-2">Staff Shuttle</span>
+</div>
+<span class="font-data-viz text-data-viz text-fleet-idle px-2 py-1 bg-surface-variant rounded uppercase">Idle</span>
+</div>
+<div class="pl-2 mt-3 flex flex-col gap-1">
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined font-data-viz text-secondary text-[16px]">local_parking</span>
+                            Current: North Depot
+                        </div>
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined font-data-viz text-secondary text-[16px]">update</span>
+                            Next Sched: 14:00
+                        </div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

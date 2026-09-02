@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Edit Record Modal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#d3e4fe",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dfe0ff",
+                      "inverse-primary": "#bbc3ff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "secondary-container": "#d0e1fb",
+                      "on-surface": "#131b2e",
+                      "on-surface-variant": "#454654",
+                      "on-secondary": "#ffffff",
+                      "primary": "#2036bd",
+                      "on-secondary-container": "#54647a",
+                      "surface-variant": "#dae2fd",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "tertiary": "#7e3100",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#faf8ff",
+                      "on-background": "#131b2e",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#d2d9f4",
+                      "surface-container-low": "#f2f3ff",
+                      "surface-container-high": "#e2e7ff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "surface-container-highest": "#dae2fd",
+                      "on-primary-container": "#d7daff",
+                      "surface": "#faf8ff",
+                      "inverse-surface": "#283044",
+                      "surface-container": "#eaedff",
+                      "primary-container": "#3e52d5",
+                      "background": "#faf8ff",
+                      "surface-tint": "#3b4fd2",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "outline": "#757686",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#a44200",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "secondary": "#505f76",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#c5c5d7",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-primary-fixed": "#000d60"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "margin-page": "24px",
+                      "padding-card": "16px",
+                      "gutter-grid": "16px",
+                      "density-compact": "8px",
+                      "density-generous": "32px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen w-screen overflow-hidden flex">
+<!-- Background Image / Previous Screen Context -->
+<div class="absolute inset-0 z-0">
+<img alt="Background Screen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4Lapzu0sC89eUJN_d7dJCU5Hcb5-HhEsqYNgQ_vfjgw_fxPlbowcbqG6qBJNbS6jnsgRkjlnb9Tqdx1SdbcUS2kvYG0QFEjdShDJJnsmQkdUDRxbt9NrkE9f5MhZVVdAgOyA_ChEjVdFA-usseb5uXqG4lXgfu8oJTCfld7yEs8FYI_wVJbpr5iP0W5DrYWu3Ak86cDNkbvO1TlKQeOtdcqZ7sHqirmGKmpvQs-1t58C5biKeDwgg">
+<!-- Dimmer Overlay -->
+<div class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm z-10 flex items-center justify-center p-4">
+<!-- Modal Container (Level 2 Elevation) -->
+<div class="bg-surface w-full max-w-2xl rounded-xl border border-outline-variant shadow-[0_12px_24px_-12px_rgba(0,0,0,0.15)] flex flex-col max-h-[90vh]">
+<!-- Modal Header -->
+<div class="px-padding-card py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest rounded-t-xl shrink-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Edit Record</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Sarah Jenkins</p>
+</div>
+<button aria-label="Close modal" class="text-on-surface-variant hover:bg-surface-container-highest p-2 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-padding-card flex-1 overflow-y-auto">
+<!-- Error Summary Banner (Status Pill styling logic) -->
+<div class="bg-error-container/30 border border-error-container rounded-lg p-3 flex items-start gap-3 mb-6">
+<span class="material-symbols-outlined text-error mt-0.5" data-icon="error">error</span>
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-error">Validation Failed</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Missing Required Field: Department_ID. Please update the department to proceed with the import.</p>
+</div>
+</div>
+<!-- Form Layout -->
+<form class="space-y-5">
+<!-- Row 1: Full Name & Email -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-grid">
+<div class="space-y-2">
+<label class="block font-body-sm text-body-sm font-semibold text-on-surface" for="fullName">Full Name</label>
+<input class="w-full border border-outline-variant rounded bg-surface-container-lowest px-3 py-2 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:ring-offset-1 focus:border-primary transition-shadow" id="fullName" readonly="" type="text" value="Sarah Jenkins">
+</div>
+<div class="space-y-2">
+<label class="block font-body-sm text-body-sm font-semibold text-on-surface" for="email">Email Address</label>
+<input class="w-full border border-outline-variant rounded bg-surface-container-lowest px-3 py-2 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:ring-offset-1 focus:border-primary transition-shadow" id="email" readonly="" type="email" value="s.jenkins@university.edu">
+</div>
+</div>
+<!-- Row 2: Identifier & Role -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-grid">
+<div class="space-y-2">
+<label class="block font-body-sm text-body-sm font-semibold text-on-surface" for="identifier">Identifier (ID)</label>
+<input class="w-full border border-outline-variant rounded bg-surface-container-lowest px-3 py-2 font-label-mono text-label-mono text-on-surface-variant focus:ring-2 focus:ring-primary focus:ring-offset-1 focus:border-primary transition-shadow" id="identifier" readonly="" type="text" value="EMP-84729">
+</div>
+<div class="space-y-2">
+<label class="block font-body-sm text-body-sm font-semibold text-on-surface" for="role">Role</label>
+<input class="w-full border border-outline-variant rounded bg-surface-container-lowest px-3 py-2 font-body-md text-body-md focus:ring-2 focus:ring-primary focus:ring-offset-1 focus:border-primary transition-shadow" id="role" type="text" value="Adjunct Professor">
+</div>
+</div>
+<!-- Row 3: Department (Error State) -->
+<div class="space-y-2">
+<label class="block font-body-sm text-body-sm font-semibold text-error" for="department">Department *</label>
+<div class="relative">
+<select class="w-full border-2 border-error rounded bg-surface-container-lowest pl-3 pr-10 py-2 font-body-md text-body-md text-on-surface appearance-none focus:ring-2 focus:ring-error focus:ring-offset-1 focus:outline-none transition-shadow" id="department">
+<option disabled="" selected="" value="">Select Department</option>
+<option value="cs">Computer Science</option>
+<option value="math">Mathematics</option>
+<option value="physics">Physics</option>
+<option value="literature">Literature</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-error">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-error mt-1 flex items-center gap-1">
+                                Department selection is required to complete import.
+                            </p>
+</div>
+</form>
+</div>
+<!-- Modal Footer -->
+<div class="px-padding-card py-4 border-t border-outline-variant bg-surface-container-low rounded-b-xl flex justify-end gap-3 shrink-0">
+<button class="px-4 py-2 border border-outline-variant rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold hover:bg-surface-container-high transition-colors" type="button">
+                        Cancel
+                    </button>
+<button class="px-4 py-2 border border-transparent rounded bg-primary text-on-primary font-body-sm text-body-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" type="button">
+                        Save &amp; Re-validate
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

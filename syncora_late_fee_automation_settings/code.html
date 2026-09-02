@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Late Fee Automation Config - Syncora</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2f3038",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "fleet-delayed": "#b91c1c",
+                        "primary": "#001c9d",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d4e3ff",
+                        "primary-container": "#2036bd",
+                        "surface-bright": "#fbf8ff",
+                        "secondary": "#505f76",
+                        "map-water": "#e0f2fe",
+                        "surface-dim": "#dad9e4",
+                        "on-surface-variant": "#454654",
+                        "on-secondary-fixed": "#0c1c30",
+                        "fleet-transit": "#0369a1",
+                        "on-error-container": "#93000a",
+                        "background": "#fbf8ff",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "map-road": "#ffffff",
+                        "occupancy-maintenance": "#92400e",
+                        "on-primary-container": "#a9b3ff",
+                        "on-secondary-container": "#56657c",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "surface": "#fbf8ff",
+                        "on-primary": "#ffffff",
+                        "occupancy-available": "#15803d",
+                        "on-background": "#1a1b23",
+                        "map-park": "#f0fdf4",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-container-low": "#f4f2fe",
+                        "surface-variant": "#e3e1ed",
+                        "surface-container": "#eeecf8",
+                        "inverse-primary": "#bcc3ff",
+                        "on-surface": "#1a1b23",
+                        "secondary-container": "#d4e3ff",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-tertiary-container": "#ffa173",
+                        "tertiary-container": "#7e3100",
+                        "surface-tint": "#3b4fd3",
+                        "surface-container-high": "#e9e7f2",
+                        "fleet-idle": "#64748b",
+                        "outline-variant": "#c5c5d7",
+                        "outline": "#757686",
+                        "tertiary-fixed": "#ffdbcc",
+                        "occupancy-occupied": "#2036bd",
+                        "surface-container-highest": "#e3e1ed",
+                        "error": "#ba1a1a",
+                        "tertiary": "#5a2100",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "on-primary-fixed": "#000d60",
+                        "primary-fixed": "#dfe0ff",
+                        "inverse-on-surface": "#f1effb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "node-spacing": "8px",
+                        "map-overlay-gap": "12px",
+                        "dashboard-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "data-viz": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--tw-colors-outline-variant);
+            border-radius: var(--tw-border-radius-full);
+        }
+        
+        /* Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #001c9d; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #001c9d; /* primary */
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e3e1ed;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            width: 2.5rem;
+            height: 1.25rem;
+            background-color: #e3e1ed;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+        .toggle-checkbox:checked {
+            transform: translateX(1.25rem);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen overflow-hidden flex flex-col md:flex-row">
+<!-- Mobile Top Navigation (md:hidden) -->
+<nav class="md:hidden flex justify-between items-center w-full px-dashboard-margin h-16 bg-surface-container-high border-b border-outline-variant">
+<div class="font-headline-md text-headline-md font-bold text-primary">EduLogistics Admin</div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-full p-2"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span></button>
+<button class="text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-full p-2"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span></button>
+</div>
+</nav>
+<!-- Side Navigation (hidden md:flex) -->
+<aside class="hidden md:flex flex-col h-full py-dashboard-margin border-r border-outline-variant bg-surface-container-low w-64 left-0 flex-shrink-0 transition-all duration-200 ease-in-out">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-extrabold text-on-surface mb-1">Global Config</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant">V2.4.0-Stable</p>
+</div>
+<button class="mx-6 mb-8 bg-primary text-on-primary py-2 px-4 rounded-lg font-label-mono text-label-mono font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span> New Rule
+        </button>
+<nav class="flex-1 overflow-y-auto custom-scrollbar px-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Fee Structures
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-secondary-container text-on-secondary-container font-bold font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">cloud_download</span> Automation Rules
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">hub</span> API Marketplace
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">sync_alt</span> ERP Sync
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">history_edu</span> Audit Logs
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">settings</span> General Settings
+            </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant px-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> System Status
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background">
+<!-- Top App Bar (Desktop Only) -->
+<header class="hidden md:flex justify-between items-center w-full px-dashboard-margin h-16 bg-surface-container-high border-b border-outline-variant flex-shrink-0">
+<div class="flex items-center gap-6">
+<!-- Search -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container rounded-full border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all text-on-surface placeholder-on-surface-variant" placeholder="Search rules..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded font-label-mono text-label-mono font-bold hover:opacity-80 transition-opacity">
+                    Deploy Changes
+                </button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A detailed headshot photo of a professional administrator in a bright modern office setting, representing the user profile icon for a robust logistics system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_TmnM68F_gv-NYr0uXYXo_wND2Mt2DTt-ueghnACQoq2b45WomNBkbaNFnU5gvTYXJhBV1VtUBbPCSBIRJ6Cv6QdTMWXJ4ZOMRkW93rpu1L6GAilxUa-1mMrvDpuIMuOI4jk3vWKl4uBgQiQfcigEB_OhgprqoBHIURNIiwRTn_-gGjf7ful5jVk3mRiQfR-vdYfId9ZFw67Jz9wJyOZ-Si3KxHmqT83Andpq5BqwV0UZH5xcqmdT"/>
+</div>
+</header>
+<!-- Command Bar -->
+<div class="bg-surface-container-high border-b border-outline-variant px-dashboard-margin py-3 flex items-center justify-between flex-shrink-0">
+<div class="flex items-center gap-3 text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Automation Rules</span>
+<span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Late Fee Increment Logic</span>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant flex gap-4">
+<span>Status: <span class="text-occupancy-available font-bold">Draft</span></span>
+<span>ID: <span class="text-on-surface">RUL-8492</span></span>
+</div>
+</div>
+<!-- Scrollable Workspace -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-dashboard-margin grid grid-cols-1 xl:grid-cols-3 gap-grid-gutter">
+<!-- Form Area (Takes up 2 cols on XL) -->
+<div class="xl:col-span-2 space-y-6">
+<div class="flex justify-between items-baseline mb-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Configure Rule</h2>
+<div class="flex items-center gap-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Active State</span>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" id="rule-active" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer" for="rule-active"></label>
+</div>
+</div>
+</div>
+<!-- Section 1: Rule Definition -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-4 border-b border-surface-variant pb-2">
+<span class="material-symbols-outlined text-primary">rule</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">1. Rule Definition</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Grace Period (Days)</label>
+<input class="w-full bg-surface-container border border-outline-variant rounded p-2 text-body-md font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="number" value="5"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Days after due date before fee applies.</p>
+</div>
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Initial Penalty Amount ($)</label>
+<input class="w-full bg-surface-container border border-outline-variant rounded p-2 text-body-md font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.01" type="number" value="25.00"/>
+</div>
+<div class="md:col-span-2 grid grid-cols-2 gap-4 bg-surface-container-low p-4 rounded border border-surface-variant">
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Daily Accrual Rate ($)</label>
+<input class="w-full bg-surface-container border border-outline-variant rounded p-2 text-body-md font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.01" type="number" value="2.50"/>
+</div>
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Max Penalty Cap ($)</label>
+<input class="w-full bg-surface-container border border-outline-variant rounded p-2 text-body-md font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" step="0.01" type="number" value="100.00"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Trigger Logic -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-4 border-b border-surface-variant pb-2">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">2. Trigger Logic</h3>
+</div>
+<div class="space-y-4">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Trigger Event</label>
+<select class="w-full bg-surface-container border border-outline-variant rounded p-2 text-body-md font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option selected="" value="days_past_due">Days Past Due Date</option>
+<option value="end_of_term">End of Academic Term</option>
+<option value="custom_date">Specific Custom Date</option>
+</select>
+<div class="flex items-center gap-3 p-3 bg-error-container/20 border border-error-container rounded mt-4">
+<span class="material-symbols-outlined text-fleet-delayed">warning</span>
+<span class="font-body-sm text-body-sm text-on-surface">This trigger executes nightly at 00:00 UTC during the active term.</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Applicability -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-4 border-b border-surface-variant pb-2">
+<span class="material-symbols-outlined text-primary">target</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">3. Applicability</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-start gap-3 p-3 border border-outline-variant rounded hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="mt-1 accent-primary" type="checkbox"/>
+<div>
+<span class="block font-label-mono text-label-mono text-on-surface">Tuition Fees</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Core academic charges</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 border border-primary rounded bg-primary-fixed/20 cursor-pointer transition-colors">
+<input checked="" class="mt-1 accent-primary" type="checkbox"/>
+<div>
+<span class="block font-label-mono text-label-mono text-on-surface">Hostel Dues</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Accommodation charges</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 border border-outline-variant rounded hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="mt-1 accent-primary" type="checkbox"/>
+<div>
+<span class="block font-label-mono text-label-mono text-on-surface">Library Fines</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Overdue book penalties</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 border border-outline-variant rounded hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="mt-1 accent-primary" type="checkbox"/>
+<div>
+<span class="block font-label-mono text-label-mono text-on-surface">Transport Fees</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bus/Shuttle passes</span>
+</div>
+</label>
+</div>
+</section>
+<div class="flex justify-end gap-3 pt-4">
+<button class="px-4 py-2 rounded font-label-mono text-label-mono text-on-surface-variant border border-outline-variant hover:bg-surface-variant transition-colors">Discard Draft</button>
+<button class="px-4 py-2 rounded font-label-mono text-label-mono bg-primary text-on-primary hover:bg-primary-container transition-colors shadow-sm">Save Rule Logic</button>
+</div>
+</div>
+<!-- Logic Summary Panel (Right side) -->
+<div class="xl:col-span-1">
+<div class="sticky top-0 bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-occupancy-available">code_blocks</span>
+                        Rule Summary
+                    </h3>
+<div class="bg-surface p-4 rounded border border-surface-variant font-label-mono text-label-mono text-on-surface-variant leading-relaxed">
+<p class="mb-2"><span class="text-primary font-bold">IF</span> <span class="text-on-surface">Student</span> has outstanding <span class="text-on-surface">Tuition Fees OR Hostel Dues</span></p>
+<p class="mb-2"><span class="text-primary font-bold">AND</span> days past due date &gt; <span class="text-occupancy-available font-bold">5</span> (Grace Period)</p>
+<p class="mb-2"><span class="text-primary font-bold">THEN</span> Apply Initial Penalty of <span class="text-fleet-delayed font-bold">$25.00</span></p>
+<p class="mb-2"><span class="text-primary font-bold">AND</span> Accrue <span class="text-fleet-delayed font-bold">$2.50</span> per day</p>
+<p><span class="text-primary font-bold">UNTIL</span> Total Penalty reaches <span class="text-on-surface font-bold">$100.00</span> cap or balance is paid.</p>
+</div>
+<div class="mt-6">
+<h4 class="font-label-mono text-label-mono text-on-surface-variant mb-2 uppercase tracking-wider">Example Scenario</h4>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant font-body-sm text-body-sm">
+<div class="flex justify-between mb-1 border-b border-surface-variant pb-1"><span>Due Date:</span> <span class="font-mono">Oct 1</span></div>
+<div class="flex justify-between mb-1 border-b border-surface-variant pb-1"><span>Payment Date:</span> <span class="font-mono">Oct 10</span></div>
+<div class="flex justify-between mb-1 border-b border-surface-variant pb-1"><span>Days Late:</span> <span class="font-mono text-fleet-delayed">9 days</span></div>
+<div class="flex justify-between font-bold mt-2 text-on-surface">
+<span>Total Late Fee:</span>
+<span>$35.00</span>
+</div>
+<div class="text-[10px] text-on-surface-variant mt-1 italic text-right">($25 initial + (4 days * $2.50))</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

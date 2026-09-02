@@ -1,0 +1,600 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Decision Committee Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS Setup -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "inverse-surface": "#2f3038",
+                        "surface-container-highest": "#e3e1ed",
+                        "on-surface": "#1a1b23",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-primary-container": "#a9b3ff",
+                        "on-background": "#1a1b23",
+                        "surface": "#fbf8ff",
+                        "outline": "#757686",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "primary": "#001c9d",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "surface-dim": "#dad9e4",
+                        "tertiary-container": "#892400",
+                        "surface-tint": "#3b4fd3",
+                        "pending-bg": "#fffbeb",
+                        "on-tertiary-fixed-variant": "#862300",
+                        "surface-bright": "#fbf8ff",
+                        "secondary": "#505f76",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f4f2fe",
+                        "allocated-blue": "#1d4ed8",
+                        "surface-container-high": "#e9e7f2",
+                        "tertiary-fixed": "#ffdbd1",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "surface-container": "#eeecf8",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c5c5d7",
+                        "error": "#ba1a1a",
+                        "awarded-bg": "#f0fdf4",
+                        "primary-fixed": "#dfe0ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#56657c",
+                        "rejected-slate": "#475569",
+                        "inverse-on-surface": "#f1effb",
+                        "tertiary": "#621700",
+                        "inverse-primary": "#bcc3ff",
+                        "surface-variant": "#e3e1ed",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "background": "#fbf8ff",
+                        "rejected-bg": "#f8fafc",
+                        "pending-amber": "#b45309",
+                        "allocated-bg": "#eff6ff",
+                        "primary-container": "#2036bd",
+                        "secondary-container": "#d4e3ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#ff9f83",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-surface-variant": "#454654",
+                        "on-primary-fixed": "#000d60",
+                        "awarded-green": "#15803d"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "padding-card": "16px",
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "compact-gap": "8px",
+                        "allocation-row": "12px",
+                        "margin-page": "24px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "data-tabular": ["JetBrains Mono"],
+                        "body-sm": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "label-mono": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "display": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "headline-lg-mobile": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-md": ["18px", { lineHeight: "28px", fontWeight: "600" }],
+                        "data-tabular": ["13px", { lineHeight: "18px", letterSpacing: "-0.01em", fontWeight: "400" }],
+                        "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for high-density tables */
+        .table-scroll::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .table-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .table-scroll::-webkit-scrollbar-thumb {
+            background-color: theme('colors.outline-variant');
+            border-radius: theme('borderRadius.full');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-margin-page h-16 w-full fixed top-0 z-50 bg-surface border-b border-outline-variant">
+<!-- Brand & Search -->
+<div class="flex items-center gap-6">
+<div class="font-headline-lg text-headline-lg font-bold text-primary truncate">
+                Scholarship Authority
+            </div>
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-label-mono w-64 placeholder:font-body-sm" placeholder="Search applicant ID..." type="text">
+</div>
+</div>
+<!-- Navigation Links (Centered-ish) -->
+<nav class="hidden md:flex space-x-8 h-full">
+<a class="flex items-center h-full text-primary border-b-2 border-primary pb-1 font-medium transition-colors" href="#">Dashboard</a>
+<a class="flex items-center h-full text-on-surface-variant hover:text-primary transition-colors" href="#">Finalists</a>
+<a class="flex items-center h-full text-on-surface-variant hover:text-primary transition-colors" href="#">Committees</a>
+<a class="flex items-center h-full text-on-surface-variant hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container px-4 py-2 rounded text-sm font-medium transition-colors shadow-sm">
+                Final Sign-off
+            </button>
+<div class="flex items-center text-on-surface-variant gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A professional headshot of a mature female administrator wearing glasses and a dark blazer, set against a neutral light grey background with bright, even studio lighting. The image conveys authority and competence suitable for a high-level institutional dashboard profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxbututvJUyBp4cYW_1uTGMYp0XguaAgaIu0s_PfBLIyc2qnHP__NzM71ZOWtM6Wu1QvdJcwgNjaA629F98G7sqaGud05F5hy-46TjcIk_yaIGyUZafNDYCSH_zYjnHLc8NJJpawc9ZVSIEv0SO5YBva8_m9Q9Ehnezwj4m9dR2e4qfAcB2UHS3BBDWOuW8AkmgW7xo7orY__UPPCxY5bCCEqG5T9JN1qWN7uDG34_lSbz555XBGEx">
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col border-r border-outline-variant bg-surface-container-low z-40 hidden md:flex">
+<!-- Header Info -->
+<div class="p-6 border-b border-outline-variant flex flex-col items-center text-center">
+<img alt="Committee Seal" class="w-16 h-16 rounded-full mb-3 shadow-sm border border-outline-variant bg-white p-1" data-alt="A vector graphic illustration of a formal institutional seal featuring a shield, a laurel wreath, and an open book. Designed in deep navy blue and gold on a pristine white background. The style is flat, precise, and authoritative, suitable for a university or government committee avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIznoFItWNT7PKjhTGFgMN9PRA1HheM4-vM9XUeCU_UjPNE83F02QYp4xRQrcxqiDC5gZN2BevdlOBEAl5Z98uNjSfROdgPBGywcbzaA9smnLTwY2Z3P3K-_LRFRbtdeZ3XVSWwqNbE-Ydi1LwvC1Ce_-GoU8Ix597xMYrCzS1XJQ5UqNTlcNqOkYDeP2fBb6X-01Hgq0Kp6QVUTpxDZBG-Yy83bxh0-Y0U7smPleAF1xzr6uldTuF">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Decision Portal</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">FY2024 Cycle</p>
+</div>
+<!-- Main Nav Tabs -->
+<nav class="flex-1 overflow-y-auto p-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg transition-transform scale-95 opacity-80" href="#" style="opacity: 1; transform: scale(1);">
+<span class="material-symbols-outlined icon-fill" data-icon="how_to_reg">how_to_reg</span>
+                Approval Queue
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                Fund Allocation
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+                Consensus Tracker
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                Audit Log
+            </a>
+</nav>
+<!-- CTA & Footer -->
+<div class="p-4 border-t border-outline-variant space-y-4">
+<button class="w-full border border-primary text-primary hover:bg-primary hover:text-on-primary py-2 rounded font-medium transition-colors text-sm">
+                New Cycle
+            </button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high transition-all rounded font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high transition-all rounded font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="policy">policy</span>
+                    Policy
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-0 md:ml-64 mr-0 xl:mr-[320px] mt-16 h-[calc(100vh-64px)] flex flex-col bg-surface relative">
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-margin-page space-y-6">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-display text-display text-on-surface">Final Award Approval</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Reviewing top 10% of candidates based on committee scoring.</p>
+</div>
+</div>
+<!-- Top Level: Budget Stats & Allocation Progress -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card flex flex-col gap-4">
+<div class="flex justify-between items-center mb-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">FY24 Endowment Status</h3>
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-container py-1 px-2 rounded">USD Base</span>
+</div>
+<!-- Custom Component: Allocation Progress Bar -->
+<div class="flex flex-col gap-1.5">
+<div class="h-3 w-full flex rounded overflow-hidden">
+<div class="bg-awarded-green w-[45%]" title="Awarded: 45%"></div>
+<div class="bg-allocated-blue w-[35%]" title="Recommended (Pending Approval): 35%"></div>
+<div class="bg-surface-dim w-[20%]" title="Remaining Surplus: 20%"></div>
+</div>
+<div class="flex justify-between text-xs font-label-mono text-on-surface-variant">
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-awarded-green"></div> Awarded (Finalized)</div>
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-allocated-blue"></div> Recommended (Queue)</div>
+<div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-surface-dim"></div> Remaining Surplus</div>
+</div>
+</div>
+<!-- Stat Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-grid mt-2">
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/50">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Total Allocation</p>
+<p class="font-data-tabular text-data-tabular text-xl font-medium">$2,500,000</p>
+</div>
+<div class="bg-allocated-bg p-4 rounded border border-allocated-blue/20">
+<p class="font-body-sm text-body-sm text-allocated-blue mb-1">Amount Recommended</p>
+<p class="font-data-tabular text-data-tabular text-xl font-medium text-allocated-blue">$875,000</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded border border-outline-variant/50">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Remaining Surplus</p>
+<p class="font-data-tabular text-data-tabular text-xl font-medium">$500,000</p>
+</div>
+</div>
+</section>
+<!-- Filter Bar -->
+<div class="flex items-center gap-2 bg-surface-container-lowest p-2 border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant ml-2 mr-1">filter_list</span>
+<button class="flex items-center gap-1 px-3 py-1 bg-surface-container rounded-full font-body-sm text-body-sm text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant">
+                    Department: STEM <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1 bg-surface-container rounded-full font-body-sm text-body-sm text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant">
+                    Score &gt; 90 <span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+<button class="flex items-center gap-1 px-3 py-1 bg-surface-container rounded-full font-body-sm text-body-sm text-on-surface hover:bg-surface-variant transition-colors border border-outline-variant">
+                    Consensus: Unanimous <span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<div class="flex-1"></div>
+<button class="text-primary font-body-sm text-body-sm hover:underline mr-2">Clear All</button>
+</div>
+<!-- Main View: Approval Queue Table -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col h-[500px]">
+<div class="overflow-x-auto table-scroll flex-1">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low border-b border-outline-variant z-10 shadow-sm">
+<tr>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant font-medium">Finalist</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant font-medium w-32">Avg Score</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant font-medium">Consensus</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant font-medium text-right">Award Amount</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-on-surface-variant font-medium text-center w-40">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<!-- Row 1: Selected/Active -->
+<tr class="bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-l-primary">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-sm">
+                                            EJ
+                                        </div>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Elena Jimenez</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant">ID: 948-20A</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-data-tabular text-data-tabular text-lg font-medium text-on-surface">96.5</span>
+<span class="text-[10px] text-awarded-green flex items-center"><span class="material-symbols-outlined text-[12px]">trending_up</span></span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<!-- Mini bar visualization -->
+<div class="flex gap-0.5">
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-pending-amber rounded-sm"></div>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">4/5 Approve</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 rounded">$25,000</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex justify-center gap-2 opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-awarded-green text-awarded-green hover:bg-awarded-bg transition-colors" title="Approve">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline text-on-surface-variant hover:bg-surface-variant transition-colors" title="Reject">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">
+                                            MR
+                                        </div>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Marcus Reed</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant">ID: 112-88B</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-data-tabular text-data-tabular text-lg font-medium text-on-surface">94.2</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5">
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">3/5 Approve</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 rounded">$15,000</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-awarded-green text-awarded-green hover:bg-awarded-bg transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">
+                                            SK
+                                        </div>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Sarah Kline</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant">ID: 554-91C</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-data-tabular text-data-tabular text-lg font-medium text-on-surface">98.0</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5">
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+</div>
+<span class="font-label-mono text-label-mono text-awarded-green bg-awarded-bg px-1.5 rounded">Unanimous</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 rounded">$50,000</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-awarded-green text-awarded-green hover:bg-awarded-bg transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">
+                                            JT
+                                        </div>
+<div>
+<p class="font-body-md text-body-md font-medium text-on-surface">James Thorne</p>
+<p class="font-label-mono text-[10px] text-on-surface-variant">ID: 221-44D</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-data-tabular text-data-tabular text-lg font-medium text-on-surface">89.5</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5">
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-awarded-green rounded-sm"></div>
+<div class="w-2 h-4 bg-rejected-slate rounded-sm"></div>
+<div class="w-2 h-4 bg-rejected-slate rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Split (2/2)</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 rounded">$10,000</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-awarded-green text-awarded-green hover:bg-awarded-bg transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer/Pagination -->
+<div class="bg-surface-container-lowest border-t border-outline-variant p-3 flex justify-between items-center text-on-surface-variant font-label-mono text-label-mono">
+<span>Showing 1-4 of 128 Recommended</span>
+<div class="flex items-center gap-4">
+<span>Rows per page: 10 <span class="material-symbols-outlined text-[14px] align-middle">arrow_drop_down</span></span>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-surface-container rounded transition-colors disabled:opacity-50"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Right Sidebar: Consensus Tracker (Scholarship Workbench) -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-64px)] w-[320px] bg-surface-container-lowest border-l border-outline-variant hidden xl:flex flex-col z-30 shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)]">
+<!-- Header -->
+<div class="p-4 border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span> Consensus Tracker
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Reviewing active selection.</p>
+</div>
+<!-- Selected Candidate Summary -->
+<div class="p-padding-card border-b border-outline-variant">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-lg">
+                    EJ
+                </div>
+<div>
+<h4 class="font-headline-md text-[16px] leading-tight font-semibold text-on-surface">Elena Jimenez</h4>
+<p class="font-label-mono text-label-mono text-on-surface-variant">ID: 948-20A • STEM</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-surface-container p-2 rounded text-center border border-outline-variant/30">
+<p class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-wider">Avg Score</p>
+<p class="font-data-tabular text-lg font-medium text-on-surface">96.5</p>
+</div>
+<div class="bg-surface-container p-2 rounded text-center border border-outline-variant/30">
+<p class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-wider">Req. Amount</p>
+<p class="font-data-tabular text-lg font-medium text-on-surface">$25k</p>
+</div>
+</div>
+<div class="flex items-center justify-between bg-pending-bg border border-pending-amber/30 p-2 rounded">
+<span class="font-label-mono text-label-mono font-bold text-pending-amber">Status</span>
+<span class="font-body-sm text-body-sm text-pending-amber font-medium">Pending Final Sign-off</span>
+</div>
+</div>
+<!-- Vote Breakdown List -->
+<div class="flex-1 overflow-y-auto p-padding-card">
+<h5 class="font-label-mono text-[11px] text-on-surface-variant uppercase tracking-wider mb-3">Committee Member Votes (4/5)</h5>
+<ul class="space-y-4">
+<!-- Member 1 -->
+<li class="flex gap-3">
+<img alt="Dr. Robert Chen" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar portrait of a distinguished older man with a grey beard, wearing a suit, against a light blue background. Corporate professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNO8PWSrw9arsOKRmU5Fvqj15iHALRZz89y1v_FvW5nh8nIaxMaNK6B6YRIB8DwFx0ygjMw-TfuN-5l5m1LL_UaMeaQ4WiWAPXqLx4PJgap2aP5947fLVKiT91AYWj8fACX2z3kuC5ZrACREgR2KLFEYLrMgzXmRl8t5t6vuK4YTDj_MqMSIheMY51JL8uxvnwp_31xHtVJO253VpMF7Hgvpi9ENYH_j4nm8huglOqwwpNGGkqKJg3">
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body-sm font-medium text-on-surface">Dr. Robert Chen</p>
+<span class="material-symbols-outlined text-awarded-green text-[18px]" title="Approved">thumb_up</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1 bg-surface-container-low p-2 rounded border border-outline-variant/20 italic">"Exceptional research proposal. Fully support."</p>
+</div>
+</li>
+<!-- Member 2 -->
+<li class="flex gap-3">
+<img alt="Prof. Sarah Jenkins" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar portrait of a middle-aged woman with dark hair tied back, wearing a professional blouse, against a neutral white background. Authoritative and approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNne7VredfZRvOZa8TIY1Jwev91VYMvv9CqPi34oaQn43EOLSBz52Cp0srbw9Fkb6ytu9rhl32G0dcDPnmPJ7gug9ChAo4ppz-D18znN4ubL7XH9lHP6ZHTXDOhql2ldkbnRILqeuk0OHhorUQ4LqlUppPgWsPjmW1-8nOXG2BzJ9HQv8hNch6jjSUvE4aqu3V-tTvfAK7j48DLlxgpzk5QU3zqa22ur2CcEOEa7xlpMV1rsMuy2dF">
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body-sm font-medium text-on-surface">Prof. Sarah Jenkins</p>
+<span class="material-symbols-outlined text-awarded-green text-[18px]" title="Approved">thumb_up</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1 bg-surface-container-low p-2 rounded border border-outline-variant/20 italic">"Strong academic record aligns with fund goals."</p>
+</div>
+</li>
+<!-- Member 3 -->
+<li class="flex gap-3">
+<img alt="Dr. Alistair Vance" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar portrait of a young male professional wearing glasses and a sweater vest over a collared shirt. Academic setting aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlZUbotV6BsDq62XXNByP2C4g0cXeOFDyH3wOGsgdRdN1C72_vub7TfFjlqNzFeY2K4uqBjtgOSsL2QikhBnGx5Cbu9RDd4CDqGeawTxw5lg_aFxAbvTjhpHQc09W87xrlCCdmBRRBY7E6fOLNKRrOnp3Xboj-rQmj3YlhhDbYj3iy2saFn4t0McgbhDf3CTf_J4BNDciTtWbAyICoF1dxkW2HOQ6waVRGRHHDURfMy_NyRVB8MS-q">
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body-sm font-medium text-on-surface">Dr. Alistair Vance</p>
+<span class="material-symbols-outlined text-pending-amber text-[18px]" title="Abstained/Pending">remove</span>
+</div>
+<p class="font-body-sm text-[12px] text-pending-amber mt-1 bg-pending-bg p-2 rounded border border-pending-amber/20 italic">"Awaiting clarification on secondary transcript."</p>
+</div>
+</li>
+<!-- Member 4 -->
+<li class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-mono text-xs font-bold border border-outline-variant">
+                        ML
+                    </div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body-sm font-medium text-on-surface">Maria Lopez</p>
+<span class="material-symbols-outlined text-awarded-green text-[18px]" title="Approved">thumb_up</span>
+</div>
+</div>
+</li>
+<!-- Member 5 -->
+<li class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-mono text-xs font-bold border border-outline-variant">
+                        TK
+                    </div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="font-body-sm font-medium text-on-surface">Thomas Kemp</p>
+<span class="material-symbols-outlined text-awarded-green text-[18px]" title="Approved">thumb_up</span>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Quick Action Footer -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-lowest">
+<button class="w-full bg-primary text-on-primary hover:bg-primary-container py-2.5 rounded font-medium transition-colors shadow flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">signature</span> Override &amp; Approve
+            </button>
+<button class="w-full mt-2 text-on-surface-variant font-medium py-2 rounded hover:bg-surface-variant transition-colors text-sm">
+                Request Re-vote
+            </button>
+</div>
+</aside>
+</body></html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Syncora - Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c5c5d7",
+                      "on-background": "#131b2e",
+                      "tertiary-container": "#a44200",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-surface": "#131b2e",
+                      "secondary-container": "#d0e1fb",
+                      "surface-container-highest": "#dae2fd",
+                      "inverse-primary": "#bbc3ff",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#d7daff",
+                      "secondary": "#505f76",
+                      "on-tertiary-fixed": "#351000",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dfe0ff",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface-tint": "#3b4fd2",
+                      "surface-container-high": "#e2e7ff",
+                      "surface-variant": "#dae2fd",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-container-low": "#f2f3ff",
+                      "tertiary": "#7e3100",
+                      "background": "#faf8ff",
+                      "on-primary-fixed": "#000d60",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface": "#faf8ff",
+                      "primary-container": "#3e52d5",
+                      "inverse-on-surface": "#eef0ff",
+                      "outline": "#757686",
+                      "on-surface-variant": "#454654",
+                      "inverse-surface": "#283044",
+                      "surface-dim": "#d2d9f4",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "surface-container": "#eaedff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "surface-bright": "#faf8ff",
+                      "on-secondary-container": "#54647a",
+                      "primary": "#2036bd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-page": "24px",
+                      "padding-card": "16px",
+                      "base": "4px",
+                      "density-compact": "8px",
+                      "gutter-grid": "16px",
+                      "density-generous": "32px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant py-density-generous px-density-compact z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Syncora</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Student Portal</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-2 bg-secondary-container text-on-secondary-container font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer active:opacity-80 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Courses</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer active:opacity-80 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-body-md text-body-md">Assignments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer active:opacity-80 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-body-md text-body-md">Attendance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer active:opacity-80 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body-md text-body-md">Schedule</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2 pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer active:opacity-80 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg cursor-pointer active:opacity-80 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col w-full">
+<!-- TopAppBar -->
+<header class="w-full h-16 border-b border-outline-variant bg-background/80 backdrop-blur-md flex justify-between items-center px-margin-page sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-1">
+<!-- Search Bar Placeholder -->
+<div class="relative w-full max-w-md hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-md font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Search..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img alt="Student Profile Avatar" class="w-full h-full object-cover" data-alt="A small, professional portrait photo of a smiling college student in soft, natural lighting, representing a user profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMTJcagXLZ0gsjL78rmoJRHDK9qRAQG35SONy7IiZaG-XaocYSV8I-ien6qzDYe342jSRA-y07tUEIlZStnWji0Qn7R9OQcMcTh1UVGIq-DGOSdD7u2YUTzD-YStE14ekXlo_jROu5wqdPxPavs7r_-2Ire7wCmLAFqhTINj_xarL88_HpkHiZN7skuJjWcF_JxPXV9d_pgvJW8vKqcVxP0Z5-z_3JN3ZgRhgLwlkDRlQCNuRdwdNr">
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-density-generous w-full max-w-7xl mx-auto space-y-gutter-grid">
+<header class="mb-8">
+<h2 class="font-display text-display text-on-background">Welcome back, Alex</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Here is what's happening today.</p>
+</header>
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter-grid">
+<!-- Today's Timetable -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-background">Today's Schedule</h3>
+<button class="font-body-sm text-body-sm text-primary hover:underline">View Full Schedule</button>
+</div>
+<div class="space-y-4 flex-1">
+<!-- Class Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="flex flex-col items-center justify-center min-w-[80px] border-r border-outline-variant pr-4">
+<span class="font-label-mono text-label-mono text-on-surface-variant">09:00 AM</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">10:30 AM</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-background">Advanced Calculus</h4>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-body-sm text-body-sm">Room 402, Science Building</span>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container-high text-on-surface rounded font-label-mono text-label-mono self-start mt-1">MATH 301</span>
+</div>
+<!-- Class Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-primary-container/10 border-l-4 border-primary">
+<div class="flex flex-col items-center justify-center min-w-[80px] border-r border-outline-variant pr-4">
+<span class="font-label-mono text-label-mono text-on-surface-variant font-bold">11:00 AM</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">12:30 PM</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-md text-headline-md text-on-background">Modern History</h4>
+<span class="flex h-2 w-2 rounded-full bg-primary"></span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-body-sm text-body-sm">Room 105, Arts Wing</span>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container-high text-on-surface rounded font-label-mono text-label-mono self-start mt-1">HIST 210</span>
+</div>
+<!-- Class Item -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="flex flex-col items-center justify-center min-w-[80px] border-r border-outline-variant pr-4">
+<span class="font-label-mono text-label-mono text-on-surface-variant">02:00 PM</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">04:00 PM</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-on-background">Physics Lab</h4>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-body-sm text-body-sm">Lab 3, Engineering Complex</span>
+</div>
+</div>
+<span class="px-2 py-1 bg-surface-container-high text-on-surface rounded font-label-mono text-label-mono self-start mt-1">PHYS 102L</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Attendance & Tasks -->
+<div class="flex flex-col gap-gutter-grid">
+<!-- Attendance Summary -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Attendance</h3>
+<div class="flex items-center justify-between">
+<div class="flex items-end gap-2">
+<span class="font-display text-display text-primary leading-none">92%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mb-1">Overall</span>
+</div>
+<div class="flex items-center justify-center h-12 w-12 rounded-full bg-surface-container-high text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="mt-4 w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 text-right">On track</p>
+</div>
+<!-- Pending Tasks -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex-1">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-background">Pending Tasks</h3>
+<span class="px-2 py-1 bg-error-container text-on-error-container rounded-full font-label-mono text-label-mono text-[10px]">2 Due Soon</span>
+</div>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+<div>
+<p class="font-body-md text-body-md text-on-background font-semibold">Calculus Problem Set 4</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">MATH 301 • Due Tomorrow</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+<div>
+<p class="font-body-md text-body-md text-on-background font-semibold">History Essay Draft</p>
+<p class="font-body-sm text-body-sm text-error">HIST 210 • Due Today, 11:59 PM</p>
+</div>
+</li>
+<li class="flex items-start gap-3 opacity-60">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+<div>
+<p class="font-body-md text-body-md text-on-background font-semibold">Lab Report</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">PHYS 102L • Due next Friday</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Notices -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card mt-gutter-grid">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Recent Notices</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface rounded font-label-mono text-label-mono text-[10px]">Campus</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2h ago</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-background mb-1">Library Early Closure</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">The main library will close at 6:00 PM this Friday for scheduled maintenance. Please plan accordingly.</p>
+</div>
+<div class="p-4 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface rounded font-label-mono text-label-mono text-[10px]">Academic</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1d ago</span>
+</div>
+<h4 class="font-body-md text-body-md font-semibold text-on-background mb-1">Course Registration Opens</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Registration for the Spring semester begins next Monday. Check your assigned time ticket in the portal.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

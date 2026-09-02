@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Reporting &amp; Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#283044",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#eaedff",
+                      "surface-variant": "#dae2fd",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface-tint": "#3b4fd2",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "surface-dim": "#d2d9f4",
+                      "on-primary-container": "#d7daff",
+                      "surface-container-high": "#e2e7ff",
+                      "outline-variant": "#c5c5d7",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "primary-container": "#3e52d5",
+                      "surface-container-low": "#f2f3ff",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface": "#faf8ff",
+                      "primary": "#2036bd",
+                      "on-primary-fixed": "#000d60",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "surface-bright": "#faf8ff",
+                      "on-tertiary-fixed": "#351000",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#54647a",
+                      "tertiary": "#7e3100",
+                      "secondary-container": "#d0e1fb",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface": "#131b2e",
+                      "inverse-primary": "#bbc3ff",
+                      "secondary": "#505f76",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#a44200",
+                      "background": "#faf8ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "surface-container-highest": "#dae2fd",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#454654",
+                      "outline": "#757686",
+                      "on-background": "#131b2e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "density-generous": "32px",
+                      "gutter-grid": "16px",
+                      "density-compact": "8px",
+                      "margin-page": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface text-primary dark:text-primary-fixed-dim font-body-md text-body-md h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline flex flex-col h-full py-padding-card px-4 z-20">
+<div class="mb-8 px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Syncora</h1>
+<p class="text-secondary dark:text-secondary-fixed-dim text-sm">Analytics Suite</p>
+</div>
+<button class="bg-primary text-on-primary rounded-lg py-2 px-4 mb-6 font-semibold shadow-sm hover:bg-primary-fixed-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span> New Report
+        </button>
+<ul class="space-y-2 flex-grow">
+<!-- Active Tab -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary dark:text-primary-fixed-dim font-bold bg-surface-container dark:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">school</span>
+                    Academic
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Financial
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">security</span>
+                    Activity Log
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">download</span>
+                    Exports
+                </a>
+</li>
+</ul>
+<div class="mt-auto border-t border-outline-variant dark:border-outline pt-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-secondary-fixed-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface text-primary dark:text-primary-fixed-dim font-headline-md text-headline-md docked full-width top-0 sticky border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-density-generous h-16 z-10">
+<div class="flex items-center gap-4">
+<h2 class="font-bold">Reporting &amp; Analytics</h2>
+</div>
+<div class="flex-1 max-w-md mx-8 hidden lg:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-sm text-body-sm text-on-surface" placeholder="Search reports..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-all">
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar showing a professional business portrait of an administrator in a light grey suit against a subtle gradient background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI7pFYu2VvA8df0qxabdH-YAzWOPjItViGejFZ6dpTjbOJ2JHvdfptXgG4NbhcbUnWlqVPeKxK2B1KxSOwm47Eer5lBIvgblBM_j4A3leKjEjjnTVAfX8-vob-YINIIpEwM4QWTlVwrzzPIes0976sK0Unki5rkePZCnzFlImVpw1JP63t6kiTcXjBBHzYXk7jcvuiPs7AN52EQ9xYKKVgMY9ePUSOhVqztExSMN4SNTX-anB_c9l8"/>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 p-density-generous overflow-y-auto">
+<!-- Header Section -->
+<div class="mb-8 flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Executive Dashboard</h1>
+<p class="text-secondary font-body-md">Institutional Health Overview for Q3</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-low text-on-surface border border-outline-variant rounded flex items-center gap-2 hover:bg-surface-variant transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-sm">calendar_month</span> Q3 2024
+                     </button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface border border-outline-variant rounded flex items-center gap-2 hover:bg-surface-variant transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filters
+                     </button>
+</div>
+</div>
+<!-- Metric Cards (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-grid mb-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="text-secondary font-label-mono text-label-mono uppercase tracking-wider">Enrollment Growth</div>
+<div class="bg-primary-container/10 p-1.5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+</div>
+</div>
+<div>
+<div class="font-display text-display text-on-surface mb-1">+4.2%</div>
+<div class="flex items-center text-sm">
+<span class="text-primary font-medium flex items-center gap-1"><span class="material-symbols-outlined text-xs">arrow_upward</span> 1.1%</span>
+<span class="text-secondary ml-2">vs last year</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="text-secondary font-label-mono text-label-mono uppercase tracking-wider">Avg. Attendance</div>
+<div class="bg-secondary-container/20 p-1.5 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-sm">event_available</span>
+</div>
+</div>
+<div>
+<div class="font-display text-display text-on-surface mb-1">92.8%</div>
+<div class="flex items-center text-sm">
+<span class="text-primary font-medium flex items-center gap-1"><span class="material-symbols-outlined text-xs">arrow_upward</span> 0.5%</span>
+<span class="text-secondary ml-2">vs last term</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="text-secondary font-label-mono text-label-mono uppercase tracking-wider">Fee Collection %</div>
+<div class="bg-tertiary-container/10 p-1.5 rounded-lg text-tertiary">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+</div>
+</div>
+<div>
+<div class="font-display text-display text-on-surface mb-1">87.5%</div>
+<div class="flex items-center text-sm">
+<span class="text-error font-medium flex items-center gap-1"><span class="material-symbols-outlined text-xs">arrow_downward</span> 2.1%</span>
+<span class="text-secondary ml-2">vs budget</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div class="text-secondary font-label-mono text-label-mono uppercase tracking-wider">Faculty Satisfaction</div>
+<div class="bg-primary-container/10 p-1.5 rounded-lg text-primary">
+<span class="material-symbols-outlined text-sm">sentiment_satisfied</span>
+</div>
+</div>
+<div>
+<div class="font-display text-display text-on-surface mb-1">4.6/5</div>
+<div class="flex items-center text-sm">
+<span class="text-secondary ml-2">Based on 124 surveys</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Charts & Tables Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter-grid">
+<!-- Main Chart Area (2 columns wide on large screens) -->
+<div class="xl:col-span-2 space-y-gutter-grid">
+<!-- Trend Chart -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col h-[400px]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Year-over-Year Performance</h3>
+<button class="text-secondary hover:text-primary p-1 rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Simulated Chart Area -->
+<div class="flex-1 relative flex flex-col">
+<!-- Y-axis labels -->
+<div class="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-secondary font-label-mono text-xs pr-4 text-right w-12 border-r border-outline-variant border-dashed">
+<span>100</span>
+<span>75</span>
+<span>50</span>
+<span>25</span>
+<span>0</span>
+</div>
+<!-- Graph Area (Abstract Representation) -->
+<div class="ml-12 flex-1 relative border-b border-outline-variant">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+</div>
+<!-- Decorative SVG Path to represent trend -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 80 Q 20 70, 40 60 T 80 40 T 100 20" fill="none" stroke="#2036bd" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path d="M0 90 Q 30 85, 50 70 T 90 60 T 100 50" fill="none" stroke="#bbc3ff" stroke-dasharray="4" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<!-- Area under main line -->
+<path d="M0 80 Q 20 70, 40 60 T 80 40 T 100 20 L 100 100 L 0 100 Z" fill="url(#grad)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#2036bd"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- X-axis labels -->
+<div class="ml-12 h-8 flex justify-between text-secondary font-label-mono text-xs pt-2">
+<span>Jan</span>
+<span>Mar</span>
+<span>May</span>
+<span>Jul</span>
+<span>Sep</span>
+<span>Nov</span>
+</div>
+</div>
+</div>
+<!-- Bar Chart -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card flex flex-col h-[350px]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Financial Health vs Budget</h3>
+<div class="flex gap-4 text-xs font-label-mono text-secondary">
+<span class="flex items-center gap-1"><div class="w-3 h-3 bg-primary rounded-sm"></div> Actual</span>
+<span class="flex items-center gap-1"><div class="w-3 h-3 bg-surface-variant rounded-sm border border-primary/20"></div> Budget</span>
+</div>
+</div>
+<!-- Simulated Bar Chart Area -->
+<div class="flex-1 relative flex flex-col">
+<div class="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-secondary font-label-mono text-xs pr-4 text-right w-12 border-r border-outline-variant border-dashed">
+<span>$5M</span>
+<span>$3M</span>
+<span>$1M</span>
+<span>$0</span>
+</div>
+<div class="ml-12 flex-1 relative border-b border-outline-variant flex items-end justify-around pb-0">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+<div class="w-full h-px bg-outline-variant opacity-20"></div>
+</div>
+<!-- Bar Group 1 -->
+<div class="flex gap-1 h-full items-end z-10 w-16 justify-center">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 70%;"></div>
+<div class="w-4 bg-surface-variant border-t border-l border-r border-primary/20 rounded-t-sm" style="height: 80%;"></div>
+</div>
+<!-- Bar Group 2 -->
+<div class="flex gap-1 h-full items-end z-10 w-16 justify-center">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 85%;"></div>
+<div class="w-4 bg-surface-variant border-t border-l border-r border-primary/20 rounded-t-sm" style="height: 75%;"></div>
+</div>
+<!-- Bar Group 3 -->
+<div class="flex gap-1 h-full items-end z-10 w-16 justify-center">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 40%;"></div>
+<div class="w-4 bg-surface-variant border-t border-l border-r border-primary/20 rounded-t-sm" style="height: 50%;"></div>
+</div>
+<!-- Bar Group 4 -->
+<div class="flex gap-1 h-full items-end z-10 w-16 justify-center">
+<div class="w-4 bg-primary rounded-t-sm" style="height: 90%;"></div>
+<div class="w-4 bg-surface-variant border-t border-l border-r border-primary/20 rounded-t-sm" style="height: 95%;"></div>
+</div>
+</div>
+<div class="ml-12 h-8 flex justify-around text-secondary font-label-mono text-xs pt-2">
+<span class="w-16 text-center">Science</span>
+<span class="w-16 text-center">Arts</span>
+<span class="w-16 text-center">Eng</span>
+<span class="w-16 text-center">Business</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side Panel (Table) -->
+<div class="xl:col-span-1">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col h-full overflow-hidden">
+<div class="p-padding-card border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Top Performers</h3>
+<span class="material-symbols-outlined text-secondary text-sm">emoji_events</span>
+</div>
+<div class="flex-1 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-3 px-4 font-label-mono text-label-mono text-secondary uppercase tracking-wider font-semibold">Department</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-secondary uppercase tracking-wider font-semibold text-right">Score</th>
+<th class="py-3 px-4 font-label-mono text-label-mono text-secondary uppercase tracking-wider font-semibold text-center">Trend</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Computer Science</td>
+<td class="py-3 px-4 text-right">98.2</td>
+<td class="py-3 px-4 text-center text-primary"><span class="material-symbols-outlined text-sm">trending_up</span></td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Business Admin</td>
+<td class="py-3 px-4 text-right">95.5</td>
+<td class="py-3 px-4 text-center text-primary"><span class="material-symbols-outlined text-sm">trending_up</span></td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Mechanical Eng</td>
+<td class="py-3 px-4 text-right">94.1</td>
+<td class="py-3 px-4 text-center text-secondary"><span class="material-symbols-outlined text-sm">trending_flat</span></td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Data Science</td>
+<td class="py-3 px-4 text-right">92.8</td>
+<td class="py-3 px-4 text-center text-primary"><span class="material-symbols-outlined text-sm">trending_up</span></td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Psychology</td>
+<td class="py-3 px-4 text-right">91.0</td>
+<td class="py-3 px-4 text-center text-error"><span class="material-symbols-outlined text-sm">trending_down</span></td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Fine Arts</td>
+<td class="py-3 px-4 text-right">89.5</td>
+<td class="py-3 px-4 text-center text-secondary"><span class="material-symbols-outlined text-sm">trending_flat</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-4 font-medium">Nursing</td>
+<td class="py-3 px-4 text-right">88.2</td>
+<td class="py-3 px-4 text-center text-primary"><span class="material-symbols-outlined text-sm">trending_up</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-bright flex justify-center">
+<button class="text-primary font-medium text-sm hover:underline">View Full Directory</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

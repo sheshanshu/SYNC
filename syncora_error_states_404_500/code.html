@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Error State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "on-primary-fixed": "#000d60",
+                      "outline-variant": "#c5c5d7",
+                      "surface-container-highest": "#dae2fd",
+                      "surface-variant": "#dae2fd",
+                      "surface": "#faf8ff",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "secondary": "#505f76",
+                      "primary": "#2036bd",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffdbcc",
+                      "inverse-primary": "#bbc3ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#eaedff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-container-low": "#f2f3ff",
+                      "surface-bright": "#faf8ff",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#d2d9f4",
+                      "tertiary": "#7e3100",
+                      "surface-container-high": "#e2e7ff",
+                      "inverse-surface": "#283044",
+                      "on-secondary-container": "#54647a",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary-container": "#d7daff",
+                      "outline": "#757686",
+                      "on-surface": "#131b2e",
+                      "on-tertiary-fixed": "#351000",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#d3e4fe",
+                      "surface-tint": "#3b4fd2",
+                      "background": "#faf8ff",
+                      "tertiary-container": "#a44200",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-surface-variant": "#454654",
+                      "on-secondary-fixed": "#0b1c30",
+                      "secondary-container": "#d0e1fb",
+                      "inverse-on-surface": "#eef0ff",
+                      "primary-fixed": "#dfe0ff",
+                      "primary-container": "#3e52d5",
+                      "on-background": "#131b2e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "padding-card": "16px",
+                      "density-generous": "32px",
+                      "density-compact": "8px",
+                      "margin-page": "24px",
+                      "base": "4px",
+                      "gutter-grid": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Versatile Error Template (Currently showing 404 state, switchable via JS or backend logic) -->
+<main class="w-full max-w-2xl px-margin-page py-density-generous flex flex-col items-center text-center">
+<!-- Abstract Institutional Graphic -->
+<div class="mb-density-generous w-48 h-48 relative flex items-center justify-center">
+<!-- Subtle geometric abstraction implying disruption but maintaining professional composure -->
+<div class="absolute inset-0 bg-surface-container-highest rounded-full opacity-50"></div>
+<div class="absolute w-32 h-32 border border-outline-variant rounded-lg rotate-12"></div>
+<div class="absolute w-32 h-32 border border-outline-variant rounded-lg -rotate-6"></div>
+<span class="material-symbols-outlined text-outline" style="font-size: 64px; font-variation-settings: 'FILL' 0;">
+                gpp_bad
+            </span>
+</div>
+<!-- Error Content (404 Configuration) -->
+<div class="flex flex-col items-center max-w-lg mx-auto" id="error-content">
+<h1 class="font-display text-display text-on-surface mb-density-compact" id="error-title">
+                Page Not Found
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-density-generous" id="error-message">
+                The resource you are looking for might have been moved or is temporarily unavailable.
+            </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-gutter-grid mb-density-generous w-full justify-center">
+<button class="w-full sm:w-auto px-6 py-3 bg-primary text-on-primary rounded font-label-mono text-label-mono hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                Return to Dashboard
+            </button>
+<button class="w-full sm:w-auto px-6 py-3 bg-surface text-on-surface border border-outline-variant rounded font-label-mono text-label-mono hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                Contact Support
+            </button>
+</div>
+</main>
+<!-- Footer with Brand and Tech ID -->
+<footer class="mt-auto py-density-generous w-full flex flex-col items-center border-t border-outline-variant/30">
+<div class="font-headline-md text-headline-md text-primary mb-density-compact tracking-tight">
+            Syncora
+        </div>
+<div class="flex items-center gap-2 font-label-mono text-label-mono text-outline">
+<span>Tech ID:</span>
+<code class="bg-surface-container-high px-2 py-1 rounded" id="error-code">ERR_404_RSRC_MISSING</code>
+</div>
+</footer>
+<!-- Simple script to demonstrate switching states for template purposes -->
+<script>
+        // Example function to switch to 500 state
+        function set500State() {
+            document.getElementById('error-title').textContent = 'System Error';
+            document.getElementById('error-message').textContent = "We're experiencing some technical difficulties. Our team has been notified.";
+            document.getElementById('error-code').textContent = 'ERR_500_INT_SRVR';
+            
+            // Optionally change icon
+            const icon = document.querySelector('.material-symbols-outlined.text-outline');
+            if(icon) icon.textContent = 'warning';
+        }
+        
+        // Uncomment to test 500 state
+        // set500State();
+    </script>
+</body></html>

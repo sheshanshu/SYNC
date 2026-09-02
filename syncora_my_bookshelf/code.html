@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Bookshelf - Syncora Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb694",
+                        "error": "#ba1a1a",
+                        "primary-container": "#3e52d5",
+                        "secondary": "#505f76",
+                        "primary-fixed": "#dfe0ff",
+                        "category-digital": "#7c3aed",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d4e3ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "status-overdue": "#b91c1c",
+                        "on-background": "#1a1b23",
+                        "inverse-surface": "#2f3038",
+                        "on-surface-variant": "#454654",
+                        "surface-container-high": "#e9e7f2",
+                        "surface-dim": "#dad9e4",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1b23",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#7e3100",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "tertiary-fixed": "#ffdbcc",
+                        "outline": "#757686",
+                        "surface-container-highest": "#e3e1ec",
+                        "bookshelf-wood": "#fdfaf6",
+                        "category-physical": "#0891b2",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed": "#000d60",
+                        "category-periodical": "#ca8a04",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container": "#eeecf8",
+                        "outline-variant": "#c5c5d7",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f4f2fe",
+                        "surface-bright": "#fbf8ff",
+                        "status-issued": "#3e52d5",
+                        "primary": "#2036bd",
+                        "status-available": "#15803d",
+                        "background": "#fbf8ff",
+                        "surface": "#fbf8ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#a44200",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e1ec",
+                        "inverse-primary": "#bbc3ff",
+                        "on-secondary-container": "#56657c",
+                        "on-primary-container": "#d7daff",
+                        "inverse-on-surface": "#f1effb",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-tertiary-fixed": "#351000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "bookshelf-gap": "24px",
+                        "search-gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "asset-card-padding": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "search-ui": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "search-ui": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-16 bottom-0 w-72 py-6 border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest z-40 transition-all duration-200 ease-in-out">
+<div class="px-6 mb-8 flex flex-col gap-2">
+<div class="flex items-center gap-4 mb-4">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A clean, minimalist logo icon for an academic institution, designed with intersecting geometric lines forming an abstract book shape. Rendered in deep indigo (primary color) against a pristine white background. High-resolution, sharp vectors, modern flat design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB07U3equGjxgvOqC5WNqFDtrr-RNRkGBmz36Nxh3GUkHBC2uevn8b88SY2Tp4rfxf9EsXzWF3PPu0ieB_JDKwRIJvkliuMWuCxxe7ksunmMUegrOPm8B5w750hDDPIA1IcoERObJJDEQniUKLFbiHgyJFIPtXbK1IXTPfyFwArxAMHkN_mcAA53USD647Jak3fsBka3KeZRyYFcRYN4HC_HfbxRyHPWtwyzNQTQVE4cjUX4GuRwe2a"/>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Library Hub</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central Collection</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-body-md py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                Refine Search
+            </button>
+</div>
+<ul class="flex-1 flex flex-col gap-2 px-3">
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">home</span>
+                    Home
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">library_books</span>
+                    Catalog
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book_2</span>
+                    My Bookshelf
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">event_available</span>
+                    Reservations
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">history</span>
+                    History
+                </a>
+</li>
+</ul>
+<div class="mt-auto px-3 flex flex-col gap-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">help</span>
+                Help
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-secondary-fixed-variant dark:text-outline hover:bg-secondary-container/50 dark:hover:bg-secondary-fixed-dim/20 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Sign Out
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0 bg-bookshelf-wood">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-margin-desktop w-full h-16 bg-background dark:bg-on-background bg-surface-bright dark:bg-surface-dim border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Syncora Library</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors text-primary dark:text-primary-fixed-dim cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors text-primary dark:text-primary-fixed-dim cursor-pointer active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Student Profile" class="w-8 h-8 rounded-full ml-2 object-cover border border-outline-variant" data-alt="A small, circular avatar portrait of a university student. The student is smiling warmly, wearing a casual sweater. The background is a soft, blurred library interior with warm, inviting lighting. High quality photography, clean academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnZk1zZ6DI50xupyWPS58PNjWWiaeLYF5VkHYU52HfMk8Ak1mVzH_dPEe6r7CyeUaGdpg6UT-zCc5Jfnr8Abfo_MIx_umyCxTJimXkd_qcCAp0Z1R2iKjUvsX5wiXEO-zh_uN-0Oci5CX99IO7b4i2gEyGlC3WZA-Sx_g4VLjcoGtJYfu6Qh4vy9Y5n7CokCgEaTEVXiOdf_wZvn97VxM0hqtdiylYSxpacQe9mtZh2X75ve1mqUWH"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-desktop lg:ml-72">
+<div class="max-w-6xl mx-auto space-y-12 pb-24">
+<!-- Page Header -->
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-2">My Bookshelf</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your personal study environment and currently borrowed materials.</p>
+</div>
+<!-- Current Reads Section -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-background mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-category-digital">menu_book</span>
+                        Current Reads
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-bookshelf-gap">
+<!-- Digital Asset Card (Progress) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex gap-6 hover:shadow-md transition-shadow">
+<div class="w-24 h-36 bg-surface-variant rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A minimalist book cover design for 'Introduction to Quantum Mechanics'. The cover features abstract, interwoven wave patterns in deep blues and purples against a clean white background. Typography is sleek and modern sans-serif. Clean academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgek2IAtn88SDnbibOkc8-rSna0fvm4hC1QueJmLVylaGT-3qSn2ugvv_f-JUykKWvsKLV36kzbnv8u7t8oxWydF30k9dJTMuA264maFjZ3OProIiOnTwBYlOmS6BMP9GweIRQ1fzBe6JlAfg5EFmwJanjBW9eG-f4pkF1Jwzozmbl3mV0uFvOsCwI2jUVP-u5D-siwFbX1sDFfAJCSiEL-hDzsTCpQr16FF7TsD1WvropxCnmvS13"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm p-1 rounded">
+<span class="material-symbols-outlined text-category-digital text-[16px]">tablet_mac</span>
+</div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="mb-1">
+<span class="font-label-mono text-label-mono text-category-digital uppercase tracking-wider">E-Book</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Introduction to Quantum Mechanics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-auto">David J. Griffiths</p>
+<div class="mt-4">
+<div class="flex justify-between items-end mb-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">64% Completed</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Page 245 / 380</span>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-category-digital w-[64%] rounded-full"></div>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-primary text-on-primary font-body-md py-2 rounded-lg hover:bg-primary/90 transition-colors">Continue Reading</button>
+</div>
+</div>
+</div>
+<!-- Physical Asset Card (Progress) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex gap-6 hover:shadow-md transition-shadow">
+<div class="w-24 h-36 bg-surface-variant rounded-lg overflow-hidden shrink-0 shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A classic book cover design for 'The History of the Peloponnesian War'. The cover uses a parchment-like texture with an elegant serif typography in a dark tertiary red tone. An engraved illustration of an ancient Greek helmet sits subtly in the center. Clean academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0UX_8woLwvW3gfjGkmT0Ie4jd8zwUHFmq6CwySNWCxRGzi0F0itOKx3f27fj2G949YT1fcRa57OVef88DC34lQcGFFso7sfaZEroShKHMyixwdSgUc3iGxO1uyuYFOG-Q3IFXCRWqeFllN3x8H1lrp-xsEVbxLriGPSqIxmRE4PSqlepetfixIe_KwP6-zpYbx0xryb9QUfafjYBzcp6IiCJGB4Tn0KOo-FkrA7x-ZhIC1hYMfA4g"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm p-1 rounded">
+<span class="material-symbols-outlined text-category-physical text-[16px]">book</span>
+</div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="mb-1">
+<span class="font-label-mono text-label-mono text-category-physical uppercase tracking-wider">Physical Copy</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">The History of the Peloponnesian War</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-auto">Thucydides</p>
+<div class="mt-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-block w-2 h-2 rounded-full bg-status-issued"></span>
+<span class="font-body-sm text-body-sm text-status-issued font-medium">Due in 5 days</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-low p-2 rounded-lg border border-outline-variant">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Due: Nov 12, 2023</span>
+<button class="text-primary font-body-sm font-semibold hover:underline">Renew</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Borrowed & Reserved (Bento Style) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-bookshelf-gap">
+<!-- Borrowed List -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">inventory_2</span>
+                                Borrowed Items
+                            </h2>
+<button class="text-primary font-body-sm hover:underline">View All</button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2" style="max-height: 400px;">
+<!-- List Item -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant cursor-pointer group">
+<div class="w-12 h-16 bg-surface-variant rounded shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A modern textbook cover for 'Data Structures and Algorithms'. High contrast design with geometric node diagrams connecting in a network pattern. Colors are slate gray and electric blue. Clean, technical academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTM4Wcx3TJdKCBT79cV7zHmu-EiE9lCwQZ_48mKZJhRZmOXpiNjZYgmz1DJgbpmclSwaht_Fb_aXv6pcn7eRMq06o2QTJbI4UUmjK4NxbsxjpRlA5i7OrAIMC4cjN7TQ1ZvT1t5ni2P5Rnna9U1bh1IcnvAd_1ObMPMFYB60lO_d05tWqftdPRdplg0W03OkugN8mZDOS4iSShLbk6lCpi1cwfgAMYF5l2MAkkJhNZLD3Rbc03_I5e"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface truncate group-hover:text-primary transition-colors">Data Structures and Algorithms</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Thomas H. Cormen</p>
+</div>
+<div class="text-right shrink-0">
+<div class="font-label-mono text-label-mono text-status-overdue bg-error-container px-2 py-1 rounded mb-1 inline-block">Overdue</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Nov 2</p>
+</div>
+</div>
+<!-- List Item -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant cursor-pointer group">
+<div class="w-12 h-16 bg-surface-variant rounded shrink-0 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A journal cover for 'Nature'. The cover features a stunning macro photograph of a vividly colored beetle shell showing iridescent greens and blues. The title 'Nature' is prominent at the top in its classic serif font. Academic journal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHsNCYZk3mLpVpUy9xHX7K3ch3w2DyR8TrvKICmUZS96XjMX2WZNhiYdvEEV-WgaVDDfaj-_fswL7bijc6splDEWTwl7V2xxmQFqkQi48fGf8Gw84PyqeeshKWaKUVK3LKywG43ks6fBDGRUBd9KrZ1H1_PwH7mulb3jNccBVlK8u8GuzHqzRE2C_uZMGTbdvKmx-BCSfjdoifmSMPLq-sevVGJ-G3qklw-E1SObUnPndVsJHMa_jY"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface truncate group-hover:text-primary transition-colors">Nature Journal - Vol 592</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Periodical</p>
+</div>
+<div class="text-right shrink-0">
+<div class="font-label-mono text-label-mono text-status-issued bg-secondary-container px-2 py-1 rounded mb-1 inline-block">Issued</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Nov 15</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Panel: Wishlist & Folders -->
+<div class="flex flex-col gap-bookshelf-gap">
+<!-- Wishlist -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">bookmark</span>
+                                Wishlist
+                            </h3>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div class="min-w-0">
+<p class="font-body-sm text-body-sm font-medium text-on-surface truncate">The Design of Everyday Things</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Don Norman</p>
+</div>
+<span class="font-label-mono text-label-mono text-status-available bg-status-available/10 text-status-available px-2 py-0.5 rounded">Avail</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant last:border-0">
+<div class="min-w-0">
+<p class="font-body-sm text-body-sm font-medium text-on-surface truncate">Thinking, Fast and Slow</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Daniel Kahneman</p>
+</div>
+<span class="font-label-mono text-label-mono text-status-issued bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">Wait</span>
+</div>
+</div>
+</div>
+<!-- Research Folders -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex-1">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">folder_open</span>
+                                Research Folders
+                            </h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant font-body-sm text-body-sm text-on-surface cursor-pointer hover:bg-surface-variant transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder</span> Thesis Lit Review
+                                </span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant font-body-sm text-body-sm text-on-surface cursor-pointer hover:bg-surface-variant transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder</span> HCI Project
+                                </span>
+<span class="px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant font-body-sm text-body-sm text-on-surface cursor-pointer hover:bg-surface-variant transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">add</span> New
+                                </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

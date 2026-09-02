@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Application Review Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e1ed",
+                        "tertiary-container": "#631700",
+                        "primary": "#000e65",
+                        "surface-container-highest": "#e3e1ed",
+                        "on-primary-container": "#8392ff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8ff",
+                        "pending-bg": "#fffbeb",
+                        "inverse-surface": "#2f3038",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#4052c9",
+                        "on-secondary-fixed": "#0c1c30",
+                        "secondary-container": "#d4e3ff",
+                        "pending-amber": "#b45309",
+                        "surface": "#fbf8ff",
+                        "on-surface": "#1a1b23",
+                        "surface-container-high": "#e8e7f2",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2437b0",
+                        "on-background": "#1a1b23",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface-dim": "#dad9e4",
+                        "on-secondary": "#ffffff",
+                        "allocated-blue": "#1d4ed8",
+                        "outline-variant": "#c5c5d6",
+                        "surface-container": "#eeecf8",
+                        "on-secondary-container": "#56657c",
+                        "rejected-slate": "#475569",
+                        "awarded-green": "#15803d",
+                        "on-tertiary-fixed-variant": "#7e2b10",
+                        "tertiary": "#3e0b00",
+                        "awarded-bg": "#f0fdf4",
+                        "surface-container-low": "#f4f2fe",
+                        "primary-container": "#001c9d",
+                        "outline": "#757685",
+                        "rejected-bg": "#f8fafc",
+                        "surface-container-lowest": "#ffffff",
+                        "allocated-bg": "#eff6ff",
+                        "inverse-on-surface": "#f1effb",
+                        "primary-fixed": "#dfe0ff",
+                        "tertiary-fixed-dim": "#ffb59f",
+                        "on-primary-fixed": "#000d60",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#ea7c5b",
+                        "on-tertiary-fixed": "#3a0a00",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "secondary": "#505f76",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "surface-bright": "#fbf8ff",
+                        "secondary-fixed": "#d4e3ff",
+                        "inverse-primary": "#bbc3ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#454653"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-grid": "16px",
+                        "base": "4px",
+                        "compact-gap": "8px",
+                        "padding-card": "16px",
+                        "margin-page": "24px",
+                        "sidebar-width": "320px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "data-tabular": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "data-tabular": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface w-full h-16 border-b border-outline-variant flex justify-between items-center px-margin-page z-40 relative">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary font-bold">Review Workspace</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img alt="Reviewer Profile" class="object-cover w-full h-full" data-alt="A professional headshot of a reviewer in a brightly lit, modern office setting. The lighting is soft and neutral, conveying impartiality and focus. The background features subtle, out-of-focus architectural lines typical of an institutional workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKmbqV8tNW5nyXgFHnJw0Mu531r46MLUX8WH7Q9JFcQ_hhgdr3F20379imwBo1MUYkPAg2N-jOhqictZQOo-ukaBfhtLNEDB0UQ49s7v4LvnmxBTJPNJAaN3vi4mFmM1xorHXyjgUFKpaDQ0mK95M-DOm5eQyhrhzlyEZpN8M2iCNY-XWq2gM9GKb_bCxbVigQx-SwV1L209L71Zn0aLd9-CScKn7ZksOLJRntiOVXQNOfG46p2fKx"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- SideNavBar (Hidden on Mobile, acts as contextual nav if needed, but per instructions we might focus on the split pane. We'll include it for context but collapsed or minimal if we need space, actually the prompt asks for a specific layout. I'll omit the SideNav to focus on the full split-pane of the review as it's a deep-dive screen, per 'Automatic Suppression' rules). -->
+<div class="flex-1 flex flex-col w-full max-w-[1440px] mx-auto bg-surface relative h-[calc(100vh-64px)]">
+<!-- ReviewSummaryBar -->
+<header class="bg-surface-container-low border-b border-outline-variant px-margin-page py-4 flex items-center justify-between shrink-0">
+<div class="flex flex-col">
+<div class="flex items-center gap-3 mb-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Eleanor Vance</h1>
+<span class="bg-pending-bg text-pending-amber font-label-mono text-label-mono px-2 py-1 rounded-full border border-pending-amber/20">Under Review</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-data-tabular text-data-tabular">
+<span>ID: APP-2023-8942</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Fund: The Horizon Merit Scholarship</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-on-surface-variant hover:text-on-surface flex items-center gap-2 font-label-mono text-label-mono px-3 py-2 border border-outline-variant rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span> View History
+                    </button>
+</div>
+</header>
+<!-- Split Layout -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Pane: Application Data Canvas -->
+<div class="flex-1 overflow-y-auto p-margin-page bg-surface pb-24">
+<div class="max-w-3xl mx-auto space-y-8">
+<!-- Section: Personal Info -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card">
+<h2 class="font-headline-md text-headline-md mb-4 border-b border-outline-variant pb-2">Applicant Profile</h2>
+<div class="grid grid-cols-2 gap-x-8 gap-y-4">
+<div>
+<span class="block text-on-surface-variant font-label-mono text-label-mono mb-1">Full Legal Name</span>
+<span class="font-body-lg text-body-lg">Eleanor Margaret Vance</span>
+</div>
+<div>
+<span class="block text-on-surface-variant font-label-mono text-label-mono mb-1">Date of Birth</span>
+<span class="font-data-tabular text-data-tabular">1998-10-14</span>
+</div>
+<div>
+<span class="block text-on-surface-variant font-label-mono text-label-mono mb-1">Primary Email</span>
+<span class="font-body-md text-body-md">e.vance98@university.edu</span>
+</div>
+<div>
+<span class="block text-on-surface-variant font-label-mono text-label-mono mb-1">Phone Number</span>
+<span class="font-data-tabular text-data-tabular">+1 (555) 019-8372</span>
+</div>
+<div class="col-span-2">
+<span class="block text-on-surface-variant font-label-mono text-label-mono mb-1">Permanent Address</span>
+<span class="font-body-md text-body-md">4281 Willow Creek Dr, Apt 4B, Seattle, WA 98105, USA</span>
+</div>
+</div>
+</section>
+<!-- Section: Academic History -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card">
+<h2 class="font-headline-md text-headline-md mb-4 border-b border-outline-variant pb-2">Academic Record</h2>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-body-lg text-body-lg font-bold">University of Washington</h3>
+<p class="text-on-surface-variant">B.S. Computer Science, Minor in Mathematics</p>
+</div>
+<div class="text-right">
+<span class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Cumulative GPA</span>
+<span class="font-data-tabular text-data-tabular font-bold text-[16px]">3.94 / 4.00</span>
+</div>
+</div>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant text-sm">Attended: Sep 2018 — Jun 2022</p>
+</div>
+<div class="border-t border-outline-variant pt-4">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-body-lg text-body-lg font-bold">Seattle Central College</h3>
+<p class="text-on-surface-variant">Running Start Program (Dual Enrollment)</p>
+</div>
+<div class="text-right">
+<span class="block font-label-mono text-label-mono text-on-surface-variant mb-1">Cumulative GPA</span>
+<span class="font-data-tabular text-data-tabular font-bold text-[16px]">4.00 / 4.00</span>
+</div>
+</div>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant text-sm">Attended: Sep 2016 — Jun 2018</p>
+</div>
+</div>
+</section>
+<!-- Section: Statement of Purpose -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card">
+<h2 class="font-headline-md text-headline-md mb-4 border-b border-outline-variant pb-2">Statement of Purpose</h2>
+<article class="prose max-w-none text-on-surface font-body-lg text-body-lg leading-relaxed space-y-4">
+<p>Growing up in a community where technological resources were scarce, my initial exposure to computer science was through a refurbished desktop in our local library. That singular machine became my gateway to understanding logic structures, problem-solving, and ultimately, the realization that software could scale solutions to systemic issues.</p>
+<p>During my undergraduate studies, I focused heavily on algorithmic efficiency and data structures. However, my most formative experience occurred during my junior year internship at the City Data Initiative. Tasked with optimizing transit route schedules, I realized that elegant code alone is insufficient; it must be coupled with an empathetic understanding of the end-user. Our model, while mathematically sound, initially failed to account for localized traffic anomalies near public schools—a realization that shifted my entire paradigm toward human-centered computational design.</p>
+<p>I am applying to the Horizon Merit Scholarship to fund my graduate research in developing adaptive machine learning models for civic infrastructure. My goal is to create systems that do not merely process data, but interpret it through the lens of community equity. The financial support from this fund will allow me to dedicate my full attention to this research, rather than splitting my time with part-time employment.</p>
+</article>
+</section>
+<!-- Section: Documents -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-padding-card">
+<h2 class="font-headline-md text-headline-md mb-4 border-b border-outline-variant pb-2">Supporting Documents</h2>
+<div class="grid grid-cols-2 gap-4">
+<a class="flex items-center gap-3 p-3 border border-outline-variant rounded hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">description</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-bold">Official_Transcript_UW.pdf</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">1.2 MB • Verified</span>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 border border-outline-variant rounded hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">description</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-bold">Letter_of_Recommendation_DrSmith.pdf</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">450 KB</span>
+</div>
+</a>
+<a class="flex items-center gap-3 p-3 border border-outline-variant rounded hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-primary">picture_as_pdf</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-bold">Resume_2023_Update.pdf</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">890 KB</span>
+</div>
+</a>
+</div>
+</section>
+</div>
+</div>
+<!-- Right Pane: Evaluation Sidebar -->
+<aside class="w-sidebar-width bg-surface-container-lowest border-l border-outline-variant flex flex-col shrink-0 h-full relative z-10 shadow-[-4px_0_12px_rgba(0,0,0,0.03)]">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low shrink-0">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined">edit_note</span> Evaluation Panel
+                        </h2>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Scoring Fields -->
+<div class="space-y-4">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Quantitative Metrics</h3>
+<div>
+<label class="block font-body-sm text-body-sm mb-1">Academic Merit</label>
+<div class="relative flex items-center">
+<input class="w-full pl-3 pr-12 py-2 bg-surface border border-outline-variant rounded text-right font-data-tabular text-data-tabular focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-shadow" max="10" min="0" placeholder="0.0" step="0.5" type="number"/>
+<span class="absolute right-3 font-label-mono text-label-mono text-on-surface-variant pointer-events-none">/ 10</span>
+</div>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm mb-1">Essay / Statement Quality</label>
+<div class="relative flex items-center">
+<input class="w-full pl-3 pr-12 py-2 bg-surface border border-outline-variant rounded text-right font-data-tabular text-data-tabular focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-shadow" max="10" min="0" placeholder="0.0" step="0.5" type="number"/>
+<span class="absolute right-3 font-label-mono text-label-mono text-on-surface-variant pointer-events-none">/ 10</span>
+</div>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm mb-1">Financial Need Alignment</label>
+<div class="relative flex items-center">
+<input class="w-full pl-3 pr-12 py-2 bg-surface border border-outline-variant rounded text-right font-data-tabular text-data-tabular focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-shadow" max="10" min="0" placeholder="0.0" step="0.5" type="number"/>
+<span class="absolute right-3 font-label-mono text-label-mono text-on-surface-variant pointer-events-none">/ 10</span>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Qualitative Comments -->
+<div class="space-y-4">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Qualitative Assessment</h3>
+<div>
+<label class="block font-body-sm text-body-sm mb-1">Reviewer Notes</label>
+<textarea class="w-full p-3 bg-surface border border-outline-variant rounded font-body-sm text-body-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none resize-y transition-shadow" placeholder="Enter detailed observations here. These notes are visible to the committee..." rows="6"></textarea>
+</div>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm group-hover:text-primary transition-colors">Flag for committee discussion</span>
+</label>
+</div>
+</div>
+<!-- Final Decision Action Area -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-low shrink-0 space-y-3">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-2">Final Recommendation</h3>
+<button class="w-full bg-primary-container text-on-primary font-body-md text-body-md py-2.5 px-4 rounded hover:bg-primary transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span> Recommend for Award
+                        </button>
+<div class="flex gap-3">
+<button class="flex-1 bg-surface-container-lowest border border-outline-variant text-on-surface font-body-md text-body-md py-2 px-2 rounded hover:bg-surface-container-high transition-colors flex justify-center items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">info</span> Request Info
+                            </button>
+<button class="flex-1 bg-surface-container-lowest border border-outline-variant text-error font-body-md text-body-md py-2 px-2 rounded hover:bg-error-container transition-colors flex justify-center items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">thumb_down</span> Decline
+                            </button>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</body></html>

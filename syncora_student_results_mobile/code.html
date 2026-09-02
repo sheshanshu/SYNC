@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Exams - Student Results Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c5c5d7",
+                      "data-viz-grid": "#e3e1ec",
+                      "on-primary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "secondary": "#5d5e67",
+                      "inverse-primary": "#bcc3ff",
+                      "on-primary-container": "#a9b3ff",
+                      "surface": "#fbf8ff",
+                      "on-secondary-fixed": "#1a1b23",
+                      "tertiary-fixed": "#ffdbd1",
+                      "on-secondary-container": "#63646d",
+                      "secondary-fixed": "#e3e1ed",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-primary-fixed": "#000d60",
+                      "secure-shield": "#2036bd",
+                      "on-background": "#1a1b23",
+                      "on-tertiary-fixed-variant": "#862300",
+                      "secondary-container": "#e3e1ed",
+                      "on-surface": "#1a1b23",
+                      "primary-container": "#2036bd",
+                      "primary-fixed": "#dfe0ff",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#ff9f83",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#621700",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#3a0a00",
+                      "primary": "#001c9d",
+                      "status-pass": "#15803d",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "outline": "#757686",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "on-secondary-fixed-variant": "#45464f",
+                      "tertiary-fixed-dim": "#ffb59f",
+                      "status-distinction": "#7c3aed",
+                      "surface-container-low": "#f4f2fe",
+                      "inverse-on-surface": "#f1effb",
+                      "on-surface-variant": "#454654",
+                      "surface-variant": "#e3e1ed",
+                      "error": "#ba1a1a",
+                      "status-pending": "#ca8a04",
+                      "surface-container": "#eeecf8",
+                      "status-fail": "#b91c1c",
+                      "tertiary-container": "#892400",
+                      "surface-dim": "#dad9e4",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#c6c5d0",
+                      "surface-tint": "#3b4fd3",
+                      "inverse-surface": "#2f3038",
+                      "surface-bright": "#fbf8ff",
+                      "surface-container-high": "#e9e7f2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-margin": "48px",
+                      "table-cell-padding": "16px",
+                      "stack-gap": "24px",
+                      "gutter-md": "1rem"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "display-result": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-result": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen pb-24 md:pb-0">
+<!-- Top App Bar (Mobile optimized, hiding navigation links) -->
+<header class="bg-surface text-primary border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center px-4 h-16 max-w-[1200px] mx-auto md:hidden">
+<div class="flex items-center">
+<span class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Syncora Exams</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-20 px-4 flex flex-col gap-stack-gap max-w-md mx-auto">
+<!-- Welcome & GPA Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-col gap-4">
+<div>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Hello, Student</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">B.Sc. Computer Science • Year 3</p>
+</div>
+<div class="flex items-end justify-between bg-surface-container-low p-4 rounded border border-outline-variant">
+<div>
+<p class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-wider mb-1">Cumulative GPA</p>
+<p class="text-display-result font-display-result text-primary">3.84</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="bg-status-distinction text-on-primary text-label-mono font-label-mono px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="star">star</span>
+                        Top 5%
+                    </span>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">120 Credits</p>
+</div>
+</div>
+<!-- Digital Transcript Download -->
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary text-body-lg font-body-lg py-3 rounded-lg hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                Digital Results Card
+            </button>
+</section>
+<!-- New Results Notification -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="info">info</span>
+<div>
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">New Results Available</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Your grades for Fall Semester 2023 have been officially released and verified.</p>
+</div>
+</div>
+<!-- Expandable Semester Cards -->
+<section class="flex flex-col gap-4">
+<h2 class="text-headline-md font-headline-md text-on-surface">Academic Record</h2>
+<!-- Fall 2023 (Expanded) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-low hover:bg-surface-variant transition-colors text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.expand-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? 'expand_more' : 'expand_less';">
+<div>
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">Fall Semester 2023</h3>
+<p class="text-label-mono font-label-mono text-on-surface-variant mt-1">15 Credits • GPA: 3.90</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant expand-icon" data-icon="expand_less">expand_less</span>
+</button>
+<div class="p-4 flex flex-col gap-3">
+<!-- Course 1 -->
+<div class="flex items-center justify-between p-3 border border-outline-variant rounded bg-surface">
+<div class="flex-1">
+<p class="text-label-mono font-label-mono text-on-surface-variant">CS301</p>
+<p class="text-body-md font-body-md font-bold text-on-surface truncate">Advanced Algorithms</p>
+</div>
+<div class="flex flex-col items-end min-w-[70px]">
+<span class="bg-status-distinction text-on-primary text-label-mono font-label-mono px-2 py-0.5 rounded w-full text-center">A+</span>
+<span class="text-label-mono font-label-mono text-on-surface-variant mt-1">4.0</span>
+</div>
+</div>
+<!-- Course 2 -->
+<div class="flex items-center justify-between p-3 border border-outline-variant rounded bg-surface">
+<div class="flex-1">
+<p class="text-label-mono font-label-mono text-on-surface-variant">MATH210</p>
+<p class="text-body-md font-body-md font-bold text-on-surface truncate">Linear Algebra</p>
+</div>
+<div class="flex flex-col items-end min-w-[70px]">
+<span class="bg-status-pass text-on-primary text-label-mono font-label-mono px-2 py-0.5 rounded w-full text-center">A</span>
+<span class="text-label-mono font-label-mono text-on-surface-variant mt-1">4.0</span>
+</div>
+</div>
+<!-- Course 3 -->
+<div class="flex items-center justify-between p-3 border border-outline-variant rounded bg-surface">
+<div class="flex-1">
+<p class="text-label-mono font-label-mono text-on-surface-variant">ENG102</p>
+<p class="text-body-md font-body-md font-bold text-on-surface truncate">Technical Writing</p>
+</div>
+<div class="flex flex-col items-end min-w-[70px]">
+<span class="bg-surface-variant text-on-surface-variant text-label-mono font-label-mono px-2 py-0.5 rounded w-full text-center border border-outline-variant">B+</span>
+<span class="text-label-mono font-label-mono text-on-surface-variant mt-1">3.3</span>
+</div>
+</div>
+<div class="mt-2 pt-3 border-t border-outline-variant flex items-center justify-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span>
+<span class="text-label-mono font-label-mono">Results Verified</span>
+</div>
+</div>
+</div>
+<!-- Spring 2023 (Collapsed) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-low hover:bg-surface-variant transition-colors text-left" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.expand-icon').textContent = this.nextElementSibling.classList.contains('hidden') ? 'expand_more' : 'expand_less';">
+<div>
+<h3 class="text-body-lg font-body-lg font-bold text-on-surface">Spring Semester 2023</h3>
+<p class="text-label-mono font-label-mono text-on-surface-variant mt-1">14 Credits • GPA: 3.75</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant expand-icon" data-icon="expand_more">expand_more</span>
+</button>
+<div class="p-4 hidden flex-col gap-3">
+<p class="text-body-md font-body-md text-on-surface-variant">Results content would expand here.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 w-full bg-surface-container-low border-t border-outline-variant flex justify-around items-center h-16 px-2 pb-safe z-50 md:hidden">
+<a class="flex flex-col items-center justify-center w-full h-full text-primary" href="#">
+<div class="px-4 py-1 bg-primary-container rounded-full mb-1">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="school" data-weight="fill" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<span class="text-label-mono font-label-mono text-on-surface">Results</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface" href="#">
+<div class="px-4 py-1 mb-1">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</div>
+<span class="text-label-mono font-label-mono">Archives</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-on-surface" href="#">
+<div class="px-4 py-1 mb-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="text-label-mono font-label-mono">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Notification Preferences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#eaedff",
+                      "surface": "#faf8ff",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "on-primary-fixed-variant": "#1d34ba",
+                      "background": "#faf8ff",
+                      "primary": "#2036bd",
+                      "on-surface": "#131b2e",
+                      "tertiary-fixed": "#ffdbcc",
+                      "surface-bright": "#faf8ff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "error-container": "#ffdad6",
+                      "outline": "#757686",
+                      "on-surface-variant": "#454654",
+                      "inverse-surface": "#283044",
+                      "surface-tint": "#3b4fd2",
+                      "primary-container": "#3e52d5",
+                      "surface-dim": "#d2d9f4",
+                      "surface-container-highest": "#dae2fd",
+                      "inverse-primary": "#bbc3ff",
+                      "on-tertiary-container": "#ffd3bf",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e2e7ff",
+                      "outline-variant": "#c5c5d7",
+                      "primary-fixed": "#dfe0ff",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#a44200",
+                      "on-tertiary-fixed": "#351000",
+                      "inverse-on-surface": "#eef0ff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#7e3100",
+                      "secondary-container": "#d0e1fb",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "surface-container-low": "#f2f3ff",
+                      "on-background": "#131b2e",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-primary-fixed": "#000d60",
+                      "on-primary-container": "#d7daff",
+                      "secondary": "#505f76",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-secondary-container": "#54647a",
+                      "surface-variant": "#dae2fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "density-generous": "32px",
+                      "margin-page": "24px",
+                      "padding-card": "16px",
+                      "density-compact": "8px",
+                      "gutter-grid": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-surface border-r border-outline-variant dark:border-outline-variant flex flex-col p-density-compact space-y-base h-full z-40 hidden md:flex">
+<div class="p-padding-card flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center font-bold font-headline-md">S</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-black text-primary leading-tight">Syncora OS</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Institutional Management</p>
+</div>
+</div>
+<div class="flex-1 space-y-2 px-2">
+<a class="bg-secondary-container dark:bg-secondary-container text-on-secondary-container font-semibold rounded-lg flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>General</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-lg duration-200 ease-in-out flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span>Identity</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-lg duration-200 ease-in-out flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined">school</span>
+<span>Academic</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-lg duration-200 ease-in-out flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span>Security</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-lg duration-200 ease-in-out flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined">language</span>
+<span>Localization</span>
+</a>
+</div>
+<div class="mt-auto space-y-2 px-2 pb-4">
+<div class="border-t border-outline-variant pt-4">
+<a class="text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-lg duration-200 ease-in-out flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span>Support</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-lg duration-200 ease-in-out flex items-center space-x-3 px-3 py-2" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 bg-background min-h-screen">
+<!-- Header Container -->
+<header class="sticky top-0 z-30 bg-background/80 backdrop-blur-md border-b border-outline-variant px-density-generous py-padding-card flex justify-between items-start">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background">Notification Preferences</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-2xl">Configure how and where users receive institutional updates across all modules.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-on-primary font-body-sm text-body-sm font-medium px-4 py-2 rounded-lg shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">save</span>
+                Save Changes
+            </button>
+</header>
+<div class="p-density-generous max-w-7xl mx-auto space-y-density-generous">
+<!-- Global Delivery Channels -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="border-b border-outline-variant px-padding-card py-3 bg-surface-container-low flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Global Delivery Channels</h2>
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+</div>
+<div class="p-padding-card grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-grid">
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-medium text-on-surface">In-App</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dashboard alerts</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">ad_units</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-medium text-on-surface">Push</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mobile app</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-medium text-on-surface">Email</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">External inbox</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">sms</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-medium text-on-surface">SMS</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Text message</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

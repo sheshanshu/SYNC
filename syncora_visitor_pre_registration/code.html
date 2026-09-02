@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Visitor Pre-Registration - Campus Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e3e1ec",
+                      "surface-tint": "#4052c9",
+                      "inverse-on-surface": "#f1effa",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dfe0ff",
+                      "surface-container": "#efecf7",
+                      "on-surface": "#1a1b22",
+                      "surface-variant": "#e3e1ec",
+                      "secondary": "#505f76",
+                      "surface-container-high": "#e9e7f1",
+                      "outline-variant": "#c5c5d6",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#351000",
+                      "tertiary-container": "#5a2100",
+                      "on-primary-container": "#8392ff",
+                      "on-primary-fixed": "#000d60",
+                      "on-background": "#1a1b22",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#db855b",
+                      "on-error": "#ffffff",
+                      "access-active": "#2036bd",
+                      "status-denied": "#ba1a1a",
+                      "inverse-surface": "#2f3038",
+                      "secondary-fixed": "#d4e3ff",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "on-primary": "#ffffff",
+                      "background": "#fbf8ff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-secondary-fixed": "#0c1c30",
+                      "primary": "#000e65",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#381200",
+                      "tertiary-fixed-dim": "#ffb693",
+                      "status-permitted": "#15803d",
+                      "on-primary-fixed-variant": "#2437b0",
+                      "secondary-container": "#d4e3ff",
+                      "on-surface-variant": "#454653",
+                      "security-high": "#7e3100",
+                      "on-tertiary-fixed-variant": "#743411",
+                      "surface": "#fbf8ff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#001c9d",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "map-shield": "#0369a1",
+                      "inverse-primary": "#bbc3ff",
+                      "on-secondary": "#ffffff",
+                      "status-expired": "#92400e",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "on-secondary-container": "#56657c",
+                      "surface-dim": "#dbd9e3",
+                      "outline": "#757685",
+                      "surface-container-low": "#f4f2fd",
+                      "surface-bright": "#fbf8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "alert-gap": "12px",
+                      "node-tight": "8px",
+                      "margin-dashboard": "24px",
+                      "touch-target": "44px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        /* Form Field Outlines & Focus States */
+        input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+            border: 1px solid theme('colors.outline');
+            border-radius: theme('borderRadius.DEFAULT');
+            background-color: theme('colors.surface-container-lowest');
+            color: theme('colors.on-surface');
+        }
+        input:focus:not([type="checkbox"]):not([type="radio"]), select:focus, textarea:focus {
+            outline: none;
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 2px theme('colors.primary');
+            ring: 0;
+        }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row antialiased">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-surface-container-low dark:bg-surface-container-low h-screen w-72 flex-col border-r border-outline-variant dark:border-outline-variant sticky top-0 py-margin-dashboard shrink-0">
+<div class="px-gutter mb-8">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 32px; font-variation-settings: 'FILL' 1;">shield</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">Campus Command</h1>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant">North Sector Terminal</p>
+</div>
+<div class="flex-grow flex flex-col gap-2 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Command Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed font-bold border-r-4 border-primary dark:border-primary-fixed bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="font-body-md text-body-md">Visitor Log</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-body-md text-body-md">Incident Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">block</span>
+<span class="font-body-md text-body-md">Blacklist</span>
+</a>
+</div>
+<div class="px-4 mt-auto space-y-4">
+<button class="w-full bg-error text-on-error py-3 rounded-lg font-headline-md text-headline-md shadow hover:bg-on-error-container transition-colors flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">lock</span>
+                Emergency Lock
+            </button>
+<div class="border-t border-outline-variant pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+</div>
+<div class="flex items-center gap-3 px-4 pt-2">
+<img alt="Security Administrator Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar of a security administrator wearing a crisp dark uniform against a neutral light gray background. Professional corporate photography style, well-lit, shallow depth of field, high resolution, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7rDPpKrfRS70UrDaO64ferNFkZkLKXMQ8chfiw_kHhsd3TgDnnefvtTMdxI6U1v8oK1woxp22xL7_1QHc2xncCecqHRR5u8egJ6sV-37O5El8xm0AmcAEEdTQT9t1SX3LpktcHN0RGX6XLnJwz9QglB-AQl014XYgxM7II1lFYFusuaN4uSirP_wLR0tV_NYwr3TaKMoi_TO2gfm5UUw78czH38IBu5Y8GTlsztil3_KBPG1gqZK1"/>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Admin User</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">ID: SEC-8842</p>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col w-full relative">
+<!-- TopAppBar -->
+<header class="bg-surface-container dark:bg-surface-container border-b border-outline-variant dark:border-outline-variant docked full-width top-0 h-16 flex justify-between items-center px-gutter w-full sticky z-50">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed">Terminal V.2</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative hidden sm:block mr-4 focus-within:ring-2 focus-within:ring-primary rounded-DEFAULT">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 w-64 bg-surface-container-highest border-none text-body-sm rounded-DEFAULT focus:ring-0" placeholder="Search logs..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors hidden sm:block">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="ml-2 bg-primary text-on-primary px-4 py-1.5 rounded-DEFAULT font-body-md text-body-md hover:bg-primary-container transition-colors hidden sm:block">
+                    New Entry
+                </button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-gutter md:p-margin-dashboard max-w-7xl mx-auto w-full flex-grow flex flex-col lg:flex-row gap-margin-dashboard">
+<!-- Left Column: Registration Form -->
+<div class="w-full lg:w-3/5 xl:w-2/3 flex flex-col gap-6" id="registration-form-view">
+<div class="mb-2">
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg mb-1">Visitor Pre-Registration</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Issue a digital pass for upcoming guests to expedite security processing.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<form class="space-y-6">
+<!-- Guest Details Section -->
+<div>
+<h3 class="font-headline-md text-headline-md border-b border-outline-variant pb-2 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">person</span>
+                                Guest Details
+                            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="col-span-1 md:col-span-2">
+<label class="block font-label-mono text-label-mono mb-1 text-on-surface-variant">Full Name *</label>
+<input class="w-full px-3 py-2 font-body-md text-body-md" placeholder="e.g. Jane Doe" required="" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="block font-label-mono text-label-mono mb-1 text-on-surface-variant">Expected Date *</label>
+<div class="relative">
+<input class="w-full pl-10 pr-3 py-2 font-body-md text-body-md appearance-none" required="" type="date"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_today</span>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block font-label-mono text-label-mono mb-1 text-on-surface-variant">Arrival Time (Approx)</label>
+<div class="relative">
+<input class="w-full pl-10 pr-3 py-2 font-body-md text-body-md appearance-none" type="time"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">schedule</span>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block font-label-mono text-label-mono mb-1 text-on-surface-variant">Duration *</label>
+<select class="w-full px-3 py-2 font-body-md text-body-md" required="">
+<option disabled="" selected="" value="">Select duration</option>
+<option value="1">1 Hour</option>
+<option value="4">Half Day (4 Hours)</option>
+<option value="8">Full Day (8 Hours)</option>
+<option value="multi">Multiple Days</option>
+</select>
+</div>
+<div class="col-span-1">
+<label class="block font-label-mono text-label-mono mb-1 text-on-surface-variant">Purpose of Visit *</label>
+<select class="w-full px-3 py-2 font-body-md text-body-md" required="">
+<option disabled="" selected="" value="">Select purpose</option>
+<option value="meeting">Academic Meeting</option>
+<option value="lecture">Guest Lecture</option>
+<option value="maintenance">Maintenance/Vendor</option>
+<option value="personal">Personal Visit</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Identification Section -->
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant">
+<h3 class="font-headline-md text-headline-md mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">badge</span>
+                                Required Identification
+                            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Select the type of ID the guest must present at the security desk for verification upon arrival.</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<label class="flex items-center p-3 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest cursor-pointer hover:border-primary transition-colors focus-within:ring-2 focus-within:ring-primary">
+<input checked="" class="text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="id_type" type="radio" value="driver_license"/>
+<span class="ml-3 font-body-md text-body-md">Driver's License</span>
+</label>
+<label class="flex items-center p-3 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest cursor-pointer hover:border-primary transition-colors focus-within:ring-2 focus-within:ring-primary">
+<input class="text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="id_type" type="radio" value="passport"/>
+<span class="ml-3 font-body-md text-body-md">Passport</span>
+</label>
+<label class="flex items-center p-3 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest cursor-pointer hover:border-primary transition-colors focus-within:ring-2 focus-within:ring-primary">
+<input class="text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="id_type" type="radio" value="company_id"/>
+<span class="ml-3 font-body-md text-body-md">Company/Uni ID</span>
+</label>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-3 pt-4 border-t border-outline-variant mt-6">
+<button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-highest rounded-DEFAULT font-body-md text-body-md transition-colors" type="button">
+                                Cancel
+                            </button>
+<button class="px-6 py-2 bg-primary text-on-primary hover:bg-primary-container rounded-DEFAULT font-headline-md text-headline-md shadow transition-colors flex items-center gap-2" onclick="showSuccessState()" type="button">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+                                Generate Pass
+                            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Context/Info (Visible during form entry) -->
+<div class="w-full lg:w-2/5 xl:w-1/3 flex flex-col gap-4" id="info-panel">
+<!-- Security Guidelines Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5">
+<div class="flex items-center gap-2 mb-3 text-secondary">
+<span class="material-symbols-outlined">info</span>
+<h4 class="font-headline-md text-headline-md">Pre-Registration Guidelines</h4>
+</div>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-sm text-primary mt-0.5">check_circle</span>
+<span>Pre-register guests at least <strong>2 hours</strong> prior to arrival to avoid gate delays.</span>
+</li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-sm text-primary mt-0.5">check_circle</span>
+<span>Guests must present physical ID matching the selection made on this form.</span>
+</li>
+<li class="flex gap-2">
+<span class="material-symbols-outlined text-sm text-primary mt-0.5">check_circle</span>
+<span>The generated QR code is valid only for the specified date and duration.</span>
+</li>
+</ul>
+</div>
+<!-- Live Campus Status Map Context -->
+<div class="bg-surface-container border border-outline-variant rounded-lg overflow-hidden flex flex-col h-48 relative">
+<div class="bg-cover bg-center w-full h-full opacity-60" data-alt="A stylized, minimalist architectural floor plan or campus map overlay in technical blue and gray tones. Clean lines, grid background, with subtle glowing nodes indicating active security checkpoints. Corporate security software aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmEv3wjmWzNCSfWLVP-xgi1UFmbLymrmFgS2ENQxMBNgWsgDLaLj5RGQazwrAaZM7XQThg40CbvfkG7iprwm-oVGWJ0Wjgr6u59UfNnuXae9ULVJzCzMHHD9Los4G4VRwM-ZA-ugB1LnQPm4_DXDf8pN5H6yZws17He09nR2IkK0yUrLeOE3JbZOE87s5DU1NLyRat6UacKl27culH6g7_2L4wcPi1jFujv-bLaBcEDODGVQ_WRsAv')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent flex items-end p-4">
+<div>
+<span class="inline-block px-2 py-1 bg-status-permitted/20 text-status-permitted rounded-full font-data-viz text-data-viz mb-1 border border-status-permitted/30">System Normal</span>
+<p class="font-label-mono text-label-mono text-on-surface">Campus Access Gates: Operational</p>
+</div>
+</div>
+</div>
+</div>
+<!-- SUCCESS STATE: Digital Pass Preview (Hidden initially) -->
+<div class="w-full hidden max-w-4xl mx-auto flex flex-col lg:flex-row gap-6 animate-fade-in" id="success-view">
+<!-- Success Message & Actions -->
+<div class="w-full lg:w-1/2 flex flex-col justify-center gap-6">
+<div>
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-status-permitted/10 text-status-permitted mb-4">
+<span class="material-symbols-outlined" style="font-size: 28px;">task_alt</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-2">Pass Generated Successfully</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">A temporary visitor record has been created in the Command Center. Share the digital pass with your guest to expedite entry.</p>
+</div>
+<div class="space-y-3">
+<button class="w-full py-3 px-4 bg-surface-container-lowest border border-outline-variant hover:border-primary rounded-lg flex items-center justify-between transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center">
+<!-- Note: Normally wouldn't use arbitrary colors, but needed for specific brand WhatsApp imitation. Using close design system colors where possible. -->
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Share via WhatsApp</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<button class="w-full py-3 px-4 bg-surface-container-lowest border border-outline-variant hover:border-primary rounded-lg flex items-center justify-between transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">mail</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">Send Email Invitation</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+</div>
+<div class="pt-4 mt-2 border-t border-outline-variant">
+<button class="text-primary font-body-md text-body-md hover:underline flex items-center gap-1" onclick="resetForm()">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                            Register Another Guest
+                        </button>
+</div>
+</div>
+<!-- Digital Pass Preview -->
+<div class="w-full lg:w-1/2 flex justify-center items-center">
+<div class="w-full max-w-sm bg-surface-container-lowest rounded-xl border border-outline-variant shadow-lg overflow-hidden relative">
+<!-- Pass Header -->
+<div class="bg-primary px-6 py-4 flex justify-between items-start text-on-primary">
+<div>
+<p class="font-label-mono text-label-mono opacity-80 mb-1">VISITOR PASS</p>
+<h3 class="font-headline-lg text-headline-lg">Campus Entry</h3>
+</div>
+<span class="material-symbols-outlined" style="font-size: 32px;">shield</span>
+</div>
+<!-- Content -->
+<div class="p-6 flex flex-col items-center">
+<!-- Placeholder Photo (Optional logic visually) -->
+<div class="w-20 h-20 bg-surface-container-high rounded-full border-2 border-surface-container-lowest shadow-sm flex items-center justify-center mb-4 -mt-12 overflow-hidden">
+<span class="material-symbols-outlined text-outline-variant text-4xl">person</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg text-center mb-1">Jane Doe</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center mb-6">Host: Faculty Member</p>
+<!-- QR Code Area -->
+<div class="bg-surface-container p-4 rounded-lg mb-6 w-48 h-48 flex items-center justify-center relative border border-outline-variant">
+<!-- Decorative corners for QR box -->
+<div class="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-primary"></div>
+<div class="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-primary"></div>
+<div class="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-primary"></div>
+<span class="material-symbols-outlined text-primary opacity-20" style="font-size: 80px;">qr_code_2</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<p class="font-data-viz text-data-viz text-secondary uppercase bg-surface/80 px-2 py-1 rounded">V-8842-AX</p>
+</div>
+</div>
+<!-- Details Grid -->
+<div class="w-full grid grid-cols-2 gap-y-4 gap-x-2 bg-surface-container-low p-4 rounded border border-outline-variant">
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-0.5">DATE</p>
+<p class="font-data-viz text-data-viz text-on-surface">OCT 24, 2023</p>
+</div>
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-0.5">VALID FOR</p>
+<p class="font-data-viz text-data-viz text-on-surface">1 HOUR (10AM-11AM)</p>
+</div>
+<div class="col-span-2 pt-2 border-t border-outline-variant/50">
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-0.5">REQUIRED ID</p>
+<p class="font-data-viz text-data-viz text-on-surface">DRIVER's LICENSE</p>
+</div>
+</div>
+</div>
+<!-- Pass Footer -->
+<div class="bg-surface-container-high px-4 py-3 text-center border-t border-outline-variant">
+<p class="font-data-viz text-data-viz text-on-surface-variant">Present to gate security upon arrival</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+<script>
+        function showSuccessState() {
+            // In a real app, form validation would happen here
+            document.getElementById('registration-form-view').style.display = 'none';
+            document.getElementById('info-panel').style.display = 'none';
+            
+            const successView = document.getElementById('success-view');
+            successView.style.display = 'flex';
+            successView.classList.remove('hidden');
+        }
+
+        function resetForm() {
+            document.getElementById('success-view').style.display = 'none';
+            document.getElementById('success-view').classList.add('hidden');
+            
+            document.getElementById('registration-form-view').style.display = 'flex';
+            
+            // Re-show info panel based on breakpoint
+            const infoPanel = document.getElementById('info-panel');
+            infoPanel.style.display = 'flex';
+        }
+    </script>
+</body></html>

@@ -1,0 +1,55 @@
+# Syncora Frontend Architecture: Authentication & System States
+
+## 1. Domain Models (`auth.model.ts`)
+```typescript
+export interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  avatarUrl?: string;
+  organizationId: string;
+  roles: UserRole[];
+  permissions: string[];
+}
+
+export enum UserRole {
+  SUPER_ADMIN = 'SuperAdmin',
+  ORG_ADMIN = 'OrgAdmin',
+  FACULTY = 'Faculty',
+  STUDENT = 'Student',
+}
+
+export interface AuthState {
+  user: User | null;
+  accessToken: string | null;
+  status: 'IDLE' | 'LOADING' | 'AUTHENTICATED' | 'UNAUTHENTICATED' | 'ERROR';
+  error?: string;
+}
+```
+
+## 2. Abstraction Layer (Repository Pattern)
+The UI interacts with the `AuthService`, which uses the `IAuthRepository`. This allows swapping the `MockAuthRepository` with an `ApiAuthRepository` (NestJS) later.
+
+```typescript
+interface IAuthRepository {
+  login(credentials: LoginCredentials): Promise<AuthResponse>;
+  logout(): Promise<void>;
+  refreshToken(): Promise<string>;
+  verifyOtp(otp: string): Promise<boolean>;
+}
+```
+
+## 3. Session Handling Abstraction
+Handled via an `AuthInterceptor` and `SessionManager` utility to manage JWT storage (Secure Cookies/LocalStorage) and rotation logic.
+
+## 4. Protected Routes (Route Guards)
+Implementation of `RequireAuth` and `RequireRole(roles[])` high-order components to wrap sensitive views.
+
+## 5. Global System States
+Every module will implement a standard `ViewContainer` that handles:
+- **Loading**: Skeleton loaders or branded spinners.
+- **Empty**: Context-specific "No results found" with secondary CTAs.
+- **Error**: High-fidelity error states with "Try Again" or "Contact Support".
+- **Connectivity**: Offline banners and "Server Unavailable" full-page states.
+- **Security**: "Unauthorized" (401) and "Forbidden" (403) access walls.

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusFlow - Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+          font-family: 'Material Symbols Outlined';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          -webkit-font-feature-settings: 'liga';
+          -webkit-font-smoothing: antialiased;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "occupancy-maintenance": "#92400e",
+                      "primary": "#001c9d",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "on-background": "#1a1b23",
+                      "map-water": "#e0f2fe",
+                      "fleet-idle": "#64748b",
+                      "surface-container-high": "#e9e7f2",
+                      "map-road": "#ffffff",
+                      "occupancy-occupied": "#2036bd",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "secondary": "#505f76",
+                      "surface-variant": "#e3e1ed",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#56657c",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "surface-bright": "#fbf8ff",
+                      "error-container": "#ffdad6",
+                      "surface": "#fbf8ff",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2f3038",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-container-low": "#f4f2fe",
+                      "fleet-delayed": "#b91c1c",
+                      "on-secondary-fixed": "#0c1c30",
+                      "outline-variant": "#c5c5d7",
+                      "tertiary-container": "#7e3100",
+                      "secondary-container": "#d4e3ff",
+                      "occupancy-available": "#15803d",
+                      "primary-container": "#2036bd",
+                      "surface-container-highest": "#e3e1ed",
+                      "tertiary-fixed": "#ffdbcc",
+                      "outline": "#757686",
+                      "on-surface-variant": "#454654",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "on-surface": "#1a1b23",
+                      "on-error": "#ffffff",
+                      "surface-tint": "#3b4fd3",
+                      "on-primary-container": "#a9b3ff",
+                      "map-park": "#f0fdf4",
+                      "surface-container": "#eeecf8",
+                      "surface-dim": "#dad9e4",
+                      "on-primary-fixed": "#000d60",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f1effb",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "on-tertiary-container": "#ffa173",
+                      "inverse-primary": "#bcc3ff",
+                      "tertiary": "#5a2100",
+                      "secondary-fixed": "#d4e3ff",
+                      "fleet-transit": "#0369a1",
+                      "background": "#fbf8ff",
+                      "primary-fixed": "#dfe0ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "map-overlay-gap": "12px",
+                      "dashboard-margin": "24px",
+                      "grid-gutter": "16px",
+                      "node-spacing": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:hidden">
+<!-- Top App Bar (Mobile Adaptation) -->
+<header class="flex justify-between items-center h-16 px-dashboard-margin bg-surface z-40 sticky top-0 border-b border-outline-variant">
+<div class="font-headline-md text-headline-md font-bold text-primary">CampusFlow</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, modern portrait of a university student looking confident and approachable. The lighting is bright and even, casting soft shadows, typical of a professional yet friendly ID photo. The student is wearing casual, neat attire suitable for an academic environment, set against a solid, neutral gray background to ensure focus remains entirely on their face. The image style is sharp and corporate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqjD-xYB9w0GYLS0vLxw9y1ESN9q30AmcT0V8MHyojfX-Cr6jruOXu2p2dp315rdyJzDBPQlNUaJHc2xjx8ncaF3Cm94CppIWnfCqVLOvpZw9FFVDvVJOG2fEq885SIt97wFd9cOoRIVdlpPB_fB_F0KxrXwsfHR8Aq94nTWyL6BtVf4cfiBpkchHyr1iohyFkwJJS4hcs3v60y_0O8k7T7txT_HNMJRRGFRChmQyq_q_wXo7VaYzR"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-dashboard-margin flex flex-col gap-6 overflow-y-auto pb-24">
+<!-- Welcome Section -->
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">Good morning, Alex.</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Here is your campus status for today.</p>
+</div>
+<!-- My Room Card (Bento Style) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-5 relative overflow-hidden">
+<!-- Decorative Accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-body-md text-body-md text-on-surface-variant uppercase tracking-wider mb-1">My Room</h2>
+<div class="font-headline-md text-headline-md text-on-surface">Block B • 304</div>
+</div>
+<span class="material-symbols-outlined text-primary bg-surface-container-low p-2 rounded-full" data-icon="bed">bed</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="flex-1 bg-surface-container rounded-lg p-3">
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-1">BED ID</div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">B304-A</div>
+</div>
+<div class="flex-1 bg-surface-container rounded-lg p-3">
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-1">STATUS</div>
+<div class="font-body-md text-body-md font-semibold text-occupancy-occupied flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-occupancy-occupied block"></span> Occupied
+                    </div>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-4 mt-2">
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-2">ROOMMATES</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-dim flex items-center justify-center font-label-mono text-label-mono text-on-surface">JS</div>
+<span class="font-body-md text-body-md text-on-surface">Jordan Smith (Bed B)</span>
+</div>
+</div>
+</section>
+<!-- Live Bus Tracker -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col h-64 relative">
+<div class="p-4 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center z-10 relative shadow-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Route 42 - North Campus</h2>
+<div class="font-label-mono text-label-mono text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span> Next stop: Library
+                    </div>
+</div>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-mono text-label-mono flex items-center gap-1 animate-pulse">
+<span class="w-2 h-2 rounded-full bg-on-primary-container block"></span> ETA 4 min
+                </div>
+</div>
+<!-- Map Placeholder Area -->
+<div class="flex-1 relative bg-surface-container-low" data-alt="A clean, abstract vector map visualization of a university campus from a top-down perspective. The map uses a minimalist color palette with soft greys for buildings, pristine white for roads, and subtle light blues and greens for water and park areas, fitting a light-mode modern UI. A vibrant blue route line snakes through the roads, highlighting a bus path. The style is strictly graphic and structural, avoiding photorealism to emphasize clarity and navigation." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvcMqiAwUOw6EZV2RXnpj8H1Bkia7kHJ_3llkBw_to6jWTwWygI3rTpALzsKsWQ1RLSm0Kq1h_oMXSuDNbFv-pSas7lDC2brkb4xNb3UOBFtgnfPJWuN-3w615F6PQDPlRtBwsyxwxXclIpNHX_iu-tOTzXRQ5x-0kkQ4ntSSHnM63lepkzE9tZDcC19GJwykCvA6WvkX1Yje-t_bnrJTBG9MwZzUiJR1evBpjsySn9mQdV-OpNXyJ'); background-size: cover; background-position: center;">
+<!-- Vehicle Marker Overlay -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="bg-fleet-transit text-on-primary p-2 rounded-full shadow-md border-2 border-surface-container-lowest relative z-10">
+<span class="material-symbols-outlined" data-icon="directions_bus" data-weight="fill" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+</div>
+<!-- Stop indicator -->
+<div class="w-4 h-4 rounded-full border-2 border-fleet-transit bg-surface-container-lowest absolute -bottom-8 shadow-sm"></div>
+<div class="w-0.5 h-8 bg-fleet-transit absolute -bottom-8 border-dashed border-l border-fleet-transit opacity-50 z-0"></div>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="grid grid-cols-2 gap-4">
+<button class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<div class="bg-surface-container-highest p-3 rounded-full text-primary">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface text-center">Raise Maint. Request</span>
+</button>
+<button class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<div class="bg-surface-container-highest p-3 rounded-full text-primary">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface text-center">View Bus Schedule</span>
+</button>
+</section>
+</main>
+<!-- Bottom Nav Bar (Mobile Shell) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant h-16 flex justify-around items-center px-2 z-50">
+<div class="flex flex-col items-center justify-center w-16 h-full cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-mono text-[10px]">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-full cursor-pointer text-primary bg-secondary-container rounded-lg py-1 px-3 transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="bed" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bed</span>
+<span class="font-label-mono text-[10px] font-bold">Hostel</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-full cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="directions_bus">directions_bus</span>
+<span class="font-label-mono text-[10px]">Transit</span>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-full cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-mono text-[10px]">Profile</span>
+</div>
+</nav>
+</body></html>

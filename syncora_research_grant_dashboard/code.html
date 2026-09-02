@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Research &amp; Grant Management Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from system prompt -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "fleet-delayed": "#b91c1c",
+                      "primary-container": "#2036bd",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#56657c",
+                      "surface": "#fbf8ff",
+                      "tertiary-fixed-dim": "#ffb694",
+                      "inverse-surface": "#2f3038",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-fixed-variant": "#1d33bb",
+                      "on-secondary-fixed-variant": "#39485e",
+                      "tertiary": "#5a2100",
+                      "secondary-fixed-dim": "#b8c7e2",
+                      "on-tertiary-fixed": "#351000",
+                      "map-water": "#e0f2fe",
+                      "inverse-primary": "#bcc3ff",
+                      "on-secondary-fixed": "#0c1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "occupancy-maintenance": "#92400e",
+                      "on-secondary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f1effb",
+                      "on-tertiary": "#ffffff",
+                      "map-park": "#f0fdf4",
+                      "surface-container-highest": "#e3e1ed",
+                      "on-surface": "#1a1b23",
+                      "occupancy-available": "#15803d",
+                      "secondary": "#505f76",
+                      "map-road": "#ffffff",
+                      "surface-variant": "#e3e1ed",
+                      "primary-fixed-dim": "#bcc3ff",
+                      "on-primary-fixed": "#000d60",
+                      "primary-fixed": "#dfe0ff",
+                      "occupancy-occupied": "#2036bd",
+                      "surface-container-low": "#f4f2fe",
+                      "tertiary-container": "#7e3100",
+                      "on-primary-container": "#a9b3ff",
+                      "background": "#fbf8ff",
+                      "outline": "#757686",
+                      "fleet-idle": "#64748b",
+                      "secondary-fixed": "#d4e3ff",
+                      "outline-variant": "#c5c5d7",
+                      "on-tertiary-container": "#ffa173",
+                      "on-tertiary-fixed-variant": "#7a2f00",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#dad9e4",
+                      "primary": "#001c9d",
+                      "surface-container-high": "#e9e7f2",
+                      "secondary-container": "#d4e3ff",
+                      "on-background": "#1a1b23",
+                      "fleet-transit": "#0369a1",
+                      "surface-tint": "#3b4fd3",
+                      "on-surface-variant": "#454654",
+                      "surface-bright": "#fbf8ff",
+                      "surface-container": "#eeecf8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "node-spacing": "8px",
+                      "grid-gutter": "16px",
+                      "dashboard-margin": "24px",
+                      "map-overlay-gap": "12px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "data-viz": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-viz": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background h-full font-body-md text-body-md overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-lowest text-primary dark:text-primary-fixed font-body-sm text-body-sm docked left-0 h-screen w-64 border-r border-outline-variant dark:border-outline flat no shadows flex flex-col h-full py-dashboard-margin px-4 shrink-0 hidden md:flex">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-2">
+<img class="w-10 h-10 rounded object-cover" data-alt="A small, crisp, professional crest logo representing an academic science faculty. The logo uses a clean, high-contrast palette of deep navy blues and bright whites. The style is modern, minimalist, and authoritative, suitable for a university grant management dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZBaQ5I-LQdwMP5nPIVgajBnn0tgW4aa_SjZJpf62JyDeZZndCuwoepsjdCtggzeJErKrInbvKa0otOMJJxbEAXuRjHinggjVv682ECCDM5-Huu66qMKdLPpHrOia8nqnxGnOj_fDQBTZ3lJS0U3SnLckmSNZzgzRaXk3J2QBniwYUqNAzirKToovDTZ1ofXPefIeFoMUODadyRNc2LWkk6XcaU2WnGJpwVzzSKxIUp4ZRnCNaKWHC"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-semibold text-on-surface dark:text-on-surface-variant m-0 p-0 leading-tight">Faculty of Science</h1>
+<p class="font-label-mono text-label-mono text-secondary m-0 p-0">Grant Management Unit</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto pr-2">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Overview
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+                    Active Projects
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                    Grant Pipeline
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Financials
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Team Access
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg scale-98 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Archived
+                </a>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<button class="w-full mb-4 bg-primary text-on-primary font-body-sm text-body-sm py-2 px-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Build Budget
+            </button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg text-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                    System Status
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container dark:text-on-secondary-fixed-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-all rounded-lg text-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">description</span>
+                    Documentation
+                </a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopAppBar (Web) -->
+<header class="bg-surface-container dark:bg-inverse-surface text-primary dark:text-primary-fixed-dim font-body-md text-body-md docked full-width top-0 bg-surface-container-high dark:bg-surface-dim shadow-sm flat no shadows flex justify-between items-center px-dashboard-margin w-full h-16 shrink-0 hidden md:flex z-10 relative border-b-0">
+<div class="flex items-center gap-8 h-full">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">Syncora Research Portal</div>
+<nav class="flex items-center gap-6 h-full">
+<a class="h-full flex items-center text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors Active: opacity-80 transition-all duration-150 pt-[2px]" href="#">Dashboard</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Grants</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Compliance</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Analytics</a>
+<a class="h-full flex items-center text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface rounded-full border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body-sm w-64 outline-none transition-all placeholder:text-outline" placeholder="Search grants, PI, or IDs..." type="text"/>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="text-secondary hover:text-primary transition-colors flex items-center justify-center relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="ml-2 bg-primary text-on-primary px-4 py-1.5 rounded text-body-sm font-semibold hover:bg-opacity-90 transition-opacity">
+                    New Proposal
+                </button>
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A small, circular avatar portrait of an academic professional in their 40s. The lighting is clean and bright studio portrait style. The background is a soft, neutral grey. Professional attire, modern corporate academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2ZwCUvtqZu2TdTN9CsDpLc4zmO8AhvJwDEaYDthed-NDRjuny3M6RbfV3Ejv1_eKuMyBXVbc9fXeGzbGuLOUOKSa6Y4v-pfOhRb3LcpJ89qXrpru_nzFK1sA-od-M1sRot9YpuGAqA1ubWA0mNb8rwuZMO7OUXWMdd4bSpwEYEC8jK_46fQIwjFtybnU1yu3NKGZUqmi92YWW42uCPGaHwXwIJwe6n_CVssPKgDu9vpO_yVURhzOv"/>
+</div>
+</header>
+<!-- Scrollable Dashboard Content -->
+<main class="flex-1 overflow-y-auto p-dashboard-margin pb-24 md:pb-dashboard-margin">
+<div class="max-w-[1600px] mx-auto">
+<!-- Status Command Bar -->
+<div class="bg-surface-container-high rounded-xl p-4 mb-grid-gutter flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-outline-variant">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Research Portfolio Overview</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Q3 Fiscal Year 2024 Summary • Last updated: Today, 08:45 AM</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface text-primary border border-outline-variant hover:border-primary rounded font-body-sm text-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Export Report
+                        </button>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-grid-gutter mb-grid-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant relative overflow-hidden group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider">Total Funding</span>
+<span class="material-symbols-outlined text-occupancy-available bg-occupancy-available/10 p-1.5 rounded-lg">account_balance</span>
+</div>
+<div class="font-headline-lg text-[32px] leading-tight font-bold text-on-surface mb-1">$24.8M</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-occupancy-available">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12.5% YoY</span>
+</div>
+<!-- Decorative background element -->
+<div class="absolute -bottom-4 -right-4 text-surface-container group-hover:text-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-[100px] opacity-50">account_balance</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant relative overflow-hidden group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider">Active Projects</span>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">science</span>
+</div>
+<div class="font-headline-lg text-[32px] leading-tight font-bold text-on-surface mb-1">142</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-secondary">
+<span>Across 8 departments</span>
+</div>
+<div class="absolute -bottom-4 -right-4 text-surface-container group-hover:text-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-[100px] opacity-50">science</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant relative overflow-hidden group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider">Compliance Status</span>
+<span class="material-symbols-outlined text-fleet-transit bg-fleet-transit/10 p-1.5 rounded-lg">verified</span>
+</div>
+<div class="font-headline-lg text-[32px] leading-tight font-bold text-on-surface mb-1">98%</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-error">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>3 flags pending review</span>
+</div>
+<div class="absolute -bottom-4 -right-4 text-surface-container group-hover:text-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-[100px] opacity-50">verified</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant relative overflow-hidden group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-wider">Upcoming Milestones</span>
+<span class="material-symbols-outlined text-occupancy-maintenance bg-occupancy-maintenance/10 p-1.5 rounded-lg">event</span>
+</div>
+<div class="font-headline-lg text-[32px] leading-tight font-bold text-on-surface mb-1">12</div>
+<div class="flex items-center gap-1 font-body-sm text-body-sm text-secondary">
+<span>Next 30 days</span>
+</div>
+<div class="absolute -bottom-4 -right-4 text-surface-container group-hover:text-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-[100px] opacity-50">event</span>
+</div>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-grid-gutter">
+<!-- Left/Center Column: Research Portfolio Table -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col h-full min-h-[500px]">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-bright rounded-t-xl">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Active Grants Portfolio</h3>
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-outline text-[16px]">filter_list</span>
+<select class="pl-8 pr-8 py-1.5 bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary appearance-none outline-none">
+<option>All Funding Bodies</option>
+<option>NIH</option>
+<option>NSF</option>
+<option>DoD</option>
+</select>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container font-label-mono text-label-mono text-secondary uppercase tracking-wider">
+<tr>
+<th class="p-4 border-b border-outline-variant font-medium">Project ID &amp; Title</th>
+<th class="p-4 border-b border-outline-variant font-medium">Principal Investigator</th>
+<th class="p-4 border-b border-outline-variant font-medium">Body</th>
+<th class="p-4 border-b border-outline-variant font-medium">Amount</th>
+<th class="p-4 border-b border-outline-variant font-medium">Progress</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="p-4">
+<div class="font-label-mono text-xs text-primary mb-1">R-2024-089</div>
+<div class="font-medium group-hover:text-primary transition-colors line-clamp-1">Quantum Network Scalability Protocols</div>
+</td>
+<td class="p-4">Dr. E. Chen</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs font-label-mono">NSF</span>
+</td>
+<td class="p-4 font-data-viz text-data-viz">$1,250,000</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 w-24">
+<div class="bg-occupancy-available h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-secondary">75%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="p-4">
+<div class="font-label-mono text-xs text-primary mb-1">R-2023-142</div>
+<div class="font-medium group-hover:text-primary transition-colors line-clamp-1">Neuroplasticity in Adult Learning Models</div>
+</td>
+<td class="p-4">Dr. S. Williams</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs font-label-mono">NIH</span>
+</td>
+<td class="p-4 font-data-viz text-data-viz">$2,800,000</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 w-24">
+<div class="bg-fleet-transit h-1.5 rounded-full" style="width: 40%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-secondary">40%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group bg-error-container/10">
+<td class="p-4">
+<div class="font-label-mono text-xs text-error mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                                R-2023-011
+                                            </div>
+<div class="font-medium group-hover:text-primary transition-colors line-clamp-1">Climate Resilience in Urban Infrastructure</div>
+</td>
+<td class="p-4">Dr. M. Garcia</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs font-label-mono">DOE</span>
+</td>
+<td class="p-4 font-data-viz text-data-viz">$850,000</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 w-24">
+<div class="bg-error h-1.5 rounded-full" style="width: 90%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-error">90%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="p-4">
+<div class="font-label-mono text-xs text-primary mb-1">R-2024-201</div>
+<div class="font-medium group-hover:text-primary transition-colors line-clamp-1">Advanced Materials for Battery Storage</div>
+</td>
+<td class="p-4">Dr. L. Patel</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs font-label-mono">DoD</span>
+</td>
+<td class="p-4 font-data-viz text-data-viz">$4,100,000</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 w-24">
+<div class="bg-primary h-1.5 rounded-full" style="width: 15%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-secondary">15%</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="p-4">
+<div class="font-label-mono text-xs text-primary mb-1">R-2024-055</div>
+<div class="font-medium group-hover:text-primary transition-colors line-clamp-1">Synthetic Biology for Biofuel Production</div>
+</td>
+<td class="p-4">Dr. K. O'Connor</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs font-label-mono">NSF</span>
+</td>
+<td class="p-4 font-data-viz text-data-viz">$1,850,000</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 w-24">
+<div class="bg-occupancy-available h-1.5 rounded-full" style="width: 60%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-secondary">60%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant bg-surface-bright rounded-b-xl flex justify-center">
+<button class="text-primary font-body-sm text-body-sm font-medium hover:underline flex items-center gap-1">
+                                View Full Portfolio
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Contextual Panes -->
+<div class="flex flex-col gap-grid-gutter h-full">
+<!-- Grant Deadlines -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col flex-1">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-occupancy-maintenance text-[20px]">calendar_clock</span>
+                                    Grant Deadlines
+                                </h3>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Deadline Item -->
+<div class="flex gap-4 items-start group">
+<div class="flex flex-col items-center justify-center bg-surface-container rounded-lg p-2 min-w-[50px] border border-outline-variant group-hover:border-primary transition-colors">
+<span class="font-label-mono text-xs text-error font-bold">OCT</span>
+<span class="font-headline-md text-on-surface font-bold">15</span>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight mb-1 group-hover:text-primary transition-colors">NIH R01 Renewal</h4>
+<p class="font-label-mono text-[11px] text-secondary mb-1">ID: R-2021-098 • Dept: Biology</p>
+<span class="inline-block px-2 py-0.5 bg-error-container text-on-error-container rounded text-[10px] font-label-mono">Due in 5 days</span>
+</div>
+</div>
+<!-- Deadline Item -->
+<div class="flex gap-4 items-start group">
+<div class="flex flex-col items-center justify-center bg-surface-container rounded-lg p-2 min-w-[50px] border border-outline-variant group-hover:border-primary transition-colors">
+<span class="font-label-mono text-xs text-secondary font-bold">NOV</span>
+<span class="font-headline-md text-on-surface font-bold">01</span>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight mb-1 group-hover:text-primary transition-colors">NSF CAREER Proposal</h4>
+<p class="font-label-mono text-[11px] text-secondary mb-1">PI: Dr. A. Kim • Dept: CS</p>
+<span class="inline-block px-2 py-0.5 bg-surface-container-high text-on-surface-variant rounded text-[10px] font-label-mono">Internal Review Pending</span>
+</div>
+</div>
+<!-- Deadline Item -->
+<div class="flex gap-4 items-start group">
+<div class="flex flex-col items-center justify-center bg-surface-container rounded-lg p-2 min-w-[50px] border border-outline-variant group-hover:border-primary transition-colors">
+<span class="font-label-mono text-xs text-secondary font-bold">NOV</span>
+<span class="font-headline-md text-on-surface font-bold">12</span>
+</div>
+<div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight mb-1 group-hover:text-primary transition-colors">DoD YIP Submission</h4>
+<p class="font-label-mono text-[11px] text-secondary mb-1">PI: Dr. J. Smith • Dept: Engineering</p>
+<span class="inline-block px-2 py-0.5 bg-surface-container-high text-on-surface-variant rounded text-[10px] font-label-mono">Drafting Phase</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Funding Opportunities -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col flex-1">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">lightbulb</span>
+                                    Opportunities
+                                </h3>
+<span class="text-xs text-secondary font-label-mono">AI Matched</span>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<!-- Opportunity Card -->
+<div class="p-3 border border-outline-variant rounded-lg hover:border-primary cursor-pointer transition-colors bg-surface-bright group">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-[10px] px-1.5 py-0.5 bg-secondary-container text-on-secondary-container rounded">NSF</span>
+<span class="font-data-viz text-[11px] text-secondary">Up to $500k</span>
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface leading-snug mb-1 group-hover:text-primary transition-colors">Cyber-Physical Systems (CPS)</h4>
+<p class="text-xs text-on-surface-variant line-clamp-2 mb-2">Funding for cross-disciplinary research integrating computation and physical processes.</p>
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-occupancy-available flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check</span> 92% Profile Match
+                                        </span>
+</div>
+</div>
+<!-- Opportunity Card -->
+<div class="p-3 border border-outline-variant rounded-lg hover:border-primary cursor-pointer transition-colors bg-surface-bright group">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-mono text-[10px] px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant rounded">Private</span>
+<span class="font-data-viz text-[11px] text-secondary">Est $250k</span>
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface leading-snug mb-1 group-hover:text-primary transition-colors">Green Energy Innovation Grant</h4>
+<p class="text-xs text-on-surface-variant line-clamp-2 mb-2">Seed funding for early-stage prototypes in sustainable energy storage solutions.</p>
+<div class="flex justify-between items-center">
+<span class="font-label-mono text-[10px] text-occupancy-available flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check</span> 85% Profile Match
+                                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface dark:bg-inverse-surface text-primary dark:text-primary-fixed font-label-mono text-label-mono hidden fixed bottom-0 w-full rounded-t-full shadow-lg border-t border-outline-variant dark:border-outline shadow-lg fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 md:hidden border-t-0 bg-surface-container-lowest">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full p-2 Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] mt-1">Grants</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="text-[10px] mt-1">Approvals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-[10px] mt-1">Alerts</span>
+</a>
+</nav>
+</body></html>

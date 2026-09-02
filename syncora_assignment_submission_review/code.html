@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Submission Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#283044",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-surface-variant": "#454654",
+                        "surface": "#faf8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "secondary": "#505f76",
+                        "tertiary": "#7e3100",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary-container": "#54647a",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container": "#eaedff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-container": "#3e52d5",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#bbc3ff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface": "#131b2e",
+                        "secondary-container": "#d0e1fb",
+                        "tertiary-container": "#a44200",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-error": "#ffffff",
+                        "primary": "#2036bd",
+                        "surface-bright": "#faf8ff",
+                        "outline-variant": "#c5c5d7",
+                        "on-tertiary-container": "#ffd3bf",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "primary-fixed": "#dfe0ff",
+                        "on-background": "#131b2e",
+                        "on-primary-container": "#d7daff",
+                        "on-primary-fixed": "#000d60",
+                        "outline": "#757686",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#3b4fd2",
+                        "surface-container-high": "#e2e7ff",
+                        "surface-variant": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "density-generous": "32px",
+                        "margin-page": "24px",
+                        "density-compact": "8px",
+                        "gutter-grid": "16px",
+                        "padding-card": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen overflow-hidden flex flex-col md:flex-row">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 pt-20 pb-4 px-4 bg-surface-container-low border-r border-outline-variant z-40">
+<div class="mb-8 px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Faculty Portal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Syncora Academic</p>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="grid_on">grid_on</span>
+                Gradebook
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary-container text-on-primary-container rounded-lg opacity-80 scale-95 transition-transform font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                Assessments
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Roster
+            </a>
+</div>
+<div class="space-y-1 pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-page h-16 bg-surface border-b border-outline-variant md:pl-[calc(16rem+24px)] transition-all duration-300">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface p-2 rounded-full hover:bg-surface-variant focus:outline-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-bold text-primary hidden md:block">Submission Review: Final Project Thesis</h2>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary md:hidden">Final Project</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center justify-center bg-primary text-on-primary px-4 py-2 rounded font-body-sm text-body-sm hover:opacity-90 transition-opacity">
+                Create Assessment
+            </button>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="Faculty profile picture" class="w-8 h-8 rounded-full ml-2 object-cover border border-outline-variant" data-alt="A small, circular professional headshot photograph of a faculty member on a light grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZvUGyYnl7RDX2hnET_zCGjtp3t36m4s5ESwQjYFzLjutXRLnA--fEWlNPWBeWIdHgADD7Jqo3NLBtycpfcfremyngmFalxhxPuBFq5VCfKb0D80ojaV2oQ4YzBzrDluk-A8HCxVeRFKz7dOFS5PW1e1A2xCeltP62wYfYpgyebgGYcNb9uJtAXNotWMowzbhnvQdYP-IwjADt_CQMIHVAomEFMDtDYBeyZiWZ2Qj1OLU21H1KAkC"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area (Split Screen) -->
+<main class="flex-1 flex flex-col md:flex-row mt-16 md:ml-64 h-[calc(100vh-4rem)] bg-surface-container-low overflow-hidden">
+<!-- Left Panel: Submission List -->
+<section class="w-full md:w-1/3 lg:w-[400px] bg-surface flex flex-col border-r border-outline-variant shadow-sm z-10 h-full flex-shrink-0">
+<div class="p-4 border-b border-outline-variant bg-surface sticky top-0 z-20">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Submissions <span class="text-on-surface-variant font-normal text-body-sm">(34/40)</span></h3>
+<button class="p-1 rounded text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded border-none focus:ring-2 focus:ring-primary focus:bg-surface text-body-sm font-body-sm text-on-surface placeholder-on-surface-variant transition-all" placeholder="Search students..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-1">
+<!-- List Item 1 (Active) -->
+<button class="w-full text-left p-3 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-between transition-colors group relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-lg"></div>
+<div class="flex items-center gap-3 pl-2">
+<img alt="Student" class="w-10 h-10 rounded-full object-cover" data-alt="Small circular profile picture of a young female student with dark hair." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZerXFgIcV2TwmcwVeEsfl9BM4A60tHGYzENkrxqnDCKERr-RJgek4ZoETfn8olQcGcR5wAogSqLCzAsujek2y8G9zsD5tKOYgp7eiKmowGrBHmF1oRS6RcELr9ceC7KluDK9e7GBUDXeHPaXE-uPXwRpmvhgupfAlY5kP4a4G29kP3Z0ngv9oxV_I7lLpV6ttJie6JLEaFkaUCMm53HMlOQEGDtEtwEel00z9-HIbj_Nv7vhou2bY"/>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Elena Rodriguez</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oct 24, 11:45 AM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#eef2ff] text-primary border border-[#c7d2fe]">Needs Grading</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#f0fdf4] text-[#166534]">On Time</span>
+</div>
+</button>
+<!-- List Item 2 -->
+<button class="w-full text-left p-3 rounded-lg hover:bg-surface-container transition-colors border border-transparent hover:border-outline-variant flex items-center justify-between group">
+<div class="flex items-center gap-3 pl-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-md text-headline-md font-bold">JD</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">James Davies</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oct 24, 1:12 PM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-body-md text-body-md font-semibold text-on-surface">92/100</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#fef2f2] text-[#991b1b]">Late</span>
+</div>
+</button>
+<!-- List Item 3 -->
+<button class="w-full text-left p-3 rounded-lg hover:bg-surface-container transition-colors border border-transparent hover:border-outline-variant flex items-center justify-between group">
+<div class="flex items-center gap-3 pl-2">
+<img alt="Student" class="w-10 h-10 rounded-full object-cover" data-alt="Small circular profile picture of a male student wearing glasses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS8xLCZWLPCzPN8hAc-QY99Cohi2ksMSK5h22hSNl2Da6Cuykizok5qjVsSg6WoJ3dau0JGuHaPoG8Mem00YZC98yCRUQ-fe0wGGswGEjv2tJIPRRkevfx2zxLZ5vpHGlo0TsPbTXGlRDko1B--a6e_SHUT27pRwzBHLT6ZOTTluQNzA8kl08cRfgAqT-iKUkmf0_ASC8OG9TnTP62_IC7w-sBIkSKkNI3qDvFD3h-OOH-W2CbhBZn"/>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Marcus Chen</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Oct 23, 4:30 PM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#eef2ff] text-primary border border-[#c7d2fe]">Needs Grading</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-[#f0fdf4] text-[#166534]">On Time</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Right Panel: Document Preview & Grading (Canvas) -->
+<section class="flex-1 flex flex-col h-full bg-surface-container-low relative pb-[76px] md:pb-0">
+<!-- Toolbar -->
+<div class="h-14 bg-surface border-b border-outline-variant flex items-center justify-between px-4 sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<button class="p-1.5 rounded text-on-surface-variant hover:bg-surface-variant transition-colors" title="Zoom Out">
+<span class="material-symbols-outlined">zoom_out</span>
+</button>
+<span class="font-label-mono text-label-mono text-on-surface-variant">100%</span>
+<button class="p-1.5 rounded text-on-surface-variant hover:bg-surface-variant transition-colors" title="Zoom In">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-1 px-2 py-1.5 rounded text-on-surface-variant hover:bg-surface-variant transition-colors font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">add_comment</span>
+                        Add Comment
+                    </button>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 border border-outline-variant rounded bg-surface text-on-surface font-body-sm text-body-sm hover:bg-surface-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Download
+                    </button>
+</div>
+</div>
+<!-- Document Preview Area -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 flex justify-center bg-surface-container-low">
+<!-- Simulated PDF Document -->
+<div class="w-full max-w-[800px] bg-surface shadow-sm border border-outline-variant rounded-sm p-12 min-h-[1000px] relative">
+<div class="absolute top-8 right-8 text-on-surface-variant opacity-30">
+<span class="material-symbols-outlined text-[120px]">description</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-6">The Impact of Algorithmic Bias on Urban Planning</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Elena Rodriguez | Intro to Urban Data | Fall 2023</p>
+<div class="space-y-4 font-body-md text-body-md text-on-surface leading-relaxed">
+<p>Abstract: This paper explores the growing reliance on predictive algorithms in municipal resource allocation and the subsequent risks of reinforcing historical inequities...</p>
+<p>Introduction: The integration of data-driven decision-making in urban planning has promised unprecedented efficiency...</p>
+<!-- Highlighted text with comment anchor -->
+<p>However, <span class="bg-[#fef08a] px-1 rounded relative group cursor-pointer">these models often train on historical data that inherently reflects past discriminatory practices<span class="absolute -right-2 -top-2 w-4 h-4 bg-primary rounded-full text-on-primary flex items-center justify-center text-[10px] font-bold shadow">1</span></span>, leading to...</p>
+</div>
+</div>
+</div>
+<!-- Floating Grading Panel (Docked right on desktop, bottom sheet on mobile) -->
+<div class="absolute md:relative md:w-[320px] lg:w-[360px] md:border-l border-outline-variant bg-surface bottom-0 left-0 right-0 md:h-full shadow-[0_-4px_16px_rgba(0,0,0,0.1)] md:shadow-none transition-transform duration-300 transform translate-y-full md:translate-y-0 rounded-t-xl md:rounded-none z-30" id="grading-panel">
+<!-- Drag Handle for Mobile -->
+<div class="w-full flex justify-center pt-3 pb-1 md:hidden cursor-pointer" onclick="document.getElementById('grading-panel').classList.toggle('translate-y-full')">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="p-4 h-full flex flex-col">
+<div class="mb-6 hidden md:block">
+<h3 class="font-headline-md text-headline-md text-on-surface">Grading &amp; Feedback</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Elena Rodriguez</p>
+</div>
+<div class="flex-1 overflow-y-auto space-y-6 custom-scrollbar pr-2">
+<!-- Grade Input -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-2">FINAL GRADE</label>
+<div class="flex items-center gap-2">
+<input class="w-20 px-3 py-2 bg-surface border border-outline-variant rounded text-on-surface font-body-lg text-body-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="number" value="88"/>
+<span class="font-body-lg text-body-lg text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<!-- Rubric Section -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-2 flex justify-between">
+<span>RUBRIC</span>
+<button class="text-primary hover:underline text-[10px]">Expand</button>
+</label>
+<div class="space-y-3 bg-surface-container-low p-3 rounded-lg border border-outline-variant">
+<div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface mb-1">
+<span>Analysis &amp; Critical Thinking</span>
+<span class="font-semibold">18/20</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[90%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm text-on-surface mb-1">
+<span>Use of Sources</span>
+<span class="font-semibold">15/20</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[75%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feedback Textarea -->
+<div>
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-2">OVERALL FEEDBACK</label>
+<textarea class="w-full h-32 px-3 py-2 bg-surface border border-outline-variant rounded text-on-surface font-body-sm text-body-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none" placeholder="Enter feedback here...">Strong thesis, but consider elaborating more on the counter-arguments in section 3.</textarea>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 border-t border-outline-variant mt-auto space-y-2 pb-8 md:pb-0">
+<button class="w-full bg-primary text-on-primary py-2.5 rounded font-body-md text-body-md hover:bg-[#1a2c9b] transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-primary outline-none">
+                            Save &amp; Publish Grade
+                        </button>
+<button class="w-full bg-surface text-on-surface border border-outline-variant py-2.5 rounded font-body-md text-body-md hover:bg-surface-container transition-colors">
+                            Save as Draft
+                        </button>
+</div>
+</div>
+</div>
+<!-- Mobile grading toggle button -->
+<button class="md:hidden absolute bottom-20 right-4 w-12 h-12 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-20" onclick="document.getElementById('grading-panel').classList.toggle('translate-y-full')">
+<span class="material-symbols-outlined filled-icon">edit</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-outline-variant px-2 py-3 rounded-t-xl shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest rounded-lg p-2 transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="grade">grade</span>
+<span class="font-label-mono text-[10px] mt-1">Grades</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1.5 active:bg-surface-container-highest transition-colors scale-90 duration-150">
+<span class="material-symbols-outlined filled-icon text-[24px]" data-icon="edit_calendar">edit_calendar</span>
+<span class="font-label-mono text-[10px] mt-1 font-bold">Assess</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest rounded-lg p-2 transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="trending_up">trending_up</span>
+<span class="font-label-mono text-[10px] mt-1">Trends</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-container-highest rounded-lg p-2 transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_circle">account_circle</span>
+<span class="font-label-mono text-[10px] mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

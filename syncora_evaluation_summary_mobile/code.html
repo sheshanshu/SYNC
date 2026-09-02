@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evaluation Summary - CampusLogistics Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "occupancy-occupied": "#2036bd",
+                    "surface-container": "#eeecf8",
+                    "primary": "#001c9d",
+                    "inverse-primary": "#bcc3ff",
+                    "map-park": "#f0fdf4",
+                    "surface-container-high": "#e9e7f2",
+                    "on-primary": "#ffffff",
+                    "map-road": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#3b4fd3",
+                    "surface": "#fbf8ff",
+                    "surface-bright": "#fbf8ff",
+                    "inverse-on-surface": "#f1effb",
+                    "on-surface-variant": "#454654",
+                    "surface-container-low": "#f4f2fe",
+                    "surface-dim": "#dad9e4",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#bcc3ff",
+                    "occupancy-available": "#15803d",
+                    "surface-container-highest": "#e3e1ed",
+                    "surface-variant": "#e3e1ed",
+                    "primary-fixed": "#dfe0ff",
+                    "inverse-surface": "#2f3038",
+                    "on-secondary-fixed-variant": "#39485e",
+                    "tertiary-container": "#7e3100",
+                    "secondary-fixed-dim": "#b8c7e2",
+                    "fleet-transit": "#0369a1",
+                    "on-primary-fixed": "#000d60",
+                    "fleet-idle": "#64748b",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#2036bd",
+                    "occupancy-maintenance": "#92400e",
+                    "tertiary-fixed": "#ffdbcc",
+                    "fleet-delayed": "#b91c1c",
+                    "on-secondary-container": "#56657c",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c5c5d7",
+                    "map-water": "#e0f2fe",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#fbf8ff",
+                    "tertiary": "#5a2100",
+                    "on-secondary-fixed": "#0c1c30",
+                    "tertiary-fixed-dim": "#ffb694",
+                    "secondary": "#505f76",
+                    "on-tertiary-fixed-variant": "#7a2f00",
+                    "on-surface": "#1a1b23",
+                    "on-tertiary-container": "#ffa173",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1a1b23",
+                    "secondary-container": "#d4e3ff",
+                    "on-tertiary-fixed": "#351000",
+                    "outline": "#757686",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-primary-fixed-variant": "#1d33bb",
+                    "on-primary-container": "#a9b3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "grid-gutter": "16px",
+                    "node-spacing": "8px",
+                    "map-overlay-gap": "12px",
+                    "dashboard-margin": "24px"
+            },
+            "fontFamily": {
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "data-viz": [
+                            "JetBrains Mono"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "label-mono": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "data-viz": [
+                            "11px",
+                            {
+                                    "lineHeight": "14px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md pb-[80px] md:pb-0">
+<!-- Top Navigation Bar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col w-full z-40 bg-surface-container dark:bg-inverse-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-dashboard-margin py-3 max-w-full bg-surface-container dark:bg-inverse-surface">
+<div class="flex items-center space-x-6">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">CampusLogistics Portal</div>
+<div class="flex space-x-4">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-mono text-label-mono px-2 py-1 rounded hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors" href="#">Dashboard</a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary pb-1 font-bold font-label-mono text-label-mono px-2 py-1 hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors scale-[0.98] transition-transform duration-200" href="#">Evaluations</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-mono text-label-mono px-2 py-1 rounded hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-mono text-label-mono px-2 py-1 rounded hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="hidden lg:flex items-center bg-surface-container-low border border-outline-variant rounded-full px-3 py-1.5 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" style="font-size: 18px;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-48 text-on-surface outline-none" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-4 py-2 rounded font-medium hover:bg-primary/90 transition-colors">Create Cycle</button>
+<div class="flex space-x-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of an administrator in a modern, well-lit academic setting. The style is clean, corporate, and high-quality, fitting a modern dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq7ET7mOeFz6uZ2Q0_Ok5KZtsaKRKa9PN4shU4VV3TkywZPSzrt8AXOdof7XTKWJpW8pAzoUWRapJur3Qr7TpAAxU_Oy0gULxezdQ3OCaa36XT_ZZbRW9gKhCknwoVD4C3CSq5nIpeeUq7JFIzHGM_Ubi6PE46hscSVW2HXllJvzVUv_LswntUkqIB0iFF-spgCne_jVqG5iPw3H-G9Y3b1mhOntfktuMxQEA6P1hbON93mPKX-98e"/>
+</div>
+</div>
+</nav>
+<!-- Mobile Header -->
+<header class="md:hidden flex justify-between items-center px-4 py-4 bg-surface-container border-b border-outline-variant sticky top-0 z-40 shadow-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary">Reviews</div>
+<div class="flex items-center space-x-3">
+<button class="text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<img alt="Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small circular avatar showing a professional, modern profile picture of a user, clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaW2wTTcaKppFL7yXZjeqCB_OIaiFodrflRsohOhzt159nR9NzGcnQNHkDbjSanUjcVU-8TzeiJO1x1Wu_ThWlRiP2lYpAJMUI2s6Yc1_D3ouI_XcLBZ6Q-vpZ9SaO-747B9OL-8JY6JB5xVLNGTj0WtMZk5UbB5wJ-bSJi4hIx1HLHWy_f37oCgfbQ7TAwA9P8lNSwE_19_dG0rb26Le1JU7IXheN6yt9CigmDaYI4lWHIQOA-XKS"/>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Side Navigation (Desktop Only) -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline py-4 px-3 space-y-node-spacing z-30">
+<div class="flex items-center space-x-3 px-2 mb-6">
+<img alt="Institution Logo" class="w-10 h-10 rounded-lg object-cover" data-alt="A minimalist, geometric institution logo in deep blue and crisp white, representing an organized academic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrSbv1gCkl-kUmUmEniMh5aEOSF4G8nQkwhkx08tY-oW567JL9cNBDGkoaVjY0B6stTdZ1nkdm-NgHujuSuLXi_JjAIo3S5MJ-THi51KbLD3GpHKuOArfdU8txFW-ubf4tkjQos0juiJlSSygZ6Hay4jDiC6HjI7_Qv4ALGe-h0N8NaOWabFVKQavJrjLBvKOXM4XF3oCtfjnpTOgR65Z1gEf5pgAhunpM1CwUSclnFmLSpG0U3BEx"/>
+<div>
+<h2 class="font-headline-md text-headline-md font-black text-on-surface dark:text-inverse-on-surface leading-tight">Academic Affairs</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Evaluation Module</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-surface-variant hover:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-on-surface">dashboard</span>
+<span class="font-label-mono text-label-mono">Overview</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-primary dark:text-inverse-primary bg-secondary-container dark:bg-secondary font-bold translate-x-1 transition-transform group" href="#">
+<span class="material-symbols-outlined mr-3 text-primary dark:text-inverse-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-label-mono text-label-mono">Faculty Reviews</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-surface-variant hover:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-on-surface">badge</span>
+<span class="font-label-mono text-label-mono">Staff Reviews</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-surface-variant hover:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-on-surface">group</span>
+<span class="font-label-mono text-label-mono">Peer Portal</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-surface-variant hover:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-on-surface">analytics</span>
+<span class="font-label-mono text-label-mono">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-on-surface">support_agent</span>
+<span class="font-label-mono text-label-mono">Support</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-on-surface">archive</span>
+<span class="font-label-mono text-label-mono">Archive</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background p-4 md:p-dashboard-margin">
+<div class="max-w-4xl mx-auto space-y-6">
+<!-- Priority Notification -->
+<div class="bg-error-container text-on-error-container p-4 rounded-lg flex items-start space-x-3 border border-[#ffb4ab]">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div>
+<h4 class="font-label-mono text-label-mono font-bold">Action Required: Self-Assessment Overdue</h4>
+<p class="font-body-sm text-body-sm mt-1 opacity-90">Your 2024 Annual Self-Assessment was due 2 days ago. Please complete it immediately to proceed to the peer review phase.</p>
+</div>
+</div>
+<!-- Review Status Card (Glassmorphism/Minimalist) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Fall 2024 Cycle</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Status: <span class="text-error font-medium">Pending Self-Assessment</span></p>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-error-container flex items-center justify-center bg-surface relative">
+<svg class="absolute w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-error" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="25, 100" stroke-width="4"></path>
+</svg>
+<span class="font-data-viz text-data-viz text-on-surface">25%</span>
+</div>
+</div>
+<div class="relative pt-6">
+<!-- Progress Timeline -->
+<div class="absolute top-8 left-0 w-full h-0.5 bg-surface-container-high z-0"></div>
+<div class="absolute top-8 left-0 w-1/4 h-0.5 bg-primary z-0"></div>
+<div class="flex justify-between relative z-10">
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[12px]">check</span>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant text-center w-16 leading-tight">Goals Set</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full border-2 border-primary bg-surface mb-2 ring-4 ring-primary/20"></div>
+<span class="font-data-viz text-data-viz text-primary font-bold text-center w-16 leading-tight">Self Assess</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full border-2 border-outline bg-surface mb-2"></div>
+<span class="font-data-viz text-data-viz text-outline text-center w-16 leading-tight">Peer Review</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-5 h-5 rounded-full border-2 border-outline bg-surface mb-2"></div>
+<span class="font-data-viz text-data-viz text-outline text-center w-16 leading-tight">Manager Signoff</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Next Steps (Actionable Deep Links) -->
+<section>
+<h3 class="font-label-mono text-label-mono text-on-surface-variant mb-3 uppercase tracking-wider">Next Steps</h3>
+<div class="space-y-3">
+<a class="block bg-surface-container-lowest border border-outline-variant hover:border-primary rounded-lg p-4 transition-colors group" href="#">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="p-2 bg-primary-container text-on-primary-container rounded-md">
+<span class="material-symbols-outlined">edit_document</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Complete Self-Assessment</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Estimated time: 15 mins</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">arrow_forward</span>
+</div>
+</a>
+<a class="block bg-surface-container-lowest border border-outline-variant rounded-lg p-4 opacity-75 hover:opacity-100 transition-opacity" href="#">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="p-2 bg-surface-container-high text-on-surface-variant rounded-md">
+<span class="material-symbols-outlined">person_search</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-medium text-on-surface">Nominate Peer Reviewers</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Unlocks after Self-Assessment</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">lock</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Recent Feedback Snippet -->
+<section>
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider">Recent Feedback</h3>
+<a class="font-label-mono text-label-mono text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-4 relative">
+<span class="material-symbols-outlined absolute top-4 right-4 text-outline-variant opacity-30 text-4xl">format_quote</span>
+<div class="flex items-center space-x-3 mb-3">
+<img alt="Reviewer" class="w-8 h-8 rounded-full object-cover" data-alt="A small profile picture of a senior colleague, professional attire, warm lighting, corporate academic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqym5ZyCbzNqCCbfT3pAKWmiKQ188cQmk0zv4-Ogwf6YcAeVLh9WyohweBZtDG8EGOqFxZtKjDljjbf_Hbt6ftVJrBgNMLlqUWcIYWeSz-WlUMTnXxEAXr09taJsUvSkzD_65KEuqICf30z_5qLkZwHtdfYwP_9cIkLDYZqt2GLG0HOvhY9E7ZslfbTBMkAAutkqqp2xMUjvRFLNKP_bXBSuRSb65eu7QN01xxWDYZ5FLgUwf0Q14k"/>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">Dr. Sarah Jenkins</p>
+<p class="font-data-viz text-data-viz text-on-surface-variant">Dept. Chair • Oct 12</p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface italic text-on-surface-variant line-clamp-3 relative z-10">
+                            "Excellent work managing the logistics for the spring symposium. The room allocations were handled flawlessly, and your attention to detail regarding accessibility requirements was noted and appreciated by the planning committee."
+                        </p>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-2 pt-2 md:hidden shadow-lg dark:shadow-none bg-surface dark:bg-inverse-surface border-t border-outline-variant rounded-t-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-mono text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full p-2 scale-95 transition-all w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rate_review</span>
+<span class="font-label-mono text-[10px] mt-1 font-bold">Reviews</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-mono text-[10px] mt-1">Peers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high rounded-full" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-mono text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

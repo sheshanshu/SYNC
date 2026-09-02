@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Performance Review Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "occupancy-occupied": "#2036bd",
+                        "surface-container": "#eeecf8",
+                        "primary": "#001c9d",
+                        "inverse-primary": "#bcc3ff",
+                        "map-park": "#f0fdf4",
+                        "surface-container-high": "#e9e7f2",
+                        "on-primary": "#ffffff",
+                        "map-road": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3b4fd3",
+                        "surface": "#fbf8ff",
+                        "surface-bright": "#fbf8ff",
+                        "inverse-on-surface": "#f1effb",
+                        "on-surface-variant": "#454654",
+                        "surface-container-low": "#f4f2fe",
+                        "surface-dim": "#dad9e4",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "occupancy-available": "#15803d",
+                        "surface-container-highest": "#e3e1ed",
+                        "surface-variant": "#e3e1ed",
+                        "primary-fixed": "#dfe0ff",
+                        "inverse-surface": "#2f3038",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "tertiary-container": "#7e3100",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "fleet-transit": "#0369a1",
+                        "on-primary-fixed": "#000d60",
+                        "fleet-idle": "#64748b",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2036bd",
+                        "occupancy-maintenance": "#92400e",
+                        "tertiary-fixed": "#ffdbcc",
+                        "fleet-delayed": "#b91c1c",
+                        "on-secondary-container": "#56657c",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c5c5d7",
+                        "map-water": "#e0f2fe",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf8ff",
+                        "tertiary": "#5a2100",
+                        "on-secondary-fixed": "#0c1c30",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "secondary": "#505f76",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "on-surface": "#1a1b23",
+                        "on-tertiary-container": "#ffa173",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1b23",
+                        "secondary-container": "#d4e3ff",
+                        "on-tertiary-fixed": "#351000",
+                        "outline": "#757686",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "on-primary-container": "#a9b3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-gutter": "16px",
+                        "node-spacing": "8px",
+                        "map-overlay-gap": "12px",
+                        "dashboard-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "data-viz": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-4 px-3 space-y-node-spacing bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline w-64 docked left-0">
+<div class="flex items-center gap-3 mb-6 px-2">
+<img class="w-10 h-10 rounded-lg object-cover" data-alt="A clean, minimalist logo icon for an academic institution, featuring a subtle geometric crest in deep navy blue on a crisp white background. The style is modern, professional, and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8gsfj98g_pNb2J2DoBY4cSsfnsPy2scBxmULKmgZYJx2qMkfHxQKVD-OimhrlgCJWuXIsVir2tiG7z2uq-muFxlVITIneUtwWqXW24N5ydxUOexe4We0cSXO_LvmFF4JIWh9NZ5DhY3WQ4pMwesWx1A422R91krZcVgSItijDa33Zg0Ph2Z2LjrJCs8IWChgbnB5qHCfB7OEeLXY31BCE-5ZTsd_GvHAC8ToiGGQDR0qMn7Y7P5bL"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-black text-on-surface dark:text-inverse-on-surface">Academic Affairs</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Evaluation Module</p>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary bg-secondary-container font-bold translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-mono text-label-mono">Faculty Reviews</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-mono text-label-mono">Staff Reviews</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-mono text-label-mono">Peer Portal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-mono text-label-mono">Analytics</span>
+</a>
+</div>
+<div class="space-y-1 pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-mono text-label-mono">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">archive</span>
+<span class="font-label-mono text-label-mono">Archive</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- TopNavBar (for mobile/general context, simplified for this layout) -->
+<header class="md:hidden flex justify-between items-center w-full px-dashboard-margin py-3 max-w-full bg-surface-container dark:bg-inverse-surface border-b border-outline-variant">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">CampusLogistics Portal</h1>
+<img class="w-8 h-8 rounded-full" data-alt="A professional headshot of an academic administrator, wearing a dark blazer, looking confident and approachable against a light gray background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAirAt8TIQq_fEQdyzQmfQdsjnW90LbhSbv9DNDtyjEhDyyd3s_1yur4RCHsuJbL83zaKNRswgKuIqC8PdZbq9R87UpYcl_nZHQ9Uza7A5LO1jlSidwZwnSLvVSl0tGTPyOD15qvsBtTFrg4ZRDX5c74x6Arj32iCkxcClaxIjGgWhe5QsvjadHhnZikOAsXLcpr1iJJjfnsjfx1E0kZBdnyEghuhtjCKDuGcWQsmBDz1Pzpl-jTBZn"/>
+</header>
+<!-- Workspace Header -->
+<div class="px-dashboard-margin py-6 bg-surface-container border-b border-outline-variant shrink-0">
+<div class="flex justify-between items-end">
+<div>
+<div class="font-label-mono text-label-mono text-secondary mb-1">FY2023 / FACULTY PERFORMANCE</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Annual Review: Dr. Sarah Jenkins</h2>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 border border-outline rounded text-primary font-label-mono text-label-mono hover:bg-surface-container-highest transition-colors">Save Draft</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded font-label-mono text-label-mono hover:bg-primary-container hover:text-on-primary-container transition-colors">Submit Final</button>
+</div>
+</div>
+<!-- Command Bar / Status -->
+<div class="mt-6 flex items-center gap-6 p-3 bg-surface-container-high rounded-lg border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-occupancy-available" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-data-viz text-data-viz text-on-surface">Self-Assessment: Complete</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-occupancy-maintenance" style="font-variation-settings: 'FILL' 1;">pending</span>
+<span class="font-data-viz text-data-viz text-on-surface">Manager Review: In Progress</span>
+</div>
+<div class="ml-auto flex items-center gap-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">View Mode:</span>
+<select class="bg-surface-container-lowest border-outline-variant rounded text-label-mono font-label-mono py-1 pl-2 pr-8 focus:border-primary focus:ring-primary">
+<option>Side-by-Side (Compare)</option>
+<option>Self-Assessment Only</option>
+<option>Manager Feedback Only</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Scrollable Form Area -->
+<div class="flex-1 overflow-y-auto p-dashboard-margin bg-background">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Section 1: Research Achievements -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">1. Research Achievements</h3>
+<span class="font-data-viz text-data-viz px-2 py-1 bg-secondary-container text-on-secondary-container rounded">Weight: 40%</span>
+</div>
+<div class="p-6 grid grid-cols-2 gap-8">
+<!-- Self Assessment Column -->
+<div class="space-y-4 border-r border-outline-variant pr-8">
+<h4 class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-4">Self-Assessment</h4>
+<div class="flex justify-between items-center mb-4">
+<label class="font-body-sm text-body-sm text-on-surface">Quantitative Score (1-5)</label>
+<select class="border-outline-variant rounded text-label-mono font-label-mono w-20 focus:border-primary focus:ring-primary">
+<option>5 - Exceptional</option>
+<option selected="">4 - Exceeds</option>
+<option>3 - Meets</option>
+<option>2 - Needs Imp.</option>
+<option>1 - Unsat.</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-on-surface mb-2">Qualitative Comments</label>
+<textarea class="w-full h-32 border-outline-variant rounded focus:border-primary focus:ring-primary font-body-sm text-body-sm text-on-surface resize-none p-3" readonly="">Published 3 peer-reviewed articles in Tier 1 journals this academic year. Secured a $50k NSF grant for the new materials lab. Presented at two international conferences.</textarea>
+</div>
+</div>
+<!-- Manager Feedback Column -->
+<div class="space-y-4">
+<h4 class="font-label-mono text-label-mono text-primary uppercase tracking-wider mb-4">Manager Evaluation</h4>
+<div class="flex justify-between items-center mb-4">
+<label class="font-body-sm text-body-sm text-on-surface">Quantitative Score (1-5)</label>
+<select class="border-outline-variant rounded text-label-mono font-label-mono w-20 focus:border-primary focus:ring-primary bg-surface-container-low">
+<option>5 - Exceptional</option>
+<option selected="">4 - Exceeds</option>
+<option>3 - Meets</option>
+<option>2 - Needs Imp.</option>
+<option>1 - Unsat.</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-on-surface mb-2">Qualitative Comments</label>
+<textarea class="w-full h-32 border-outline focus:border-primary focus:ring-primary font-body-sm text-body-sm text-on-surface resize-none p-3 rounded-lg" placeholder="Enter feedback here..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Teaching Excellence -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">2. Teaching Excellence</h3>
+<span class="font-data-viz text-data-viz px-2 py-1 bg-secondary-container text-on-secondary-container rounded">Weight: 40%</span>
+</div>
+<div class="p-6 grid grid-cols-2 gap-8">
+<div class="space-y-4 border-r border-outline-variant pr-8">
+<h4 class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-4">Self-Assessment</h4>
+<div class="flex justify-between items-center mb-4">
+<label class="font-body-sm text-body-sm text-on-surface">Quantitative Score (1-5)</label>
+<select class="border-outline-variant rounded text-label-mono font-label-mono w-20 focus:border-primary focus:ring-primary">
+<option selected="">5 - Exceptional</option>
+<option>4 - Exceeds</option>
+<option>3 - Meets</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-on-surface mb-2">Qualitative Comments</label>
+<textarea class="w-full h-32 border-outline-variant rounded focus:border-primary focus:ring-primary font-body-sm text-body-sm text-on-surface resize-none p-3" readonly="">Student evaluation scores averaged 4.8/5.0 across all 3 undergrad courses. Redesigned the intro syllabus to include more interactive lab modules.</textarea>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-mono text-label-mono text-primary uppercase tracking-wider mb-4">Manager Evaluation</h4>
+<div class="flex justify-between items-center mb-4">
+<label class="font-body-sm text-body-sm text-on-surface">Quantitative Score (1-5)</label>
+<select class="border-outline-variant rounded text-label-mono font-label-mono w-20 focus:border-primary focus:ring-primary bg-surface-container-low">
+<option>5 - Exceptional</option>
+<option>4 - Exceeds</option>
+<option>3 - Meets</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-on-surface mb-2">Qualitative Comments</label>
+<textarea class="w-full h-32 border-outline focus:border-primary focus:ring-primary font-body-sm text-body-sm text-on-surface resize-none p-3 rounded-lg" placeholder="Enter feedback here..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Administrative Contributions -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">3. Administrative Contributions</h3>
+<span class="font-data-viz text-data-viz px-2 py-1 bg-secondary-container text-on-secondary-container rounded">Weight: 20%</span>
+</div>
+<div class="p-6 grid grid-cols-2 gap-8">
+<div class="space-y-4 border-r border-outline-variant pr-8">
+<h4 class="font-label-mono text-label-mono text-secondary uppercase tracking-wider mb-4">Self-Assessment</h4>
+<div class="flex justify-between items-center mb-4">
+<label class="font-body-sm text-body-sm text-on-surface">Quantitative Score (1-5)</label>
+<select class="border-outline-variant rounded text-label-mono font-label-mono w-20 focus:border-primary focus:ring-primary">
+<option>5 - Exceptional</option>
+<option>4 - Exceeds</option>
+<option selected="">3 - Meets</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-on-surface mb-2">Qualitative Comments</label>
+<textarea class="w-full h-32 border-outline-variant rounded focus:border-primary focus:ring-primary font-body-sm text-body-sm text-on-surface resize-none p-3" readonly="">Served on the curriculum committee and advised 15 undergraduate students. Assisted in departmental hiring for the new adjunct position.</textarea>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-mono text-label-mono text-primary uppercase tracking-wider mb-4">Manager Evaluation</h4>
+<div class="flex justify-between items-center mb-4">
+<label class="font-body-sm text-body-sm text-on-surface">Quantitative Score (1-5)</label>
+<select class="border-outline-variant rounded text-label-mono font-label-mono w-20 focus:border-primary focus:ring-primary bg-surface-container-low">
+<option>5 - Exceptional</option>
+<option>4 - Exceeds</option>
+<option>3 - Meets</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm text-on-surface mb-2">Qualitative Comments</label>
+<textarea class="w-full h-32 border-outline focus:border-primary focus:ring-primary font-body-sm text-body-sm text-on-surface resize-none p-3 rounded-lg" placeholder="Enter feedback here..."></textarea>
+</div>
+</div>
+</div>
+</section>
+<div class="pb-12"></div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-2 pt-2 md:hidden bg-surface dark:bg-inverse-surface border-t border-outline-variant shadow-lg rounded-t-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-mono-mobile text-label-mono-mobile mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full p-2 scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+<span class="font-label-mono-mobile text-label-mono-mobile mt-1">Reviews</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-mono-mobile text-label-mono-mobile mt-1">Peers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant p-2 hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-mono-mobile text-label-mono-mobile mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

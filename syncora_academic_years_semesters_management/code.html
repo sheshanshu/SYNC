@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Admin - Semesters</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d3e4fe",
+                        "surface": "#faf8ff",
+                        "on-surface-variant": "#454654",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "primary-container": "#3e52d5",
+                        "surface-container-low": "#f2f3ff",
+                        "outline-variant": "#c5c5d7",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container-highest": "#dae2fd",
+                        "inverse-surface": "#283044",
+                        "surface-variant": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dfe0ff",
+                        "background": "#faf8ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "primary": "#2036bd",
+                        "inverse-primary": "#bbc3ff",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary-container": "#54647a",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-bright": "#faf8ff",
+                        "surface-tint": "#3b4fd2",
+                        "tertiary-container": "#a44200",
+                        "surface-container": "#eaedff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#7e3100",
+                        "on-tertiary-container": "#ffd3bf",
+                        "error": "#ba1a1a",
+                        "outline": "#757686",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-background": "#131b2e",
+                        "on-primary-container": "#d7daff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "on-primary-fixed": "#000d60",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-container-high": "#e2e7ff",
+                        "secondary": "#505f76",
+                        "on-surface": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "24px",
+                        "base": "4px",
+                        "density-compact": "8px",
+                        "density-generous": "32px",
+                        "padding-card": "16px",
+                        "gutter-grid": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom Checkbox Styling to match "Set as Current" toggle requirement */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #2036bd;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2036bd;
+        }
+        
+        /* Subtle row hover for data-dense tables */
+        .data-row:hover {
+            background-color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-surface-container-low border-r border-outline-variant h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-density-generous px-density-compact hidden md:flex z-50">
+<div class="mb-density-generous px-4">
+<div class="flex items-center gap-3">
+<img alt="Syncora Logo" class="w-8 h-8 rounded-DEFAULT" data-alt="A clean, minimalist vector logo of a stylized interlocking 'S' representing the Syncora brand in a deep indigo color, suited for a modern light-mode administrative dashboard dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9iELFEWYcbqMSc17Xbe2JxrZoGW-mrU1WCUF2jfA39gSuVAP1UBO3Pr5pmoc3gbgpXAUPRCFqck63CUG9GlG86sLy31vEKWssaiuFrNIxx-GCswGThlNCevygne9UuT9-jJZ3EpvtDrjXAJLnbO2561vQDeZPctgKyl0Ifho5ZS-oH9F9sn4qp4UQwjq8ETKK5IBaIhJ4sewNeUgP0VQy4XJDIeo51Gi_q-PXXVPaFUcNhOQezhy9"/>
+<div>
+<h1 class="font-display text-headline-md font-bold text-primary tracking-tight">Syncora Admin</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Academic Management</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="school">school</span>
+<span class="font-body-md text-body-md">Programs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_view">grid_view</span>
+<span class="font-body-md text-body-md">Sections</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="meeting_room">meeting_room</span>
+<span class="font-body-md text-body-md">Rooms</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-primary font-bold border-r-4 border-primary bg-primary-container/10" href="#">
+<span class="material-symbols-outlined text-[20px] fill-icon" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md text-body-md">Semesters</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface-bright fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] h-16 border-b border-outline-variant flex justify-between items-center px-margin-page z-40">
+<!-- Mobile Brand (Hidden on Desktop) -->
+<div class="md:hidden flex items-center gap-2">
+<h1 class="font-display text-headline-lg-mobile font-black text-primary uppercase tracking-wider">Syncora</h1>
+</div>
+<!-- Search (Search on left) -->
+<div class="hidden md:flex items-center flex-1 max-w-md">
+<div class="relative w-full focus-within:ring-2 focus-within:ring-primary rounded-DEFAULT">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary" placeholder="Search years, semesters..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors hidden sm:block">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant hidden sm:block"></div>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors group">
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A small, professional headshot photo of an administrator wearing business casual attire, against a light gray background, for a profile avatar in a light-mode web application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtVbNxOxd4D6Z0TDnfFc6sHEUOCdLXMRbkkjWaLoG4a6hvKNJVLLZskYn-g9bguGR65hYq9JH-sUIph5G3TUk93zkPxSE23TCQc-jB3BqhLUdGiWZr7G0EuyPdtUU9t7Nj8uXpYRMFqAZjJyQHo9jVtxaBjNa69LtYPyk2S0tqGnqDGpkD3VbV_MS2dyAfkspwhD4LQtTBFjIQQcKG-VJ8cOcvoG9f6bI4Wz6yKtkZ7TsjRKjx4XsW"/>
+<span class="font-label-mono text-label-mono uppercase tracking-wider hidden lg:block group-hover:text-primary transition-colors">Profile Settings</span>
+</button>
+</div>
+</header>
+<!-- Page Content Canvas -->
+<main class="flex-1 pt-24 px-margin-page pb-density-generous overflow-x-hidden">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Academic Terms</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage academic years, semesters, and active enrollments.</p>
+</div>
+<button class="bg-primary text-on-primary font-body-md text-body-md font-semibold px-4 py-2 rounded-DEFAULT hover:bg-surface-tint transition-colors shadow-sm whitespace-nowrap flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    New Academic Year
+                </button>
+</div>
+<!-- Bento Grid Layout for Data Density -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-grid items-start">
+<!-- Main List Area (Span 8) -->
+<div class="xl:col-span-8 space-y-4">
+<!-- Academic Year Card: 2024-2025 (Expanded/Active) -->
+<div class="bg-surface-bright border border-outline-variant rounded-lg overflow-hidden">
+<!-- Year Header (Clickable to collapse, though not functional in static HTML) -->
+<div class="bg-surface-container px-6 py-4 flex items-center justify-between border-b border-outline-variant cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">keyboard_arrow_down</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">2024-2025 Academic Year</h3>
+<span class="bg-primary/10 text-primary font-label-mono text-label-mono px-2 py-0.5 rounded-sm uppercase tracking-wider">Current</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden sm:block">
+<p class="font-label-mono text-label-mono text-on-surface-variant">Total Enrollments</p>
+<p class="font-body-md text-body-md font-semibold text-on-surface">4,250</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">more_vert</span></button>
+</div>
+</div>
+<!-- Semesters List (Data Table format) -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="font-label-mono text-label-mono text-on-surface-variant px-6 py-3 uppercase tracking-wider font-medium">Semester</th>
+<th class="font-label-mono text-label-mono text-on-surface-variant px-6 py-3 uppercase tracking-wider font-medium">Dates</th>
+<th class="font-label-mono text-label-mono text-on-surface-variant px-6 py-3 uppercase tracking-wider font-medium">Status</th>
+<th class="font-label-mono text-label-mono text-on-surface-variant px-6 py-3 uppercase tracking-wider font-medium text-right">Enrollments</th>
+<th class="font-label-mono text-label-mono text-on-surface-variant px-6 py-3 uppercase tracking-wider font-medium text-center">Active Term</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Fall Semester -->
+<tr class="data-row transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Fall 2024</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="font-body-sm text-body-sm text-on-surface">Aug 28 - Dec 15</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface-variant font-label-mono text-label-mono px-2 py-0.5 rounded-sm">
+                                                Completed
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-body-md text-body-md text-on-surface">2,150</span>
+</td>
+<td class="px-6 py-4 text-center">
+<!-- Inactive Toggle -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in opacity-50 cursor-not-allowed">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-surface-bright border-4 border-outline-variant appearance-none cursor-not-allowed" disabled="" id="toggle-fall24" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-outline-variant cursor-not-allowed" for="toggle-fall24"></label>
+</div>
+</td>
+</tr>
+<!-- Spring Semester (Active) -->
+<tr class="data-row transition-colors bg-primary-container/5">
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-body-md text-body-md font-semibold text-primary">Spring 2025</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="font-body-sm text-body-sm text-on-surface">Jan 15 - May 10</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-primary/10 text-primary font-label-mono text-label-mono px-2 py-0.5 rounded-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                                Active
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-body-md text-body-md font-semibold text-on-surface">2,100</span>
+</td>
+<td class="px-6 py-4 text-center">
+<!-- Active Toggle -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-surface-bright border-4 appearance-none cursor-pointer" id="toggle-spring25" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full cursor-pointer" for="toggle-spring25"></label>
+</div>
+</td>
+</tr>
+<!-- Summer Semester -->
+<tr class="data-row transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-surface-dim"></div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Summer 2025</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">May 25 - Aug 10</p>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 border border-outline-variant text-on-surface-variant font-label-mono text-label-mono px-2 py-0.5 rounded-sm bg-transparent">
+                                                Upcoming
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="font-body-md text-body-md text-on-surface-variant">-</span>
+</td>
+<td class="px-6 py-4 text-center">
+<!-- Inactive Toggle -->
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-surface-bright border-4 border-outline-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out" id="toggle-summer25" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-outline-variant cursor-pointer transition-colors duration-200 ease-in-out" for="toggle-summer25"></label>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-surface px-6 py-3 border-t border-outline-variant">
+<button class="text-primary font-body-sm text-body-sm font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Semester
+                            </button>
+</div>
+</div>
+<!-- Academic Year Card: 2023-2024 (Collapsed) -->
+<div class="bg-surface-bright border border-outline-variant rounded-lg overflow-hidden">
+<div class="bg-surface px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3 opacity-75">
+<span class="material-symbols-outlined text-on-surface-variant">keyboard_arrow_right</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">2023-2024 Academic Year</h3>
+<span class="bg-surface-container-high text-on-surface-variant font-label-mono text-label-mono px-2 py-0.5 rounded-sm uppercase tracking-wider">Archived</span>
+</div>
+<div class="flex items-center gap-6 opacity-75">
+<div class="text-right hidden sm:block">
+<p class="font-label-mono text-label-mono text-on-surface-variant">Total Enrollments</p>
+<p class="font-body-md text-body-md font-semibold text-on-surface">4,102</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Panel (Span 4) -->
+<div class="xl:col-span-4 space-y-gutter-grid">
+<!-- Quick Stats Card -->
+<div class="bg-surface-bright border border-outline-variant rounded-lg p-padding-card">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-4">Current Term Overview</h3>
+<div class="space-y-4">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Active Term</p>
+<p class="font-headline-md text-headline-md text-primary font-bold">Spring 2025</p>
+</div>
+<div class="h-[1px] bg-outline-variant w-full"></div>
+<div class="flex justify-between items-end">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Term Progress</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Week 6 of 16</p>
+</div>
+<span class="font-label-mono text-label-mono text-primary bg-primary-container/10 px-2 py-1 rounded-sm">38%</span>
+</div>
+<!-- Simple Progress Bar -->
+<div class="w-full bg-surface-container-high rounded-full h-2 mt-2">
+<div class="bg-primary h-2 rounded-full" style="width: 38%"></div>
+</div>
+<div class="pt-2">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-1">Key Dates</p>
+<ul class="space-y-2">
+<li class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">Midterms Begin</span>
+<span class="text-on-surface-variant font-label-mono">Mar 01</span>
+</li>
+<li class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">Spring Break</span>
+<span class="text-on-surface-variant font-label-mono">Mar 15-22</span>
+</li>
+<li class="flex justify-between font-body-sm text-body-sm">
+<span class="text-on-surface">Finals Week</span>
+<span class="text-on-surface-variant font-label-mono">May 03-10</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- System Actions -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-padding-card">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-4">Term Actions</h3>
+<div class="space-y-2">
+<button class="w-full text-left bg-surface-bright hover:bg-surface border border-outline-variant px-4 py-2 rounded-DEFAULT font-body-md text-body-md text-on-surface transition-colors flex items-center justify-between">
+<span>Generate Term Report</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">download</span>
+</button>
+<button class="w-full text-left bg-surface-bright hover:bg-surface border border-outline-variant px-4 py-2 rounded-DEFAULT font-body-md text-body-md text-on-surface transition-colors flex items-center justify-between">
+<span>Rollover Courses to Summer</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

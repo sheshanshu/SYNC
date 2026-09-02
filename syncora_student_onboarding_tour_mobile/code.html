@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora Mobile Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#bbc3ff",
+                        "on-primary-fixed": "#000d60",
+                        "on-tertiary-fixed": "#351000",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#3b4fd2",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-surface": "#283044",
+                        "on-primary-container": "#d7daff",
+                        "tertiary-container": "#a44200",
+                        "outline-variant": "#c5c5d7",
+                        "surface": "#faf8ff",
+                        "secondary-container": "#d0e1fb",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary": "#2036bd",
+                        "on-background": "#131b2e",
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "background": "#faf8ff",
+                        "primary-container": "#3e52d5",
+                        "surface-variant": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f3ff",
+                        "surface-container-high": "#e2e7ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "inverse-primary": "#bbc3ff",
+                        "secondary": "#505f76",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "tertiary": "#7e3100",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface-variant": "#454654",
+                        "surface-dim": "#d2d9f4",
+                        "primary-fixed": "#dfe0ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eaedff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "outline": "#757686",
+                        "on-secondary-container": "#54647a",
+                        "on-surface": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffd3bf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-grid": "16px",
+                        "density-generous": "32px",
+                        "density-compact": "8px",
+                        "padding-card": "16px",
+                        "base": "4px",
+                        "margin-page": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .swipe-container {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .swipe-slide {
+            scroll-snap-align: center;
+        }
+        /* Hide scrollbar */
+        .swipe-container::-webkit-scrollbar {
+            display: none;
+        }
+        .swipe-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface h-screen w-full overflow-hidden flex flex-col font-body-md antialiased md:hidden relative">
+<!-- Top Action Bar -->
+<div class="flex justify-between items-center p-padding-card w-full absolute top-0 z-10">
+<div class="font-headline-md text-headline-md font-bold text-primary">Syncora</div>
+<button class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" id="skipBtn">Skip</button>
+</div>
+<!-- Swipeable Container -->
+<div class="swipe-container flex overflow-x-auto h-full w-full snap-x snap-mandatory" id="onboardingContainer">
+<!-- Step 1: Digital ID -->
+<div class="swipe-slide flex-none w-full h-full flex flex-col items-center justify-center p-padding-card">
+<div class="w-full max-w-sm flex flex-col items-center">
+<div class="w-64 h-64 mb-density-generous rounded-xl overflow-hidden shadow-sm border border-outline-variant relative bg-surface-container-low flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A clean, modern 3D illustration of a digital student ID card emerging from a sleek smartphone screen. The style is minimalistic and professional, using a soft, light-mode palette of white, pale gray, and subtle indigo accents to match the Syncora brand. The lighting is bright and evenly diffused, creating a welcoming and accessible atmosphere without overwhelming details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtUwcygrd6UptAv_sOnNQutwdPeIay7DQK0BonutHyrb1K2ZRdb2WwirDbvDpT_-tYfdMBty40MS7zFzh9JeE51LJID-7zMfU6fmO5XQifSITP-BhilIJ3TOnEbGPKCmSv7diqbdCmdKFqidARTb4RRnFq7jjIHVP504MtroPDbO2VGMdcJqA99kfYsFqvczi7lyza6X2SdMM_1Xp6Yf3DxB8GZZHrUIpjWc80QzAkYtsoI_Ds6hSJ"/>
+</div>
+<div class="text-center space-y-density-compact">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your Digital Identity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Access campus facilities, libraries, and events instantly with your secure, always-on digital ID card.</p>
+</div>
+</div>
+</div>
+<!-- Step 2: Today at a Glance -->
+<div class="swipe-slide flex-none w-full h-full flex flex-col items-center justify-center p-padding-card">
+<div class="w-full max-w-sm flex flex-col items-center">
+<div class="w-64 h-64 mb-density-generous rounded-xl overflow-hidden shadow-sm border border-outline-variant relative bg-surface-container-low flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A refined, abstract 3D representation of a daily schedule interface floating above a minimal landscape. The visual uses clean geometric shapes—rectangles and lines—to symbolize calendar events, set against a pristine, light-mode background. Soft shadows and a restrained color palette of cool grays and deep blues convey a sense of calm organization and professional efficiency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCykXqBHBY7rvRFP97CY8mu93TNLjnLW6v_jsvNOQdGfdIaEi9YqcgIWrrMv6EcEFEqO1rPh0ok3Rs76hZ0RrU_nZ3RN9-6HbL8TevqPeOPNRxxVOlK11a018Gu6h0c2TgSuY_Y8FUbqvGtygsbq0qk87Bo6N7LDfVXbAwmHX1-0iUqQXmJpYg31mZ9LBX8WqBz9qN8vmRhIDjfu-sjumvEE-nbWBOd4bMF5enI6D_9nEo-gwO4a10X"/>
+</div>
+<div class="text-center space-y-density-compact">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Today at a Glance</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Stay ahead of your schedule. View your classes, assignments, and campus events clearly organized for the day.</p>
+</div>
+</div>
+</div>
+<!-- Step 3: Support Hub -->
+<div class="swipe-slide flex-none w-full h-full flex flex-col items-center justify-center p-padding-card">
+<div class="w-full max-w-sm flex flex-col items-center">
+<div class="w-64 h-64 mb-density-generous rounded-xl overflow-hidden shadow-sm border border-outline-variant relative bg-surface-container-low flex items-center justify-center">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A soft, inviting 3D illustration symbolizing support and wellness. It features interlocking, smooth geometric forms forming a protective, harmonious structure in a bright, airy environment. The color scheme is predominantly light, with gentle touches of warm tones complementing the brand's primary blues. The mood is reassuring, modern, and deeply professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6O4G8fVPos_JkHmMQU_5FxMI4pJh9wa87u1D50IZlnQAbeHs1sblGtIRxaE6RUK_cs6AX4HkEUXO5NKHKahTclI7o-aysb6x1v54cybZV8tBBgD_pTxXQMomdW1GeGm2DoHxCiDz5I5vntSyowiy3rFx49BTUrTPQMdYayJXzHuEg87GMkRz3Shu3TSDQd0Wsw1KcQgbrqVqm-nghoHD7ZKlRtDlhhG361syePNOCMGLSMx2CgQ_q"/>
+</div>
+<div class="text-center space-y-density-compact">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Support &amp; Wellness Hub</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Connect with academic advisors, mental health resources, and campus security with a single tap.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Controls -->
+<div class="w-full absolute bottom-0 left-0 p-margin-page pb-density-generous bg-surface">
+<div class="flex flex-col items-center w-full max-w-sm mx-auto space-y-margin-page">
+<!-- Progress Dots -->
+<div class="flex space-x-2" id="progressDots">
+<div class="w-2 h-2 rounded-full bg-primary transition-all duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+</div>
+<!-- Next / Get Started Button -->
+<button class="w-full py-3 bg-primary text-on-primary font-body-lg text-body-lg rounded-lg shadow-sm hover:opacity-90 active:opacity-80 transition-all font-medium flex justify-center items-center" id="nextBtn">
+<span>Continue</span>
+<span class="material-symbols-outlined ml-2 text-[20px]" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('onboardingContainer');
+            const dots = document.getElementById('progressDots').children;
+            const nextBtn = document.getElementById('nextBtn');
+            const nextBtnText = nextBtn.querySelector('span');
+            const nextBtnIcon = nextBtn.querySelector('.material-symbols-outlined');
+            const skipBtn = document.getElementById('skipBtn');
+            const totalSlides = 3;
+            let currentSlide = 0;
+
+            const updateUI = (index) => {
+                // Update dots
+                Array.from(dots).forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.remove('bg-surface-variant');
+                        dot.classList.add('bg-primary', 'w-4');
+                    } else {
+                        dot.classList.remove('bg-primary', 'w-4');
+                        dot.classList.add('bg-surface-variant', 'w-2');
+                    }
+                });
+
+                // Update Button
+                if (index === totalSlides - 1) {
+                    nextBtnText.textContent = 'Get Started';
+                    nextBtnIcon.textContent = 'check';
+                    skipBtn.classList.add('invisible');
+                } else {
+                    nextBtnText.textContent = 'Continue';
+                    nextBtnIcon.textContent = 'arrow_forward';
+                    skipBtn.classList.remove('invisible');
+                }
+                currentSlide = index;
+            };
+
+            // Scroll listener for swipe
+            container.addEventListener('scroll', () => {
+                const scrollLeft = container.scrollLeft;
+                const slideWidth = container.clientWidth;
+                const index = Math.round(scrollLeft / slideWidth);
+                if (index !== currentSlide && index >= 0 && index < totalSlides) {
+                    updateUI(index);
+                }
+            });
+
+            // Button Click
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) {
+                    container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+                } else {
+                    // Action for final step (e.g., redirect)
+                    console.log("Onboarding Complete");
+                }
+            });
+
+            skipBtn.addEventListener('click', () => {
+                 container.scrollTo({ left: container.clientWidth * (totalSlides - 1), behavior: 'smooth' });
+            });
+
+            // Init
+            updateUI(0);
+        });
+    </script>
+</body></html>

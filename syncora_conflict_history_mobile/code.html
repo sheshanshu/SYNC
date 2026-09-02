@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Conflict History &amp; Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1a1b23",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-surface": "#1a1b23",
+                        "outline-variant": "#c5c5d7",
+                        "outline": "#757686",
+                        "surface-container-high": "#e9e7f2",
+                        "surface-container-highest": "#e3e1ed",
+                        "primary-fixed-dim": "#bcc3ff",
+                        "occupancy-occupied": "#2036bd",
+                        "tertiary": "#5a2100",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-primary-fixed-variant": "#1d33bb",
+                        "tertiary-container": "#7e3100",
+                        "secondary-fixed": "#d4e3ff",
+                        "error-container": "#ffdad6",
+                        "fleet-idle": "#64748b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#3b4fd3",
+                        "on-surface-variant": "#454654",
+                        "inverse-on-surface": "#f1effb",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "fleet-delayed": "#b91c1c",
+                        "surface-container-low": "#f4f2fe",
+                        "background": "#fbf8ff",
+                        "surface-container": "#eeecf8",
+                        "occupancy-available": "#15803d",
+                        "on-primary-container": "#a9b3ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "primary-fixed": "#dfe0ff",
+                        "surface": "#fbf8ff",
+                        "on-primary-fixed": "#000d60",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary-fixed": "#0c1c30",
+                        "fleet-transit": "#0369a1",
+                        "on-secondary-container": "#56657c",
+                        "on-secondary": "#ffffff",
+                        "map-road": "#ffffff",
+                        "occupancy-maintenance": "#92400e",
+                        "inverse-primary": "#bcc3ff",
+                        "map-park": "#f0fdf4",
+                        "primary": "#001c9d",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fbf8ff",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dad9e4",
+                        "map-water": "#e0f2fe",
+                        "surface-variant": "#e3e1ed",
+                        "inverse-surface": "#2f3038",
+                        "primary-container": "#2036bd",
+                        "secondary-container": "#d4e3ff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffa173"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "dashboard-margin": "24px",
+                        "grid-gutter": "16px",
+                        "node-spacing": "8px",
+                        "map-overlay-gap": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "data-viz": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-viz": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-[80px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim bg-surface-container-high dark:bg-surface-container-highest flex justify-between items-center px-4 h-16 w-full">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-on-surface-variant/10 p-2 rounded-full transition-colors duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-weight="fill">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight font-bold">Timetable Conflict</h1>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-on-surface-variant/10 p-2 rounded-full transition-colors duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-weight="fill">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[80px] px-4 space-y-6">
+<!-- Metrics Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary">timer</span>
+<h2 class="font-headline-md text-headline-md text-on-background">Time Saved</h2>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Through Automation</p>
+<p class="font-headline-lg text-headline-lg text-occupancy-available mt-1">12.5 hrs</p>
+</div>
+<div class="text-right">
+<p class="font-body-sm text-body-sm text-on-surface-variant">This Week</p>
+<p class="font-label-mono text-label-mono text-primary mt-1">+2.1 hrs vs last week</p>
+</div>
+</div>
+</section>
+<!-- Logs Section -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-background px-1">Recent Resolutions</h2>
+<div class="space-y-3">
+<!-- Log Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="bg-occupancy-available/20 text-occupancy-available px-2 py-1 rounded-full font-data-viz text-data-viz flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Success
+                            </span>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant">10:42 AM</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-background font-medium">CS101 Room Allocation</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Moved from Lab 3 to Lab 5 due to capacity constraint.</p>
+</div>
+<div class="flex items-center gap-2 mt-2 pt-3 border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-body-sm text-body-sm text-secondary">Dr. Thorne (Auto-resolved)</span>
+</div>
+</div>
+<!-- Log Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="bg-occupancy-available/20 text-occupancy-available px-2 py-1 rounded-full font-data-viz text-data-viz flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Success
+                            </span>
+</div>
+<span class="font-data-viz text-data-viz text-on-surface-variant">Yesterday</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-background font-medium">Faculty Double Booking</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Prof. Smith scheduled for MA201 and MA301 simultaneously. MA301 shifted to 2:00 PM.</p>
+</div>
+<div class="flex items-center gap-2 mt-2 pt-3 border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-body-sm text-body-sm text-secondary">Admin System</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline flex justify-around items-center h-20 px-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">event_busy</span>
+<span class="font-label-mono text-label-mono mt-1 font-bold">Conflicts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-mono text-label-mono mt-1">Schedules</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-mono text-label-mono mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

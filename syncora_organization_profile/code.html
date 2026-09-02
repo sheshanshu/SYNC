@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syncora - Organization Profile</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#454654",
+                        "primary-fixed": "#dfe0ff",
+                        "surface-variant": "#dae2fd",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface": "#faf8ff",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "secondary-container": "#d0e1fb",
+                        "outline-variant": "#c5c5d7",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#a44200",
+                        "outline": "#757686",
+                        "on-background": "#131b2e",
+                        "secondary": "#505f76",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-bright": "#faf8ff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-highest": "#dae2fd",
+                        "on-primary-container": "#d7daff",
+                        "primary-container": "#3e52d5",
+                        "surface-tint": "#3b4fd2",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#000d60",
+                        "surface-container": "#eaedff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-surface": "#131b2e",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e2e7ff",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "primary": "#2036bd",
+                        "inverse-surface": "#283044",
+                        "background": "#faf8ff",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "surface-container-low": "#f2f3ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#bbc3ff",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-container": "#ffd3bf",
+                        "tertiary": "#7e3100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "density-generous": "32px",
+                        "base": "4px",
+                        "margin-page": "24px",
+                        "padding-card": "16px",
+                        "gutter-grid": "16px",
+                        "density-compact": "8px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex h-screen w-64 flex-col fixed left-0 top-0 border-r border-outline-variant bg-surface transition-all duration-200 ease-in-out">
+<div class="flex flex-col h-full py-6 px-4">
+<!-- Brand Logo -->
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary icon-fill" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight">Syncora</h1>
+<p class="text-label-mono font-label-mono text-outline">Academic Management</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="mb-8 bg-primary text-on-primary font-body-md font-semibold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                New Request
+            </button>
+<!-- Nav Links -->
+<div class="flex-1 flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors" data-icon="dashboard">dashboard</span>
+<span class="font-body-md font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors" data-icon="school">school</span>
+<span class="font-body-md font-medium">Academic Records</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors" data-icon="groups">groups</span>
+<span class="font-body-md font-medium">Faculty Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md font-medium">Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-body-md font-medium">Task Management</span>
+</a>
+<!-- Active State (Settings -> Maps to Organization Profile intent) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold active:scale-95 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-8 before:w-1 before:bg-primary before:rounded-r-full" href="#">
+<span class="material-symbols-outlined text-[20px] icon-fill text-primary" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</div>
+<!-- Footer Links -->
+<div class="mt-auto pt-6 border-t border-outline-variant/50 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors" data-icon="help">help</span>
+<span class="font-body-md font-medium">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container transition-colors rounded-xl group active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+<span class="font-body-md font-medium">Log Out</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 w-full min-w-0">
+<!-- TopAppBar -->
+<header class="bg-surface-bright border-b border-outline-variant flex justify-between items-center w-full px-margin-page sticky top-0 z-40 h-16 transition-colors duration-150">
+<!-- Mobile Menu Toggle & Brand (Visible on mobile only) -->
+<div class="md:hidden flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight">Syncora</span>
+</div>
+<!-- Desktop Navigation Links (Optional mapping, contextually hidden or modified for settings focus) -->
+<div class="hidden md:flex items-center gap-6 h-full">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md font-medium h-full flex items-center border-b-2 border-transparent" href="#">Directory</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md font-medium h-full flex items-center border-b-2 border-transparent" href="#">Quick Actions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md font-medium h-full flex items-center border-b-2 border-transparent" href="#">Reports</a>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-3">
+<button class="text-on-surface-variant hover:bg-surface-container-low px-4 py-2 rounded-lg font-body-md font-medium transition-colors border border-transparent">Support</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-body-md font-medium transition-colors shadow-sm hover:bg-on-primary-fixed-variant">Create New</button>
+</div>
+<div class="w-px h-6 bg-outline-variant mx-2 hidden lg:block"></div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface-bright"></span>
+</button>
+<button class="p-1 rounded-full hover:ring-2 hover:ring-primary-container transition-all">
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A close up, professional portrait of a confident administrative leader in a well lit, modern office environment. Neutral background, soft daylight, sharp focus, cinematic corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL_KkBGEg8UFdHPGLNy1kRNg6RhRqvX9L-SP4CZ7X-HVmozpdT0Kmp9umrY9tl5D8Se5aqwtV9uA4t81R2mTxWlCsMBJ-KHsTlgtj3UD_C5PQHB1c7Os6szgaKR2yhXClLtmey6FO_x4cqsVcYzTGb-7UD4VDQvzAdhuLdy4Nf8fYKo8cRLK5rBrDFrveZEA0176IXJE0q5MQ02q1OztoTTLLcRyo1cQTIVu9Vl33p7oN2yBW5Vf94"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 p-4 md:p-density-generous bg-surface overflow-y-auto">
+<!-- Page Header -->
+<div class="max-w-[1200px] mx-auto mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-display font-display text-on-background mb-1">Organization Profile</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Manage institutional details, branding, and accreditations.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface text-on-surface-variant border border-outline-variant rounded-lg font-body-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">Cancel</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-body-md font-medium hover:bg-on-primary-fixed-variant transition-colors shadow-sm">Save Changes</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter-grid">
+<!-- Card 1: General Info (Spans 8 cols) -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card shadow-sm">
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-outline-variant/40">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-lg" data-icon="domain">domain</span>
+<h3 class="text-headline-md font-headline-md text-on-background">Institutional Identity</h3>
+</div>
+<div class="flex flex-col md:flex-row gap-8">
+<!-- Logo Upload -->
+<div class="flex-shrink-0 flex flex-col items-center gap-3">
+<div class="w-32 h-32 rounded-full border-2 border-dashed border-outline-variant bg-surface-container-low flex flex-col items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary-container/10 transition-colors cursor-pointer relative group overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-opacity" data-alt="A clean, minimalist crest logo for a modern university. Geometric lines, subtle blue and slate grey tones, flat vector style, isolated on a stark white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVgeK9nI08LEs3wNSXe18OdV7g_xQWhSZMZLGkJ1eEavEbmE040mmK7z-CuFnn8TZzUC7AoOfDs-KxInV11oX4XAKpQvwH7SxhOLdmGjlreJF49tBPEj2p_VPFVjlrQGOzbKwZkLFrztil_O62VVfR6SpX9nZgt_8KFqOEAm9tPJmKjhYORjvx6HvAm6kg_9BC63qE45ART8IOCqRhcddS6DoXNpehNXW0S1Mf-ha9vgQf7D4qO9j8"/>
+<span class="material-symbols-outlined text-[32px] z-10" data-icon="cloud_upload">cloud_upload</span>
+<span class="text-label-mono font-label-mono z-10 mt-1">Update Logo</span>
+</div>
+<p class="text-label-mono font-label-mono text-outline text-center w-32">SVG, PNG, or JPG<br/>(max. 2MB)</p>
+</div>
+<!-- Form Fields -->
+<div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="sm:col-span-2">
+<label class="block text-label-mono font-label-mono text-on-surface-variant mb-1.5 uppercase tracking-wider">Institution Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-2.5 text-body-md font-body-md text-on-background focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Enter institution name" type="text" value="Apex Institute of Technology"/>
+</div>
+<div>
+<label class="block text-label-mono font-label-mono text-on-surface-variant mb-1.5 uppercase tracking-wider">Primary Domain</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline material-symbols-outlined text-[18px]" data-icon="language">language</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2.5 text-body-md font-body-md text-on-background focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" type="text" value="apex.edu"/>
+</div>
+</div>
+<div>
+<label class="block text-label-mono font-label-mono text-on-surface-variant mb-1.5 uppercase tracking-wider">Established Year</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline material-symbols-outlined text-[18px]" data-icon="event">event</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2.5 text-body-md font-body-md text-on-background focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" type="text" value="1994"/>
+</div>
+</div>
+<div class="sm:col-span-2">
+<label class="block text-label-mono font-label-mono text-on-surface-variant mb-1.5 uppercase tracking-wider">Short Description</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg px-4 py-2.5 text-body-md font-body-md text-on-background focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all resize-none" placeholder="Brief overview of the institution..." rows="3">Leading research institution dedicated to advancing technological sciences and engineering disciplines.</textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Contact & Social (Spans 4 cols) -->
+<div class="md:col-span-4 flex flex-col gap-gutter-grid">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card shadow-sm flex-1">
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-outline-variant/40">
+<h3 class="text-headline-md font-headline-md text-on-background">Contact Details</h3>
+<button class="text-primary hover:bg-primary-container/10 p-1.5 rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline mt-0.5 group-hover:text-primary transition-colors" data-icon="mail">mail</span>
+<div>
+<p class="text-label-mono font-label-mono text-on-surface-variant mb-0.5">Official Email</p>
+<p class="text-body-md font-body-md text-on-background font-medium">admin@apex.edu</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline mt-0.5 group-hover:text-primary transition-colors" data-icon="call">call</span>
+<div>
+<p class="text-label-mono font-label-mono text-on-surface-variant mb-0.5">Main Switchboard</p>
+<p class="text-body-md font-body-md text-on-background font-medium">+1 (800) 555-0199</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-outline mt-0.5 group-hover:text-primary transition-colors" data-icon="location_on">location_on</span>
+<div>
+<p class="text-label-mono font-label-mono text-on-surface-variant mb-0.5">Headquarters</p>
+<p class="text-body-md font-body-md text-on-background font-medium leading-tight">100 Innovation Drive<br/>Cambridge, MA 02142</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Campus Locations (Spans 6 cols) -->
+<div class="md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card shadow-sm overflow-hidden flex flex-col">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary bg-secondary-container/30 p-2 rounded-lg" data-icon="map">map</span>
+<h3 class="text-headline-md font-headline-md text-on-background">Campus Locations</h3>
+</div>
+<button class="text-primary font-label-mono text-label-mono hover:underline flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="add">add</span> Add Location</button>
+</div>
+<div class="relative w-full h-48 bg-surface-container rounded-lg overflow-hidden border border-outline-variant/30 mb-4 group">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist UI map showing a stylized street layout of Cambridge, Massachusetts. Muted blue and gray tones, professional cartography style, subtle drop shadow pins indicating campus buildings." data-location="Cambridge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc03ua3mWnWpNZf9XXIj11i5G6t4fn6IklxA5EHmCCWAuvMXn5PGJgNBY0xNs4jlU6aTuHpWLWUvwDfvGLaBlDJlmfg_HnNSHsPWOShDiZ48IPuSGA4jx7TU5Kx60Lp-loX_iogNiBVlGHn2qCAfncjBwwKQadM6jMFJQseFtRLg8Ui55N7E3_n7xM66Zrzgmi-cKHQubl8a3OUoq9YUG54RhFGelWYshuvItWFgdML7Zle8w4HyCk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<span class="px-2 py-1 bg-surface-container-lowest rounded border border-outline-variant/50 text-label-mono font-label-mono text-on-surface-variant shadow-sm backdrop-blur-sm flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-primary"></div> Main Campus</span>
+<span class="px-2 py-1 bg-surface-container-lowest rounded border border-outline-variant/50 text-label-mono font-label-mono text-on-surface-variant shadow-sm backdrop-blur-sm flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-tertiary"></div> Research Park</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-auto">
+<div class="p-3 border border-outline-variant/50 rounded-lg hover:border-primary/50 transition-colors cursor-pointer bg-surface/50">
+<p class="font-body-md font-semibold text-on-background">North Campus</p>
+<p class="text-label-mono font-label-mono text-on-surface-variant mt-1">Science &amp; Tech Hub</p>
+</div>
+<div class="p-3 border border-outline-variant/50 rounded-lg hover:border-primary/50 transition-colors cursor-pointer bg-surface/50">
+<p class="font-body-md font-semibold text-on-background">Downtown Annex</p>
+<p class="text-label-mono font-label-mono text-on-surface-variant mt-1">Business School</p>
+</div>
+</div>
+</div>
+<!-- Card 4: Accreditation & Seals (Spans 6 cols) -->
+<div class="md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-padding-card shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-outline-variant/40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary bg-tertiary-container/20 p-2 rounded-lg" data-icon="workspace_premium">workspace_premium</span>
+<h3 class="text-headline-md font-headline-md text-on-background">Accreditation &amp; Seals</h3>
+</div>
+<button class="text-primary hover:bg-primary-container/10 p-1.5 rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span></button>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-4">
+<!-- Accreditation Item 1 -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 hover:border-outline-variant hover:shadow-sm transition-all bg-surface/30">
+<div class="w-12 h-12 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center shrink-0 overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A highly detailed, vector-style gold certification seal with intricate ribbon details and geometric patterns. Premium corporate aesthetic, isolated on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs8ExSxT5jyNyC928EhOhym_wBY8RNhpzPUvMYPLaMFlWEIIjqieLfpGkdP5yzUJHur8lO9u_qZENSJFRsIMLOuHZ6FS1jkIKUjoGZdk53hCQ66eKYtvUCM3fsfxNEOyFTtHQkYGb4MBsVlyf1xswUhTf_dU6tGRB0cyjtpbaRL0-BgEY5L1NJ5D1EO1cmLE8SDxYBd1Dgtk0ZnVjoP-jfEgWpJSeGYYEXQArRfHAxg3UKWPvRwsIy"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-body-md font-body-md font-semibold text-on-background truncate">National Engineering Board (NEB)</h4>
+<p class="text-label-mono font-label-mono text-on-surface-variant mt-0.5">Valid until: Dec 2028</p>
+</div>
+<span class="px-2.5 py-1 bg-primary-container/20 text-primary-fixed-variant border border-primary/20 rounded text-label-mono font-label-mono font-semibold flex items-center gap-1 shrink-0"><span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span> Active</span>
+</div>
+<!-- Accreditation Item 2 -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 hover:border-outline-variant hover:shadow-sm transition-all bg-surface/30">
+<div class="w-12 h-12 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center shrink-0 overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="A modern, minimalist blue and silver academic accreditation badge icon. Crisp vector graphics, professional corporate branding style, stark white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Zh5pbwC9RFv0AJHiHUGkRmkb758G5WqNzkNuHN1Rk5QKy9kXnO73kn1zakWg7yThxn2kRDqiB2XIK8sCEFy6_SLkAUKDrZDldOKlPeLDtbOqMWg6i0LwfgDKrp4rCTJWnQDNdOKX_3Lu4z2mNLVtQFrjcQylbVfL3KOS1d1FhP8Rs-tnFFs-llpudBvUsuzbpaWwFLVChRWr6LGcvtSk5shrY8wQAe-tEmbAecNgKO7O7MYJ8oPb"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="text-body-md font-body-md font-semibold text-on-background truncate">Global Edu Standards ISO 9001</h4>
+<p class="text-label-mono font-label-mono text-on-surface-variant mt-0.5">Valid until: Aug 2025</p>
+</div>
+<span class="px-2.5 py-1 bg-primary-container/20 text-primary-fixed-variant border border-primary/20 rounded text-label-mono font-label-mono font-semibold flex items-center gap-1 shrink-0"><span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span> Active</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

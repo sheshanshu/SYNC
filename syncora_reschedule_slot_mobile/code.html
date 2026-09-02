@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Syncora - Reschedule Conflict</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#000d60",
+                        "on-primary-container": "#d7daff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#505f76",
+                        "primary-fixed": "#dfe0ff",
+                        "inverse-primary": "#bbc3ff",
+                        "on-secondary-container": "#54647a",
+                        "tertiary": "#7e3100",
+                        "primary-container": "#3e52d5",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-tint": "#3b4fd2",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#454654",
+                        "on-primary-fixed-variant": "#1d34ba",
+                        "inverse-surface": "#283044",
+                        "on-tertiary-fixed": "#351000",
+                        "on-primary": "#ffffff",
+                        "surface": "#faf8ff",
+                        "tertiary-container": "#a44200",
+                        "surface-dim": "#d2d9f4",
+                        "tertiary-fixed-dim": "#ffb694",
+                        "primary": "#2036bd",
+                        "surface-container-highest": "#dae2fd",
+                        "surface-bright": "#faf8ff",
+                        "on-background": "#131b2e",
+                        "outline": "#757686",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface": "#131b2e",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "secondary-fixed": "#d3e4fe",
+                        "secondary-container": "#d0e1fb",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#bbc3ff",
+                        "surface-container-high": "#e2e7ff",
+                        "surface-variant": "#dae2fd",
+                        "surface-container": "#eaedff",
+                        "outline-variant": "#c5c5d7",
+                        "tertiary-fixed": "#ffdbcc",
+                        "background": "#faf8ff",
+                        "surface-container-low": "#f2f3ff",
+                        "on-tertiary-container": "#ffd3bf",
+                        "on-tertiary-fixed-variant": "#7a2f00",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "padding-card": "16px",
+                        "base": "4px",
+                        "density-generous": "32px",
+                        "density-compact": "8px",
+                        "margin-page": "24px",
+                        "gutter-grid": "16px",
+                        "pb-safe": "env(safe-area-inset-bottom, 24px)"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .step-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased overflow-hidden flex flex-col h-screen relative">
+<!-- Top Navigation (Transactional Mode - Suppressing standard nav) -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center h-16 px-margin-page">
+<button class="p-2 -ml-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="window.history.back()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Reschedule</span>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto mt-16 pb-24 px-4 relative hide-scrollbar" id="wizard-container">
+<!-- Progress Indicator -->
+<div class="py-6 flex justify-between items-center max-w-sm mx-auto w-full relative z-10">
+<div class="h-1 absolute top-1/2 left-0 w-full -translate-y-1/2 bg-surface-container-high z-0"></div>
+<div class="h-1 absolute top-1/2 left-0 w-1/2 -translate-y-1/2 bg-primary z-0 transition-all duration-300" id="progress-bar"></div>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center z-10 font-label-mono text-label-mono relative border-2 border-surface">1</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center z-10 font-label-mono text-label-mono relative border-2 border-surface" id="step-2-indicator">2</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center z-10 font-label-mono text-label-mono relative border-2 border-surface" id="step-3-indicator">3</div>
+</div>
+<!-- Step 1: Conflict Review -->
+<div class="step-transition absolute inset-x-4 top-24 bottom-24 overflow-y-auto" id="step-1">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">Review Conflict</h2>
+<p class="text-on-surface-variant mb-6 text-body-md font-body-md">Room double-booking detected for MATH201. Please select a resolution path.</p>
+<!-- Conflict Card -->
+<div class="bg-surface-container-low border border-error-container rounded-lg p-padding-card mb-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="bg-error-container text-on-error-container font-label-mono text-label-mono px-2 py-1 rounded">CONFLICT</span>
+<span class="text-on-surface-variant text-body-sm font-body-sm">Today, 10:00 AM</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-1">MATH201 - Linear Algebra</h3>
+<p class="text-on-surface-variant text-body-md font-body-md flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                    Science Bldg, Rm 402
+                </p>
+<div class="bg-surface border border-outline-variant rounded p-3 text-body-sm font-body-sm text-on-surface-variant">
+<strong>Conflicting with:</strong> PHYS101 Lab Session (Dr. Smith)
+                </div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant p-4 pb-pb-safe z-50">
+<button class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-3 rounded-full flex items-center justify-center gap-2 active:bg-on-primary-fixed-variant transition-colors" onclick="nextStep(2)">
+            Find New Slot
+            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</body></html>
