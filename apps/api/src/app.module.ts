@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
+import { Module, SetMetadata } from '@nestjs/common';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { PrismaModule } from './core/database/prisma.module';
 import { AuthModule } from './core/auth/auth.module';
-import { TenantGuard } from './core/guards/tenant.guard';
+import { TenantGuard, IS_PUBLIC_KEY } from './core/guards/tenant.guard';
 import { PermissionsGuard } from './core/guards/permissions.guard';
 import { TenancyInterceptor } from './core/interceptors/tenancy.interceptor';
 
@@ -14,6 +14,7 @@ import { Controller, Get } from '@nestjs/common';
 
 @Controller('health')
 export class HealthController {
+  @SetMetadata(IS_PUBLIC_KEY, true)
   @Get()
   checkHealth() {
     return {
