@@ -1,0 +1,251 @@
+// Syncora Database Schema - Core Multi-Tenancy & Module Substrate
+// Every tenant-owned model MUST contain an organizationId field.
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ==========================================
+// 1. TENANCY & IDENTITY LAYER
+// ==========================================
+
+model Organization {
+  id             String      @id @default(cuid())
+  name           String
+  slug           String      @unique // e.g. "stanford-edu"
+  domain         String?     @unique // e.g. "campus.stanford.edu"
+  logoUrl        String?
+  themeSettings  Json?       // Colors, branding, UI overrides
+  status         OrgStatus   @default(ACTIVE)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  deletedAt      DateTime?
+
+  // Feature Module Flags
+  enabledModules String[]    // ['ACADEMIC', 'FINANCE', 'SECURITY', 'NOTIFICATIONS']
+
+  // Relations
+  users          User[]
+  roles          Role[]
+  sessions       AcademicSession[]
+  departments    Department[]
+  courses        Course[]
+  notifications  Notification[]
+  feeRecords     FeeRecord[]
+  gateLogs       GateLog[]
+}
+
+enum OrgStatus {
+  ACTIVE
+  SUSPENDED
+  ONBOARDING
+}
+
+model User {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  passwordHash   String
+  firstName      String
+  lastName       String
+  avatarUrl      String?
+  phone          String?
+  
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  
+  status         UserStatus   @default(ACTIVE)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  deletedAt      DateTime?
+  
+  // Relations
+  memberships    Membership[]
+  refreshTokens  RefreshToken[]
+  notifications  Notification[]
+  feeRecords     FeeRecord[]
+
+  @@index([organizationId])
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  PENDING_VERIFICATION
+}
+
+// ==========================================
+// 2. SECURITY & RBAC LAYER
+// ==========================================
+
+model Role {
+  id             String       @id @default(cuid())
+  name           String       // "SystemAdmin", "OrgAdmin", "Faculty", "Student"
+  description    String?
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  
+  permissions    Permission[]
+  memberships    Membership[]
+
+  @@unique([name, organizationId])
+  @@index([organizationId])
+}
+
+model Permission {
+  id       String @id @default(cuid())
+  action   String // "create", "read", "update", "delete", "manage"
+  subject  String // "Course", "Grade", "Invoice", "GateLog"
+  roles    Role[]
+}
+
+model Membership {
+  id           String      @id @default(cuid())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id])
+  roleId       String
+  role         Role        @relation(fields: [roleId], references: [id])
+  
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+
+  @@unique([userId, roleId, departmentId])
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+  family    String
+  createdAt DateTime @default(now())
+}
+
+// ==========================================
+// 3. ACADEMIC MODULE (Tenant-Owned)
+// ==========================================
+
+model AcademicSession {
+  id             String       @id @default(cuid())
+  name           String       // "Fall 2024"
+  startDate      DateTime
+  endDate        DateTime
+  isCurrent      Boolean      @default(false)
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  terms          AcademicTerm[]
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([organizationId])
+}
+
+model AcademicTerm {
+  id        String          @id @default(cuid())
+  name      String          // "Semester 1"
+  sessionId String
+  session   AcademicSession @relation(fields: [sessionId], references: [id])
+  courses   Course[]
+}
+
+model Department {
+  id             String       @id @default(cuid())
+  name           String
+  code           String?
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  
+  memberships    Membership[]
+  courses        Course[]
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([organizationId])
+}
+
+model Course {
+  id             String       @id @default(cuid())
+  title          String
+  code           String       // "CS101"
+  credits        Int          @default(3)
+  departmentId   String
+  department     Department   @relation(fields: [departmentId], references: [id])
+  termId         String
+  term           AcademicTerm @relation(fields: [termId], references: [id])
+  
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([organizationId])
+}
+
+// ==========================================
+// 4. FINANCE MODULE (Tenant-Owned)
+// ==========================================
+
+model FeeRecord {
+  id             String       @id @default(cuid())
+  amount         Float
+  dueDate        DateTime
+  status         String       // "PENDING", "PAID", "OVERDUE"
+  userId         String
+  user           User         @relation(fields: [userId], references: [id])
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([organizationId])
+}
+
+// ==========================================
+// 5. SECURITY MODULE (Tenant-Owned)
+// ==========================================
+
+model GateLog {
+  id             String       @id @default(cuid())
+  visitorName    String
+  entryTime      DateTime     @default(now())
+  exitTime       DateTime?
+  status         String       // "CHECKED_IN", "CHECKED_OUT"
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  createdAt      DateTime     @default(now())
+
+  @@index([organizationId])
+}
+
+// ==========================================
+// 6. NOTIFICATION ENGINE MODULE (Tenant-Owned)
+// ==========================================
+
+model Notification {
+  id             String       @id @default(cuid())
+  userId         String
+  user           User         @relation(fields: [userId], references: [id])
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  title          String
+  message        String
+  type           String       // "URGENT", "INFO", "SUCCESS"
+  channel        String       // "PUSH", "EMAIL", "IN_APP"
+  status         String       @default("UNREAD")
+  payload        Json?
+  createdAt      DateTime     @default(now())
+
+  @@index([organizationId])
+}
